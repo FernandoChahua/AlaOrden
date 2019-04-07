@@ -9,7 +9,7 @@
 			"_parent": {
 				"$ref": "AAAAAAFF+h6SjaM2Hec="
 			},
-			"name": "Model",
+			"name": "Modelo",
 			"ownedElements": [
 				{
 					"_type": "UMLClassDiagram",
@@ -17,7 +17,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Entity Class Diagram",
+					"name": "Diagrama Clases (Entidades)",
 					"defaultDiagram": true,
 					"ownedViews": [
 						{
@@ -77,7 +77,7 @@
 											"top": 112,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from Modelo)"
 										},
 										{
 											"_type": "LabelView",
@@ -323,7 +323,7 @@
 											"top": 64,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from Modelo)"
 										},
 										{
 											"_type": "LabelView",
@@ -535,7 +535,7 @@
 											"top": 416,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from Modelo)"
 										},
 										{
 											"_type": "LabelView",
@@ -815,7 +815,7 @@
 											"top": -224,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from Modelo)"
 										},
 										{
 											"_type": "LabelView",
@@ -1059,7 +1059,7 @@
 											"left": 128,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from Modelo)"
 										},
 										{
 											"_type": "LabelView",
@@ -1372,7 +1372,7 @@
 											"top": -624,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from Modelo)"
 										},
 										{
 											"_type": "LabelView",
@@ -2946,7 +2946,7 @@
 											"top": 416,
 											"width": 123.5126953125,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from Modelo)"
 										},
 										{
 											"_type": "LabelView",
@@ -4457,7 +4457,7 @@
 			"_parent": {
 				"$ref": "AAAAAAFF+h6SjaM2Hec="
 			},
-			"name": "Database",
+			"name": "Base de Datos",
 			"ownedElements": [
 				{
 					"_type": "ERDDiagram",
@@ -4465,7 +4465,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFp+By03IEIUwU="
 					},
-					"name": "ER Diagram",
+					"name": "Diagrama ER",
 					"ownedViews": [
 						{
 							"_type": "ERDEntityView",
@@ -6725,8 +6725,7 @@
 							},
 							"name": "descuento",
 							"type": "decimal",
-							"length": "7,2",
-							"nullable": true
+							"length": "7,2"
 						}
 					]
 				},
@@ -6774,7 +6773,6 @@
 							"name": "id_franquicia",
 							"type": "int",
 							"length": 0,
-							"primaryKey": true,
 							"foreignKey": true,
 							"referenceTo": {
 								"$ref": "AAAAAAFp+C7bFIKhR0g="
