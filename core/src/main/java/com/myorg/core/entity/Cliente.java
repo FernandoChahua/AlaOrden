@@ -64,4 +64,9 @@ public class Cliente {
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
+    
+    @Override
+    public String toString(){
+        return this.usuario;
+    }
 }
