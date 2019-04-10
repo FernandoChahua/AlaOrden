@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml/" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/WEB-INF/templates/master.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="1">
+                        <p:commandButton id="btnCliente" value="Clientes" action="visorCliente?faces-redirect=true"/>
+                        <p:commandButton id="btnTarjeta" value="Tarjetas" action="index?faces-redirect=true"/>
+                        <p:commandButton id="btnProducto" value="Productos" action="index?faces-redirect=true"/>
+                        <p:commandButton id="btnPedido" value="Pedidos" action="index?faces-redirect=true"/>
+                        <p:commandButton id="btnDetallePedido" value="Detalles de Pedidos" action="index?faces-redirect=true"/>
+
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
