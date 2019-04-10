@@ -43,7 +43,7 @@ public class ClienteController implements Serializable{
         try {
             clienteService.saveCliente(cliente);
             this.getAllClientes();
-            rpta = "index?faces-redirect=true";
+            rpta = "visorCliente?faces-redirect=true";
         } catch (Exception e) {
             // TODO: handle exception
         }

@@ -12,25 +12,14 @@
         <ui:composition template="/WEB-INF/templates/master.xhtml">
             <ui:define name="content">
                 <h:form>
-                    <p:dataTable var="c" value="#{clienteController.clientes}" rows="10"
-                                 paginator="true"
-                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="5,10,15">
-                        <p:column headerText="IdCliente">
-                            <h:outputText value="#{c.idCliente}" />
-                        </p:column>
-                        <p:column headerText="Usuario">
-                            <h:outputText value="#{c.usuario}" />
-                        </p:column>
-                        <p:column headerText="Contraseña">
-                            <h:outputText value="#{c.contrasena}" />
-                        </p:column>
-                        <p:column headerText="Correo">
-                            <h:outputText value="#{c.correo}" />
-                        </p:column>
-                    </p:dataTable>
-                    <br />
-                    <p:commandButton id="btnNuevo" value="Nuevo" action="#{clienteController.newCliente()}"/>
+                    <h:panelGrid columns="1">
+                        <p:commandButton id="btnCliente" value="Clientes" action="visorCliente?faces-redirect=true"/>
+                        <p:commandButton id="btnTarjeta" value="Tarjetas" action="index?faces-redirect=true"/>
+                        <p:commandButton id="btnProducto" value="Productos" action="index?faces-redirect=true"/>
+                        <p:commandButton id="btnPedido" value="Pedidos" action="index?faces-redirect=true"/>
+                        <p:commandButton id="btnDetallePedido" value="Detalles de Pedidos" action="index?faces-redirect=true"/>
+
+                    </h:panelGrid>
                 </h:form>
             </ui:define>
         </ui:composition>
