@@ -5119,7 +5119,7 @@
 									"font": "Arial;13;1",
 									"left": 792,
 									"top": 69,
-									"width": 226.52978515625,
+									"width": 229.42431640625,
 									"height": 13,
 									"text": "Pedido"
 								},
@@ -5145,7 +5145,7 @@
 											"font": "Arial;13;0",
 											"left": 797,
 											"top": 92,
-											"width": 216.52978515625,
+											"width": 219.42431640625,
 											"height": 13
 										},
 										{
@@ -5160,7 +5160,7 @@
 											"font": "Arial;13;0",
 											"left": 797,
 											"top": 107,
-											"width": 216.52978515625,
+											"width": 219.42431640625,
 											"height": 13
 										},
 										{
@@ -5175,7 +5175,7 @@
 											"font": "Arial;13;0",
 											"left": 797,
 											"top": 122,
-											"width": 216.52978515625,
+											"width": 219.42431640625,
 											"height": 13
 										},
 										{
@@ -5190,7 +5190,7 @@
 											"font": "Arial;13;0",
 											"left": 797,
 											"top": 137,
-											"width": 216.52978515625,
+											"width": 219.42431640625,
 											"height": 13
 										},
 										{
@@ -5205,7 +5205,7 @@
 											"font": "Arial;13;0",
 											"left": 797,
 											"top": 152,
-											"width": 216.52978515625,
+											"width": 219.42431640625,
 											"height": 13
 										},
 										{
@@ -5220,7 +5220,7 @@
 											"font": "Arial;13;0",
 											"left": 797,
 											"top": 167,
-											"width": 216.52978515625,
+											"width": 219.42431640625,
 											"height": 13
 										},
 										{
@@ -5235,7 +5235,7 @@
 											"font": "Arial;13;0",
 											"left": 797,
 											"top": 182,
-											"width": 216.52978515625,
+											"width": 219.42431640625,
 											"height": 13
 										},
 										{
@@ -5250,7 +5250,7 @@
 											"font": "Arial;13;0",
 											"left": 797,
 											"top": 197,
-											"width": 216.52978515625,
+											"width": 219.42431640625,
 											"height": 13
 										},
 										{
@@ -5265,7 +5265,7 @@
 											"font": "Arial;13;0",
 											"left": 797,
 											"top": 212,
-											"width": 216.52978515625,
+											"width": 219.42431640625,
 											"height": 13
 										},
 										{
@@ -5280,21 +5280,21 @@
 											"font": "Arial;13;0",
 											"left": 797,
 											"top": 227,
-											"width": 216.52978515625,
+											"width": 219.42431640625,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 792,
 									"top": 87,
-									"width": 226.52978515625,
+									"width": 229.42431640625,
 									"height": 158
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 792,
 							"top": 64,
-							"width": 226.52978515625,
+							"width": 229.42431640625,
 							"height": 181,
 							"nameLabel": {
 								"$ref": "AAAAAAFp+B65+oGZNeM="
@@ -6154,7 +6154,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B3dzoFCDUs="
 							},
-							"name": "id_cliente",
+							"name": "idCliente",
 							"type": "int",
 							"length": 0,
 							"primaryKey": true
@@ -6205,7 +6205,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B3zwYFPwgY="
 							},
-							"name": "id_tarjeta",
+							"name": "idTarjeta",
 							"type": "int",
 							"length": 0,
 							"primaryKey": true
@@ -6216,7 +6216,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B3zwYFPwgY="
 							},
-							"name": "id_cliente",
+							"name": "idCliente",
 							"type": "int",
 							"length": 0,
 							"foreignKey": true,
@@ -6240,7 +6240,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B3zwYFPwgY="
 							},
-							"name": "fecha_exp",
+							"name": "fechaExp",
 							"type": "date",
 							"length": 0
 						}
@@ -6346,7 +6346,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B4SPYFcnKQ="
 							},
-							"name": "id_franquicia",
+							"name": "idFranquicia",
 							"type": "int",
 							"length": 0,
 							"primaryKey": true
@@ -6406,7 +6406,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B4yhYFpw+w="
 							},
-							"name": "id_sede",
+							"name": "idSede",
 							"type": "int",
 							"length": 0,
 							"primaryKey": true
@@ -6417,7 +6417,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B4yhYFpw+w="
 							},
-							"name": "id_franquicia",
+							"name": "idFranquicia",
 							"type": "int",
 							"length": 0,
 							"foreignKey": true,
@@ -6481,7 +6481,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B5ExYF26+U="
 							},
-							"name": "id_producto",
+							"name": "idProducto",
 							"type": "int",
 							"length": 0,
 							"primaryKey": true
@@ -6554,7 +6554,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B6CZYGGTBI="
 							},
-							"name": "id_producto",
+							"name": "idProducto",
 							"type": "int",
 							"length": 0,
 							"primaryKey": true,
@@ -6569,7 +6569,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B6CZYGGTBI="
 							},
-							"name": "id_franquicia",
+							"name": "idFranquicia",
 							"type": "int",
 							"length": 0,
 							"primaryKey": true,
@@ -6624,7 +6624,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B65+YGWcyo="
 							},
-							"name": "id_pedido",
+							"name": "idPedido",
 							"type": "int",
 							"length": 0,
 							"primaryKey": true
@@ -6635,7 +6635,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B65+YGWcyo="
 							},
-							"name": "id_cliente",
+							"name": "idCliente",
 							"type": "int",
 							"length": 0,
 							"foreignKey": true,
@@ -6649,7 +6649,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B65+YGWcyo="
 							},
-							"name": "id_sede",
+							"name": "idSede",
 							"type": "int",
 							"length": 0,
 							"foreignKey": true,
@@ -6693,7 +6693,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B65+YGWcyo="
 							},
-							"name": "nro_transaccion",
+							"name": "nroTransaccion",
 							"type": "int",
 							"length": 0
 						},
@@ -6713,7 +6713,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B65+YGWcyo="
 							},
-							"name": "precio_envio",
+							"name": "precioEnvio",
 							"type": "decimal",
 							"length": "7,2"
 						},
@@ -6743,7 +6743,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B7PdYGj56g="
 							},
-							"name": "id_pedido",
+							"name": "idPedido",
 							"type": "int",
 							"length": 0,
 							"primaryKey": true,
@@ -6755,7 +6755,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B7PdYGj56g="
 							},
-							"name": "id_producto",
+							"name": "idProducto",
 							"type": "int",
 							"length": 0,
 							"primaryKey": true,
@@ -6770,7 +6770,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B7PdYGj56g="
 							},
-							"name": "id_franquicia",
+							"name": "idFranquicia",
 							"type": "int",
 							"length": 0,
 							"foreignKey": true,

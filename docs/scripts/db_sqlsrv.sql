@@ -1,36 +1,36 @@
-create database alaorden
+create database ALaOrden
 go
 
-use alaorden
+use ALaOrden
 go
 
 create table Cliente(
-	id_cliente int primary key identity,
+	idCliente int primary key identity,
 	usuario varchar(50) not null,
 	contrasena varchar(50) not null,
 	correo varchar(50) not null)
 go
 
 create table Tarjeta(
-	id_tarjeta int primary key identity,
-	id_cliente int foreign key references Cliente(id_cliente) not null,
+	idTarjeta int primary key identity,
+	idCliente int foreign key references Cliente(idCliente) not null,
 	titular varchar(50) not null,
-	fecha_exp date not null)
+	fechaExp date not null)
 go
 
 create table Franquicia(
-	id_franquicia int primary key identity,
+	idFranquicia int primary key identity,
 	nombre varchar(50) not null)
 go
 
 create table Sede(
-	id_sede int primary key identity,
-	id_franquicia int foreign key references Franquicia(id_franquicia) not null,
+	idSede int primary key identity,
+	idFranquicia int foreign key references Franquicia(idFranquicia) not null,
 	direccion varchar(200) not null)
 go
 
 create table Producto(
-	id_producto int primary key identity,
+	idProducto int primary key identity,
 	nombre varchar(100) not null,
 	marca varchar(50) not null,
 	descripcion varchar(300),
@@ -39,30 +39,30 @@ create table Producto(
 go
 
 create table Producto_Franquicia(
-	id_producto int foreign key references Producto(id_producto) not null,
-	id_franquicia int foreign key references Franquicia(id_franquicia) not null,
-	primary key (id_producto, id_franquicia) )
+	idProducto int foreign key references Producto(idProducto) not null,
+	idFranquicia int foreign key references Franquicia(idFranquicia) not null,
+	primary key (idProducto, idFranquicia) )
 go
 
 create table Pedido(
-	id_pedido int primary key identity,
-	id_cliente int foreign key references Cliente(id_cliente) not null,
-	id_sede int foreign key references Sede(id_sede) not null,
+	idPedido int primary key identity,
+	idCliente int foreign key references Cliente(idCliente) not null,
+	idSede int foreign key references Sede(idSede) not null,
 	estado varchar(50) not null,
 	fechar date not null,
 	direccion varchar(200) not null,
-	nro_transaccion int not null,
+	nroTransaccion int not null,
 	subtotal decimal(7,2) not null,
-	precio_envio decimal(7,2) not null,
+	precioEnvio decimal(7,2) not null,
 	descuento decimal(7,2) not null)
 go
 
 create table DetallePedido(
-	id_pedido int foreign key references Pedido(id_pedido) not null,
-	id_producto int not null,
-	id_franquicia int not null,
+	idPedido int foreign key references Pedido(idPedido) not null,
+	idProducto int not null,
+	idFranquicia int not null,
 	precio decimal(5,2) not null,
 	cantidad int not null,
-	primary key (id_pedido, id_producto),
-	foreign key (id_producto,id_franquicia) references Producto_Franquicia(id_producto,id_franquicia) )
+	primary key (idPedido, idProducto),
+	foreign key (idProducto,idFranquicia) references Producto_Franquicia(idProducto,idFranquicia) )
 go
