@@ -186,7 +186,7 @@
 											"top": 203,
 											"width": 109.83349609375,
 											"height": 13,
-											"text": "-correo: String",
+											"text": "-email: String",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3725,7 +3725,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp1eWFsHIuy1A="
 							},
-							"name": "correo",
+							"name": "email",
 							"visibility": "private",
 							"type": "String"
 						}
@@ -4599,7 +4599,7 @@
 									"font": "Arial;13;1",
 									"left": 336,
 									"top": 293,
-									"width": 181.7470703125,
+									"width": 183.15625,
 									"height": 13,
 									"text": "Tarjeta"
 								},
@@ -4625,7 +4625,7 @@
 											"font": "Arial;13;0",
 											"left": 341,
 											"top": 316,
-											"width": 171.7470703125,
+											"width": 173.15625,
 											"height": 13
 										},
 										{
@@ -4640,7 +4640,22 @@
 											"font": "Arial;13;0",
 											"left": 341,
 											"top": 331,
-											"width": 171.7470703125,
+											"width": 173.15625,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAFqIWgSW6Z1Ovk=",
+											"_parent": {
+												"$ref": "AAAAAAFp+B3zwYFTg8s="
+											},
+											"model": {
+												"$ref": "AAAAAAFqIWgSGKZyFHs="
+											},
+											"font": "Arial;13;0",
+											"left": 341,
+											"top": 346,
+											"width": 173.15625,
 											"height": 13
 										},
 										{
@@ -4654,8 +4669,8 @@
 											},
 											"font": "Arial;13;0",
 											"left": 341,
-											"top": 346,
-											"width": 171.7470703125,
+											"top": 361,
+											"width": 173.15625,
 											"height": 13
 										},
 										{
@@ -4669,23 +4684,23 @@
 											},
 											"font": "Arial;13;0",
 											"left": 341,
-											"top": 361,
-											"width": 171.7470703125,
+											"top": 376,
+											"width": 173.15625,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 336,
 									"top": 311,
-									"width": 181.7470703125,
-									"height": 68
+									"width": 183.15625,
+									"height": 83
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 336,
 							"top": 288,
-							"width": 181.7470703125,
-							"height": 91,
+							"width": 183.15625,
+							"height": 106,
 							"nameLabel": {
 								"$ref": "AAAAAAFp+B3zwYFScRY="
 							},
@@ -6185,7 +6200,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFp+B3dzoFCDUs="
 							},
-							"name": "correo",
+							"name": "email",
 							"type": "varchar",
 							"length": "50"
 						}
@@ -6223,6 +6238,16 @@
 							"referenceTo": {
 								"$ref": "AAAAAAFp+B8hZIGyvd4="
 							}
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAFqIWgSGKZyFHs=",
+							"_parent": {
+								"$ref": "AAAAAAFp+B3zwYFPwgY="
+							},
+							"name": "nroCuenta",
+							"type": "varchar",
+							"length": "50"
 						},
 						{
 							"_type": "ERDColumn",

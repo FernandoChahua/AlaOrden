@@ -8,12 +8,13 @@ create table Cliente(
 	idCliente int primary key identity,
 	usuario varchar(50) not null,
 	contrasena varchar(50) not null,
-	correo varchar(50) not null)
+	email varchar(50) not null)
 go
 
 create table Tarjeta(
 	idTarjeta int primary key identity,
 	idCliente int foreign key references Cliente(idCliente) not null,
+	nroCuenta varchar(50) not null,
 	titular varchar(50) not null,
 	fechaExp date not null)
 go

@@ -6,11 +6,12 @@ create table Cliente(
 	idCliente int primary key auto_increment,
 	usuario varchar(50) not null,
 	contrasena varchar(50) not null,
-	correo varchar(50) not null);
+	email varchar(50) not null);
 
 create table Tarjeta(
 	idTarjeta int primary key auto_increment,
 	idCliente int not null,
+    nroCuenta varchar(50) not null,
 	titular varchar(50) not null,
 	fechaExp date not null,
     foreign key (idCliente) references Cliente(idCliente) );
