@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head></h:head>
+    <body>
+
+        <ui:composition template="/WEB-INF/templates/master.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <p:messages autoUpdate="true" />
+                    <p:panel>
+                        <f:facet name="header">Nuevo Pedido</f:facet>
+                        <h:panelGrid columns="2">
+
+                            <p:outputLabel for="select" value="Id Cliente"/>
+                            <h:selectOneMenu id="select" value="#{pedidoController.pedido.cliente}" required="true" >
+                                <f:selectItems value="#{clienteController.clientes}" var="cliente" 
+                                               itemValue="#{cliente.idCliente}" itemLabel="#{cliente.usuario}"  />
+                            </h:selectOneMenu>
+                            <p:message for="select" display="text" />
+                            <h:column />
+
+                            <p:outputLabel for="txtSede" value="Id Sede" />
+                            <p:inputText id="txtSede"
+                                         value="#{pedidoController.pedido.sede.idSede}" size="30"
+                                         required="true" />
+                            <p:message for="txtSede" display="text" />
+                            <h:column />
+
+                            <p:outputLabel for="txtEstado" value="Estado" />
+                            <p:inputText id="txtEstado"
+                                         value="#{pedidoController.pedido.estado}" size="30"
+                                         required="true" />
+                            <p:message for="txtEstado" display="text" />
+                            <h:column />
+
+                            <p:outputLabel for="txtFecha" value="Fecha" />
+                            <p:inputText id="txtFecha"
+                                         value="#{pedidoController.pedido.fecha}" size="30"
+                                         required="true" />
+                            <p:message for="txtFecha" display="text" />
+                            <h:column />
+
+                            <p:outputLabel for="txtDireccion" value="Direccion" />
+                            <p:inputText id="txtDireccion"
+                                         value="#{pedidoController.pedido.direccion}" size="20"
+                                         required="true" />
+                            <p:message for="txtDireccion" display="text" />
+                            <h:column />
+
+                            <p:outputLabel for="txtNroTransaccion" value="NroTransaccion" />
+                            <p:inputText id="txtNroTransaccion"
+                                         value="#{pedidoController.pedido.nroTransaccion}" size="20"
+                                         required="true" />
+                            <p:message for="txtNroTransaccion" display="text" />
+                            <h:column />
+
+                            <p:outputLabel for="txtSubTotal" value="SubTotal" />
+                            <p:inputText id="txtSubTotal"
+                                         value="#{pedidoController.pedido.subtotal}" size="20"
+                                         required="true" />
+                            <p:message for="txtSubTotal" display="text" />
+                            <h:column />
+
+                            <p:outputLabel for="txtPrecioEnvio" value="PrecioEnvio" />
+                            <p:inputText id="txtPrecioEnvio"
+                                         value="#{pedidoController.pedido.precioEnvio}" size="20"
+                                         required="true" />
+                            <p:message for="txtPrecioEnvio" display="text" />
+                            <h:column />
+
+                            <p:outputLabel for="txtDescuento" value="Descuento" />
+                            <p:inputText id="txtDescuento"
+                                         value="#{pedidoController.pedido.descuento}" size="20"
+                                         required="true" />
+                            <p:message for="txtDescuento" display="text" />
+                            <h:column />
+
+                        </h:panelGrid>
+                        <p:commandButton value="Registrar" action="#{pedidoController.savePedido()}"/>
+                        <p:commandButton value="Volver" action="visorPedido?faces-redirect=true"
+                                         immediate="true" />
+
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

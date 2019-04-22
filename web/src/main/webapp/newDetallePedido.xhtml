@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head></h:head>
+    <body>
+
+        <ui:composition template="/WEB-INF/templates/master.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <p:messages autoUpdate="true" />
+                    <p:panel>
+                        <f:facet name="header">Nuevo DetalleProducto</f:facet>
+                        <h:panelGrid columns="2">
+                            <p:outputLabel for="txtidPedido" value="IdPedido" />
+                            <p:inputText id="txtidPedido"
+                                         value="#{detallePedidoController.detallePedido.idPedido}" size="30"
+                                         required="true" />
+                            <p:message for="txtidPedido" display="text" />
+                            <h:column />
+
+                            <p:outputLabel for="txtidProducto" value="idProducto" />
+                            <p:inputText id="txtidProducto"
+                                         value="#{detallePedidoController.detallePedido.idProducto}" size="30"
+                                         required="true" />
+                            <p:message for="txtidProducto" display="text" />
+                            <h:column />
+
+                            <p:outputLabel for="txtprecio" value="Precio" />
+                            <p:inputText id="txtprecio"
+                                         value="#{detallePedidoController.detallePedido.precio}" size="20"
+                                         required="true" />
+                            <p:message for="txtprecio" display="text" />
+                            <h:column />
+
+                            <p:outputLabel for="txtcantidad" value="Cantidad" />    
+                            <p:inputText id="txtcantidad"
+                                         value="#{detallePedidoController.detallePedido.cantidad}" size="30"
+                                         required="true" />
+                            <p:message for="txtcantidad" display="text" />
+                            <h:column />
+
+
+                        </h:panelGrid>
+                        <p:commandButton value="Registrar" action="#{detallePedidoController.saveDetallePedido()}"/>
+                        <p:commandButton value="Volver" action="visorDetallePedido?faces-redirect=true"
+                                         immediate="true" />
+
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head></h:head>
+    <body>
+
+        <ui:composition template="/WEB-INF/templates/master.xhtml">
+
+            <ui:define name="content">
+
+                <h:form>
+                    <p:dataTable var="h" value="#{pedidoController.pedidos}" rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
+                        <p:column headerText="IdPedido">
+                            <h:outputText value="#{h.idPedido}" />
+                        </p:column>
+
+                        <p:column headerText="id Cliente">
+                            <h:outputText value="#{h.cliente.idCliente}" />
+                        </p:column>
+                        <p:column headerText="id Sede">
+                            <h:outputText value="#{h.sede.idSede}" />
+                        </p:column>
+                        <p:column headerText="Estado">
+                            <h:outputText value="#{h.estado}" />
+                        </p:column>
+                        <p:column headerText="Fecha">
+                            <h:outputText value="#{h.fecha}" />
+                        </p:column>
+                        <p:column headerText="Direccion">
+                            <h:outputText value="#{h.direccion}" />
+                        </p:column>
+                        <p:column headerText="nroTransaccion">
+                            <h:outputText value="#{h.nroTransaccion}" />
+                        </p:column>       
+                        <p:column headerText="subtotal">
+                            <h:outputText value="#{h.subtotal}" />
+                        </p:column>    
+                        <p:column headerText="precioEnvio">
+                            <h:outputText value="#{h.precioEnvio}" />
+                        </p:column>
+                        <p:column headerText="descuento">
+                            <h:outputText value="#{h.descuento}" />
+                        </p:column>  
+                    </p:dataTable>
+                    <br />
+
+                    <p:commandButton id="btnNuevo" value="Nuevo" action="#{pedidoController.newPedido()}"/>
+
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

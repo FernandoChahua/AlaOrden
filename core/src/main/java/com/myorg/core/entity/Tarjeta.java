@@ -1,24 +1,35 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.myorg.core.entity;
 
-import java.util.*;
+/**
+ *
+ * @author Alexia
+ */
+import java.io.Serializable;
 
-public class Tarjeta {
-    
-    private int idTarjeta;
+/**
+ *
+ * @author Alexia
+ */
+public class Tarjeta implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    private Integer idTarjeta;
     private Cliente cliente;
-
     private String nroCuenta;
-
     private String titular;
-    
-    private Date fechaExp;
+    private String fechaExp;
 
-    public int getIdTarjeta() {
+    public Integer getIdTarjeta() {
         return idTarjeta;
     }
 
-    public void setIdTarjeta(int idTarjeta) {
+    public void setIdTarjeta(Integer idTarjeta) {
         this.idTarjeta = idTarjeta;
     }
 
@@ -42,16 +53,15 @@ public class Tarjeta {
         return titular;
     }
 
-
     public void setTitular(String titular) {
         this.titular = titular;
     }
 
-    public Date getFechaExp() {
+    public String getFechaExp() {
         return fechaExp;
     }
 
-    public void setFechaExp(Date fechaExp) {
+    public void setFechaExp(String fechaExp) {
         this.fechaExp = fechaExp;
     }
 }

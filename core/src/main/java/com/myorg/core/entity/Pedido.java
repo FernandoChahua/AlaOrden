@@ -1,23 +1,25 @@
 package com.myorg.core.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
-public class Pedido {
-    
+public class Pedido implements Serializable {
+
     private int idPedido;
-    
+
     private Cliente cliente;
-    
+
     private String estado;
-    
+
     private String direccion;
-    
+
     private Sede sede;
-    
-    private Date fecha;
-    
+
+    private String fecha;
+
     private int nroTransaccion;
 
     private BigDecimal subtotal;
@@ -25,9 +27,8 @@ public class Pedido {
     private BigDecimal precioEnvio;
 
     private BigDecimal descuento;
-    
-    private List<DetallePedido> detalles;
 
+    private List<DetallePedido> detalles;
 
     public int getIdPedido() {
         return idPedido;
@@ -69,11 +70,11 @@ public class Pedido {
         this.sede = sede;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

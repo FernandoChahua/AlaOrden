@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+    <h:head></h:head>
+    <body>            
+
+
+        <ui:composition template="/WEB-INF/templates/master.xhtml">
+
+            <ui:define name="content">
+                <style type="text/css">
+                    .centrado{
+                        text-align:center;
+                    }
+                    .letraroja {
+                        background-color:green;
+                    }
+                    #content {  font-family:courier; color: black;
+                                padding:5em 0;  }
+                    </style>
+                    <h:form>
+
+                        <p:dataTable var="t" value="#{tarjetaController.tarjetas}" cellSeparator="5"
+                                     class="centrado"
+                        rows="10" 
+
+                        >
+                        <p:column headerText="ID">
+                            <h:outputText value="#{t.idTarjeta}" />
+                        </p:column>
+                        <p:column headerText="Numero de Tarjeta">
+                            <h:outputText value="#{t.nroCuenta}" />
+                        </p:column>
+
+                        <p:column headerText="Nombre del Titular">
+                            <h:outputText value="#{t.titular}" />
+                        </p:column>
+
+                        <p:column headerText="Fecha de Expiracion">
+                            <h:outputText value="#{t.fechaExp}" />
+                        </p:column>
+
+
+
+                    </p:dataTable>
+                    <br />
+                    <p class="centrado" cellSeparator="5">
+                        <p:commandButton id="btnNuevo" class="centrado" value="Nuevo" action="#{tarjetaController.newTarjeta()}" />
+                    </p>
+                </h:form>
+                <p class="centrado" cellSeparator="5">
+                    <h:link value="www.ALaOrden.com" outcome= "index"  ></h:link>
+
+                </p>              
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+
+
+</html>

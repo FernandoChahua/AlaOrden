@@ -43,7 +43,7 @@ public class ClienteRepository implements Serializable{
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Cliente obj = new Cliente();
-                obj.setIdCliente(rs.getInt("id_cliente"));
+                obj.setIdCliente(rs.getInt("idCliente"));
                 obj.setUsuario(rs.getString("usuario"));
                 obj.setContrasena(rs.getString("contrasena"));
                 obj.setCorreo(rs.getString("correo"));

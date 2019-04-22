@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+
+		<ui:define name="content">
+
+			<h:form>
+				<p:dataTable var="p" value="#{productoController.productos}" rows="10"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column headerText="IdProducto">
+						<h:outputText value="#{p.idProducto}" />
+					</p:column>
+
+					<p:column headerText="Nombre">
+						<h:outputText value="#{p.nombre}" />
+					</p:column>
+                                        
+                                        <p:column headerText="Marca">
+						<h:outputText value="#{p.marca}" />
+					</p:column>
+                                    
+                                        <p:column headerText="Descripcion">
+						<h:outputText value="#{p.descripcion}" />
+					</p:column>
+
+					<p:column headerText="Peso">
+						<h:outputText value="#{p.peso}" />
+					</p:column>
+                                    
+                                        <p:column headerText="Categoria">
+						<h:outputText value="#{p.categoria}" />
+					</p:column>
+
+				</p:dataTable>
+				<br />
+
+				<p:commandButton id="btnNuevo" value="Nuevo" action="#{productoController.newProducto()}"/>
+
+			</h:form>
+
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>
