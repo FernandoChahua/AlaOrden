@@ -54,9 +54,9 @@ public class FranquiciaController implements Serializable{
 
 	public void editFranquicia() {
 		try {
-			if (this.franquiciaSel.getId() > 0) {
+			if (this.franquiciaSel.getIdFranquicia() > 0) {
 				this.franquicia = this.franquiciaSel;
-				// this.franquicia.setFranquiciaType(this.franquiciaSel.getFranquiciaType());
+				
 			} else {
 				Message.messageInfo("Debe seleccionar un  franquiciao");
 			}
