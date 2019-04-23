@@ -70,7 +70,8 @@ public class ProductoRepositoryImpl implements Serializable, IProductoRepository
             }
             return rpta;
     }
-
+    
+    @SuppressWarnings("unchecked")
     @Override
     public Producto findById(Producto p) throws Exception {
             List<Producto> productos = new ArrayList<>();
