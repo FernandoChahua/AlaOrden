@@ -34,7 +34,11 @@ public class ProductoController implements Serializable {
 	
 	
 	public void getAllProductos() {
+            try {
 		productos = productoService.findAll();
+            } catch(Exception e){
+                
+            }
 	}
 	
 	public String newProducto() {
