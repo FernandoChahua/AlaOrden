@@ -1,7 +1,5 @@
 package com.myorg.core.service;
 
-import com.myorg.core.entity.Sede;
+public class ISedeRepository {
 
-public interface ISedeService extends ICrudService<Sede> {
-    
 }

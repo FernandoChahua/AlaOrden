@@ -1,56 +1,82 @@
 package com.myorg.core.repository.impl;
 
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.myorg.core.entity.*;
-import com.myorg.core.util.Conexion;
+import com.myorg.core.repository.IClienteRepository;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.inject.Named;
+import javax.persistence.*;
 
 @Named
-public class ClienteRepositoryImpl implements  Serializable {
+public class ClienteRepositoryImpl implements IClienteRepository, Serializable {
 
-    private Connection cx;
+    @PersistenceContext(unitName = "VisorPU")
+    private EntityManager em;
 
-    public ClienteRepositoryImpl() {
-        cx = Conexion.conectar();
+    @Override
+    public boolean insert(Cliente c) throws Exception {
+        boolean rpta = false;
+        try {
+            em.persist(c);
+            rpta = true;
+        } catch (Exception ex) {
+            throw ex;
+        }
+        return rpta;
     }
 
-    public void insert(Cliente obj) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Cliente> findAll() throws Exception {
+        List<Cliente> list = new ArrayList<>();
+
         try {
-            String sql = "insert into cliente(usuario,contrasena,email) VALUES(?,?,?)";
-            PreparedStatement ps = cx.prepareStatement(sql);
-            ps.setString(1, obj.getUsuario());
-            ps.setString(2, obj.getContrasena());
-            ps.setString(3, obj.getEmail());
-            ps.executeUpdate();
-            ps.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+            Query q = em.createQuery("SELECT c FROM Cliente c");
+            list = (List<Cliente>) q.getResultList();
+        } catch (Exception ex) {
+            throw ex;
         }
+        return list;
     }
 
-    public List<Cliente> findAll() {
-        List<Cliente> clientes = new ArrayList<>();
+    @Override
+    public boolean update(Cliente c) throws Exception {
+        boolean rpta = false;
         try {
-            String sql = "select * from cliente";
-            PreparedStatement ps = cx.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Cliente obj = new Cliente();
-                obj.setIdCliente(rs.getInt("idCliente"));
-                obj.setUsuario(rs.getString("usuario"));
-                obj.setContrasena(rs.getString("contrasena"));
-                obj.setEmail(rs.getString("email"));
-                clientes.add(obj);
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+            em.merge(c);
+            rpta = true;
+        } catch (Exception ex) {
+            throw ex;
         }
-        return clientes;
+        return rpta;
+    }
+
+    @Override
+    public boolean delete(Cliente c) throws Exception {
+        boolean rpta = false;
+        try {
+            em.persist(c);
+            rpta = true;
+        } catch (Exception ex) {
+            throw ex;
+        }
+        return rpta;
+    }
+
+    @Override
+    public Cliente findById(Cliente c) throws Exception {
+        List<Cliente> list = new ArrayList<>();
+
+        try {
+            Query q = em.createQuery("SELECT c FROM Cliente c WHERE c.idCliente = ?1");
+            q.setParameter(1, c.getIdCliente());
+            list = (List<Cliente>) q.getResultList();
+        } catch (Exception ex) {
+            throw ex;
+        }
+        return (list != null && !list.isEmpty() )? list.get(0) : new Cliente() ;
     }
 
 }
