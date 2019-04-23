@@ -6,10 +6,14 @@ import com.myorg.core.service.ISedeService;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import org.myorg.util.Message;
 import org.primefaces.event.SelectEvent;
 
+@Named
+@ViewScoped
 public class FranquiciaController implements Serializable{
     private static final long serialVersionUID = 1L;
     
@@ -114,11 +118,5 @@ public class FranquiciaController implements Serializable{
 		this.franquicias = franquicias;
 	}
 
-
-
-
-
-
-    
     
 }
