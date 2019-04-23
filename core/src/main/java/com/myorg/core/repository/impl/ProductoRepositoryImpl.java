@@ -48,7 +48,8 @@ public class ProductoRepositoryImpl implements Serializable, IProductoRepository
             em.remove(p);
             return true;
     }
-
+    
+    @SuppressWarnings("unchecked")
     @Override
     public Producto findById(Producto p) throws Exception {
             List<Producto> productos = new ArrayList<>();

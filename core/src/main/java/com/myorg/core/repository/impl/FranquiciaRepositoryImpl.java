@@ -6,10 +6,12 @@ import com.myorg.core.repository.IFranquiciaRepository;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+@Named
 public class FranquiciaRepositoryImpl implements Serializable,IFranquiciaRepository{
 
     private static final long serialVersionUID = 1L;
@@ -35,6 +37,7 @@ public class FranquiciaRepositoryImpl implements Serializable,IFranquiciaReposit
         return true;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Franquicia findById(Franquicia t) throws Exception {
         List<Franquicia> franquicias = new ArrayList<>();
@@ -46,6 +49,7 @@ public class FranquiciaRepositoryImpl implements Serializable,IFranquiciaReposit
 	return franquicias != null && !franquicias.isEmpty() ? franquicias.get(0) : new Franquicia();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Franquicia> findAll() throws Exception {
         List<Franquicia> franquicias = new ArrayList<>();
