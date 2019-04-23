@@ -18,6 +18,8 @@ import javax.inject.Named;
 import com.myorg.core.entity.Pedido;
 import com.myorg.core.entity.Sede;
 import com.myorg.core.service.impl.PedidoServiceImpl;
+import com.myorg.core.service.impl.
+
 import org.primefaces.event.SelectEvent;
 import org.myorg.util.Message;
 @Named
@@ -28,7 +30,8 @@ public class PedidoController implements Serializable {
 
    @Inject
     private PedidoServiceImpl pedidoService;
-
+    private SedeServiceImpl sedeService;
+   
     private List<Pedido> pedidos;
     private Pedido pedidoSelect;
     private Pedido pedido;
