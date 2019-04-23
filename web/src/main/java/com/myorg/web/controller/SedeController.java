@@ -4,6 +4,7 @@ import com.myorg.core.entity.Franquicia;
 import com.myorg.core.entity.Sede;
 import com.myorg.core.service.IFranquiciaService;
 import com.myorg.core.service.ISedeService;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -11,7 +12,7 @@ import javax.inject.Named;
 
 @Named
 @ViewScoped
-public class SedeController {
+public class SedeController implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Inject
