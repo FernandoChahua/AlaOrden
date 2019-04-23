@@ -1,79 +1,64 @@
 package com.myorg.core.repository.impl;
 
 import java.io.Serializable;
-import java.sql.*;
-import java.sql.PreparedStatement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
-import com.myorg.core.entity.*;
-import com.myorg.core.util.Conexion;
+import com.myorg.core.entity.Pedido;
+import com.myorg.core.entity.DetallePedido;
+import com.myorg.core.repository.IPedidoRepository;
 
 @Named
-public class PedidoRepositoryImpl implements Serializable {
+public class PedidoRepositoryImpl implements Serializable, IPedidoRepository {
 
     private static final long serialVersionUID = 1L;
+    @PersistenceContext(unitName = "visorPU")
+    private EntityManager em;
 
-    private Connection cx;
-
-    public PedidoRepositoryImpl() {
-        cx = Conexion.conectar();
+    @Override
+    public boolean insert(Pedido p) {
+        em.persist(p);
+        return true;
     }
 
-    public void insert(Pedido p) {
-        try {
-            String sql = "insert into Pedido (idCliente, idSede, estado, fecha, direccion, nroTransaccion,subtotal,precioEnvio,descuento) VALUES(?,?,?,?,?,?,?,?,?)";
-            try (PreparedStatement ps = cx.prepareStatement(sql)) {
-                ps.setInt(1, p.getCliente().getIdCliente());
-                ps.setInt(2, p.getSede().getIdSede());
-                ps.setString(3, p.getEstado());
-                ps.setObject(4, p.getFecha());
-                ps.setString(5, p.getDireccion());
-                ps.setInt(6, p.getNroTransaccion());
-                ps.setBigDecimal(7, p.getSubtotal());
-                ps.setBigDecimal(8, p.getPrecioEnvio());
-                ps.setBigDecimal(9, p.getDescuento());
-                ps.executeUpdate();
-                ps.close();
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-
+    @Override
     public List<Pedido> findAll() {
-        List<Pedido> products = new ArrayList<>();
+        List<Pedido> pedidos = new ArrayList<>();
+
+        TypedQuery<Pedido> pedidoExists = null;
+
         try {
-            String sql = "SELECT *  FROM Pedido";
-            PreparedStatement ps = cx.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Pedido p = new Pedido();
-                Cliente c = new Cliente();
-                Sede s = new Sede();
+            pedidoExists = em.createQuery("Select p from Pedido p", Pedido.class);
 
-                p.setIdPedido(rs.getInt("idPedido"));
-                c.setIdCliente(rs.getInt("idCliente"));
-                s.setIdSede(rs.getInt("idSede"));
-                p.setEstado(rs.getString("estado"));
-                p.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
-                p.setDireccion(rs.getString("direccion"));
-                p.setNroTransaccion(rs.getInt("nroTransaccion"));
-                p.setSubtotal(rs.getBigDecimal("subtotal"));
-                p.setPrecioEnvio(rs.getBigDecimal("precioEnvio"));
-                p.setDescuento(rs.getBigDecimal("descuento"));
-
-                p.setCliente(c);
-                p.setSede(s);
-
-                products.add(p);
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            pedidos = new ArrayList<>();
         }
-        return products;
+        pedidos = pedidoExists.getResultList();
+
+        return pedidos;
     }
+
+    @Override
+    public boolean update(Pedido t) throws Exception {
+        return false;
+    }
+
+    @Override
+    public boolean delete(Pedido t) throws Exception {
+        return false;
+    }
+
+    @Override
+    public Pedido findById(Pedido id) throws Exception {
+        return null;
+    }
+
 }
