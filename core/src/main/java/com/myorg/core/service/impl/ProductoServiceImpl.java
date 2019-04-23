@@ -21,50 +21,25 @@ public class ProductoServiceImpl implements Serializable, IProductoService{
     
     @Transactional
     @Override
-    public boolean insert(Producto p) throws Exception {
-        boolean rpta = false;
-        try{
-            productoRepository.insert(p);
-            rpta = true;
-        }catch(Exception ex){
-            throw ex;
-        }
-        return rpta;
+    public boolean insert(Producto p) throws Exception{
+        return productoRepository.insert(p);
     }
 
     @Override
-    public List<Producto> findAll()throws Exception {
-        try{
-            return productoRepository.findAll();
-        }catch(Exception ex){
-            throw ex;
-        }
+    public List<Producto> findAll() throws Exception{
+        return productoRepository.findAll();
     }
 
     @Transactional
     @Override
     public boolean update(Producto p) throws Exception {
-        boolean rpta = false;
-        try{
-            productoRepository.update(p);
-            rpta = true;
-        }catch(Exception ex){
-            throw ex;
-        }
-        return rpta;
+        return productoRepository.update(p);
     }
 
     @Transactional
     @Override
     public boolean delete(Producto p) throws Exception {
-        boolean rpta = false;
-        try{
-            productoRepository.delete(p);
-            rpta = true;
-        }catch(Exception ex){
-            throw ex;
-        }
-        return rpta;
+        return productoRepository.delete(p);
     }
 
     @Override
