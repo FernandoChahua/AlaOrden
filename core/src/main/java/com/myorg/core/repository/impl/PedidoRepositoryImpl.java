@@ -48,11 +48,13 @@ public class PedidoRepositoryImpl implements Serializable, IPedidoRepository {
 
     @Override
     public boolean update(Pedido t) throws Exception {
-        return false;
+        em.merge(t);
+        return true;
     }
 
     @Override
     public boolean delete(Pedido t) throws Exception {
+        em.remove(t);
         return false;
     }
 
