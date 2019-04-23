@@ -1,16 +1,28 @@
 package com.myorg.core.entity;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.*;
 
-public class Franquicia {
+@Entity
+@Table(name = "Franquicia")
+public class Franquicia implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idFranquicia;
 
+    @Column(name = "nombre")
     private String nombre;
+    
+    @Column(name = "url")
+    private String url;
 
+    @OneToMany(mappedBy = "franquicia",cascade = CascadeType.ALL)
     private List<Sede> sedes;
     
-    private List<Producto> productos;
+    @OneToMany(mappedBy = "franquicia", cascade = CascadeType.ALL)
+    private List<ProductoFranquicia> productoFranquicias;
 
     public int getIdFranquicia() {
         return idFranquicia;
@@ -28,6 +40,14 @@ public class Franquicia {
         this.nombre = nombre;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public List<Sede> getSedes() {
         return sedes;
     }
@@ -36,11 +56,13 @@ public class Franquicia {
         this.sedes = sedes;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
+    public List<ProductoFranquicia> getProductofranquicias() {
+        return productoFranquicias;
     }
 
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
+    public void setProductofranquicias(List<ProductoFranquicia> productofranquicias) {
+        this.productoFranquicias = productofranquicias;
     }
+
+   
 }

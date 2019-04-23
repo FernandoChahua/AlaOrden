@@ -6,7 +6,7 @@ go
 
 create table Cliente(
 	idCliente int primary key identity,
-	usuario varchar(50) not null,
+	usuario varchar(50) not null unique,
 	contrasena varchar(50) not null,
 	email varchar(50) not null)
 go
@@ -14,9 +14,10 @@ go
 create table Tarjeta(
 	idTarjeta int primary key identity,
 	idCliente int foreign key references Cliente(idCliente) not null,
-	nroCuenta varchar(50) not null,
+	nroCuenta char(1) not null,
 	titular varchar(50) not null,
 	fechaExp date not null)
+	constraint CK_16DIGIT check(len(nroCuenta)=16)
 go
 
 create table Franquicia(
@@ -50,7 +51,7 @@ create table Pedido(
 	idCliente int foreign key references Cliente(idCliente) not null,
 	idSede int foreign key references Sede(idSede) not null,
 	estado varchar(50) not null,
-	fechar date not null,
+	fecha datetime not null,
 	direccion varchar(200) not null,
 	nroTransaccion int not null,
 	subtotal decimal(7,2) not null,

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.myorg.core.entity.Cliente;
-import com.myorg.core.service.ClienteService;
+import com.myorg.core.service.impl.ClienteServiceImpl;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -17,7 +17,7 @@ import javax.inject.Named;
 public class ClienteController implements Serializable{
     
     @Inject
-    private ClienteService clienteService;
+    private ClienteServiceImpl clienteService;
 
     private List<Cliente> clientes;
     private Cliente cliente;
@@ -31,7 +31,7 @@ public class ClienteController implements Serializable{
     }
 
     public void getAllClientes() {
-        clientes = clienteService.getAllClientes();
+        clientes = clienteService.findAll();
     }
 
     public String newCliente() {
@@ -41,7 +41,7 @@ public class ClienteController implements Serializable{
     public String saveCliente() {
         String rpta = "";
         try {
-            clienteService.saveCliente(cliente);
+            clienteService.insert(cliente);
             this.getAllClientes();
             rpta = "visorCliente?faces-redirect=true";
         } catch (Exception e) {

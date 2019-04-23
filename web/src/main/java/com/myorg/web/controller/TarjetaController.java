@@ -20,7 +20,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.myorg.core.entity.Tarjeta;
-import com.myorg.core.service.TarjetaService;
+import com.myorg.core.service.impl.TarjetaServiceImpl;
 
 
 
@@ -35,7 +35,7 @@ public class TarjetaController implements Serializable{
     	private static final long serialVersionUID = 1L;
 	 
         @Inject
-	private TarjetaService tarjetaService;
+	private TarjetaServiceImpl tarjetaService;
 	
 	
 	private List<Tarjeta> tarjetas;
@@ -51,7 +51,7 @@ public class TarjetaController implements Serializable{
 	
 	
 	public void getTodasTarjetas() {
-		tarjetas=tarjetaService.getTodasTarjetas();
+		tarjetas=tarjetaService.findAll();
 	}
 	
 	public String newTarjeta() {
@@ -61,7 +61,7 @@ public class TarjetaController implements Serializable{
 	public String guardarTarjeta() {
 		String rpta="";
 		try {
-			tarjetaService.guardarTarjeta(tarjeta);
+			tarjetaService.insert(tarjeta);
 			this.getTodasTarjetas();
 			rpta="visorTarjeta?faces-redirect=true";
 		} catch (Exception e) {

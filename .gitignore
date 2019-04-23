@@ -1,2 +1,7 @@
+alaorden.iml
 /core/target/
+/core/core.iml
 /web/target/
+/web/web.iml
+/.idea/
+/core/core.iml

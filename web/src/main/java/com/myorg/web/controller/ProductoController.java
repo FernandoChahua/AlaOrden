@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.myorg.core.entity.Producto;
-import com.myorg.core.service.ProductoService;
+import com.myorg.core.service.impl.ProductoServiceImpl;
 
 @Named
 @SessionScoped
@@ -19,7 +19,7 @@ public class ProductoController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private ProductoService productoService;
+	private ProductoServiceImpl productoService;
 	
 	
 	private List<Producto> productos;
@@ -34,7 +34,7 @@ public class ProductoController implements Serializable {
 	
 	
 	public void getAllProductos() {
-		productos = productoService.getAllProductos();
+		productos = productoService.findAll();
 	}
 	
 	public String newProducto() {
@@ -44,7 +44,7 @@ public class ProductoController implements Serializable {
 	public String saveProducto() {
 		String rpta="";
 		try {
-			productoService.saveProducto(producto);
+			productoService.insert(producto);
 			this.getAllProductos();
 			rpta="visorProducto?faces-redirect=true";
 		} catch (Exception e) {

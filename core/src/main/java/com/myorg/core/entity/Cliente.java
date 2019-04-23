@@ -1,27 +1,38 @@
 package com.myorg.core.entity;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.*;
 
-public class Cliente {
+@Entity
+@Table(name="Cliente")
+public class Cliente implements Serializable {
     
-    private int idCliente;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idCliente;
     
+    @Column(name = "usuario", unique = true)
     private String usuario;
     
+    @Column(name = "contrasena")
     private String contrasena;
     
-    private String correo;
+    @Column(name = "email")
+    private String email;
     
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     private List<Tarjeta> tarjetas;
     
+    @OneToMany(mappedBy= "cliente", cascade = CascadeType.ALL)
     private List<Pedido> pedidos;
 
 
-    public int getIdCliente() {
+    public Integer getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -41,12 +52,12 @@ public class Cliente {
         this.contrasena = contrasena;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<Tarjeta> getTarjetas() {

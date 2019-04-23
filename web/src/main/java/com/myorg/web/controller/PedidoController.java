@@ -17,7 +17,7 @@ import javax.inject.Named;
 
 import com.myorg.core.entity.Pedido;
 import com.myorg.core.entity.Sede;
-import com.myorg.core.service.PedidoService;
+import com.myorg.core.service.impl.PedidoServiceImpl;
 
 @Named
 @SessionScoped
@@ -26,7 +26,7 @@ public class PedidoController implements Serializable {
     private static final long serialVersionUID = 1L;
 
    @Inject
-    private PedidoService pedidoService;
+    private PedidoServiceImpl pedidoService;
 
     private List<Pedido> pedidos;
     private Pedido pedido;
@@ -41,7 +41,7 @@ public class PedidoController implements Serializable {
     }
 
     public void getAllPedidos() {
-        pedidos = pedidoService.getAllPedidos();
+        pedidos = pedidoService.findAll();
     }
 
     public String newPedido() {
@@ -51,7 +51,7 @@ public class PedidoController implements Serializable {
     public String savePedido() {
         String rpta = "";
         try {
-            pedidoService.savePedido(pedido);
+            pedidoService.insert(pedido);
             this.getAllPedidos();
             rpta = "visorPedido?faces-redirect=true";
         } catch (Exception e) {

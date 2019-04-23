@@ -1,43 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.myorg.core.repository;
+package com.myorg.core.repository.impl;
 
 import java.io.Serializable;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.myorg.core.entity.Cliente;
+import com.myorg.core.entity.*;
 import com.myorg.core.util.Conexion;
-import com.myorg.core.entity.Tarjeta;
 import javax.inject.Named;
 
 @Named
-public class TarjetaRepositorio implements Serializable {
+public class TarjetaRepositorioImpl implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Connection cx;
 
-    public TarjetaRepositorio() {
+    public TarjetaRepositorioImpl() {
         cx = Conexion.conectar();
     }
 
-    public void guardar(Tarjeta t) {
+    public void insert(Tarjeta t) {
         try {
-            String sql = "INSERT INTO tarjeta(idCliente, nroCuenta,titular,fechaExp) VALUES(?,?,?,?)";
+            String sql = "INSERT INTO tarjeta(idCliente, tipoTarjeta, nroCuenta,titular,fechaExp) VALUES(?,?,?,?,?)";
             PreparedStatement ps = cx.prepareStatement(sql);
             ps.setInt(1, t.getCliente().getIdCliente());
             ps.setString(2, t.getNroCuenta());
             ps.setString(3, t.getTitular());
-            ps.setString(4, t.getFechaExp());
+            ps.setObject(4, t.getFechaExp());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
@@ -57,8 +48,7 @@ public class TarjetaRepositorio implements Serializable {
                 t.setIdTarjeta(rs.getInt("idTarjeta"));
                 t.setNroCuenta(rs.getString("nroCuenta"));
                 t.setTitular(rs.getString("titular"));
-                t.setFechaExp(rs.getString("fechaExp"));
-
+                t.setFechaExp(rs.getDate("fechaExp").toLocalDate());
                 c.setIdCliente(rs.getInt("idCliente"));
                 c.setUsuario(rs.getString("usuario"));
                 t.setCliente(c);

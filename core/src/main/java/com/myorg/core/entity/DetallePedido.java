@@ -1,38 +1,57 @@
 package com.myorg.core.entity;
 
 import java.io.Serializable;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "DetallePedido")
 public class DetallePedido implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
-	private Integer idPedido;
-	private Integer idProducto;
-        private Integer cantidad;
-	private Double precio;
 
-    public Integer getIdPedido() {
-        return idPedido;
+    private static final long serialVersionUID = 1L;
+
+    @EmbeddedId
+    private DetallePedido key;
+
+    @ManyToOne
+    @JoinColumn(name = "idPedido")
+    private Pedido pedido;
+
+    @ManyToOne
+    @JoinColumn(name = "idProducto")
+    private Producto producto;
+
+    @Column(name = "precio")
+    private Double precio;
+
+    @Column(name = "cantidad")
+    private Integer cantidad;
+
+    public DetallePedido getKey() {
+        return key;
     }
 
-    public void setIdPedido(Integer idPedido) {
-        this.idPedido = idPedido;
+    public void setKey(DetallePedido key) {
+        this.key = key;
     }
 
-    public Integer getIdProducto() {
-        return idProducto;
+    public Pedido getPedido() {
+        return pedido;
     }
 
-    public void setIdProducto(Integer idProducto) {
-        this.idProducto = idProducto;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     public Integer getCantidad() {
         return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
     }
 
     public Double getPrecio() {
@@ -42,4 +61,10 @@ public class DetallePedido implements Serializable {
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
+    
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+
 }

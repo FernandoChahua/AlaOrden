@@ -1,29 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.myorg.core.entity;
 
-/**
- *
- * @author Alexia
- */
 import java.io.Serializable;
+import java.time.LocalDate;
+import javax.persistence.*;
 
-/**
- *
- * @author Alexia
- */
+@Entity
+@Table(name = "Tarjeta")
 public class Tarjeta implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTarjeta;
+    
+    @ManyToOne
+    @JoinColumn(name = "idCliente")
     private Cliente cliente;
+    
+    @Column(name = "tipoTarjeta")
+    private String tipoTarjeta;
+    
+    @Column(name ="nroCuenta",length = 16)
     private String nroCuenta;
+    
+    @Column(name = "titular")
     private String titular;
-    private String fechaExp;
+    
+    @Column(name = "fechaExp")
+    private LocalDate fechaExp;
 
     public Integer getIdTarjeta() {
         return idTarjeta;
@@ -41,6 +46,14 @@ public class Tarjeta implements Serializable {
         this.cliente = cliente;
     }
 
+    public String getTipoTarjeta() {
+        return tipoTarjeta;
+    }
+
+    public void setTipoTarjeta(String tipoTarjeta) {
+        this.tipoTarjeta = tipoTarjeta;
+    }
+    
     public String getNroCuenta() {
         return nroCuenta;
     }
@@ -57,11 +70,11 @@ public class Tarjeta implements Serializable {
         this.titular = titular;
     }
 
-    public String getFechaExp() {
+    public LocalDate getFechaExp() {
         return fechaExp;
     }
 
-    public void setFechaExp(String fechaExp) {
+    public void setFechaExp(LocalDate fechaExp) {
         this.fechaExp = fechaExp;
     }
 }

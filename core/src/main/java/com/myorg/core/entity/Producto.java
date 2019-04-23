@@ -1,64 +1,93 @@
 package com.myorg.core.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "Producto")
 public class Producto implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
-	private Integer idProducto;
-	private String nombre;
-        private String marca;
-        private String descripcion;
-	private Double peso;
-        private String categoria;
 
-	public Integer getIdProducto() {
-            return idProducto;
-        }
+    private static final long serialVersionUID = 1L;
 
-        public void setIdProducto(Integer idProducto) {
-            this.idProducto = idProducto;
-        }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idProducto;
 
-        public String getNombre() {
-            return nombre;
-        }
+    @Column(name = "nombre")
+    private String nombre;
 
-        public void setNombre(String nombre) {
-            this.nombre = nombre;
-        }
+    @ManyToOne
+    @JoinColumn(name = "idCategoria")
+    private Categoria categoria;
 
-        public String getMarca() {
-            return marca;
-        }
+    @ManyToOne
+    @JoinColumn(name = "idMarca")
+    private Marca marca;
 
-        public void setMarca(String marca) {
-            this.marca = marca;
-        }
+    @Column(name = "descripcion")
+    private String descripcion;
 
-        public String getDescripcion() {
-            return descripcion;
-        }
+    @Column(name = "peso")
+    private Double peso;
 
-        public void setDescripcion(String descripcion) {
-            this.descripcion = descripcion;
-        }
+    @OneToMany(mappedBy = "producto")
+    private List<ProductoFranquicia> productoFranquicias;
+    
+    public Integer getIdProducto() {
+        return idProducto;
+    }
 
-        public Double getPeso() {
-            return peso;
-        }
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
+    }
 
-        public void setPeso(Double peso) {
-            this.peso = peso;
-        }
+    public String getNombre() {
+        return nombre;
+    }
 
-        public String getCategoria() {
-            return categoria;
-        }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-        public void setCategoria(String categoria) {
-            this.categoria = categoria;
-        }
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Double peso) {
+        this.peso = peso;
+    }
+
+    public List<ProductoFranquicia> getProductoFranquicias() {
+        return productoFranquicias;
+    }
+
+    public void setProductoFranquicias(List<ProductoFranquicia> productoFranquicias) {
+        this.productoFranquicias = productoFranquicias;
+    }
 
 }

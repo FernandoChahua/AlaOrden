@@ -1,50 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.myorg.core.repository;
+package com.myorg.core.repository.impl;
 
-import com.myorg.core.entity.Cliente;
 import java.io.Serializable;
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.inject.Named;
 
-import com.myorg.core.entity.Pedido;
-import com.myorg.core.entity.Sede;
+import com.myorg.core.entity.*;
 import com.myorg.core.util.Conexion;
 
-/**
- *
- * @author nanfo
- */
 @Named
-public class PedidoRepository implements Serializable {
+public class PedidoRepositoryImpl implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Connection cx;
 
-    public PedidoRepository() {
+    public PedidoRepositoryImpl() {
         cx = Conexion.conectar();
     }
 
-    public void save(Pedido p) {
+    public void insert(Pedido p) {
         try {
             String sql = "insert into Pedido (idCliente, idSede, estado, fecha, direccion, nroTransaccion,subtotal,precioEnvio,descuento) VALUES(?,?,?,?,?,?,?,?,?)";
             try (PreparedStatement ps = cx.prepareStatement(sql)) {
                 ps.setInt(1, p.getCliente().getIdCliente());
                 ps.setInt(2, p.getSede().getIdSede());
                 ps.setString(3, p.getEstado());
-                ps.setString(4, p.getFecha());
+                ps.setObject(4, p.getFecha());
                 ps.setString(5, p.getDireccion());
                 ps.setInt(6, p.getNroTransaccion());
                 ps.setBigDecimal(7, p.getSubtotal());
@@ -73,7 +58,7 @@ public class PedidoRepository implements Serializable {
                 c.setIdCliente(rs.getInt("idCliente"));
                 s.setIdSede(rs.getInt("idSede"));
                 p.setEstado(rs.getString("estado"));
-                p.setFecha(rs.getString("fecha"));
+                p.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
                 p.setDireccion(rs.getString("direccion"));
                 p.setNroTransaccion(rs.getInt("nroTransaccion"));
                 p.setSubtotal(rs.getBigDecimal("subtotal"));

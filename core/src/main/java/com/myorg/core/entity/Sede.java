@@ -1,11 +1,21 @@
 package com.myorg.core.entity;
 
-public class Sede {
+import java.io.Serializable;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "Sede")
+public class Sede implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSede;
 
+    @ManyToOne
+    @JoinColumn(name = "idFranquicia")
     private Franquicia franquicia;
 
+    @Column(name = "direccion")
     private String direccion;
 
     public int getIdSede() {

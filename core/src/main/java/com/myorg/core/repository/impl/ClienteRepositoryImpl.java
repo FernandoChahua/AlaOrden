@@ -1,33 +1,30 @@
-package com.myorg.core.repository;
+package com.myorg.core.repository.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.myorg.core.entity.Cliente;
+import com.myorg.core.entity.*;
 import com.myorg.core.util.Conexion;
 import java.io.Serializable;
 import javax.inject.Named;
 
 @Named
-public class ClienteRepository implements Serializable{
+public class ClienteRepositoryImpl implements  Serializable {
 
     private Connection cx;
 
-    public ClienteRepository() {
+    public ClienteRepositoryImpl() {
         cx = Conexion.conectar();
     }
 
-    public void save(Cliente obj) {
+    public void insert(Cliente obj) {
         try {
-            String sql = "insert into cliente(usuario,contrasena,correo) VALUES(?,?,?)";
+            String sql = "insert into cliente(usuario,contrasena,email) VALUES(?,?,?)";
             PreparedStatement ps = cx.prepareStatement(sql);
             ps.setString(1, obj.getUsuario());
             ps.setString(2, obj.getContrasena());
-            ps.setString(3, obj.getCorreo());
+            ps.setString(3, obj.getEmail());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
@@ -46,7 +43,7 @@ public class ClienteRepository implements Serializable{
                 obj.setIdCliente(rs.getInt("idCliente"));
                 obj.setUsuario(rs.getString("usuario"));
                 obj.setContrasena(rs.getString("contrasena"));
-                obj.setCorreo(rs.getString("correo"));
+                obj.setEmail(rs.getString("email"));
                 clientes.add(obj);
             }
 

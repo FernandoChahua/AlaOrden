@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.myorg.core.service;
+package com.myorg.core.service.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,26 +11,26 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.myorg.core.entity.Pedido;
-import com.myorg.core.repository.PedidoRepository;
+import com.myorg.core.entity.*;
+import com.myorg.core.repository.impl.*;
 
 /**
  *
  * @author nanfo
  */
 @Named
-public class PedidoService implements Serializable {
+public class PedidoServiceImpl implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Inject
-    private PedidoRepository pedidoRepository;
+    private PedidoRepositoryImpl pedidoRepository;
 
-    public void savePedido(Pedido p) {
-        pedidoRepository.save(p);
+    public void insert(Pedido p) {
+        pedidoRepository.insert(p);
     }
 
-    public List<Pedido> getAllPedidos() {
+    public List<Pedido> findAll() {
         return pedidoRepository.findAll();
     }
 }

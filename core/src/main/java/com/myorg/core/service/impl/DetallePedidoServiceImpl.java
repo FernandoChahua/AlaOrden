@@ -1,4 +1,4 @@
-package com.myorg.core.service;
+package com.myorg.core.service.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,22 +6,22 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.myorg.core.entity.DetallePedido;
-import com.myorg.core.repository.DetallePedidoRepository;
+import com.myorg.core.entity.*;
+import com.myorg.core.repository.impl.*;
 
 @Named
-public class DetallePedidoService implements Serializable{
+public class DetallePedidoServiceImpl implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private DetallePedidoRepository datellepedidoRepository;
+	private DetallePedidoRepositoryImpl datellepedidoRepository;
 	
-	public void saveDetallePedido(DetallePedido p) {
-		datellepedidoRepository.save(p);
+	public void insert(DetallePedido p) {
+		datellepedidoRepository.insert(p);
 	}
 	
-	public List<DetallePedido> getAllDetallesPedido(){
+	public List<DetallePedido> findAll(){
 		return datellepedidoRepository.findAll();
 	}
 	

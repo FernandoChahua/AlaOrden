@@ -2,39 +2,55 @@ package com.myorg.core.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.Calendar;
+import java.time.LocalDateTime;
 import java.util.List;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "Pedido")
 public class Pedido implements Serializable {
 
-    private int idPedido;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idPedido;
 
+    @ManyToOne
+    @JoinColumn(name = "idCliente")
     private Cliente cliente;
 
-    private String estado;
-
-    private String direccion;
-
+    @ManyToOne
+    @JoinColumn(name = "idSede")
     private Sede sede;
 
-    private String fecha;
+    @Column(name = "estado")
+    private String estado;
 
+    @Column(name = "fecha")
+    private LocalDateTime fecha;
+
+    @Column(name = "direccion")
+    private String direccion;
+
+    @Column(name = "nroTransaccion")
     private int nroTransaccion;
 
+    @Column(name = "subtotal", precision = 7, scale = 2)
     private BigDecimal subtotal;
 
+    @Column(name = "precioEnvio", precision = 7, scale = 2)
     private BigDecimal precioEnvio;
 
+    @Column(name = "descuento", precision = 7, scale = 2)
     private BigDecimal descuento;
 
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<DetallePedido> detalles;
 
-    public int getIdPedido() {
+    public Integer getIdPedido() {
         return idPedido;
     }
 
-    public void setIdPedido(int idPedido) {
+    public void setIdPedido(Integer idPedido) {
         this.idPedido = idPedido;
     }
 
@@ -46,22 +62,6 @@ public class Pedido implements Serializable {
         this.cliente = cliente;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public Sede getSede() {
         return sede;
     }
@@ -70,12 +70,28 @@ public class Pedido implements Serializable {
         this.sede = sede;
     }
 
-    public String getFecha() {
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public int getNroTransaccion() {
@@ -117,4 +133,6 @@ public class Pedido implements Serializable {
     public void setDetalles(List<DetallePedido> detalles) {
         this.detalles = detalles;
     }
+
+
 }

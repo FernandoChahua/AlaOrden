@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.myorg.core.entity.DetallePedido;
-import com.myorg.core.service.DetallePedidoService;
+import com.myorg.core.service.impl.DetallePedidoServiceImpl;
 
 @Named
 @SessionScoped
@@ -19,7 +19,7 @@ public class DetallePedidoController implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Inject
-    private DetallePedidoService detallePedidoService;
+    private DetallePedidoServiceImpl detallePedidoService;
 
     private List<DetallePedido> detallesPedido;
     private DetallePedido detallePedido;
@@ -32,7 +32,7 @@ public class DetallePedidoController implements Serializable {
     }
 
     public void getAllDetallesPedido() {
-        detallesPedido = detallePedidoService.getAllDetallesPedido();
+        detallesPedido = detallePedidoService.findAll();
     }
 
     public String newDetallePedido() {
@@ -42,7 +42,7 @@ public class DetallePedidoController implements Serializable {
     public String saveDetallePedido() {
         String rpta = "";
         try {
-            detallePedidoService.saveDetallePedido(detallePedido);
+            detallePedidoService.insert(detallePedido);
             this.getAllDetallesPedido();
             rpta = "visorDetallePedido?faces-redirect=true";
         } catch (Exception e) {

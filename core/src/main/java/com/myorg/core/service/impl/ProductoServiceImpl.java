@@ -1,4 +1,4 @@
-package com.myorg.core.service;
+package com.myorg.core.service.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,22 +6,22 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.myorg.core.entity.Producto;
-import com.myorg.core.repository.ProductoRepository;
+import com.myorg.core.entity.*;
+import com.myorg.core.repository.impl.*;
 
 @Named
-public class ProductoService implements Serializable{
+public class ProductoServiceImpl implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private ProductoRepository productoRepository;
+	private ProductoRepositoryImpl productoRepository;
 	
-	public void saveProducto(Producto p) {
-		productoRepository.save(p);
+	public void insert(Producto p) {
+		productoRepository.insert(p);
 	}
 	
-	public List<Producto> getAllProductos(){
+	public List<Producto> findAll(){
 		return productoRepository.findAll();
 	}
 	

@@ -1,23 +1,24 @@
-package com.myorg.core.service;
+package com.myorg.core.service.impl;
 
-import com.myorg.core.entity.Cliente;
-import com.myorg.core.repository.ClienteRepository;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.myorg.core.entity.*;
+import com.myorg.core.repository.impl.*;
+
 @Named
-public class ClienteService implements Serializable{
+public class ClienteServiceImpl implements Serializable{
 
     @Inject
-    private ClienteRepository clienteRepository;
+    private ClienteRepositoryImpl clienteRepository;
     
-    public void saveCliente(Cliente obj) {
-        clienteRepository.save(obj);
+    public void insert(Cliente obj) {
+        clienteRepository.insert(obj);
     }
 
-    public List<Cliente> getAllClientes() {
+    public List<Cliente> findAll() {
         return clienteRepository.findAll();
     }
 }
