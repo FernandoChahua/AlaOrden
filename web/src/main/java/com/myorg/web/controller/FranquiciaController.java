@@ -2,7 +2,6 @@ package com.myorg.web.controller;
 
 import com.myorg.core.entity.Franquicia;
 import com.myorg.core.service.IFranquiciaService;
-import com.myorg.core.service.ISedeService;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;

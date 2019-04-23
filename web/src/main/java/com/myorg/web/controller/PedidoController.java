@@ -18,7 +18,7 @@ import javax.inject.Named;
 import com.myorg.core.entity.Pedido;
 import com.myorg.core.entity.Sede;
 import com.myorg.core.service.impl.PedidoServiceImpl;
-import com.myorg.core.service.impl.
+import com.myorg.core.service.impl.SedeServiceImpl;
 
 import org.primefaces.event.SelectEvent;
 import org.myorg.util.Message;
