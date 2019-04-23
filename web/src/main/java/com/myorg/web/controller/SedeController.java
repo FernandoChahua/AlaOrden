@@ -138,11 +138,11 @@ public class SedeController implements Serializable {
         this.sedes = sedes;
     }
 
-    public List<Franquicia> getCategories() {
+    public List<Franquicia> getFranquicias() {
         return franquicias;
     }
 
-    public void setCategories(List<Franquicia> franquicias) {
+    public void setFranquicias(List<Franquicia> franquicias) {
         this.franquicias = franquicias;
     }
 
