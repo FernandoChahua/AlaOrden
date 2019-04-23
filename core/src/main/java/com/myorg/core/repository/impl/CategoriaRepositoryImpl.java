@@ -16,7 +16,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 @Named
-public class CategoriaRepository implements Serializable, ICategoriaRepository {
+public class CategoriaRepositoryImpl implements Serializable, ICategoriaRepository {
 
     private static final long serialVersionUID = 1L;
 
