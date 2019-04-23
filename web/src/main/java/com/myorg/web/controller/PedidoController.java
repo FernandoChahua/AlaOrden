@@ -18,7 +18,8 @@ import javax.inject.Named;
 import com.myorg.core.entity.Pedido;
 import com.myorg.core.entity.Sede;
 import com.myorg.core.service.impl.PedidoServiceImpl;
-
+import org.primefaces.event.SelectEvent;
+import org.myorg.util.Message;
 @Named
 @SessionScoped
 public class PedidoController implements Serializable {
@@ -29,6 +30,7 @@ public class PedidoController implements Serializable {
     private PedidoServiceImpl pedidoService;
 
     private List<Pedido> pedidos;
+    private Pedido pedidoSelect;
     private Pedido pedido;
 
     @PostConstruct
@@ -37,43 +39,96 @@ public class PedidoController implements Serializable {
         pedido = new Pedido();
         pedido.setSede(new Sede());
         pedido.setCliente(new Cliente());
-        this.getAllPedidos();
+        pedidoSelect = new Pedido();
+        pedidoSelect.setSede(new Sede());
+        pedidoSelect.setCliente(new Cliente());
+        this.loadCategories();
     }
+	public void loadCategories() {
+		try {
+			this.pedidos = pedidoService.findAll();
+		} catch (Exception e) {
+			Message.messageError("Error Category :" + e.getMessage());
+		}
+	}
 
-    public void getAllPedidos() {
-        pedidos = pedidoService.findAll();
-    }
+	public void saveCategory() {
+		try {
+			if (pedido.getIdPedido() != null) {
 
-    public String newPedido() {
-        return "newPedido?faces-redirect=true";
-    }
+				Message.messageInfo("Registro actualizado exitosamente");
+				pedidoService.update(pedido);
+			} else {
+				pedidoService.insert(pedido);
+				Message.messageInfo("Registro guardado exitosamente");
 
-    public String savePedido() {
-        String rpta = "";
-        try {
-            pedidoService.insert(pedido);
-            this.getAllPedidos();
-            rpta = "visorPedido?faces-redirect=true";
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
+			}
+			loadCategories();
+			clearForm();
+		} catch (Exception e) {
+			Message.messageError("Error Category :" + e.getStackTrace());
+		}
+	}
 
-        return rpta;
-    }
+	public void editCategory() {
+		try {
+			if (this.pedidoSelect!=null) {
+				this.pedido = pedidoSelect;
+			} else {
+				Message.messageInfo("Debe seleccionar una categoria");
+			}
+		} catch (Exception e) {
+			Message.messageError("Error Categoria :" + e.getMessage());
+		}
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
+	}
+	
+	public void deleteCategory() {
+		try {
+			if (this.pedidoSelect != null) {
+				pedidoService.delete(pedidoSelect);
+				loadCategories();
+				clearForm();
 
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
+			} else {
 
-    public Pedido getPedido() {
-        return pedido;
-    }
+			}
+		} catch (Exception e) {
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
+		}
+	}
+
+	public void selectCategory(SelectEvent e) {
+		this.pedidoSelect = (Pedido) e.getObject();
+	}
+	
+	public void clearForm() {
+		this.pedido = new Pedido();
+		this.pedidoSelect=null;
+	}
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
+	public Pedido getPedidoSelect() {
+		return pedidoSelect;
+	}
+
+	public void setPedidoSelect(Pedido pedidoSelect) {
+		this.pedidoSelect = pedidoSelect;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
 }
