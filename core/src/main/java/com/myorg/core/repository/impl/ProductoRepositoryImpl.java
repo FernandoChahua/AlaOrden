@@ -9,60 +9,55 @@ import javax.inject.Named;
 
 import com.myorg.core.entity.*;
 import com.myorg.core.util.Conexion;
+import com.myorg.core.repository.IProductoRepository;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Named
-public class ProductoRepositoryImpl implements Serializable {
+public class ProductoRepositoryImpl implements Serializable, IProductoRepository {
 
     private static final long serialVersionUID = 1L;
 
-    private Connection cx;
-
-    public ProductoRepositoryImpl() {
-        cx = Conexion.conectar();
+    @PersistenceContext(unitName = "visorPU")
+    private EntityManager em;
+    
+    @Override
+    public boolean insert(Producto p)throws Exception  {
+            em.persist(p);
+            return true;
+    }
+    
+    @Override
+    public boolean update(Producto p) throws Exception {
+            em.merge(p);
+            return true;
+    }
+    
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Producto> findAll() throws Exception {
+            List<Producto> productos = new ArrayList<>();
+            Query q = em.createQuery("SELECT p FROM producto p");
+            productos = (List<Producto>) q.getResultList();
+            return productos;
     }
 
-    public void insert(Producto p) {
-        try {
-            String sql = "INSERT INTO producto(nombre,idMarca,descripcion,peso,idCategoria) VALUES(?,?,?,?,?)";
-            PreparedStatement ps = cx.prepareStatement(sql);
-            ps.setString(1, p.getNombre());
-            ps.setInt(2, p.getMarca().getIdMarca());
-            ps.setString(3, p.getDescripcion());
-            ps.setDouble(4, p.getPeso());
-            ps.setInt(5, p.getCategoria().getIdCategoria());
-            ps.executeUpdate();
-            ps.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+    @Override
+    public boolean delete(Producto p) throws Exception {
+            em.remove(p);
+            return true;
     }
 
-    public List<Producto> findAll() {
-        List<Producto> productos = new ArrayList<>();
-        try {
-            String sql = "SELECT * FROM producto";
-            PreparedStatement ps = cx.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Producto p = new Producto();
-                Marca m = new Marca();
-                Categoria c = new Categoria();
-                p.setIdProducto(rs.getInt("idProducto"));
-                p.setNombre(rs.getString("nombre"));
-                m.setIdMarca(rs.getInt("marca"));
-                p.setDescripcion(rs.getString("descripcion"));
-                p.setPeso(rs.getDouble("peso"));
-                c.setIdCategoria(rs.getInt("categoria"));
-                p.setMarca(m);
-                p.setCategoria(c);
+    @Override
+    public Producto findById(Producto p) throws Exception {
+            List<Producto> productos = new ArrayList<>();
+            Query q = em.createQuery("FROM producto p where p.idProducto = ?1");
+            q.setParameter(1, p.getIdProducto());
 
-                productos.add(p);
-            }
+            productos = (List<Producto>) q.getResultList();
 
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return productos;
+            return productos != null && !productos.isEmpty() ? productos.get(0) : new Producto();
     }
 
 }
