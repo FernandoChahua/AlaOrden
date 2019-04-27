@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+    <body>
+        <ui:insert name="header">
+            <h:form>
+                <p:menubar>
+                    <p:submenu label="Mantenedores" icon="ui-icon-document">
+                        <p:menuitem value="Cliente" url="VCliente.xhtml" />
+                        <p:menuitem value="Tarjeta" url="VTarjeta.xhtml" />
+                        <p:menuitem value="Producto" url="VProducto.xhtml" />
+                        <p:menuitem value="Pedido" url="VPedido.xhtml" />
+                        <p:menuitem value="Detalle de Pedido" url="VDetallePedido.xhtml" />
+                        <p:menuitem value="Sede" url="VSede.xhtml" />
+                        <p:menuitem value="Franquicia" url="VFranquicia.xhtml" />
+                    </p:submenu>
+                </p:menubar>
+            </h:form>
+        </ui:insert>
+        <ui:insert name="content">
+        </ui:insert>
+    </body>
+</html>
+
