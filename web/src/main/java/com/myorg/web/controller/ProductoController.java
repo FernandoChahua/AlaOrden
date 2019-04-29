@@ -15,7 +15,7 @@ import org.primefaces.event.SelectEvent;
 @Named
 @ViewScoped
 public class ProductoController implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
 
     @Inject
@@ -98,7 +98,7 @@ public class ProductoController implements Serializable {
     public void saveProducto() {
 
         compareCategoria();
-        compareMarca();        
+        compareMarca();
         try {
             if (categoria.getIdCategoria() == null) {
                 categoriaService.insert(categoria);
@@ -119,6 +119,8 @@ public class ProductoController implements Serializable {
                 Message.messageInfo("Registro guardado exitosamente");
             }
             loadProductos();
+            this.loadCategorias();
+            this.loadMarcas();
             cleanForm();
         } catch (Exception e) {
             Message.messageError("Error Guardado :" + e.getMessage());
