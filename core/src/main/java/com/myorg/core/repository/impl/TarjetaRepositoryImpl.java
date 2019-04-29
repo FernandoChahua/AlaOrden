@@ -1,10 +1,6 @@
 package com.myorg.core.repository.impl;
 
-import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Named;
@@ -17,31 +13,32 @@ import com.myorg.core.entity.Tarjeta;
 import com.myorg.core.repository.ITarjetaRepository;
 
 @Named
-public class TarjetaRepositoryImpl implements Serializable, ITarjetaRepository {
+public class TarjetaRepositoryImpl implements ITarjetaRepository {
 
     private static final long serialVersionUID = 1L;
+    
     @PersistenceContext(unitName = "visorPU")
     private EntityManager em;
 
     @Override
-    public boolean insert(Tarjeta t) {
+    public boolean insert(Tarjeta t) throws Exception {
         em.persist(t);
         return true;
     }
 
     @Override
-    public List<Tarjeta> findAll() {
+    public List<Tarjeta> findAll() throws Exception {
         List<Tarjeta> tarjetas = new ArrayList<>();
 
         TypedQuery<Tarjeta> tarjetaExists = null;
 
         try {
             tarjetaExists = em.createQuery("Select t from Tarjeta t", Tarjeta.class);
+            tarjetas = tarjetaExists.getResultList();
 
         } catch (Exception e) {
             tarjetas = new ArrayList<>();
         }
-       tarjetas = tarjetaExists.getResultList();
 
         return tarjetas;
     }

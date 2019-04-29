@@ -45,7 +45,6 @@ public class SedeController implements Serializable {
         try {
             this.franquicias = franquiciaSerivice.findAll();
         } catch (Exception e) {
-
         }
     }
 
@@ -53,13 +52,12 @@ public class SedeController implements Serializable {
         try {
             this.sedes = sedeService.findAll();
         } catch (Exception e) {
-
         }
     }
 
     public void saveSede() {
         try {
-            if (sede.getIdSede() != 0) {
+            if (sede.getIdSede() != null) {
                 sede.setFranquicia(franquicia);
                 sedeService.update(sede);
                 Message.messageInfo("Registro actualizado exitosamente");
@@ -72,17 +70,23 @@ public class SedeController implements Serializable {
             loadSedes();
             cleanForm();
         } catch (Exception e) {
-            Message.messageError("Error SedeoType :" + e.getMessage());
+            Message.messageError("Error Sede :" + e.getMessage());
         }
     }
 
     public void editSede() {
         try {
-            if (this.sedeSel.getIdSede() > 0) {
+            if (this.sedeSel.getIdSede() != null) {
                 this.sede = this.sedeSel;
-                // this.sede.setSedeType(this.sedeSel.getSedeType());
+                for (Franquicia f : franquicias) {
+                    if (sede.getFranquicia().getIdFranquicia() == f.getIdFranquicia()) {
+                        this.franquicia = f;
+                        break;
+                    }
+                }
+
             } else {
-                Message.messageInfo("Debe seleccionar un  sedeo");
+                Message.messageInfo("Debe seleccionar una sede");
             }
         } catch (Exception e) {
             Message.messageError("Error Sede :" + e.getMessage());
@@ -101,11 +105,10 @@ public class SedeController implements Serializable {
 
             }
         } catch (Exception e) {
-
         }
     }
 
-    public void selecSede(SelectEvent e) {
+    public void selectSede(SelectEvent e) {
         this.sedeSel = (Sede) e.getObject();
     }
 

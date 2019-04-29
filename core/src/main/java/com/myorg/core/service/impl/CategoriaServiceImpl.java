@@ -12,7 +12,7 @@ import com.myorg.core.service.ICategoriaService;
 import javax.transaction.Transactional;
 
 @Named
-public class CategoriaServiceImpl implements Serializable, ICategoriaService{
+public class CategoriaServiceImpl implements ICategoriaService{
 
     private static final long serialVersionUID = 1L;
 	
@@ -21,27 +21,25 @@ public class CategoriaServiceImpl implements Serializable, ICategoriaService{
     
     @Transactional
     @Override
-    public boolean insert(Categoria t) throws Exception {
-        return categoriaRepository.insert(t);
+    public boolean insert(Categoria c) throws Exception {
+        return categoriaRepository.insert(c);
+    }
+
+    @Transactional
+    @Override
+    public boolean update(Categoria c) throws Exception {
+        return categoriaRepository.update(c); 
+    }
+
+    @Transactional
+    @Override
+    public boolean delete(Categoria c) throws Exception {
+        return categoriaRepository.delete(c);
     }
 
     @Override
-    public boolean update(Categoria t) throws Exception {
-        return categoriaRepository.update(t); 
-    }
-
-    @Override
-    public boolean delete(Categoria t) throws Exception {
-        return categoriaRepository.delete(t);
-    }
-
-    @Override
-    public Categoria findById(Categoria t) throws Exception {
-        try{
-            return categoriaRepository.findById(t);
-        }catch(Exception ex){
-            throw ex;
-        }
+    public Categoria findById(Categoria c) throws Exception {
+        return categoriaRepository.findById(c);
     }
 
     @Override

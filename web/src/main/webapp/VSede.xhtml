@@ -1,16 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <h:head></h:head>
     <body>
-        <div>TODO write content</div>
+
+        <ui:composition template="/WEB-INF/templates/master.xhtml">
+            <ui:define name="content">
+                <h:form id="frmGen" enctype="multipart/form-data">
+                    <p:growl id="menGen" />
+                    <p:toolbar>
+                        <f:facet name="right">
+                            <p:commandButton value="Nuevo" icon="ui-icon-document"
+                                             actionListener="#{sedeController.cleanForm()}" update="@form" />
+                            <p:commandButton value="Guardar" icon="ui-icon-disk"
+                                             process="@this :frmGen:panGriSede"
+                                             actionListener="#{sedeController.saveSede()}"
+                                             update=":frmGen:menGen :frmGen:datTabSede :frmGen:panGriSede"
+                                             ajax="false" />
+
+                            <p:commandButton value="Editar" icon="ui-icon-pencil" 
+                                             process="@this"
+                                             actionListener="#{sedeController.editSede()}"
+                                             update=":frmGen:menGen :frmGen:panGriSede"/>
+                        </f:facet>
+                        <f:facet name="left">
+                            <p:outputLabel value="Tarjetas" />
+                        </f:facet>
+                    </p:toolbar>
+                    <p:panelGrid id="panGriSede" columns="4" style="width:100%">
+                        <p:outputLabel value="Franquicia" for="cmbFra" />
+                        <p:selectOneMenu id="cmbFra" required="true" effect="drop" widgetVar="selFra" 
+                                         value="#{sedeController.franquicia}"
+                                         converter="omnifaces.SelectItemsConverter" >
+                            <f:selectItem itemLabel="Seleccione una opción"
+                                          noSelectionOption="true" itemValue="" />
+                            <f:selectItems value="#{sedeController.franquicias}"
+                                           var="f" itemLabel="#{f.nombre}" itemValue="#{f}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Direccion" for="txtDireccion" />
+                        <p:inputText id="txtDireccion" required="true" style="width:90%"
+                                     maxlength="50" value="#{sedeController.sede.direccion}" />
+                    </p:panelGrid>
+                    <br></br>
+
+
+                    <br></br>
+
+                    <p:dataTable id="datTabSede"
+                                 emptyMessage="No existen sedes registradas"
+                                 value="#{sedeController.sedes}" var="s" paginator="true"
+                                 rows="10" selectionMode="single" rowKey="#{s.idSede}">
+                        <f:facet name="header">
+                            <p:outputLabel value="Lista de tarjetas" />
+                        </f:facet>
+                        <p:ajax event="rowSelect"
+                                listener="#{sedeController.selectSede}" />
+                        <p:column headerText="Id">
+                            <p:outputLabel value="#{s.idSede}" />
+                        </p:column>
+                        <p:column headerText="Franquicia">
+                            <p:outputLabel value="#{s.franquicia}" />
+                        </p:column>
+                        <p:column headerText="Direccion">
+                            <p:outputLabel value="#{s.direccion}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </body>
 </html>

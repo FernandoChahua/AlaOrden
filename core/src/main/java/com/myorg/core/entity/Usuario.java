@@ -5,35 +5,39 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Cliente")
-public class Cliente implements Serializable {
+@Table(name = "Usuario")
+public class Usuario implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCliente;
-    
+    private Integer idUsuario;
+
     @Column(name = "usuario", unique = true)
     private String usuario;
-    
+
     @Column(name = "contrasena")
     private String contrasena;
-    
+
     @Column(name = "email")
     private String email;
-    
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+
+    @OneToMany(mappedBy = "usuario")
     private List<Tarjeta> tarjetas;
-    
-    @OneToMany(mappedBy= "cliente", cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL)
     private List<Pedido> pedidos;
-
-
-    public Integer getIdCliente() {
-        return idCliente;
+    
+    @ManyToMany(mappedBy = "usuarios")
+    private List<Rol> roles;
+    
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getUsuario() {
@@ -74,5 +78,10 @@ public class Cliente implements Serializable {
 
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
+    }
+    
+    @Override
+    public String toString() {
+        return usuario;
     }
 }

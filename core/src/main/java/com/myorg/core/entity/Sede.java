@@ -7,9 +7,11 @@ import javax.persistence.*;
 @Table(name = "Sede")
 public class Sede implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idSede;
+    private Integer idSede;
 
     @ManyToOne
     @JoinColumn(name = "idFranquicia")
@@ -18,11 +20,11 @@ public class Sede implements Serializable {
     @Column(name = "direccion")
     private String direccion;
 
-    public int getIdSede() {
+    public Integer getIdSede() {
         return idSede;
     }
 
-    public void setIdSede(int idSede) {
+    public void setIdSede(Integer idSede) {
         this.idSede = idSede;
     }
 
@@ -40,5 +42,10 @@ public class Sede implements Serializable {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+    
+    @Override
+    public String toString() {
+        return franquicia.getNombre() + " - " + direccion;
     }
 }

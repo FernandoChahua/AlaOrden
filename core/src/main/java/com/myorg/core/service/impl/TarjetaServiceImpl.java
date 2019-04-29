@@ -1,6 +1,5 @@
 package com.myorg.core.service.impl;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,7 +12,7 @@ import javax.transaction.Transactional;
 
 
 @Named
-public class TarjetaServiceImpl implements Serializable, ITarjetaService{
+public class TarjetaServiceImpl implements ITarjetaService{
 
     private static final long serialVersionUID = 1L;
 	

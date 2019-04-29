@@ -15,32 +15,32 @@
                     <p:toolbar>
                         <f:facet name="right">
                             <p:commandButton value="Nuevo" icon="ui-icon-document"
-                                             actionListener="#{clienteController.resetForm()}" update="@form" />
+                                             actionListener="#{usuarioController.cleanForm()}" update="@form" />
                             <p:commandButton value="Guardar" icon="ui-icon-disk"
                                              process="@this :frmGen:panGriCus"
-                                             actionListener="#{clienteController.saveCliente()}"
+                                             actionListener="#{usuarioController.saveUsuario()}"
                                              update=":frmGen:menGen :frmGen:datTabCus :frmGen:panGriCus"
                                              ajax="false" />
 
                             <p:commandButton value="Editar" icon="ui-icon-pencil"
                                              process="@this"
-                                             actionListener="#{clienteController.editCliente()}"
+                                             actionListener="#{usuarioController.editUsuario()}"
                                              update=":frmGen:menGen :frmGen:panGriCus"/>
                         </f:facet>
                         <f:facet name="left">
-                            <p:outputLabel value="Clientes" />
+                            <p:outputLabel value="Usuarios" />
                         </f:facet>
                     </p:toolbar>
                     <p:panelGrid id="panGriCus" columns="4" style="width:100%">
                         <p:outputLabel value="Usuario" for="txtUsuario" />
                         <p:inputText id="txtUsuario" required="true" style="width:90%"
-                                     maxlength="50" value="#{clienteController.cliente.usuario}" />
+                                     maxlength="50" value="#{usuarioController.usuario.usuario}" />
                         <p:outputLabel value="Contraseña" for="txtContrasena" />
                         <p:inputText id="txtContrasena" required="true" style="width:90%"
-                                     maxlength="8" value="#{clienteController.cliente.email}" />
+                                     maxlength="8" value="#{usuarioController.usuario.contrasena}" />
                         <p:outputLabel value="Email" for="txtEmail" />
                         <p:inputText id="txtEmail" required="true" style="width:90%"
-                                     maxlength="200" value="#{customerController.customer.address}" />
+                                     maxlength="200" value="#{usuarioController.usuario.email}" />
 
                     </p:panelGrid>
                     <br></br>
@@ -56,22 +56,22 @@
                     <br></br>
 
                     <p:dataTable id="datTabCus"
-                                 emptyMessage="No existen clientes registrados"
-                                 value="#{clienteController.clientes}" var="c" paginator="true"
-                                 rows="10" selectionMode="single" rowKey="#{c.idCliente}">
+                                 emptyMessage="No existen usuarios registrados"
+                                 value="#{usuarioController.usuarios}" var="u" paginator="true"
+                                 rows="10" selectionMode="single" rowKey="#{u.idUsuario}">
                         <f:facet name="header">
-                            <p:outputLabel value="Lista de Clientes" />
+                            <p:outputLabel value="Lista de Usuarios" />
                         </f:facet>
                         <p:ajax event="rowSelect"
-                                listener="#{clienteController.selecCliente}" />
+                                listener="#{usuarioController.selectUsuario}" />
                         <p:column headerText="Id">
-                            <p:outputLabel value="#{c.idCliente}" />
+                            <p:outputLabel value="#{u.idUsuario}" />
                         </p:column>
-                        <p:column headerText="Usuario">
-                            <p:outputLabel value="#{c.usuario}" />
+                        <p:column headerText="Nombre Usuario">
+                            <p:outputLabel value="#{u.usuario}" />
                         </p:column>
                         <p:column headerText="Contraseña">
-                            <p:outputLabel value="#{c.contrasena}" />
+                            <p:outputLabel value="#{u.contrasena}" />
                         </p:column>
                         <p:column headerText="Email">
                             <p:outputLabel value="#{c.email}" />

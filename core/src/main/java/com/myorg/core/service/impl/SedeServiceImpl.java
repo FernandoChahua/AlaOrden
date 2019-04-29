@@ -3,14 +3,13 @@ package com.myorg.core.service.impl;
 import com.myorg.core.entity.Sede;
 import com.myorg.core.repository.impl.SedeRepositoryImpl;
 import com.myorg.core.service.ISedeService;
-import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
 @Named
-public class SedeServiceImpl implements Serializable, ISedeService {
+public class SedeServiceImpl implements ISedeService {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,13 +34,11 @@ public class SedeServiceImpl implements Serializable, ISedeService {
         return sedeRepository.delete(t);
     }
     
-    @Transactional
     @Override
     public Sede findById(Sede t) throws Exception {
         return sedeRepository.findById(t);
     }
     
-    @Transactional
     @Override
     public List findAll() throws Exception {
         return sedeRepository.findAll();

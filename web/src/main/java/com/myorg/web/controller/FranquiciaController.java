@@ -41,7 +41,7 @@ public class FranquiciaController implements Serializable {
 
     public void saveFranquicia() {
         try {
-            if (franquicia.getIdFranquicia() != 0) {
+            if (franquicia.getIdFranquicia() != null) {
                 franquiciaService.update(franquicia);
                 Message.messageInfo("Registro actualizado exitosamente");
             } else {
@@ -52,13 +52,13 @@ public class FranquiciaController implements Serializable {
             loadFranquicias();
             cleanForm();
         } catch (Exception e) {
-            Message.messageError("Error FranquiciaType :" + e.getMessage());
+            Message.messageError("Error Franquicia :" + e.getMessage());
         }
     }
 
     public void editFranquicia() {
         try {
-            if (this.franquiciaSel.getIdFranquicia() > 0) {
+            if (this.franquiciaSel.getIdFranquicia() != null) {
                 this.franquicia = this.franquiciaSel;
 
             } else {
@@ -85,7 +85,7 @@ public class FranquiciaController implements Serializable {
         }
     }
 
-    public void selecFranquicia(SelectEvent e) {
+    public void selectFranquicia(SelectEvent e) {
         this.franquiciaSel = (Franquicia) e.getObject();
     }
 

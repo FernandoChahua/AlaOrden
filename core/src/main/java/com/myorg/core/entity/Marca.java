@@ -8,14 +8,16 @@ import javax.persistence.*;
 @Table(name = "Marca")
 public class Marca implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMarca;
-    
+
     @Column(name = "nombre")
     private String nombre;
-    
-    @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "marca")
     private List<Producto> productos;
 
     public Integer getIdMarca() {
@@ -41,6 +43,9 @@ public class Marca implements Serializable {
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

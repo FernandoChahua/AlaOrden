@@ -10,14 +10,14 @@ public class DetallePedido implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @EmbeddedId
-    private DetallePedido key;
+    private DetallePedidoKey pk;
 
     @ManyToOne
-    @JoinColumn(name = "idPedido")
+    @MapsId("idPedido")
     private Pedido pedido;
 
     @ManyToOne
-    @JoinColumn(name = "idProducto")
+    @MapsId("idProducto")
     private Producto producto;
 
     @Column(name = "precio")
@@ -26,12 +26,12 @@ public class DetallePedido implements Serializable {
     @Column(name = "cantidad")
     private Integer cantidad;
 
-    public DetallePedido getKey() {
-        return key;
+    public DetallePedidoKey getPk() {
+        return pk;
     }
 
-    public void setKey(DetallePedido key) {
-        this.key = key;
+    public void setPk(DetallePedidoKey pk) {
+        this.pk = pk;
     }
 
     public Pedido getPedido() {

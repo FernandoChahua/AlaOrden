@@ -1,137 +1,205 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.myorg.web.controller;
 
-import com.myorg.core.entity.Cliente;
+import com.myorg.core.entity.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.myorg.core.entity.Pedido;
-import com.myorg.core.entity.Sede;
-import com.myorg.core.service.impl.PedidoServiceImpl;
-import com.myorg.core.service.impl.SedeServiceImpl;
+import com.myorg.core.entity.*;
+import com.myorg.core.service.*;
+import javax.faces.view.ViewScoped;
 
 import org.primefaces.event.SelectEvent;
 import org.myorg.util.Message;
+
 @Named
-@SessionScoped
+@ViewScoped
 public class PedidoController implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-   @Inject
-    private PedidoServiceImpl pedidoService;
-    private SedeServiceImpl sedeService;
-   
+    @Inject
+    private IPedidoService pedidoService;
+
+    @Inject
+    private ISedeService sedeService;
+
+    @Inject
+    private IUsuarioService usuarioService;
+
     private List<Pedido> pedidos;
     private Pedido pedidoSelect;
     private Pedido pedido;
 
+    private List<Usuario> usuarios;
+    private Usuario usuario;
+
+    private List<Sede> sedes;
+    private Sede sede;
+
     @PostConstruct
     public void init() {
-        pedidos = new ArrayList<>();
         pedido = new Pedido();
-        pedido.setSede(new Sede());
-        pedido.setCliente(new Cliente());
         pedidoSelect = new Pedido();
-        pedidoSelect.setSede(new Sede());
-        pedidoSelect.setCliente(new Cliente());
-        this.loadCategories();
+        usuario = new Usuario();
+        sede = new Sede();
+
+        this.loadPedidos();
+        this.loadUsuarios();
+        this.loadSedes();
     }
-	public void loadCategories() {
-		try {
-			this.pedidos = pedidoService.findAll();
-		} catch (Exception e) {
-			Message.messageError("Error Category :" + e.getMessage());
-		}
-	}
 
-	public void saveCategory() {
-		try {
-			if (pedido.getIdPedido() != null) {
+    public void loadPedidos() {
+        try {
+            this.pedidos = pedidoService.findAll();
+        } catch (Exception e) {
+            Message.messageError("Error Pedido :" + e.getMessage());
+        }
+    }
 
-				Message.messageInfo("Registro actualizado exitosamente");
-				pedidoService.update(pedido);
-			} else {
-				pedidoService.insert(pedido);
-				Message.messageInfo("Registro guardado exitosamente");
+    public void loadUsuarios() {
+        try {
+            usuarios = usuarioService.findAll();
+        } catch (Exception e) {
+            Message.messageError("Error Usuario" + e.getMessage());
+        }
+    }
 
-			}
-			loadCategories();
-			clearForm();
-		} catch (Exception e) {
-			Message.messageError("Error Category :" + e.getStackTrace());
-		}
-	}
+    public void loadSedes() {
+        try {
+            this.sedes = sedeService.findAll();
+        } catch (Exception e) {
+        }
+    }
 
-	public void editCategory() {
-		try {
-			if (this.pedidoSelect!=null) {
-				this.pedido = pedidoSelect;
-			} else {
-				Message.messageInfo("Debe seleccionar una categoria");
-			}
-		} catch (Exception e) {
-			Message.messageError("Error Categoria :" + e.getMessage());
-		}
+    public void savePedido() {
+        try {
+            pedido.setUsuario(usuario);
+            pedido.setSede(sede);
 
-	}
-	
-	public void deleteCategory() {
-		try {
-			if (this.pedidoSelect != null) {
-				pedidoService.delete(pedidoSelect);
-				loadCategories();
-				clearForm();
+            if (pedido.getIdPedido() != null) {
+                pedidoService.update(pedido);
+                Message.messageInfo("Registro actualizado exitosamente");
+            } else {
+                pedidoService.insert(pedido);
+                Message.messageInfo("Registro guardado exitosamente");
 
-			} else {
+            }
+            loadPedidos();
+            cleanForm();
+        } catch (Exception e) {
+            Message.messageError("Error Pedido :" + e.getStackTrace());
+        }
+    }
 
-			}
-		} catch (Exception e) {
+    public void editPedido() {
+        try {
+            if (this.pedidoSelect != null) {
+                this.pedido = pedidoSelect;
+                for (Usuario u : usuarios) {
+                    if (pedido.getUsuario().getIdUsuario() == u.getIdUsuario()) {
+                        this.usuario = u;
+                        break;
+                    }
+                }
+                for (Sede s : sedes) {
+                    if (pedido.getSede().getIdSede()== s.getIdSede()) {
+                        this.sede = s;
+                        break;
+                    }
+                }
+            } else {
+                Message.messageInfo("Debe seleccionar una categoria");
+            }
+        } catch (Exception e) {
+            Message.messageError("Error Pedido :" + e.getMessage());
+        }
 
-		}
-	}
+    }
 
-	public void selectCategory(SelectEvent e) {
-		this.pedidoSelect = (Pedido) e.getObject();
-	}
-	
-	public void clearForm() {
-		this.pedido = new Pedido();
-		this.pedidoSelect=null;
-	}
+    public void deletePedido() {
+        try {
+            if (this.pedidoSelect != null) {
+                pedidoService.delete(pedidoSelect);
+                loadPedidos();
+                cleanForm();
 
-	public Pedido getPedido() {
-		return pedido;
-	}
+            } else {
 
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
+            }
+        } catch (Exception e) {
 
-	public Pedido getPedidoSelect() {
-		return pedidoSelect;
-	}
+        }
+    }
 
-	public void setPedidoSelect(Pedido pedidoSelect) {
-		this.pedidoSelect = pedidoSelect;
-	}
+    public void selectPedido(SelectEvent e) {
+        this.pedidoSelect = (Pedido) e.getObject();
+    }
 
-	public List<Pedido> getPedidos() {
-		return pedidos;
-	}
+    public void cleanForm() {
+        this.pedido = new Pedido();
+        this.pedidoSelect = null;
+    }
 
-	public void setPedidos(List<Pedido> pedidos) {
-		this.pedidos = pedidos;
-	}
+    public Pedido getPedido() {
+        return pedido;
+    }
 
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public Pedido getPedidoSelect() {
+        return pedidoSelect;
+    }
+
+    public void setPedidoSelect(Pedido pedidoSelect) {
+        this.pedidoSelect = pedidoSelect;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Sede> getSedes() {
+        return sedes;
+    }
+
+    public void setSedes(List<Sede> sedes) {
+        this.sedes = sedes;
+    }
+
+    public Sede getSede() {
+        return sede;
+    }
+
+    public void setSede(Sede sede) {
+        this.sede = sede;
+    }
+
+    
 }

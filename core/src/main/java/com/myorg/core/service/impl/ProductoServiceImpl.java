@@ -1,6 +1,5 @@
 package com.myorg.core.service.impl;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,7 +11,7 @@ import com.myorg.core.service.IProductoService;
 import javax.transaction.Transactional;
 
 @Named
-public class ProductoServiceImpl implements Serializable, IProductoService{
+public class ProductoServiceImpl implements IProductoService{
 
     private static final long serialVersionUID = 1L;
 	
@@ -44,11 +43,7 @@ public class ProductoServiceImpl implements Serializable, IProductoService{
 
     @Override
     public Producto findById(Producto p) throws Exception {
-        try{
             return productoRepository.findById(p);
-        }catch(Exception ex){
-            throw ex;
-        }
     }
 	
 

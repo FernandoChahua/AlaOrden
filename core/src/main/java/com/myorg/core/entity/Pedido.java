@@ -10,13 +10,15 @@ import javax.persistence.*;
 @Table(name = "Pedido")
 public class Pedido implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPedido;
 
     @ManyToOne
-    @JoinColumn(name = "idCliente")
-    private Cliente cliente;
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "idSede")
@@ -32,7 +34,7 @@ public class Pedido implements Serializable {
     private String direccion;
 
     @Column(name = "nroTransaccion")
-    private int nroTransaccion;
+    private Integer nroTransaccion;
 
     @Column(name = "subtotal", precision = 7, scale = 2)
     private BigDecimal subtotal;
@@ -43,8 +45,8 @@ public class Pedido implements Serializable {
     @Column(name = "descuento", precision = 7, scale = 2)
     private BigDecimal descuento;
 
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<DetallePedido> detalles;
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+   private List<DetallePedido> detalles;
 
     public Integer getIdPedido() {
         return idPedido;
@@ -54,12 +56,12 @@ public class Pedido implements Serializable {
         this.idPedido = idPedido;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Sede getSede() {
@@ -94,11 +96,11 @@ public class Pedido implements Serializable {
         this.direccion = direccion;
     }
 
-    public int getNroTransaccion() {
+    public Integer getNroTransaccion() {
         return nroTransaccion;
     }
 
-    public void setNroTransaccion(int nroTransaccion) {
+    public void setNroTransaccion(Integer nroTransaccion) {
         this.nroTransaccion = nroTransaccion;
     }
 
@@ -133,6 +135,4 @@ public class Pedido implements Serializable {
     public void setDetalles(List<DetallePedido> detalles) {
         this.detalles = detalles;
     }
-
-
 }

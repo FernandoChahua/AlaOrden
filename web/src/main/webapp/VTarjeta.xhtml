@@ -5,8 +5,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 
-    
-    
+
+
     <h:head></h:head>
     <body>
 
@@ -17,14 +17,14 @@
                     <p:toolbar>
                         <f:facet name="right">
                             <p:commandButton value="Nuevo" icon="ui-icon-document"
-                                             actionListener="#{tarjetaController.clearForm()}" update="@form" />
+                                             actionListener="#{tarjetaController.cleanForm()}" update="@form" />
                             <p:commandButton value="Guardar" icon="ui-icon-disk"
                                              process="@this :frmGen:panGriTarjeta"
                                              actionListener="#{tarjetaController.saveTarjeta()}"
                                              update=":frmGen:menGen :frmGen:datTabTarjeta :frmGen:panGriTarjeta"
                                              ajax="false" />
 
-                            <p:commandButton value="Editar" icon="ui-icon-pencil"
+                            <p:commandButton value="Editar" icon="ui-icon-pencil" 
                                              process="@this"
                                              actionListener="#{tarjetaController.editTarjeta()}"
                                              update=":frmGen:menGen :frmGen:panGriTarjeta"/>
@@ -34,6 +34,15 @@
                         </f:facet>
                     </p:toolbar>
                     <p:panelGrid id="panGriTarjeta" columns="4" style="width:100%">
+                        <p:outputLabel value="Usuario" for="cmbCli" />
+                        <p:selectOneMenu id="cmbCli" required="true" effect="drop" widgetVar="selCli" 
+                                         value="#{tarjetaController.usuario}"
+                                         converter="omnifaces.SelectItemsConverter" >
+                            <f:selectItem itemLabel="Seleccione una opción"
+                                          noSelectionOption="true" itemValue="" />
+                            <f:selectItems value="#{tarjetaController.usuarios}"
+                                           var="Usr" itemLabel="#{Usr.usuario}" itemValue="#{Usr}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="tipoTarjeta" for="txttipoTarjeta" />
                         <p:inputText id="txttipoTarjeta" required="true" style="width:90%"
                                      maxlength="50" value="#{tarjetaController.tarjeta.tipoTarjeta}" />
@@ -42,40 +51,46 @@
                                      maxlength="50" value="#{tarjetaController.tarjeta.nroCuenta}" />
                         <p:outputLabel value="titular" for="txttitular" />
                         <p:inputText id="txttitular" required="true" style="width:90%"
-                                     maxlength="50" value="#{customerController.tarjeta.titular}" />
+                                     maxlength="50" value="#{tarjetaController.tarjeta.titular}" />
                         <p:outputLabel value="fechaExp" for="txtfechaExp" />
-                        <p:inputText id="txtfechaExp" required="true" style="width:90%"
-                                     maxlength="50" value="#{customerController.tarjeta.fechaExp}" />
+                        <p:datePicker id="txtfechaExp" required="true" style="width:90%" view="month" autocomplete="off"
+                                      value="#{tarjetaController.tarjeta.fechaExp}" pattern="MM/yy"
+                                      converter="#{converters.localDateConverter}" converterMessage="Fecha no valida"
+                                      yearNavigator="true" yearRange="2000:2030" showIcon="true" />
 
                     </p:panelGrid>
                     <br></br>
 
-               
+
                     <br></br>
 
                     <p:dataTable id="datTabTarjeta"
                                  emptyMessage="No existen tarjetas registradas"
-                                 value="#{tarjetaController.tarjetas}" var="c" paginator="true"
-                                 rows="10" selectionMode="single" rowKey="#{c.idTarjeta}">
+                                 value="#{tarjetaController.tarjetas}" var="t" paginator="true"
+                                 rows="10" selectionMode="single" rowKey="#{t.idTarjeta}">
                         <f:facet name="header">
                             <p:outputLabel value="Lista de tarjetas" />
                         </f:facet>
                         <p:ajax event="rowSelect"
-                                listener="#{tarjetaController.selecTarjeta}" />
+                                listener="#{tarjetaController.selectTarjeta}" />
                         <p:column headerText="Id">
-                            <p:outputLabel value="#{c.idTarjeta}" />
+                            <p:outputLabel value="#{t.idTarjeta}" />
+                        </p:column>
+
+                        <p:column headerText="Ciente">
+                            <p:outputLabel value="#{t.usuario.usuario}" />
                         </p:column>
                         <p:column headerText="tipoTarjeta">
-                            <p:outputLabel value="#{c.tipoTarjeta}" />
+                            <p:outputLabel value="#{t.tipoTarjeta}" />
                         </p:column>
                         <p:column headerText="nroCuenta">
-                            <p:outputLabel value="#{c.nroCuenta}" />
+                            <p:outputLabel value="#{t.nroCuenta}" />
                         </p:column>
                         <p:column headerText="titular">
-                            <p:outputLabel value="#{c.titular}" />
+                            <p:outputLabel value="#{t.titular}" />
                         </p:column>
                         <p:column headerText="fechaExp">
-                            <p:outputLabel value="#{c.fechaExp}" />
+                            <p:outputLabel value="#{t.fechaExp}" converter="#{converters.localDateConverter}"/>
                         </p:column>
 
                     </p:dataTable>

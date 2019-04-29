@@ -1,8 +1,9 @@
 package com.myorg.core.repository;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface IJpaRepository<T> {
+public interface IJpaRepository<T> extends Serializable {
     
     boolean insert(T t) throws Exception;
     boolean update(T t) throws Exception;

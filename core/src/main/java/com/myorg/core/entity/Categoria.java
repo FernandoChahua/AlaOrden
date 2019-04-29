@@ -7,14 +7,16 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Categoria")
 public class Categoria implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCategoria;
-    
+
     @Column(name = "nombre")
     private String nombre;
-    
+
     @OneToMany(mappedBy = "categoria")
     private List<Producto> productos;
 
@@ -41,6 +43,9 @@ public class Categoria implements Serializable {
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
-    
-    
+   
+    @Override
+    public String toString(){
+        return nombre;
+    }
 }

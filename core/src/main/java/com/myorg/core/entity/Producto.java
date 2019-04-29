@@ -14,9 +14,6 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProducto;
 
-    @Column(name = "nombre")
-    private String nombre;
-
     @ManyToOne
     @JoinColumn(name = "idCategoria")
     private Categoria categoria;
@@ -24,6 +21,9 @@ public class Producto implements Serializable {
     @ManyToOne
     @JoinColumn(name = "idMarca")
     private Marca marca;
+
+    @Column(name = "nombre")
+    private String nombre;
 
     @Column(name = "descripcion")
     private String descripcion;
@@ -90,4 +90,8 @@ public class Producto implements Serializable {
         this.productoFranquicias = productoFranquicias;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

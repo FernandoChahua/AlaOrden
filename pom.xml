@@ -7,9 +7,20 @@
     <packaging>pom</packaging>
     <modules>
         <module>core</module>
-    <module>web</module>
-  </modules>
+        <module>web</module>
+    </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/javax/javaee-api -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
 </project>

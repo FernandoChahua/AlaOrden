@@ -16,12 +16,12 @@
                     <p:toolbar>
                         <f:facet name="right">
                             <p:commandButton value="Nuevo" icon="ui-icon-document"
-                                             actionListener="#{franquiciaController.clearForm()}" update="@form" />
+                                             actionListener="#{franquiciaController.cleanForm()}" update="@form" />
 
                             <p:commandButton value="Guardar" icon="ui-icon-disk"
                                              process="@this :frm:panGriFranquicia"
                                              actionListener="#{franquiciaController.saveFranquicia()}"
-                                             update=":frm:men :frm:datTabCategory :frm:panGriFranquicia" />
+                                             update=":frm:men :frm:datTabFranquicia :frm:panGriFranquicia" />
 
 
                             <p:commandButton value="Editar" icon="ui-icon-pencil"
@@ -44,27 +44,27 @@
                     <br></br>
 
                     <p:dataTable id="datTabFranquicia"
-                                 emptyMessage="No existen franquicias registrados"
-                                 value="#{franquiciaController.franquicias}" var="franquicia"
+                                 emptyMessage="No existen franquicias registradas"
+                                 value="#{franquiciaController.franquicias}" var="f"
                                  paginator="true" rows="10" selectionMode="single"
-                                 rowKey="#{franquicia.idFranquicia}">
+                                 rowKey="#{f.idFranquicia}">
                         <f:facet name="header">
                             <p:outputLabel value="Lista de Categorias" />
                         </f:facet>
                         
                         <p:ajax event="rowSelect"
-                                listener="#{franquiciaController.selecFranquicia(e)}" />
+                                listener="#{franquiciaController.selectFranquicia}" />
 
                         <p:column headerText="Id">
-                            <p:outputLabel value="#{franquicia.idFranquicia}" />
+                            <p:outputLabel value="#{f.idFranquicia}" />
                         </p:column>
                         
                         <p:column headerText="Nombre">
-                            <p:outputLabel value="#{franquicia.nombre}" />
+                            <p:outputLabel value="#{f.nombre}" />
                         </p:column>
                         
                         <p:column headerText="Url">
-                            <p:outputLabel value="#{franquicia.url}" />
+                            <p:outputLabel value="#{f.url}" />
                         </p:column>
                     </p:dataTable>
                 </h:form>

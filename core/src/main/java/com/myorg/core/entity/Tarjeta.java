@@ -15,8 +15,8 @@ public class Tarjeta implements Serializable {
     private Integer idTarjeta;
     
     @ManyToOne
-    @JoinColumn(name = "idCliente")
-    private Cliente cliente;
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
     
     @Column(name = "tipoTarjeta")
     private String tipoTarjeta;
@@ -38,12 +38,12 @@ public class Tarjeta implements Serializable {
         this.idTarjeta = idTarjeta;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getTipoTarjeta() {
@@ -76,5 +76,10 @@ public class Tarjeta implements Serializable {
 
     public void setFechaExp(LocalDate fechaExp) {
         this.fechaExp = fechaExp;
+    }
+    
+    @Override
+    public String toString() {
+        return nroCuenta;
     }
 }

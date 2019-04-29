@@ -2,7 +2,6 @@ package com.myorg.core.repository.impl;
 
 import com.myorg.core.entity.Sede;
 import com.myorg.core.repository.ISedeRepository;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
@@ -11,7 +10,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 @Named
-public class SedeRepositoryImpl implements Serializable, ISedeRepository  {
+public class SedeRepositoryImpl implements ISedeRepository  {
+    
     private static final long serialVersionUID = 1L;
 	
     @PersistenceContext(unitName = "visorPU")
@@ -39,7 +39,7 @@ public class SedeRepositoryImpl implements Serializable, ISedeRepository  {
     @Override
     public Sede findById(Sede t) throws Exception {
         List<Sede> products = new ArrayList<>();
-	Query q = em.createQuery("FROM Sede p where p.id = ?1");
+	Query q = em.createQuery("SELECT s FROM Sede s where s.id = ?1");
 	q.setParameter(1, t.getIdSede());
 
 	products = (List<Sede>) q.getResultList();
@@ -51,8 +51,7 @@ public class SedeRepositoryImpl implements Serializable, ISedeRepository  {
     @Override
     public List<Sede> findAll() throws Exception {
         List<Sede> sedes = new ArrayList<>();
-
-	Query q = em.createQuery("SELECT p FROM Sede p");
+	Query q = em.createQuery("SELECT s FROM Sede s");
 	sedes = (List<Sede>) q.getResultList();
 	return sedes;
     }

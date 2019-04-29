@@ -7,28 +7,30 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Franquicia")
 public class Franquicia implements Serializable {
-    
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idFranquicia;
+    private Integer idFranquicia;
 
     @Column(name = "nombre")
     private String nombre;
-    
+
     @Column(name = "url")
     private String url;
 
-    @OneToMany(mappedBy = "franquicia",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "franquicia")
     private List<Sede> sedes;
     
-    @OneToMany(mappedBy = "franquicia", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "franquicia")
     private List<ProductoFranquicia> productoFranquicias;
-
-    public int getIdFranquicia() {
+    
+    public Integer getIdFranquicia() {
         return idFranquicia;
     }
 
-    public void setIdFranquicia(int idFranquicia) {
+    public void setIdFranquicia(Integer idFranquicia) {
         this.idFranquicia = idFranquicia;
     }
 
@@ -63,6 +65,9 @@ public class Franquicia implements Serializable {
     public void setProductofranquicias(List<ProductoFranquicia> productofranquicias) {
         this.productoFranquicias = productofranquicias;
     }
-
-   
+    
+    @Override
+    public String toString(){
+        return nombre;
+    }
 }

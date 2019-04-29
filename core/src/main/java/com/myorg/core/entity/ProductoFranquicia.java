@@ -7,26 +7,28 @@ import javax.persistence.*;
 @Table(name = "Producto_Franquicia")
 public class ProductoFranquicia implements Serializable {
     
+    private static final long serialVersionUID = 1L;
+    
     @EmbeddedId
-    private ProductoFranquiciaKey key;
+    private ProductoFranquiciaKey pk;
     
     @ManyToOne
-    @JoinColumn(name = "idProducto")
+    @MapsId("idProducto")
     private Producto producto;
     
     @ManyToOne
-    @JoinColumn(name = "idFranqucia")
+    @MapsId("idFranqucia")
     private Franquicia franquicia;
     
     @Column(name = "codReferencia")
     private String codReferencia;
 
-    public ProductoFranquiciaKey getKey() {
-        return key;
+    public ProductoFranquiciaKey getPk() {
+        return pk;
     }
 
-    public void setKey(ProductoFranquiciaKey key) {
-        this.key = key;
+    public void setPk(ProductoFranquiciaKey pk) {
+        this.pk = pk;
     }
 
     public Producto getProducto() {
@@ -51,7 +53,5 @@ public class ProductoFranquicia implements Serializable {
 
     public void setCodReferencia(String codReferencia) {
         this.codReferencia = codReferencia;
-    }
-    
-    
+    } 
 }

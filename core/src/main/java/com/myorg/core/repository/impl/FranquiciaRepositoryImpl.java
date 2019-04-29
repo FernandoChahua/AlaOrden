@@ -3,16 +3,16 @@ package com.myorg.core.repository.impl;
 import com.myorg.core.entity.Franquicia;
 
 import com.myorg.core.repository.IFranquiciaRepository;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 @Named
-public class FranquiciaRepositoryImpl implements Serializable,IFranquiciaRepository{
+public class FranquiciaRepositoryImpl implements IFranquiciaRepository{
 
     private static final long serialVersionUID = 1L;
 	
@@ -41,11 +41,11 @@ public class FranquiciaRepositoryImpl implements Serializable,IFranquiciaReposit
     @Override
     public Franquicia findById(Franquicia t) throws Exception {
         List<Franquicia> franquicias = new ArrayList<>();
-	Query q = em.createQuery("FROM Sede p where p.id = ?1");
-	q.setParameter(1, t.getIdFranquicia());
+	TypedQuery<Franquicia> query = em.createQuery("Select f FROM Franquicia f WHERE f.id = ?1",Franquicia.class);
+	query.setParameter(1, t.getIdFranquicia());
 
-	franquicias = (List<Franquicia>) q.getResultList();
-
+	franquicias = query.getResultList();
+        
 	return franquicias != null && !franquicias.isEmpty() ? franquicias.get(0) : new Franquicia();
     }
 
@@ -53,9 +53,8 @@ public class FranquiciaRepositoryImpl implements Serializable,IFranquiciaReposit
     @Override
     public List<Franquicia> findAll() throws Exception {
         List<Franquicia> franquicias = new ArrayList<>();
-
-	Query q = em.createQuery("SELECT p FROM Franquicia p");
-	franquicias = (List<Franquicia>) q.getResultList();
+	TypedQuery<Franquicia> query = em.createQuery("SELECT f FROM Franquicia f", Franquicia.class);
+	franquicias = query.getResultList();
 	return franquicias;
     }
     
