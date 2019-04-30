@@ -14,10 +14,12 @@ public class ProductoFranquicia implements Serializable {
     
     @ManyToOne
     @MapsId("idProducto")
+    @JoinColumn(name = "idProducto")
     private Producto producto;
     
     @ManyToOne
     @MapsId("idFranqucia")
+    @JoinColumn(name = "idProducto")
     private Franquicia franquicia;
     
     @Column(name = "codReferencia")

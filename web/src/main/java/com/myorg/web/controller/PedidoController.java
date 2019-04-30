@@ -2,7 +2,6 @@ package com.myorg.web.controller;
 
 import com.myorg.core.entity.Usuario;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;

@@ -14,10 +14,12 @@ public class DetallePedido implements Serializable {
 
     @ManyToOne
     @MapsId("idPedido")
+    @JoinColumn(name = "idPedido")
     private Pedido pedido;
 
     @ManyToOne
     @MapsId("idProducto")
+    @JoinColumn(name = "idProducto")
     private Producto producto;
 
     @Column(name = "precio")
