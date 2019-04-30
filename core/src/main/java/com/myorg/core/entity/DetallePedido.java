@@ -1,6 +1,7 @@
 package com.myorg.core.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.*;
 
 @Entity
@@ -23,7 +24,7 @@ public class DetallePedido implements Serializable {
     private Producto producto;
 
     @Column(name = "precio")
-    private Double precio;
+    private BigDecimal precio;
 
     @Column(name = "cantidad")
     private Integer cantidad;
@@ -56,11 +57,11 @@ public class DetallePedido implements Serializable {
         return cantidad;
     }
 
-    public Double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
     
