@@ -22,4 +22,28 @@ public class Rol implements Serializable {
             joinColumns = {@JoinColumn(name = "idRol")},
             inverseJoinColumns = {@JoinColumn(name = "idUsuario")})
     private List<Usuario> usuarios;
+
+    public Integer getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(Integer idRol) {
+        this.idRol = idRol;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
 }

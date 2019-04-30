@@ -11,8 +11,10 @@ import javax.transaction.Transactional;
 @Named
 public class MarcaServiceImpl implements IMarcaService {
 
+    private static final long serialVersionUID = 1L;
+
     @Inject
-    IMarcaRepository marcaRepository;
+    private IMarcaRepository marcaRepository;
     
     @Transactional
     @Override

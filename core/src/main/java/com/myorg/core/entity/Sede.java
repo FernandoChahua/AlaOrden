@@ -48,4 +48,6 @@ public class Sede implements Serializable {
     public String toString() {
         return franquicia.getNombre() + " - " + direccion;
     }
+    
+    
 }

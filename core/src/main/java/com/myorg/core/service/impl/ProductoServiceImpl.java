@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.myorg.core.entity.*;
-import com.myorg.core.repository.impl.*;
+import com.myorg.core.repository.IProductoRepository;
 import com.myorg.core.service.IProductoService;
 import javax.transaction.Transactional;
 
@@ -16,7 +16,7 @@ public class ProductoServiceImpl implements IProductoService{
     private static final long serialVersionUID = 1L;
 	
     @Inject
-    private ProductoRepositoryImpl productoRepository;
+    private IProductoRepository productoRepository;
     
     @Transactional
     @Override

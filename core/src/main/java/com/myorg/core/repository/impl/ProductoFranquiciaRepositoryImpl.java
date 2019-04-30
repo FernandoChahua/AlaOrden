@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+@Deprecated
 public class ProductoFranquiciaRepositoryImpl implements IProductoFranquiciaRepository {
 
     private static final long serialVersionUID = 1L;

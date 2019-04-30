@@ -1,7 +1,7 @@
 package com.myorg.core.service.impl;
 
 import com.myorg.core.entity.Sede;
-import com.myorg.core.repository.impl.SedeRepositoryImpl;
+import com.myorg.core.repository.ISedeRepository;
 import com.myorg.core.service.ISedeService;
 import java.util.List;
 import javax.inject.Inject;
@@ -14,7 +14,7 @@ public class SedeServiceImpl implements ISedeService {
     private static final long serialVersionUID = 1L;
 
     @Inject
-    private SedeRepositoryImpl sedeRepository;
+    private ISedeRepository sedeRepository;
     
     @Transactional
     @Override

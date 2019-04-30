@@ -5,15 +5,17 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.myorg.core.entity.*;
-import com.myorg.core.repository.impl.*;
+import com.myorg.core.repository.IUsuarioRepository;
 import javax.transaction.Transactional;
 import com.myorg.core.service.IUsuarioService;
 
 @Named
 public class UsuarioServiceImpl implements IUsuarioService {
 
+    private static final long serialVersionUID = 1L;
+
     @Inject
-    private UsuarioRepositoryImpl usuarioRepository;
+    private IUsuarioRepository usuarioRepository;
 
     @Override
     @Transactional
@@ -42,6 +44,5 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public List<Usuario> findAll() throws Exception {
         return usuarioRepository.findAll();
     }
-    
-    
+
 }

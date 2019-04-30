@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.myorg.core.entity.*;
-import com.myorg.core.repository.impl.*;
+import com.myorg.core.repository.IPedidoRepository;
 import com.myorg.core.service.IPedidoService;
 import javax.transaction.Transactional;
 
@@ -16,16 +16,16 @@ public class PedidoServiceImpl implements IPedidoService {
     private static final long serialVersionUID = 1L;
 
     @Inject
-    private PedidoRepositoryImpl pedidoRepository;
+    private IPedidoRepository pedidoRepository;
 
     @Transactional
     @Override
-    public boolean insert(Pedido p) {
+    public boolean insert(Pedido p) throws Exception {
         return pedidoRepository.insert(p);
     }
 
     @Override
-    public List<Pedido> findAll() {
+    public List<Pedido> findAll() throws Exception {
         return pedidoRepository.findAll();
     }
 

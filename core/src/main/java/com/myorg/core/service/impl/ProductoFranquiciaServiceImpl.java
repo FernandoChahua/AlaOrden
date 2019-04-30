@@ -4,11 +4,17 @@ import com.myorg.core.entity.ProductoFranquicia;
 import com.myorg.core.repository.IProductoFranquiciaRepository;
 import com.myorg.core.service.IProductoFranquiciaService;
 import java.util.List;
+import javax.inject.*;
 import javax.transaction.Transactional;
 
+@Deprecated
+@Named
 public class ProductoFranquiciaServiceImpl implements IProductoFranquiciaService {
 
-    IProductoFranquiciaRepository productoFranquiciaRepository;
+    private static final long serialVersionUID = 1L;
+    
+    @Inject
+    private IProductoFranquiciaRepository productoFranquiciaRepository;
     
     @Transactional
     @Override

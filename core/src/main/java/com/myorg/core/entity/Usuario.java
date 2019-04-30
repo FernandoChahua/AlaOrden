@@ -29,7 +29,10 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL)
     private List<Pedido> pedidos;
     
-    @ManyToMany(mappedBy = "usuarios")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "Rol_Usuario",
+            inverseJoinColumns = {@JoinColumn(name = "idRol")},
+            joinColumns = {@JoinColumn(name = "idUsuario")})
     private List<Rol> roles;
     
     public Integer getIdUsuario() {
@@ -78,6 +81,14 @@ public class Usuario implements Serializable {
 
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
+    }
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
     }
     
     @Override

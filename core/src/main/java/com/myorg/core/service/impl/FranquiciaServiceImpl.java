@@ -1,7 +1,7 @@
 package com.myorg.core.service.impl;
 
 import com.myorg.core.entity.Franquicia;
-import com.myorg.core.repository.impl.FranquiciaRepositoryImpl;
+import com.myorg.core.repository.IFranquiciaRepository;
 import com.myorg.core.service.IFranquiciaService;
 import java.util.List;
 import javax.inject.Inject;
@@ -14,7 +14,7 @@ public class FranquiciaServiceImpl implements IFranquiciaService  {
     private static final long serialVersionUID = 1L;
 
     @Inject
-    private FranquiciaRepositoryImpl franquiciaRepository;
+    private IFranquiciaRepository franquiciaRepository;
     
     @Transactional
     @Override

@@ -1,13 +1,12 @@
 package com.myorg.core.service.impl;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.myorg.core.entity.*;
-import com.myorg.core.repository.impl.*;
+import com.myorg.core.repository.ICategoriaRepository;
 import com.myorg.core.service.ICategoriaService;
 import javax.transaction.Transactional;
 
@@ -17,7 +16,7 @@ public class CategoriaServiceImpl implements ICategoriaService{
     private static final long serialVersionUID = 1L;
 	
     @Inject
-    private CategoriaRepositoryImpl categoriaRepository;
+    private ICategoriaRepository categoriaRepository;
     
     @Transactional
     @Override

@@ -5,8 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.myorg.core.repository.impl.*;
 import com.myorg.core.entity.*;
+import com.myorg.core.repository.ITarjetaRepository;
 import com.myorg.core.service.ITarjetaService;
 import javax.transaction.Transactional;
 
@@ -17,7 +17,7 @@ public class TarjetaServiceImpl implements ITarjetaService{
     private static final long serialVersionUID = 1L;
 	
     @Inject
-    private TarjetaRepositoryImpl tarjetaRepository;
+    private ITarjetaRepository tarjetaRepository;
     
     @Transactional
     @Override
