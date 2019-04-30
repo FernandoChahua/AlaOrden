@@ -2,6 +2,7 @@ package com.myorg.core.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.*;
 
 @Entity
@@ -9,7 +10,7 @@ import javax.persistence.*;
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
@@ -22,19 +23,21 @@ public class Usuario implements Serializable {
 
     @Column(name = "email")
     private String email;
-
-    @OneToMany(mappedBy = "usuario")
-    private List<Tarjeta> tarjetas;
-
-    @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL)
-    private List<Pedido> pedidos;
     
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+    private Set<Tarjeta> tarjetas;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Pedido> pedidos;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Rol_Usuario",
-            inverseJoinColumns = {@JoinColumn(name = "idRol")},
-            joinColumns = {@JoinColumn(name = "idUsuario")})
+            inverseJoinColumns = {
+                @JoinColumn(name = "idRol")},
+            joinColumns = {
+                @JoinColumn(name = "idUsuario")})
     private List<Rol> roles;
-    
+
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -67,11 +70,11 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public List<Tarjeta> getTarjetas() {
+    public Set<Tarjeta> getTarjetas() {
         return tarjetas;
     }
 
-    public void setTarjetas(List<Tarjeta> tarjetas) {
+    public void setTarjetas(Set<Tarjeta> tarjetas) {
         this.tarjetas = tarjetas;
     }
 
@@ -90,7 +93,7 @@ public class Usuario implements Serializable {
     public void setRoles(List<Rol> roles) {
         this.roles = roles;
     }
-    
+
     @Override
     public String toString() {
         return usuario;

@@ -39,6 +39,7 @@ public class GeneradorProformas {
         }
         
     }
+
     
     //TODO: Nombre
     private DetallePedido empaquetar(DetallePedido busq, Franquicia prov){
