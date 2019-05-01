@@ -6,6 +6,8 @@ import javax.inject.Named;
 
 import com.myorg.core.entity.*;
 import com.myorg.core.repository.IUsuarioRepository;
+import com.myorg.core.repository.IRolRepository;
+import com.myorg.core.entity.Rol;
 import javax.transaction.Transactional;
 import com.myorg.core.service.IUsuarioService;
 
@@ -16,6 +18,9 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     @Inject
     private IUsuarioRepository usuarioRepository;
+    
+    @Inject
+    private IRolRepository rolRepository;
 
     @Override
     public boolean validarContraseña(String campo, String contraseña){
@@ -38,8 +43,12 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Override
     public boolean Registrar(Usuario usuario) throws Exception {
         boolean rpta = false;
+        Rol r = new Rol();
         if(usuarioRepository.findByEmail(usuario.getEmail()).getIdUsuario() == null ||
                 usuarioRepository.findByApodo(usuario.getApodo()).getIdUsuario() == null){
+            r.setNombre("cliente");
+            r = rolRepository.findByNombre(r);
+            usuario.getRoles().add(r);
             rpta = usuarioRepository.insert(usuario);
         }
         return rpta;

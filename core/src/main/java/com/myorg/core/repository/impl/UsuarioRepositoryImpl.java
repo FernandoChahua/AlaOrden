@@ -99,7 +99,7 @@ public class UsuarioRepositoryImpl implements IUsuarioRepository {
         List<Usuario> list = new ArrayList<>();
 
         try {
-            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario = ?1");
+            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.idUsuario = ?1");
             q.setParameter(1, u.getIdUsuario());
             list = (List<Usuario>) q.getResultList();
         } catch (Exception ex) {
