@@ -24,6 +24,9 @@ public class Usuario implements Serializable {
     @Column(name = "email")
     private String email;
     
+    @Column(name = "apodo")
+    private String apodo;
+    
     @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private Set<Tarjeta> tarjetas;
 
@@ -68,6 +71,14 @@ public class Usuario implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getApodo() {
+        return apodo;
+    }
+
+    public void setApodo(String apodo) {
+        this.email = apodo;
     }
 
     public Set<Tarjeta> getTarjetas() {

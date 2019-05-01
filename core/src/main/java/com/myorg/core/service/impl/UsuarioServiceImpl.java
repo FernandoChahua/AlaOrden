@@ -18,6 +18,36 @@ public class UsuarioServiceImpl implements IUsuarioService {
     private IUsuarioRepository usuarioRepository;
 
     @Override
+    public boolean validarContraseña(String campo, String contraseña){
+        boolean rpta = false;
+        if(usuarioRepository.findByEmail(campo).getIdUsuario() != null){
+            if(usuarioRepository.findByEmail(campo).getContrasena() == contraseña){
+                rpta = true;
+            }
+        }
+        else{
+            if(usuarioRepository.findByApodo(campo).getIdUsuario() != null){
+                if(usuarioRepository.findByApodo(campo).getContrasena() == contraseña){
+                    rpta = true;
+                }
+            }
+        }
+        return rpta;
+    }
+    
+    @Override
+    public boolean Registrar(Usuario usuario) throws Exception {
+        boolean rpta = false;
+        if(usuarioRepository.findByEmail(usuario.getEmail()).getIdUsuario() == null ||
+                usuarioRepository.findByApodo(usuario.getApodo()).getIdUsuario() == null){
+            rpta = usuarioRepository.insert(usuario);
+        }
+        return rpta;
+    }
+    
+    //Registrar como String para enviar un mensaje en caso lo repetido sea el usuario o la contraseña
+    
+    @Override
     @Transactional
     public boolean insert(Usuario u) throws Exception {
         return usuarioRepository.insert(u);
@@ -44,5 +74,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public List<Usuario> findAll() throws Exception {
         return usuarioRepository.findAll();
     }
+
+    
 
 }
