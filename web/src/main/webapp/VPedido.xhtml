@@ -41,7 +41,7 @@
                             <f:selectItem itemLabel="Seleccione una opción"
                                           noSelectionOption="true" itemValue="" />
                             <f:selectItems value="#{pedidoController.usuarios}"
-                                           var="Cli" itemLabel="#{Cli.usuario}" itemValue="#{Cli}"/>
+                                           var="Cli" itemLabel="#{Cli.apodo}" itemValue="#{Cli}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="Sede" for="cmbSed" />
                         <p:selectOneMenu id="cmbSed" required="true" effect="drop" 

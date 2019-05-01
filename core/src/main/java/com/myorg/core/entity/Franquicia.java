@@ -14,7 +14,7 @@ public class Franquicia implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idFranquicia;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre" , unique=true)
     private String nombre;
 
     @Column(name = "url")
