@@ -15,8 +15,8 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
-    @Column(name = "usuario", unique = true)
-    private String usuario;
+    @Column(name = "apodo", unique = true)
+    private String apodo;
 
     @Column(name = "contrasena")
     private String contrasena;
@@ -46,12 +46,12 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getApodo() {
+        return apodo;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setApodo(String apodo) {
+        this.apodo = apodo;
     }
 
     public String getContrasena() {
@@ -96,6 +96,6 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return usuario;
+        return apodo;
     }
 }

@@ -60,7 +60,7 @@ public class UsuarioController implements Serializable {
 
     public void editUsuario() {
         try {
-            System.out.println("Customer Selec:" + usuarioSel.getUsuario());
+            System.out.println("Customer Selec:" + usuarioSel.getApodo());
             if (this.usuarioSel.getIdUsuario() != null) {
                 this.usuario = usuarioSel;
             } else {

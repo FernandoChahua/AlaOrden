@@ -14,7 +14,7 @@ public class Rol implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idRol;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre",unique=true)
     private String nombre;
 
     @ManyToMany
