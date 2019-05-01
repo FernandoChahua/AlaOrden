@@ -22,7 +22,7 @@ public class Producto implements Serializable {
     @JoinColumn(name = "idMarca")
     private Marca marca;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre",unique = true)
     private String nombre;
 
     @Column(name = "descripcion")

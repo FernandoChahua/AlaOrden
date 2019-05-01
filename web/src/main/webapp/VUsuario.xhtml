@@ -32,9 +32,9 @@
                         </f:facet>
                     </p:toolbar>
                     <p:panelGrid id="panGriCus" columns="4" style="width:100%">
-                        <p:outputLabel value="Usuario" for="txtUsuario" />
-                        <p:inputText id="txtUsuario" required="true" style="width:90%"
-                                     maxlength="50" value="#{usuarioController.usuario.usuario}" />
+                        <p:outputLabel value="Apodo" for="txtApodo" />
+                        <p:inputText id="txtApodo" required="true" style="width:90%"
+                                     maxlength="50" value="#{usuarioController.usuario.apodo}" />
                         <p:outputLabel value="Contraseña" for="txtContrasena" />
                         <p:inputText id="txtContrasena" required="true" style="width:90%"
                                      maxlength="8" value="#{usuarioController.usuario.contrasena}" />
@@ -67,8 +67,8 @@
                         <p:column headerText="Id">
                             <p:outputLabel value="#{u.idUsuario}" />
                         </p:column>
-                        <p:column headerText="Nombre Usuario">
-                            <p:outputLabel value="#{u.usuario}" />
+                        <p:column headerText="Apodo">
+                            <p:outputLabel value="#{u.apodo}" />
                         </p:column>
                         <p:column headerText="Contraseña">
                             <p:outputLabel value="#{u.contrasena}" />

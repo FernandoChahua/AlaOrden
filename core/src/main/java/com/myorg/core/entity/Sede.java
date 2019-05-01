@@ -17,7 +17,7 @@ public class Sede implements Serializable {
     @JoinColumn(name = "idFranquicia")
     private Franquicia franquicia;
 
-    @Column(name = "direccion")
+    @Column(name = "direccion" , unique = true)
     private String direccion;
 
     public Integer getIdSede() {
