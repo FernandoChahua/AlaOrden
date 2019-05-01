@@ -6,6 +6,8 @@ import javax.inject.Named;
 
 import com.myorg.core.entity.*;
 import com.myorg.core.repository.IUsuarioRepository;
+import com.myorg.core.repository.IRolRepository;
+import com.myorg.core.entity.Rol;
 import javax.transaction.Transactional;
 import com.myorg.core.service.IUsuarioService;
 
@@ -16,7 +18,53 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     @Inject
     private IUsuarioRepository usuarioRepository;
+    
+    @Inject
+    private IRolRepository rolRepository;
 
+    @Override
+    public Integer validarContraseña(String campo, String contraseña){
+        Usuario rpta = new Usuario();
+        if(usuarioRepository.findByEmail(campo).getIdUsuario() != null){
+            if(usuarioRepository.findByEmail(campo).getContrasena() == contraseña){
+                rpta = usuarioRepository.findByEmail(campo);
+            }
+        }
+        else{
+            if(usuarioRepository.findByApodo(campo).getIdUsuario() != null){
+                if(usuarioRepository.findByApodo(campo).getContrasena() == contraseña){
+                    rpta = usuarioRepository.findByApodo(campo);
+                }
+            }
+        }
+        return rpta.getIdUsuario();
+    }
+    
+    @Override
+    public boolean Registrar(Usuario usuario) throws Exception {
+        boolean rpta = false;
+        Rol r = new Rol();
+        if(usuarioRepository.findByEmail(usuario.getEmail()).getIdUsuario() == null ||
+                usuarioRepository.findByApodo(usuario.getApodo()).getIdUsuario() == null){
+            r.setNombre("cliente");
+            r = rolRepository.findByNombre(r);
+            usuario.getRoles().add(r);
+            rpta = usuarioRepository.insert(usuario);
+        }
+        return rpta;
+    }
+    //Registrar como String para enviar un mensaje en caso lo repetido sea el usuario o la contraseña
+    
+    @Override
+    public Usuario findByApodo(String apodo) {
+        return usuarioRepository.findByApodo(apodo);
+    }
+
+    @Override
+    public Usuario findByEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+    
     @Override
     @Transactional
     public boolean insert(Usuario u) throws Exception {
@@ -44,5 +92,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public List<Usuario> findAll() throws Exception {
         return usuarioRepository.findAll();
     }
+
+    
 
 }

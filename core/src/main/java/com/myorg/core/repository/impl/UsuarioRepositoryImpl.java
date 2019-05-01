@@ -15,7 +15,35 @@ public class UsuarioRepositoryImpl implements IUsuarioRepository {
         
     @PersistenceContext(unitName = "visorPU")
     private EntityManager em;
+    
+    @Override
+    public Usuario findByApodo(String apodo) {
+        List<Usuario> list = new ArrayList<>();
 
+        try {
+            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.apodo = ?1");
+            q.setParameter(1, apodo);
+            list = (List<Usuario>) q.getResultList();
+        } catch (Exception ex) {
+            throw ex;
+        }
+        return (list != null && !list.isEmpty() )? list.get(0) : new Usuario() ;
+    }
+
+    @Override
+    public Usuario findByEmail(String email) {
+        List<Usuario> list = new ArrayList<>();
+
+        try {
+            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.email = ?1");
+            q.setParameter(1, email);
+            list = (List<Usuario>) q.getResultList();
+        } catch (Exception ex) {
+            throw ex;
+        }
+        return (list != null && !list.isEmpty() )? list.get(0) : new Usuario() ;
+    }
+    
     @Override
     public boolean insert(Usuario u) throws Exception {
         boolean rpta = false;
@@ -71,7 +99,7 @@ public class UsuarioRepositoryImpl implements IUsuarioRepository {
         List<Usuario> list = new ArrayList<>();
 
         try {
-            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.usuario = ?1");
+            Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.idUsuario = ?1");
             q.setParameter(1, u.getIdUsuario());
             list = (List<Usuario>) q.getResultList();
         } catch (Exception ex) {
@@ -79,4 +107,6 @@ public class UsuarioRepositoryImpl implements IUsuarioRepository {
         }
         return (list != null && !list.isEmpty() )? list.get(0) : new Usuario() ;
     }
+
+    
 }

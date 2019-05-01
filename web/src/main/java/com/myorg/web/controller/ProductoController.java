@@ -185,8 +185,10 @@ public class ProductoController implements Serializable {
     public void cleanForm() {
         this.producto = new Producto();
         this.productoSel = null;
-        this.strCategoria = null;
-        this.strMarca = null;
+        this.categoria = new Categoria();
+        this.marca = new Marca();
+        this.strCategoria = "";
+        this.strMarca = "";
     }
 
     public List<Producto> getProductos() {

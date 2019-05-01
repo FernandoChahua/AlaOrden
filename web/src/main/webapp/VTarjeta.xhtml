@@ -41,7 +41,7 @@
                             <f:selectItem itemLabel="Seleccione una opción"
                                           noSelectionOption="true" itemValue="" />
                             <f:selectItems value="#{tarjetaController.usuarios}"
-                                           var="Usr" itemLabel="#{Usr.usuario}" itemValue="#{Usr}"/>
+                                           var="Usr" itemLabel="#{Usr.apodo}" itemValue="#{Usr}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="tipoTarjeta" for="txttipoTarjeta" />
                         <p:inputText id="txttipoTarjeta" required="true" style="width:90%"
