@@ -3,6 +3,7 @@ package com.myorg.core.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.persistence.*;
 
@@ -46,7 +47,7 @@ public class Pedido implements Serializable {
     private BigDecimal descuento;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-   private List<DetallePedido> detalles;
+    private List<DetallePedido> detalles;
 
     public Integer getIdPedido() {
         return idPedido;
@@ -134,5 +135,10 @@ public class Pedido implements Serializable {
 
     public void setDetalles(List<DetallePedido> detalles) {
         this.detalles = detalles;
+    }
+    
+    @Override
+    public String toString(){
+        return idPedido + " - " + usuario + " - " + fecha.format(DateTimeFormatter.ISO_DATE);
     }
 }

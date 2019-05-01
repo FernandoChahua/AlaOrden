@@ -5,6 +5,7 @@ package com.myorg.web.temp;
 import com.myorg.core.entity.*;
 import com.myorg.core.service.*;
 import java.util.List;
+import javax.enterprise.context.SessionScoped;
 
 public class CuentaController {
     

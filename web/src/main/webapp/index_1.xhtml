@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head></h:head>
+    <body>
+        <ui:composition template="/WEB-INF/templates/master.xhtml">
+            <ui:define name="content">
+
+                <h4>Pedidos</h4>
+                <h:form id="frmGen" enctype="multipart/form-data">
+
+                    <p:selectOneMenu id="cmbCli" required="true" effect="drop" widgetVar="selCli" 
+                                     value="#{detallePedidoController.pedido}" onchange=""
+                                     converter="omnifaces.SelectItemsConverter">
+                        <f:selectItem itemLabel="Seleccione una opción"
+                                      noSelectionOption="true" itemValue="" />
+                        <f:selectItems value="#{detallePedidoController.pedidos}"
+                                       var="Cli" itemLabel="#{Cli}" itemValue="#{Cli}"/>
+                        <p:ajax event="change" update=":frmGen:datTabCus"/>
+                    </p:selectOneMenu>
+
+                    <br></br>
+
+
+                    <br></br>
+
+                    <p:panelGrid id="panGriPed" columns="4" style="width:100%">
+                        <p:outputLabel value="Producto" for="cmbSed" />
+                        <p:selectOneMenu id="cmbSed" required="true" effect="drop" 
+                                         value="#{detallePedidoController.producto}"
+                                         converter="omnifaces.SelectItemsConverter" >
+                            <f:selectItem itemLabel="Seleccione una opción"
+                                          noSelectionOption="true" itemValue="" />
+                            <f:selectItems value="#{detallePedidoController.productos}"
+                                           var="Sed" itemLabel="#{Sed}" itemValue="#{Sed}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Estado" for="txtEstado" />
+                        <p:inputText id="txtEstado" required="true" style="width:90%"
+                                     maxlength="50" value="#{detallePedidoController.detallePedido.precio}" />
+
+                        <p:outputLabel value="Estado" for="txtCant" />
+                        <p:inputText id="txtCant" required="true" style="width:90%"
+                                     maxlength="50" value="#{detallePedidoController.detallePedido.cantidad}" />
+
+                    </p:panelGrid>
+                    <br></br>
+
+
+                    <br></br>
+
+
+                    <p:dataTable id="datTabCus" 
+                                 emptyMessage="No posee detalles disponibles"
+                                 value="#{detallePedidoController.detallePedidos}" var="t" paginator="true"
+                                 rows="10" selectionMode="single" rowKey="#{t.pk}">
+                        <f:facet name="header">
+                            <p:outputLabel value="Tarjetas de Cliente" />
+                        </f:facet>
+                        <p:column headerText="Producto">
+                            <p:outputLabel value="#{t.producto}" />
+                        </p:column>
+                        <p:column headerText="Precio">
+                            <p:outputLabel value="#{t.precio}" />
+                        </p:column>
+                        <p:column headerText="Cantidad">
+                            <p:outputLabel value="#{t.cantidad}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

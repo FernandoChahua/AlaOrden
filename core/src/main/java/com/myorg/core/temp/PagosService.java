@@ -9,7 +9,7 @@ public class PagosService {
     //Objeto
 
     //retorna mensaje
-    public String iniciarTranasccion(Tarjeta t){
+    public String iniciarTranasccion(Tarjeta t, int cvv){
         return "";
     }
     
