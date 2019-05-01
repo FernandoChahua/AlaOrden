@@ -23,21 +23,21 @@ public class UsuarioServiceImpl implements IUsuarioService {
     private IRolRepository rolRepository;
 
     @Override
-    public boolean validarContraseña(String campo, String contraseña){
-        boolean rpta = false;
+    public Integer validarContraseña(String campo, String contraseña){
+        Usuario rpta = new Usuario();
         if(usuarioRepository.findByEmail(campo).getIdUsuario() != null){
             if(usuarioRepository.findByEmail(campo).getContrasena() == contraseña){
-                rpta = true;
+                rpta = usuarioRepository.findByEmail(campo);
             }
         }
         else{
             if(usuarioRepository.findByApodo(campo).getIdUsuario() != null){
                 if(usuarioRepository.findByApodo(campo).getContrasena() == contraseña){
-                    rpta = true;
+                    rpta = usuarioRepository.findByApodo(campo);
                 }
             }
         }
-        return rpta;
+        return rpta.getIdUsuario();
     }
     
     @Override
@@ -53,8 +53,17 @@ public class UsuarioServiceImpl implements IUsuarioService {
         }
         return rpta;
     }
-    
     //Registrar como String para enviar un mensaje en caso lo repetido sea el usuario o la contraseña
+    
+    @Override
+    public Usuario findByApodo(String apodo) {
+        return usuarioRepository.findByApodo(apodo);
+    }
+
+    @Override
+    public Usuario findByEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
     
     @Override
     @Transactional
