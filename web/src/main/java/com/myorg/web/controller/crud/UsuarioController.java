@@ -1,4 +1,4 @@
-package com.myorg.web.controller;
+package com.myorg.web.controller.crud;
 
 import java.util.ArrayList;
 import java.util.List;

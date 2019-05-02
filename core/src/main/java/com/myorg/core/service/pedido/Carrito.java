@@ -1,4 +1,4 @@
-package com.myorg.core.temp;
+package com.myorg.core.service.pedido;
 
 import com.myorg.core.entity.*;
 import java.util.ArrayList;

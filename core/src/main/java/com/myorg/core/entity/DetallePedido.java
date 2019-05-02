@@ -28,6 +28,9 @@ public class DetallePedido implements Serializable {
 
     @Column(name = "cantidad")
     private Integer cantidad;
+    
+    @Transient
+    private String mensajeError;
 
     public DetallePedidoKey getPk() {
         return pk;
@@ -69,5 +72,13 @@ public class DetallePedido implements Serializable {
         this.cantidad = cantidad;
     }
 
+    public String getMensajeError() {
+        return mensajeError;
+    }
 
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
+    }
+
+    
 }

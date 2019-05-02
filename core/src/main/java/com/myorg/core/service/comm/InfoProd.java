@@ -1,4 +1,4 @@
-package com.myorg.core.temp.comm;
+package com.myorg.core.service.comm;
 
 import java.math.BigDecimal;
 

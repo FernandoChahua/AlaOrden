@@ -1,4 +1,4 @@
-package com.myorg.web.controller;
+package com.myorg.web.controller.crud;
 
 import com.myorg.core.entity.*;
 import com.myorg.core.service.*;
