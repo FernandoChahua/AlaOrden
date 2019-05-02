@@ -58,20 +58,20 @@ public class UsuarioController implements Serializable {
         cleanForm();
     }
 
-    public void editUsuario() {
-        try {
-            System.out.println("Customer Selec:" + usuarioSel.getApodo());
-            if (this.usuarioSel.getIdUsuario() != null) {
-                this.usuario = usuarioSel;
-            } else {
-                Message.messageInfo("Debe seleccionar un cliente");
-                System.out.println("Hola:");
-            }
-        } catch (Exception e) {
-            Message.messageError("Error Usuario :" + e.getMessage());
-        }
-
-    }
+//    public void editUsuario() {
+//        try {
+//            System.out.println("Customer Selec:" + usuarioSel.getApodo());
+//            if (this.usuarioSel.getIdUsuario() != null) {
+//                this.usuario = usuarioSel;
+//            } else {
+//                Message.messageInfo("Debe seleccionar un cliente");
+//                System.out.println("Hola:");
+//            }
+//        } catch (Exception e) {
+//            Message.messageError("Error Usuario :" + e.getMessage());
+//        }
+//
+//    }
 
     public void cleanForm() {
         this.usuario = new Usuario();

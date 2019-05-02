@@ -32,24 +32,24 @@ public class SessionController implements Serializable{
     void Registrar(String apodo, String email, String contraseña){
         Usuario usuario = new Usuario();
         try{
-            usuario.setApodo(apodo);
+//            usuario.setApodo(apodo);
             usuario.setEmail(email);
             usuario.setContrasena(contraseña);
-            usuarioService.Registrar(usuario);
+//            usuarioService.Registrar(usuario);
         }catch(Exception e){
             Message.messageError("Error Cliente" + e.getMessage());
         }
     }
     
-    void Autentificar(HttpServletRequest request, HttpServletResponse response, String campo, String contraseña) throws Exception{
-        Integer validar = usuarioService.validarContraseña(campo, contraseña);
-        if(validar == null)
-            Message.messageError("Usuario no válido");
-        else{
-            session = request.getSession(true);
-            autentificados.put(session, validar);
-        }
-    }
+//    void Autentificar(HttpServletRequest request, HttpServletResponse response, String campo, String contraseña) throws Exception{
+//        Integer validar = usuarioService.validarContraseña(campo, contraseña);
+//        if(validar == null)
+//            Message.messageError("Usuario no válido");
+//        else{
+//            session = request.getSession(true);
+//            autentificados.put(session, validar);
+//        }
+//    }
     void cerrarSesion(){
         autentificados.remove(session);
     }

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <head></head>
+    <body>
+        <p:dataTable id="datTabFranquicia"
+                     emptyMessage="No existen cotizaciones registrados"
+                     value="#{ventaController.franquiciasUsed}" var="f" paginator="true"
+                     rows="10" selectionMode="single" rowKey="#{f.nombre}">
+            <p:ajax event="rowSelect"
+                    listener="#{ventaController.selectCotizacion}" />
+
+            <p:dataList value="#{ventaController.mapDP.get(f.nombre)}" var="dp" type="definition">
+                <f:facet name="header">
+                    #{f.nombre}
+                </f:facet>
+                <p:panelGrid columns="4">
+                    <h:outputText value="#{dp.producto.nombre}" /> 
+                    <h:outputText value="#{dp.cantidad}" /> 
+                    <h:outputText value="#{dp.precio}" /> 
+                    <h:outputText value="#{dp.mensaje}" />         
+                </p:panelGrid>
+            </p:dataList>
+            <p:panelGrid columns="2">
+                <h:outputText value="Total : " /> 
+                <h:outputText value="#{ventaController.totalPedido(ventaController.mapDP.get(f.nombre))}" />  
+            </p:panelGrid>
+
+        </p:dataTable>
+        <h:form> 
+            <p:growl id="growl" life="2000" />
+            <p:commandButton value="Siguiente" 
+                             process="@this"
+                             actionListener="#{ventaController.procesoPago()}" icon="ui-icon-arrow-1-e"/>
+        </h:form>
+    </body>
+</html>
