@@ -5,175 +5,220 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 
+    <body>
+
+        <ui:composition template="/WEB-INF/templates/master.xhtml">
+            <ui:define name="content">
+                <h:form id="frmGen" enctype="multipart/form-data">
+
+                    <html>
+                        <head>
+                            <title>Menu Desplegable</title>
+                            <style type="text/css">
+
+                                * {
+                                    margin:0px;
+                                    padding:0px;
+                                }
+
+                                #header {
+                                    margin:auto;
+                                    /*                    width:500px;*/
+                                    font-family:Arial, Helvetica, sans-serif;
+                                }
+                                #header2 {
+                                    margin:auto;
+                                    width:50px;
+                                    font-family:Arial, Helvetica, sans-serif;
+                                }
 
 
-    <html>
-        <head>
-            <title>Menu Desplegable</title>
-            <style type="text/css">
+                                ul, ol {
+                                    list-style:none;
+                                }
 
-                * {
-                    margin:0px;
-                    padding:0px;
-                }
+                                .nav > li {
+                                    float:left;
+                                }
 
-                #header {
-                    margin:auto;
-                    /*                    width:500px;*/
-                    font-family:Arial, Helvetica, sans-serif;
-                }
-                #header2 {
-                    margin:auto;
-                    width:50px;
-                    font-family:Arial, Helvetica, sans-serif;
-                }
+                                .nav li a {
+                                    background-color:#000;
+                                    color:#fff;
+                                    text-decoration:none;
+                                    padding:10px 12px;
+                                    display:block;
+                                }
 
+                                .nav li a:hover {
+                                    background-color:#434343;
+                                }
 
-                ul, ol {
-                    list-style:none;
-                }
+                                .nav li ul {
+                                    display:none;
+                                    position:absolute;
+                                    min-width:140px;
+                                }
 
-                .nav > li {
-                    float:left;
-                }
+                                .nav li:hover > ul {
+                                    display:block;
+                                }
 
-                .nav li a {
-                    background-color:#000;
-                    color:#fff;
-                    text-decoration:none;
-                    padding:10px 12px;
-                    display:block;
-                }
+                                .nav li ul li {
+                                    position:relative;
+                                }
 
-                .nav li a:hover {
-                    background-color:#434343;
-                }
+                                .nav li ul li ul {
+                                    right:-140px;
+                                    top:0px;
+                                }
 
-                .nav li ul {
-                    display:none;
-                    position:absolute;
-                    min-width:140px;
-                }
-
-                .nav li:hover > ul {
-                    display:block;
-                }
-
-                .nav li ul li {
-                    position:relative;
-                }
-
-                .nav li ul li ul {
-                    right:-140px;
-                    top:0px;
-                }
-
-            </style>
-        </head>
+                            </style>
+                        </head>
 
 
 
-        <header id ="header" style="top:0px;">
-            <div class="center">
-                <div class="logo">
-                    <h1>A la Orden</h1>
-                </div>
-
-                <div id="header2"  class="header items" style =" width:500px;">
-                    <div  class="input">
-                        <div  class="input">
-                            <p:inputText style="margin:1px 100px 1px 1px;" placeholder="Buscar Producto"/>
-
-                            <p:commandButton value="Mis Listas"
-
-                                             style="margin-right:20px;"
-                                             icon="pi pi-list"/>
-<!--                                             action="#{pedidos.verpedidos}" update="growl" -->
-
-                            <p:commandButton  value="Mi Carrito"
-
-                                              style="margin-right:20px;"
-                                              icon="pi pi-shopping-cart"/>
-                                           <!--action="#{carrito.vercarrito}" update="growl"-->
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </header>
+                        <header id ="header" style="top:0px;">
+                            <div class="center">
+                                <header  class="center" style =" width:150px;margin-top: 10px;" >
+                                    <div class="center" >
+                                        <h1>A la Orden</h1>
+                                    </div>
+                                </header>
 
 
-        <body>
+                                <div id="header2"  class="header items" style =" width:1300px;">
+                                    <div  class="input">
+                                        <div  class="input">
+                                            <p:inputText style="margin-right:10px;width:900px;" placeholder="Buscar Producto"/>
+
+                                            <p:commandButton value="Mis Listas"
+
+                                                             style="margin-right:10px;"
+                                                             icon="pi pi-list"/>
+                <!--                                             action="#{pedidos.verpedidos}" update="growl" -->
+
+                                            <p:commandButton  value="Mi Carrito"
+
+                                                              style="margin-right:10px;"
+                                                              icon="pi pi-shopping-cart"/>
+                                                           <!--action="#{carrito.vercarrito}" update="growl"-->
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </header>
+                        <br></br>
 
 
-            <div id="header">
-                <ul class="nav">
-                    <li><a href="">Categorias</a>
-                        <ul>
-                            <li><a href="">Lacteos</a></li>
-                            <li><a href="">Bebidas</a></li>
-                            <li><a href="">Carnes</a></li>
-                            <li><a href="">Golosinas</a></li>
-                            <li><a href="">ComidaInstantanea</a></li>
-                            <li><a href="">Frutas</a></li>
-                            <li><a href="">Verduras</a></li>
-                            <li><a href="">Conservas</a></li>
-                            <li><a href="">Detergente</a></li>
-                            <li><a href="">Legumbres</a></li>
-                            <li><a href="">Snacks</a></li>
-                            <li><a href="">Higiene</a></li>
-                            <li><a href="">Belleza</a></li>
-                            <li><a href="">CuidadoPersonal</a></li>
-                            <li><a href="">Licores</a></li>
+                        <br></br>
 
-                        </ul>
-                    </li>
-
-                    <li><a href="">Lacteos</a>
-                        <ul>
-                            <li><a href="">Leche evaporada sin lactosa</a></li>
-                            <li><a href="">Leche condensada</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">Bebidas</a></li>
-                    <li><a href="">Carnes</a></li>
-                    <li><a href="">Golosinas</a>
-                        <ul>
-                            <li><a href="">Galleta de vainilla con cubierta de chocolate</a></li>
-
-                        </ul>
-                    </li>
-                    <li><a href="">ComidaInstantanea</a></li>
-                    <li><a href="">Frutas</a></li>
-                    <li><a href="">Verduras</a></li>
-                    <li><a href="">Conservas</a></li>
-                    <li><a href="">Detergente</a></li>
-                    <li><a href="">Legumbres</a></li>
-                    <li><a href="">Snacks</a></li>
-                    <li><a href="">Higiene</a></li>
-                    <li><a href="">Belleza</a></li>
-                    <li><a href="">CuidadoPersonal</a></li>
-                    <li><a href="">Licores</a></li>
+                        <body>
 
 
-                </ul>
-            </div>
+                            <div id="header">
+                                <ul class="nav">
+                                    <li><a href="">Categorias</a>
+                                        <ul>
+                                            <li><a href="">Lacteos</a></li>
+                                            <li><a href="">Bebidas</a></li>
+                                            <li><a href="">Carnes</a></li>
+                                            <li><a href="">Golosinas</a></li>
+                                            <li><a href="">ComidaInstantanea</a></li>
+                                            <li><a href="">Frutas</a></li>
+                                            <li><a href="">Verduras</a></li>
+                                            <li><a href="">Conservas</a></li>
+                                            <li><a href="">Detergente</a></li>
+                                            <li><a href="">Legumbres</a></li>
+                                            <li><a href="">Snacks</a></li>
+                                            <li><a href="">Higiene</a></li>
+                                            <li><a href="">Belleza</a></li>
+                                            <li><a href="">CuidadoPersonal</a></li>
+                                            <li><a href="">Licores</a></li>
 
-            <div>
+                                        </ul>
+                                    </li>
 
-                <!--                 <p:fieldset id="Productos mas vendidos" legend="Productos">
-                                                <p:dataGrid id="Productospopulares" var="producto" label="#{productoController.productos}" columns="3">
-                                                    <p:panel id="pnl" header="#{producto.nombre}" style="text-align:center">
-                                                        <h:panelGrid columns="1" style="width:100%">
-                                                            <p:graphicImage name="/images/producto/#{producto.imagen}.gif" />
-                                                        </h:panelGrid>
-                                                    </p:panel>
-                        
-                                                    <p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/>
-                                                </p:dataGrid>
-                                            </p:fieldset>-->
-            </div>
-        </body>
-    </html>
+                                    <li><a href="">Lacteos</a>
+                                        <ul>
+                                            <li><a href="">Leche evaporada sin lactosa</a></li>
+                                            <li><a href="">Leche condensada</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">Bebidas</a></li>
+                                    <li><a href="">Carnes</a></li>
+                                    <li><a href="">Golosinas</a>
+                                        <ul>
+                                            <li><a href="">Galleta de vainilla con cubierta de chocolate</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li><a href="">ComidaInstantanea</a></li>
+                                    <li><a href="">Frutas</a></li>
+                                    <li><a href="">Verduras</a></li>
+                                    <li><a href="">Conservas</a></li>
+                                    <li><a href="">Detergente</a></li>
+                                    <li><a href="">Legumbres</a></li>
+                                    <li><a href="">Snacks</a></li>
+                                    <li><a href="">Higiene</a></li>
+                                    <li><a href="">Belleza</a></li>
+                                    <li><a href="">CuidadoPersonal</a></li>
+                                    <li><a href="">Licores</a></li>
+
+
+                                </ul>
+                            </div>
+
+                            <br></br>
+
+
+                            <br></br>
+                            <div>
+
+                                <br></br>
+
+
+                                <br></br>
+
+                                <p:dataTable id="datTabProducto"
+                                             emptyMessage="No existen productos registrados"
+                                             value="#{productoController.productos}" var="p" paginator="true"
+                                             rows="10" selectionMode="single" rowKey="#{p.idProducto}" style="margin-right:100px; margin-left:100px;" >
+
+                                    <f:facet name="header">
+                                        <p:outputLabel value="Productos mas Vistos" />
+                                    </f:facet>
+                                    <p:ajax event="rowSelect"
+                                            listener="#{productoController.selectProducto}" />
+
+
+                                    <p:column headerText="Nombre">
+                                        <p:outputLabel value="#{p.nombre}" />
+                                    </p:column>
+                                    <p:column headerText="Imagen">
+                <!--                        <p:outputLabel value="#{p.imagen}" />-->
+                                    </p:column>
+
+                                </p:dataTable>
+
+
+                                <!--                 <p:fieldset id="Productos mas vendidos" legend="Productos">
+                                                                <p:dataGrid id="Productospopulares" var="producto" label="#{productoController.productos}" columns="3">
+                                                                    <p:panel id="pnl" header="#{producto.nombre}" style="text-align:center">
+                                                                        <h:panelGrid columns="1" style="width:100%">
+                                                                            <p:graphicImage name="/images/producto/#{producto.imagen}.gif" />
+                                                                        </h:panelGrid>
+                                                                    </p:panel>
+                                        
+                                                                    <p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/>
+                                                                </p:dataGrid>
+                                                            </p:fieldset>-->
+                            </div>
+                        </body>
+                    </html>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
 </html>
