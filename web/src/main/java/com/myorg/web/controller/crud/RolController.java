@@ -11,7 +11,7 @@ import javax.inject.Named;
 import com.myorg.core.entity.*;
 import com.myorg.core.service.*;
 import javax.faces.view.ViewScoped;
-import org.myorg.util.Message;
+import com.myorg.util.Message;
 import org.primefaces.event.SelectEvent;
 
 @Named

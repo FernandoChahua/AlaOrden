@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.myorg.util.Message;
+import com.myorg.util.Message;
 import org.primefaces.event.SelectEvent;
 
 @Named

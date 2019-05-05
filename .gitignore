@@ -1,7 +1,15 @@
 alaorden.iml
 /core/target/
 /core/core.iml
+/core/.classpath
+/core/.project
+/core/.settings/
 /web/target/
 /web/web.iml
+/web/.classpath
+/web/.project
+/web/.settings/
+/core/bin/target/
 /.idea/
-/core/core.iml
+.settings/
+.project

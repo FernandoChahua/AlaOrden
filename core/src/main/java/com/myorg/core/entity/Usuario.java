@@ -24,6 +24,9 @@ public class Usuario implements Serializable {
     @Column(name = "email", unique = true)
     private String email;
     
+    @Column(name = "estado")
+    private boolean activo;
+    
     @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private Set<Tarjeta> tarjetas;
 
@@ -97,5 +100,13 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return apodo;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 }
