@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <style type="text/css"> 
+     
+        .ui-dataview-list .ui-dataview-row {
+            border-bottom: 1px solid #A8A8A8;
+            padding: 25px 10px;
+            /* with the exported variables from Nova and Luna Themes*/
+            border-bottom-color: var(--input-border-color, #A8A8A8);
+        }
+
+        .logo {
+            width: 5%;
+        }
+        .detail {
+            width: 85%;
+            padding-left: 25px;
+        }
+    </style>
+
+    <h:form id="form">
+        <p:dataView var="pro" value="#{carritoController.carrito}" rows="12" paginator="true" rowsPerPageTemplate="6,12,16"
+                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+
+            <p:dataViewGridItem>
+                <p:panel header="#{pro.producto.idProducto}" style="text-align:center">
+                    <h:panelGrid columns="1" style="width:100%">
+
+                        <!--ap:graphicImage name="demo/images/car/#{car.brand}.gif"/-->
+                        <h:outputText value="#{pro.producto.nombre}" />
+
+                        <p:commandLink update=":form:productoDetalle" oncomplete="PF('detalleDialog').show()" title="Ver Detalle">
+                            <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
+                            <f:setPropertyActionListener value="#{pro}" target="#{carritoController.detalleSel}" />
+                        </p:commandLink>
+
+                    </h:panelGrid>
+                </p:panel>
+            </p:dataViewGridItem>
+
+            <p:dataViewListItem>
+                <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
+                    <!--p:graphicImage name="demo/images/car/#{car.brand}-big.gif" /--> 
+
+                    <p:outputPanel>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="Producto:" />
+                            <h:outputText value="#{pro.producto.nombre}" style="font-weight: bold"/>
+
+                            <h:outputText value="Marca" />
+                            <h:outputText value="#{pro.producto.marca}" style="font-weight: bold"/>
+                            
+                            <h:outputText value="Descripcion" />
+                            <h:outputText value="#{pro.producto.descripcion}" style="font-weight: bold"/>
+                            
+                            <h:outputText value="Cantidad:" />
+                            <h:outputText value="#{pro.cantidad}" style="font-weight: bold"/>
+                        </h:panelGrid>
+                    </p:outputPanel>
+
+                    <p:commandLink update=":form:productoDetalle" oncomplete="PF('detalleDialog').show()" title="Ver Detalle">
+                        <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
+                        <f:setPropertyActionListener value="#{pro}" target="#{carritoController.detalleSel}" />
+                    </p:commandLink>
+                </h:panelGrid>
+            </p:dataViewListItem>
+        </p:dataView>
+
+        <p:dialog header="Detalle Producto" widgetVar="detalleDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+            <p:outputPanel id="productoDetalle" style="text-align:center;">
+                <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedCar}" columnClasses="label,value">
+                    <f:facet name="header">
+                        <!--p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/--> 
+                    </f:facet>
+
+                    <h:outputText value="Nombre:" />
+                    <h:outputText value="#{carritoController.detalleSel.producto.nombre}" />
+
+                    <h:outputText value="Marca:" />
+                    <h:outputText value="#{carritoController.detalleSel.producto.marca}" />
+
+                    <h:outputText value="Descripcion:" />
+                    <h:outputText value="#{carritoController.detalleSel.producto.descripcion}" />
+
+                    <h:outputText value="Cantidad:" />
+                    <h:outputText value="$#{carritoController.detalleSel.cantidad}" />
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:dialog>
+    </h:form>
+</html>
