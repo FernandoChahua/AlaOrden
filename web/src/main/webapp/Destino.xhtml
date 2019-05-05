@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <head></head>
+    <body>
+        <button onclick="getLocation()">Try It</button>
+        <script>
+            var x = document.getElementById("demo");
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                x.innerHTML = "Latitude: " + position.coords.latitude +
+                        "<br>Longitude: " + position.coords.longitude;
+            }
+            function showPosition(position) {
+                var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+                var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+" & zoom = 14 & size = 400x300 & sensor = false & key = YOUR_:KEY";
+
+                        document.getElementById("mapholder").innerHTML = "<img src='" + img_url + "'>";
+            }
+        </script>
+
+    </body>
+</html>
