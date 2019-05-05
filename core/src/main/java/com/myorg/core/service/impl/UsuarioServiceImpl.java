@@ -26,21 +26,16 @@ public class UsuarioServiceImpl implements IUsuarioService {
     //param: usuario (puede contener apodo o email en el atributo apodo)
     @Override
     public Usuario validarContraseña(Usuario usuario){
-        Usuario rpta = usuarioRepository.findByEmail(usuario.getApodo());
+        Usuario rpta = usuarioRepository.findByApodo(usuario.getApodo());
         if(rpta.getIdUsuario() != null){
             if(rpta.getContrasena() == usuario.getContrasena()){
                 return rpta;
             }
+            else rpta = null;
         }
-        else{
-            rpta = usuarioRepository.findByApodo(usuario.getApodo());
-            if(rpta.getIdUsuario() != null){
-                if(rpta.getContrasena() == usuario.getContrasena()){
-                    return rpta;
-                }
-            }
-        }
-        return null;
+        else
+            rpta = null;
+        return rpta;
     }
     
     @Override
