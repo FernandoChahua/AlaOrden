@@ -1,13 +1,15 @@
 package com.myorg.core.service.payment;
 
 import com.myorg.core.entity.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import javax.inject.Named;
 
-
-public class PagosService {
+@Named
+public class PagosService implements Serializable {
 
     private String user = "user";
     private String key = "$dsa#457df8484f$#%3";
