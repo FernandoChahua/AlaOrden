@@ -41,6 +41,7 @@
             <version>2.3</version>
             <type>jar</type>
         </dependency>
+        
         <dependency>
             <groupId>org.omnifaces</groupId>
             <artifactId>omnifaces</artifactId>
