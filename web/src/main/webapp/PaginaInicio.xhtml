@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="/WEB-INF/templates/master.xhtml">
+            <ui:define name="content">
+                <h:form id="frmGen" enctype="multipart/form-data">
+
+                    <html>
+                        <head>
+
+
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+
+                            <br></br>
+
+                            <p:dataTable id="datTabProducto"
+                                         emptyMessage="No existen productos registrados"
+                                         value="#{productoController.productos}" var="p" paginator="true"
+                                         rows="10" selectionMode="single" rowKey="#{p.idProducto}" style="margin-right:100px; margin-left:100px;" >
+
+                                <f:facet name="header">
+                                    <p:outputLabel value="Productos mas Vistos" />
+                                </f:facet>
+                                <p:ajax event="rowSelect"
+                                        listener="#{productoController.selectProducto}" />
+
+                                <p:column headerText=" ">
+                                           <!--                        <p:outputLabel value="#{p.imagen}" />-->
+                                </p:column>
+
+                                <p:column headerText="">
+                                    <p:outputLabel value="#{p.nombre}" />
+                                </p:column>
+
+                                <p:column headerText=" ">
+                                    <p:outputLabel value="#{p.marca}" />
+                                </p:column>
+
+                                <p:column headerText=" n">
+                                    <p:outputLabel value="#{p.descripcion}" />
+                                </p:column>
+
+
+                            </p:dataTable>
+
+
+                        </head>
+                    </html>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
