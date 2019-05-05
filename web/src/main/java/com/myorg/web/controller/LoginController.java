@@ -23,22 +23,23 @@ public class LoginController implements Serializable {
 	@Inject
 	private IUsuarioService usuarioService;
 	private Usuario usuario;
+        private Usuario nuevo;
 
 	@PostConstruct
 	public void init() {
 		this.usuario = new Usuario();
+                this.nuevo = new Usuario();                
 	}
 
 	public String authentication() {
-		String redirect = null;
-
+		String redirect = "HomePage.xhtml";
 		try {
 			Usuario userFound = usuarioService.validarContraseña(usuario);
 
 			if (userFound != null && userFound.isActivo()){
 
 				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", usuario);
-				redirect = "/protected/orders?faces-redirect=true";
+				redirect = "PaginaInicio.xhtml";
 			} else {
 				Message.messageError("Credenciales incorrectas");
 
@@ -54,11 +55,18 @@ public class LoginController implements Serializable {
     public Usuario getUsuario() {
         return usuario;
     }
+    
+    public Usuario getNuevo() {
+        return nuevo;
+    }
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
+    public void setNuevo(Usuario nuevo) {
+        this.nuevo = nuevo;
+    }
         
 
 }

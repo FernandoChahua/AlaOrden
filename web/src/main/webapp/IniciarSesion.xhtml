@@ -18,10 +18,10 @@
 				<h:panelGrid columns="2">
 					<p:outputLabel for="txtUsername" value="Usuario:" />
 					<h:inputText id="txtUsername"
-						value="#{loginController.user.username}" required="true" />
+						value="#{loginController.usuario.apodo}" required="true" />
 					<p:outputLabel for="txtPassword" value="Contraseña:" />
 					<h:inputSecret id="txtPassword"
-						value="#{loginController.user.password}" required="true" />
+						value="#{loginController.usuario.contrasena}" required="true" />
 				</h:panelGrid>
 				<p:commandButton value="Login"
 					action="#{loginController.authentication()}" update=":frm:men" />

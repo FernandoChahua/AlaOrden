@@ -25,7 +25,7 @@ public class Usuario implements Serializable {
     private String email;
     
     @Column(name = "estado")
-    private boolean activo;
+    private boolean activo = true;
     
     @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private Set<Tarjeta> tarjetas;
