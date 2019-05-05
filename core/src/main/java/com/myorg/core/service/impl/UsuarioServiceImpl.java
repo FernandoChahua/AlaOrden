@@ -28,7 +28,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public Usuario validarContraseña(Usuario usuario){
         Usuario rpta = usuarioRepository.findByApodo(usuario.getApodo());
         if(rpta.getIdUsuario() != null){
-            if(rpta.getContrasena() == usuario.getContrasena()){
+            if(rpta.getContrasena().equals(usuario.getContrasena())){
                 return rpta;
             }
             else rpta = null;
@@ -39,14 +39,11 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
     
     @Override
+    @Transactional
     public boolean Registrar(Usuario usuario) throws Exception {
         boolean rpta = false;
-        Rol r = new Rol();
         if(usuarioRepository.findByEmail(usuario.getEmail()).getIdUsuario() == null ||
                 usuarioRepository.findByApodo(usuario.getApodo()).getIdUsuario() == null){
-            r.setNombre("cliente");
-            r = rolRepository.findByNombre(r);
-            usuario.getRoles().add(r);
             rpta = usuarioRepository.insert(usuario);
         }
         return rpta;

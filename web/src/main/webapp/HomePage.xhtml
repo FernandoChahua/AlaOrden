@@ -22,35 +22,43 @@
                                 <div id="header1"  class="header items" style =" width:1000px;margin-top: 100px">
                                     <div  class="input">
                                         <div  class="input">
-                                            <p:inputText id="txtUsername1" style="margin-right:50px;width:200px;" placeholder="Usuario*" value="#{loginController.usuario.apodo}" required="true"/>
-                                            <p:inputText id="txtPassword1" style="margin-right:50px;width:200px;" placeholder="Contraseña*" value="#{loginController.usuario.contrasena}" required="true"/>
-                                            <p:commandButton style="background-color: yellow; color: black" value="Sign In" process="@form" action="#{loginController.authentication()}"/>
+                                            <p:inputText id="txtUsername1" style="margin-right:50px;width:200px;" placeholder="Usuario*" 
+                                                         value="#{loginController.usuario.apodo}" required="true"/>
+                                            <p:inputText id="txtPassword1" style="margin-right:50px;width:200px;" placeholder="Contraseña*" 
+                                                         value="#{loginController.usuario.contrasena}" required="true"/>
+                                            <p:commandButton style="background-color: yellow; color: black" value="Sign In" 
+                                                             process="@this frmGen" action="#{loginController.authentication()}"/>
+                                            <p:outputLabel id="Mensaje1" style="margin-right:50px;width:200px;" value="#{loginController.errorSignIn}"/>
+                                           
 
                                            
                                         </div>
                                     </div>
-
-                                </div>
-                                
-                                <div id="header2"  class="header items" style =" width:1200px;">
-                                    <div  class="input">
-                                        <div  class="input">
-                                            <p:inputText id="txtUsername2" style="margin-right:50px;width:200px;" placeholder="Usuario" value="#{loginController.nuevo.apodo}" required="true"/>
-                                            <p:inputText id="txtEmail" style="margin-right:50px;width:200px;" placeholder="Email" value="#{loginController.nuevo.email}" required="true"/>
-                                            <p:inputText id="txtPassword2" style="margin-right:50px;width:200px;" placeholder="Contraseña" value="#{loginController.nuevo.contrasena}" required="true"/>
-                                            <p:commandButton style="background-color: red; color: white" value="Sign Up " action="register?faces-redirect=true"/>
-
-                                           
-                                        </div>
-                                    </div>
-
-                                </div>
+                                </div>                               
                             </div>
-
                         </header>
                     </html>
                     
                     
+                </h:form>
+                <h:form id="frmGen1" enctype="multipart/form-data">
+                                <div id="header2"  class="header items" style =" width:1200px;">
+                                    <div  class="input">
+                                        <div  class="input">
+                                            <p:inputText id="txtUsername2" style="margin-right:50px;width:200px;" 
+                                                         placeholder="Usuario" value="#{loginController.nuevo.apodo}" required="true"/>
+                                            <p:inputText id="txtEmail" style="margin-right:50px;width:200px;" 
+                                                         placeholder="Email" value="#{loginController.nuevo.email}" required="true"/>
+                                            <p:inputText id="txtPassword2" style="margin-right:50px;width:200px;" 
+                                                         placeholder="Contraseña" value="#{loginController.nuevo.contrasena}" required="true"/>
+                                            <p:commandButton style="background-color: red; color: white" value="Sign Up " 
+                                                             process="@this frmGen1" action="#{loginController.registrar()}"/>
+                                            <p:outputLabel id="Mensaje2" style="margin-right:50px;width:200px;" value="#{loginController.errorSignUp}"/>
+                                           
+                                        </div>
+                                    </div>
+
+                                </div>
                 </h:form>
     </body>
 </html>
