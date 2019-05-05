@@ -1,4 +1,4 @@
-package org.myorg.util;
+package com.myorg.util;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;

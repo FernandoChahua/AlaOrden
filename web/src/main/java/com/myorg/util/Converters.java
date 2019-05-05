@@ -1,4 +1,4 @@
-package org.myorg.util;
+package com.myorg.util;
 
 import java.io.Serializable;
 import java.text.ParseException;

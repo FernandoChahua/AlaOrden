@@ -1,54 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
+<h:head>
+	<link href="./resources/css/index.css" rel="stylesheet" type="text/css" />
+</h:head>
+<body>
 
-    <h:head></h:head>
-    <body>
-        <ui:composition template="/WEB-INF/templates/master.xhtml">
-            <ui:define name="content">
+	<h:form id="frm">
+		<div class="centerDiv" style="width: 400px">
+			<p:panel>
+				<f:facet name="header">Login</f:facet>
+				<p:growl id="men" />
+				<h:panelGrid columns="2">
+					<p:outputLabel for="txtUsername" value="Usuario:" />
+					<h:inputText id="txtUsername"
+						value="#{loginController.user.username}" required="true" />
+					<p:outputLabel for="txtPassword" value="Contraseña:" />
+					<h:inputSecret id="txtPassword"
+						value="#{loginController.user.password}" required="true" />
+				</h:panelGrid>
+				<p:commandButton value="Login"
+					action="#{loginController.authentication()}" update=":frm:men" />
+				<p:commandButton value="Crear Usuario"
+					action="register?faces-redirect=true" immediate="true" />
+			</p:panel>
+		</div>
+	</h:form>
 
-                <h1>Hello World!</h1>
-                <h:form id="frmGen" enctype="multipart/form-data">
-
-                    <p:selectOneMenu id="cmbCli" required="true" effect="drop" widgetVar="selCli" 
-                                     value="#{usuarioController.usuario}" onchange=""
-                                     converter="omnifaces.SelectItemsConverter"
-                                     >
-                        <f:selectItem itemLabel="Seleccione una opción"
-                                      noSelectionOption="true" itemValue="" />
-                        <f:selectItems value="#{tarjetaController.usuarios}"
-                                       var="Cli" itemLabel="#{Cli.usuario}" itemValue="#{Cli}"/>
-                        <p:ajax event="change" update=":frmGen:datTabCus"/>
-                    </p:selectOneMenu>
-
-
-                    <p:dataTable id="datTabCus" 
-                                 emptyMessage="No posee tarjetas registradas"
-                                 value="#{usuarioController.usuario.tarjetas}" var="t" paginator="true"
-                                 rows="10" selectionMode="single" rowKey="#{t.idTarjeta}">
-                        <f:facet name="header">
-                            <p:outputLabel value="Tarjetas de Cliente" />
-                        </f:facet>
-                        <p:column headerText="Nro Cuenta">
-                            <p:outputLabel value="#{t.nroCuenta}" />
-                        </p:column>
-                        <p:column headerText="Tipo Tarjeta">
-                            <p:outputLabel value="#{t.tipoTarjeta}" />
-                        </p:column>
-                        <p:column headerText="Titular">
-                            <p:outputLabel value="#{t.titular}" />
-                        </p:column>
-                        <p:column headerText="Fecha Exp">
-                            <p:outputLabel value="#{t.fechaExp}" 
-                                           converter="#{converters.localDateConverter}"/>
-                        </p:column>
-                    </p:dataTable>
-                </h:form>
-            </ui:define>
-        </ui:composition>
-    </body>
+</body>
 </html>

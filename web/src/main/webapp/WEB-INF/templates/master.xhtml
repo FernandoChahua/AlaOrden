@@ -6,6 +6,10 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
+        <title><ui:insert name="titulo"></ui:insert></title>
+<!-- SOLO USAR EN ALGUNAS PAGINAS (poner "#" -->
+<!--        <f:event listener="{masterController.checkSesion()}"
+                 type="preRenderView" />-->
     </h:head>
     <body>
         <ui:insert name="header">

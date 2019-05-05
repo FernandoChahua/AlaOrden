@@ -22,22 +22,25 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Inject
     private IRolRepository rolRepository;
 
+    
+    //param: usuario (puede contener apodo o email en el atributo apodo)
     @Override
-    public Integer validarContraseña(String campo, String contraseña){
-        Usuario rpta = new Usuario();
-        if(usuarioRepository.findByEmail(campo).getIdUsuario() != null){
-            if(usuarioRepository.findByEmail(campo).getContrasena() == contraseña){
-                rpta = usuarioRepository.findByEmail(campo);
+    public Usuario validarContraseña(Usuario usuario){
+        Usuario rpta = usuarioRepository.findByEmail(usuario.getApodo());
+        if(rpta.getIdUsuario() != null){
+            if(rpta.getContrasena() == usuario.getContrasena()){
+                return rpta;
             }
         }
         else{
-            if(usuarioRepository.findByApodo(campo).getIdUsuario() != null){
-                if(usuarioRepository.findByApodo(campo).getContrasena() == contraseña){
-                    rpta = usuarioRepository.findByApodo(campo);
+            rpta = usuarioRepository.findByApodo(usuario.getApodo());
+            if(rpta.getIdUsuario() != null){
+                if(rpta.getContrasena() == usuario.getContrasena()){
+                    return rpta;
                 }
             }
         }
-        return rpta.getIdUsuario();
+        return null;
     }
     
     @Override

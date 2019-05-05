@@ -13,7 +13,7 @@ import com.myorg.core.service.*;
 import javax.faces.view.ViewScoped;
 
 import org.primefaces.event.SelectEvent;
-import org.myorg.util.Message;
+import com.myorg.util.Message;
 
 @Named
 @ViewScoped

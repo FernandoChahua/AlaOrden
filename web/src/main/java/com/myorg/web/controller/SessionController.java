@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.myorg.util.Message;
+import com.myorg.util.Message;
 import org.primefaces.event.SelectEvent;
 
-
+@Deprecated
 public class SessionController implements Serializable{
     
     private static Map<HttpSession,Integer> autentificados;
