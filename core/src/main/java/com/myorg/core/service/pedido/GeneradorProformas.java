@@ -88,6 +88,10 @@ public class GeneradorProformas {
         return codRef;
     }
 
+    public List<DetallePedido> buscarProforma(String franquicia) {
+        return proformas.get(franquicia);
+    }
+    
     public Map<String, List<DetallePedido>> getProformas() {
         return proformas;
     }

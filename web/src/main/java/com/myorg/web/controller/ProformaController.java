@@ -3,8 +3,8 @@ package com.myorg.web.controller;
 import com.myorg.core.entity.*;
 import com.myorg.core.service.pedido.GeneradorProformas;
 import com.myorg.util.SessionHelper;
-import com.myorg.core.service.pedido.Proforma;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -30,12 +30,13 @@ public class ProformaController implements Serializable{
         carrito = SessionHelper.getCarrito();
     }
     
-//    public List<Map.Entry<String,List<DetallePedido>>> getProformas(){
-//        Map<String,List<DetallePedido>> map =generadorProformas.getProformas();
-//        Set<Map.Entry<String,List<DetallePedido>>> set = map.entrySet();
-//        return new ArrayList<>(set);
-//    }    
-    public List<Proforma> getProformas(){
-        return new ArrayList<>(generadorProformas.getProformas().values());
+    public List<Map.Entry<String,List<DetallePedido>>> getProformas(){
+        Map<String,List<DetallePedido>> map =generadorProformas.getProformas();
+        Set<Map.Entry<String,List<DetallePedido>>> set = map.entrySet();
+        return new ArrayList<>(set);
+    }    
+
+    public List<DetallePedido> buscarProforma(String franquicia){
+        return generadorProformas.buscarProforma(franquicia);
     }
 }
