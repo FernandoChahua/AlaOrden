@@ -4,13 +4,14 @@ import com.myorg.core.service.comm.ext.IProductoExtARepository;
 import com.myorg.core.service.comm.ext.Product;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 //AdapterConcreto
+@Named
 public class ComunicadorConcretoA extends ComunicadorInventario {
 
     private Map<String, InfoProd> infoProds;
@@ -19,7 +20,7 @@ public class ComunicadorConcretoA extends ComunicadorInventario {
     private IProductoExtARepository inv;
 
     public ComunicadorConcretoA() {
-
+        infoProds = new HashMap<>();
     }
 
     @Override
