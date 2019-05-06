@@ -1,6 +1,7 @@
 package com.myorg.util;
 
 import com.myorg.core.entity.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.context.FacesContext;
@@ -24,7 +25,7 @@ public class SessionHelper {
         List<DetallePedido> carrito = (List<DetallePedido>) context.getExternalContext().getSessionMap().get("carrito");
         if (carrito == null) {
             carrito = new ArrayList<>();
-            context.getExternalContext().getSessionMap().put("pedido", carrito);
+            context.getExternalContext().getSessionMap().put("carrito", carrito);
         }
         return carrito;
     }
@@ -43,5 +44,14 @@ public class SessionHelper {
         FacesContext context = FacesContext.getCurrentInstance();
         Usuario usuario = (Usuario) context.getExternalContext().getSessionMap().get("user");
         return usuario;
+    }
+    
+    public static void redirect(String redirectTo){
+        try {
+        FacesContext.getCurrentInstance().getExternalContext().redirect(redirectTo);
+        }
+        catch (IOException e){
+            return;
+        }
     }
 }

@@ -6,6 +6,7 @@ import com.myorg.core.service.payment.InfoPago;
 import com.myorg.core.service.payment.PagosService;
 import com.myorg.util.SessionHelper;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -46,7 +47,27 @@ public class PagoController implements Serializable {
     }
     
     public void procesar() {
+        if (tarjeta.getIdTarjeta() == null){
+            tarjeta.setTitular(infoPago.getNombre() + " " + infoPago.getApellido());
+            tarjeta.setUsuario(SessionHelper.getUsuario());
+            try{
+                tarjetaService.insert(tarjeta);
+            } catch (Exception e){
+                SessionHelper.redirect("./Error.xhtml");
+                return;
+            }
+            
+        }
+        Pedido pedido = SessionHelper.getPedido();
         
+        BigDecimal total = new BigDecimal(0);
+        total.add(pedido.getSubtotal());
+        total.add(pedido.getPrecioEnvio());
+        total.subtract(pedido.getDescuento());
+        
+        pagosService.pagar(tarjeta, infoPago, total);
+        
+        SessionHelper.redirect("./VerRecibo.xhtml");
     }
 
     public List<Tarjeta> getTarjetas() {

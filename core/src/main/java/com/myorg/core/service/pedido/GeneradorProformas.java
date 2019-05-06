@@ -2,18 +2,21 @@ package com.myorg.core.service.pedido;
 
 import com.myorg.core.service.comm.InfoProd;
 import com.myorg.core.entity.*;
+import com.myorg.core.repository.impl.ProductoRepositoryImpl;
 import com.myorg.core.service.comm.ComunicadorInventario;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 //PENDING: Probar si funciona
 @Named
-public class GeneradorProformas implements Serializable{
+public class GeneradorProformas implements Serializable {
 
     @Inject
     private ComunicadorInventario comm;
@@ -22,11 +25,46 @@ public class GeneradorProformas implements Serializable{
 
     //filtrado en base a cercania (solo sedes cercanas, Controller o Service)
     private List<Franquicia> proveedores;
-
+    //FIXME: TESTING
+    @Inject
+    ProductoRepositoryImpl pR;
+    
+    
+    //FIXME: TESTING
+    public void testMe(){
+        
+        List<Producto> prods = null;
+        try{
+            prods = pR.findAll();
+        }catch(Exception e){
+            return;
+        }
+        proformas = new HashMap<>();
+        
+        List<String> prov = new ArrayList<>();
+        prov.add("Metro");
+        prov.add("Plaza Vea");
+        prov.add("Tottus");
+        
+        for (String p : prov){
+            List<DetallePedido> list = new ArrayList<>();
+            for (Producto pr : prods){
+                DetallePedido dp = new DetallePedido();
+                dp.setProducto(pr);
+                dp.setCantidad(1);
+                dp.setPrecio(new BigDecimal(new Random().nextInt(3) + 5));
+                
+                list.add(dp);
+            }
+            proformas.put(p, list);
+        }
+    }
+    
     public void generarListas(List<DetallePedido> carrito) {
         if (proveedores != null && !proveedores.isEmpty()) {
             for (Franquicia prov : proveedores) {
                 List<DetallePedido> lista = generarListaPorFranquicia(carrito, prov);
+                proformas = new HashMap<>();
                 proformas.put(prov.toString(), lista);
             }
         } else {
@@ -96,7 +134,7 @@ public class GeneradorProformas implements Serializable{
     public List<DetallePedido> buscarProforma(String franquicia) {
         return proformas.get(franquicia);
     }
-    
+
     public Map<String, List<DetallePedido>> getProformas() {
         return proformas;
     }
@@ -107,6 +145,19 @@ public class GeneradorProformas implements Serializable{
 
     public void setProveedores(List<Franquicia> proveedores) {
         this.proveedores = proveedores;
+    }
+
+    public BigDecimal subtotalPorFranquicia(String nombreFranquicia) {
+        List<DetallePedido> detalles = proformas.get(nombreFranquicia);
+        return subtotalLista(detalles);
+    }
+
+    private BigDecimal subtotalLista(List<DetallePedido> listaCotizada) {
+        BigDecimal subtotal = new BigDecimal(0);
+        for (DetallePedido d : listaCotizada) {
+            subtotal.add(d.getPrecio());
+        }
+        return subtotal;
     }
 
 }
