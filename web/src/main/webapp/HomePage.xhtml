@@ -25,8 +25,7 @@
 
                                     <p:inputText id="txtUsername1" style="margin-right:50px;width:200px;" placeholder="Usuario*" 
                                                  value="#{loginController.usuario.apodo}" required="true"/>
-                                    <h:outputText value="Password: " />
-                                    <p:password id="feedback" value="#{loginController.usuario.contrasena}" style="margin-right:50px;width:200px;" feedback="true" />
+                                    <p:password id="feedback" value="#{loginController.usuario.contrasena}" placeholder="contraseña" style="margin-right:50px;width:200px;" feedback="true" />
                                     <p:commandButton style="background-color: yellow; color: black" value="Sign In" 
                                                      process="@this frmGen" action="#{loginController.authentication()}"/>
                                     <p:outputLabel id="Mensaje1" style="margin-right:50px;width:200px;" value="#{loginController.errorSignIn}"/>
@@ -50,8 +49,7 @@
                                      placeholder="Usuario" value="#{loginController.nuevo.apodo}" required="true"/>
                         <p:inputText id="txtEmail" style="margin-right:50px;width:200px;" 
                                      placeholder="Email" value="#{loginController.nuevo.email}" required="true"/>
-                        <h:outputText value="Contraseña: " />
-                        <p:password value="#{loginController.nuevo.contrasena}" style="margin-right:50px;width:200px;" feedback="true" />
+                        <p:password value="#{loginController.nuevo.contrasena}" placeholder="contraseña" style="margin-right:50px;width:200px;" feedback="true" />
                         <p:commandButton style="background-color: red; color: white" value="Sign Up " 
                                          process="@this frmGen1" action="#{loginController.registrar()}"/>
                         <p:outputLabel id="Mensaje2" style="margin-right:50px;width:200px;" value="#{loginController.errorSignUp}"/>
