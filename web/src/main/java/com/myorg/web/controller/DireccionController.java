@@ -1,5 +1,8 @@
 package com.myorg.web.controller;
 
+import com.myorg.core.entity.Pedido;
+import com.myorg.util.Message;
+import com.myorg.util.SessionHelper;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +39,26 @@ public class DireccionController implements Serializable {
             e.printStackTrace();
         }
     }
-    
+    public String siguientePaso() {
+		String redirect = "Destino.xhtml";
+		try {
+
+                    if (!(direccion.equals(""))){
+                                Pedido pedido = (Pedido) SessionHelper.getPedido();
+                                if(pedido!=null){
+                                    pedido.setDireccion(direccion);
+                                    FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pedido", pedido);
+                                }
+				
+				redirect = "Pagos.xhtml";
+			} 
+		} catch (Exception e) {
+			Message.messageError("No se selecciono una ubicacion" + e.getMessage());
+			System.out.println(e.getMessage());
+		}
+
+		return redirect;
+	}
     public String getLatitud(){
         return this.latitud;
     }

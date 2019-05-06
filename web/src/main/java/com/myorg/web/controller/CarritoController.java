@@ -39,6 +39,13 @@ public class CarritoController implements Serializable{
         }
     }
     
+    public void deleteDetallePedido() {
+        try {
+            carrito.remove(detalleSel);
+        } catch (Exception e) {
+            Message.messageError("Error detalle :" + e.getMessage());
+        }
+    }
     
     public List<DetallePedido> getCarrito() {
         return carrito;

@@ -3,7 +3,9 @@
 <html 	xmlns="http://www.w3.org/1999/xhtml"
        xmlns:h="http://java.sun.com/jsf/html"
        xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:ui="http://java.sun.com/jsf/facelets">
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:p="http://primefaces.org/ui">
+
     <h:head></h:head>
     <h:body>
         <ui:composition template="/WEB-INF/templates/master.xhtml">
@@ -24,8 +26,8 @@
                                value="#{direccionController.latitud}" type="text" />
                         <input id="longitude"
                                value="#{direccionController.longitud}" type="text" />
-                        <h:button>
-                        </h:button>
+                        <p:commandButton style="background-color: yellow; color: black" value="Siguiente Paso" 
+                                         process="@this frmGen" action="#{direccionController.siguientePaso()}"/>
                         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDT3BrfPIJPb8V-JdIlHkUcCaPxza33unY&amp;libraries=places"></script>
                         <script>
                             var marker;
