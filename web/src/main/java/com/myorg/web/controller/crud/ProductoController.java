@@ -41,6 +41,8 @@ public class ProductoController implements Serializable {
     private String strMarca;
     private Marca marca;
     private List<Marca> marcas;
+    
+    private Usuario logeado;
 
     @PostConstruct
     public void init() {
@@ -48,6 +50,7 @@ public class ProductoController implements Serializable {
         productoSel = new Producto();
         categoria = new Categoria();
         marca = new Marca();
+        logeado = (Usuario) SessionHelper.getUsuario();
         this.loadProductos();
         this.loadCategorias();
         this.loadMarcas();
@@ -81,8 +84,11 @@ public class ProductoController implements Serializable {
     public void agregarCarrito() {
         try {
             if (this.productoSel != null) {
-                Carrito carrito = (Carrito) SessionHelper.getCarrito();
-                carrito.agregarProducto(productoSel, 1);
+                List<DetallePedido> carrito = (List<DetallePedido>) SessionHelper.getCarrito();
+                DetallePedido dp = new DetallePedido();
+                dp.setProducto(productoSel);
+                dp.setCantidad(1);
+                carrito.add(dp);
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("carrito", carrito);
                 Message.messageInfo("Producto agregado al carrito correctamente");
             } else {
@@ -288,5 +294,10 @@ public class ProductoController implements Serializable {
     public void setStrMarca(String strMarca) {
         this.strMarca = strMarca;
     }
-
+    public Usuario getUsuario(){
+        return this.logeado;
+    }
+    public void setUsuario(Usuario usuario){
+        this.logeado = usuario;
+    }
 }

@@ -4,14 +4,14 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-    <h:head>#{carritoController.carrito.size()}</h:head>
+    <h:head></h:head>
     <body>
         <ui:composition template="/WEB-INF/templates/master.xhtml">
             <ui:define name="content">
                 <h:form id="frmGen" enctype="multipart/form-data">
 
                     <h:form id="form">
-
+                        <h:outputText value="#{carritoController.logeado.apodo}" />
                         <p:dataView var="pro" value="#{carritoController.carrito}" rows="12" paginator="true" rowsPerPageTemplate="6,12,16"
                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                     gridIcon="pi pi-th-large" listIcon="pi pi-bars">
@@ -24,7 +24,7 @@
                                         <h:outputText value="#{pro.producto.descripcion}" />
                                         <h:outputText value="#{pro.producto.marca}" />
 
-                                        <p:commandLink update=":form:productoDetalle" oncomplete="PF('detalleDialog').show()" title="Ver Detalle">
+                                        <p:commandLink oncomplete="PF('detalleDialog').show()" title="Ver Detalle">
                                             <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
                                             <f:setPropertyActionListener value="#{pro}" target="#{carritoController.detalleSel}" />
                                         </p:commandLink>
@@ -56,7 +56,7 @@
                                         </h:panelGrid>
                                     </p:outputPanel>
 
-                                    <p:commandLink update=":form:productoDetalle" oncomplete="PF('detalleDialog').show()" title="Ver Detalle">
+                                    <p:commandLink oncomplete="PF('detalleDialog').show()" title="Ver Detalle">
                                         <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
                                         <f:setPropertyActionListener value="#{pro}" target="#{carritoController.detalleSel}" />
                                     </p:commandLink>

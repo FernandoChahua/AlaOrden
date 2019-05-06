@@ -86,6 +86,7 @@
                                                      />
                                 </f:facet>
                             </p:toolbar>
+                            <p:outputLabel value="#{productoController.usuario.apodo}" />
                             <p:dataTable id="datTabProducto"
                                          emptyMessage="No existen productos registrados"
                                          value="#{productoController.productos}" var="p" paginator="true"
