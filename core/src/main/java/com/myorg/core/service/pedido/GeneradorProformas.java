@@ -155,7 +155,8 @@ public class GeneradorProformas implements Serializable {
     private BigDecimal subtotalLista(List<DetallePedido> listaCotizada) {
         BigDecimal subtotal = new BigDecimal(0);
         for (DetallePedido d : listaCotizada) {
-            subtotal.add(d.getPrecio());
+            BigDecimal importe = d.getPrecio().multiply(new BigDecimal(d.getCantidad()));
+            subtotal = subtotal.add(importe);
         }
         return subtotal;
     }

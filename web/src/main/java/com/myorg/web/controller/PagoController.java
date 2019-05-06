@@ -61,13 +61,18 @@ public class PagoController implements Serializable {
         Pedido pedido = SessionHelper.getPedido();
         
         BigDecimal total = new BigDecimal(0);
-        total.add(pedido.getSubtotal());
-        total.add(pedido.getPrecioEnvio());
-        total.subtract(pedido.getDescuento());
+        total = total.add(pedido.getSubtotal());
+        total = total.add(pedido.getPrecioEnvio());
+        total = total.subtract(pedido.getDescuento());
         
         pagosService.pagar(tarjeta, infoPago, total);
         
         SessionHelper.redirect("./VerRecibo.xhtml");
+    }
+    
+    public void clean(){
+        tarjeta = new Tarjeta();
+        infoPago = new InfoPago();
     }
 
     public List<Tarjeta> getTarjetas() {
@@ -89,6 +94,5 @@ public class PagoController implements Serializable {
     public void setInfoPago(InfoPago infoPago) {
         this.infoPago = infoPago;
     }
-    
-    
+   
 }

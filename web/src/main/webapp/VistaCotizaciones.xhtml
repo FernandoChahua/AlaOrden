@@ -20,23 +20,23 @@
                                 <p:column headerText="Marca" sortBy="#{det.producto.marca.nombre}">
                                     <h:outputText value="#{det.producto.marca}" />
                                 </p:column>
-                                <p:column headerText="Precio" sortBy="#{det.precio}">
-                                    <h:outputText value="#{det.precio}" />
-                                </p:column>
                                 <p:column headerText="Cantidad" sortBy="#{det.cantidad}">
                                     <h:outputText value="#{det.cantidad}" />
                                 </p:column>
-                                <p:summaryRow>
-                                    <p:column colspan="3" style="text-align:right">
-                                        <h:outputText value="Total:" />
-                                    </p:column>
-                                    <p:column>
-                                        <p:commandButton value="#{proformaController.subtotalProforma(lisdet.key)}" 
-                                                         actionListener="#{proformaController.elegirProforma(lisdet.key)}">
-                                        </p:commandButton>
-                                    </p:column>
-                                </p:summaryRow>
+                                <p:column headerText="Precio" sortBy="#{det.precio}">
+                                    <h:outputText value="#{det.precio}" />
+                                </p:column>
                             </p:dataTable>
+                            <p:summaryRow>
+                                <p:column style="text-align:right">
+                                    <h:outputText value="Total:" />
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="#{proformaController.subtotalProforma(lisdet.key)}" 
+                                                     actionListener="#{proformaController.elegirProforma(lisdet.key)}">
+                                    </p:commandButton>
+                                </p:column>
+                            </p:summaryRow>
                         </p:tab>
                     </p:accordionPanel>
                 </h:form>

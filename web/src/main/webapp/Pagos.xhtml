@@ -15,28 +15,28 @@
                 <h:form id="frmPago">
                     <h:panelGrid id="PanGriPago" columns="4" cellpadding="5">
 
-                        <p:outputLabel for="txtPan" value="Nro. de Cuenta" />
-                        <p:inputMask id="txtPan" value="#{pagoController.tarjeta.nroCuenta}" mask="9999-9999-9999-9999"/>
-                        <br/>
-                        <p:outputLabel for="txtNombre" value="Nombres" />
-                        <p:inputText id="txtNombre" value="#{pagoController.infoPago.nombre}" />
-                        <p:outputLabel for="txtApellido" value="Apellidos" />
-                        <p:inputText id="txtApellido" value="#{pagoController.infoPago.apellido}"/>
-                        <p:outputLabel value="fechaExp" for="txtfechaExp" />
-                        <p:datePicker id="txtfechaExp" required="true" style="width:90%" view="month" autocomplete="off"
-                                      value="#{tarjetaController.tarjeta.fechaExp}" pattern="MM/yy"
-                                      converter="#{converters.localDateConverter}" converterMessage="Fecha no valida"
-                                      yearNavigator="true" yearRange="2000:2030" showIcon="true" />
-                        <p:outputLabel for="txtccv" value="CCV" />
-                        <p:inputMask id="txtccv" value="#{pagoController.infoPago.ccv}" mask="999"/>
-                        <br></br>
-                        <br></br>
-                        <p:outputLabel for="txtDireccion" value="Direccion" />
-                        <p:inputText id="txtDireccion" value="#{pagoController.infoPago.direccion}"/>
-                        <p:outputLabel for="txtCiudad" value="Ciudad" />
-                        <p:inputText id="txtCiudad" value="#{pagoController.infoPago.ciudad}"/>
-                        <p:outputLabel for="txtZip" value="Còdigo Postal" />
-                        <p:inputMask id="txtZip" value="#{pagoController.infoPago.codPostal}" mask="999999"/>
+                            <p:outputLabel for="txtPan" value="Nro. de Cuenta" />
+                            <p:inputMask id="txtPan" value="#{pagoController.tarjeta.nroCuenta}" mask="9999-9999-9999-9999"/>
+
+                            <p:outputLabel for="txtNombre" value="Nombres" />
+                            <p:inputText id="txtNombre" value="#{pagoController.infoPago.nombre}" />
+                            <p:outputLabel for="txtApellido" value="Apellidos" />
+                            <p:inputText id="txtApellido" value="#{pagoController.infoPago.apellido}"/>
+
+                            <p:outputLabel value="fechaExp" for="txtfechaExp" />
+                            <p:datePicker id="txtfechaExp" required="true" style="width:90%" view="month" autocomplete="off"
+                                          value="#{tarjetaController.tarjeta.fechaExp}" pattern="MM/yy"
+                                          converter="#{converters.localDateConverter}" converterMessage="Fecha no valida"
+                                          yearNavigator="true" yearRange="2000:2030" showIcon="true" />
+                            <p:outputLabel for="txtccv" value="CCV" />
+                            <p:inputMask id="txtccv" value="#{pagoController.infoPago.ccv}" mask="999"/>
+
+                            <p:outputLabel for="txtDireccion" value="Direccion" />
+                            <p:inputText id="txtDireccion" value="#{pagoController.infoPago.direccion}"/>
+                            <p:outputLabel for="txtCiudad" value="Ciudad" />
+                            <p:inputText id="txtCiudad" value="#{pagoController.infoPago.ciudad}"/>
+                            <p:outputLabel for="txtZip" value="Còdigo Postal" />
+                            <p:inputMask id="txtZip" value="#{pagoController.infoPago.codPostal}" mask="999999"/>
 
                         <p:commandButton value="Guardar" icon="ui-icon-disk"
                                          process="@this :frmPago:PanGriPago"
