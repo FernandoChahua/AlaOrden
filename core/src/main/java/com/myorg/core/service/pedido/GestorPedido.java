@@ -109,9 +109,9 @@ public class GestorPedido {
         }
 
         BigDecimal total = new BigDecimal(0);
-        total.add(pedido.getSubtotal());
-        total.add(pedido.getPrecioEnvio());
-        total.subtract(pedido.getDescuento());
+        total = total.add(pedido.getSubtotal());
+        total = total.add(pedido.getPrecioEnvio());
+        total = total.subtract(pedido.getDescuento());
         String user = pagosService.getUser();
         String key = pagosService.getKey();
 
