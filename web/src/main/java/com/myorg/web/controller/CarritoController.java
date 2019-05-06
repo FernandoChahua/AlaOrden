@@ -27,12 +27,15 @@ public class CarritoController implements Serializable{
     public void init() {
         detalleSel=new DetallePedido();
         detalle=new DetallePedido();
-        carrito = SessionHelper.getCarrito();
+        try{
+        carrito = (List<DetallePedido>) SessionHelper.getCarrito();}
+        catch(Exception e){
+           Message.messageError("Error carrito :" + e.getMessage());
+        }
     }
     
     public void editDetallePedido() {
         try {
-            
                 this.detalle = this.detalleSel;
         } catch (Exception e) {
             Message.messageError("Error detalle :" + e.getMessage());

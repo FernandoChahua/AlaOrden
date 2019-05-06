@@ -84,6 +84,7 @@ public class ProductoController implements Serializable {
                 Carrito carrito = (Carrito) SessionHelper.getCarrito();
                 carrito.agregarProducto(productoSel, 1);
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("carrito", carrito);
+                Message.messageInfo("Producto agregado al carrito correctamente");
             } else {
                 Message.messageInfo("Debe seleccionar un producto");
             }
