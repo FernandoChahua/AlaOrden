@@ -10,33 +10,32 @@ import com.myorg.core.repository.ITarjetaRepository;
 import com.myorg.core.service.ITarjetaService;
 import javax.transaction.Transactional;
 
-
 @Named
-public class TarjetaServiceImpl implements ITarjetaService{
+public class TarjetaServiceImpl implements ITarjetaService {
 
     private static final long serialVersionUID = 1L;
-	
+
     @Inject
     private ITarjetaRepository tarjetaRepository;
-    
+
     @Transactional
     @Override
     public boolean insert(Tarjeta t) throws Exception {
         boolean rpta = false;
-        try{
+        try {
             tarjetaRepository.insert(t);
             rpta = true;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             throw ex;
         }
         return rpta;
     }
 
     @Override
-    public List<Tarjeta> findAll()throws Exception {
-        try{
+    public List<Tarjeta> findAll() throws Exception {
+        try {
             return tarjetaRepository.findAll();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             throw ex;
         }
     }
@@ -45,10 +44,10 @@ public class TarjetaServiceImpl implements ITarjetaService{
     @Override
     public boolean update(Tarjeta t) throws Exception {
         boolean rpta = false;
-        try{
+        try {
             tarjetaRepository.update(t);
             rpta = true;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             throw ex;
         }
         return rpta;
@@ -58,10 +57,10 @@ public class TarjetaServiceImpl implements ITarjetaService{
     @Override
     public boolean delete(Tarjeta t) throws Exception {
         boolean rpta = false;
-        try{
+        try {
             tarjetaRepository.delete(t);
             rpta = true;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             throw ex;
         }
         return rpta;
@@ -69,12 +68,20 @@ public class TarjetaServiceImpl implements ITarjetaService{
 
     @Override
     public Tarjeta findById(Tarjeta t) throws Exception {
-        try{
+        try {
             return tarjetaRepository.findById(t);
-        }catch(Exception ex){
+        } catch (Exception ex) {
             throw ex;
         }
     }
-	
+
+    @Override
+    public List<Tarjeta> findAllByUsuario(int idUsuario) throws Exception {
+        try {
+            return tarjetaRepository.findAllByUsuario(idUsuario);
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 
 }

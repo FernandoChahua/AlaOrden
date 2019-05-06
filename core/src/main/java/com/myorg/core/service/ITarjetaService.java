@@ -6,11 +6,12 @@
 package com.myorg.core.service;
 
 import com.myorg.core.entity.Tarjeta;
+import java.util.List;
 
 /**
  *
  * @author Alexia
  */
 public interface ITarjetaService extends ICrudService<Tarjeta> {
-    
+    List<Tarjeta> findAllByUsuario(int idUsuario) throws Exception;
 }

@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
@@ -14,11 +15,8 @@ public class PagosService implements Serializable {
     private String user = "user";
     private String key = "$dsa#457df8484f$#%3";
   
+    @Inject
     private Gateway gateway;
-
-    public PagosService() {
-        gateway = new Gateway();
-    }
 
     public boolean validar(Tarjeta tarjeta, InfoPago infoPago, BigDecimal monto) {
         Map<String, String> paramTransaccion = new HashMap<>();
