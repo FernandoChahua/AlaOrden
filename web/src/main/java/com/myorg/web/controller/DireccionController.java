@@ -1,6 +1,8 @@
 package com.myorg.web.controller;
 
+import com.myorg.core.entity.Pedido;
 import com.myorg.util.Message;
+import com.myorg.util.SessionHelper;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,8 +44,12 @@ public class DireccionController implements Serializable {
 		try {
 
 			if (!direccion.equals("")){
-
-				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("direccion", direccion);
+                                Pedido pedido = (Pedido) SessionHelper.getPedido();
+                                if(pedido!=null){
+                                    pedido.setDireccion(direccion);
+                                    FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pedido", pedido);
+                                }
+				
 				redirect = "Pagos.xhtml";
 			} 
 		} catch (Exception e) {
