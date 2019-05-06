@@ -32,15 +32,15 @@
                     <div class="row">
                         <div class="col-md-10">
                             <input id="autocomplete" class="form-control" type="text" />
-                            <input id="direccion" class="form-control"  value="#{direccionController.direccion}" type="text"/>
+                            <input id="direccion" value="#{direccionController.direccion}" type="text"/>
                             <div id="map"></div>
                         </div>
                     </div>
                 </div>
-                <h:inputText id="latitude" 
-                             value="#{direccionController.latitud}" required="true" />
-                <h:inputText id="longitude"
-                             value="#{direccionController.longitud}" required="true" />
+                <input id="latitude" 
+                             value="#{direccionController.latitud}" type="text" />
+                <input id="longitude"
+                             value="#{direccionController.longitud}" type="text" />
                 <h:button>
                 </h:button>
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDT3BrfPIJPb8V-JdIlHkUcCaPxza33unY&amp;libraries=places"></script>
@@ -69,8 +69,10 @@
                                     draggable: false,
                                     animation: google.maps.Animation.DROP
                                 });
-                                document.getElementById("latitude").value = pos.lat;
-                                document.getElementById("longitude").value = pos.lng;
+                                if (document.getElementById("latitude"))
+                                    document.getElementById("latitude").value = pos.lat;
+                                if (document.getElementById("longitude"))
+                                    document.getElementById("longitude").value = pos.lng;
                                 geocodeLatLng(pos);
                                 function addMarker(location, map) {
                                     marker.setMap(null);
@@ -80,17 +82,16 @@
                                         draggable: true,
                                         animation: google.maps.Animation.DROP
                                     });
+                                if (document.getElementById("latitude"))
                                     document.getElementById("latitude").value = location.lat;
+                                if (document.getElementById("longitude"))
                                     document.getElementById("longitude").value = location.lng;
                                     map.setCenter(location);
                                     map.setZoom(18);
-
-
                                 }
                                 var autocomplete = document.getElementById('autocomplete');
                                 const search = new google.maps.places.Autocomplete(autocomplete);
                                 search.bindTo("bounds", map);
-
                                 search.addListener('place_changed', function () {
                                     var place = search.getPlace();
                                     if (!place.geometry.viewport) {
@@ -113,8 +114,10 @@
                                                 addMarker(longitud, map);
                                                 infowindow.setContent(results[0].formatted_address);
                                                 infowindow.open(map, marker);
-                                                document.getElementById("direccion").value = results[0].formatted_address;
-                                                document.getElementById("autocomplete").value = results[0].formatted_address;
+                                                if (document.getElementById("direccion"))
+                                                    document.getElementById("direccion").value = results[0].formatted_address;
+                                                if (document.getElementById("autocomplete"))
+                                                    document.getElementById("autocomplete").value = results[0].formatted_address;
                                             } else {
                                                 window.alert('No results found');
                                             }
@@ -136,9 +139,6 @@
 
 
                     });
-
-
-
                     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         infoWindow.setPosition(pos);
                         infoWindow.setContent(browserHasGeolocation ?
