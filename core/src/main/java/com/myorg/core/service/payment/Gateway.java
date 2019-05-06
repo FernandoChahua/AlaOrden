@@ -4,9 +4,14 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Random;
+import javax.inject.Named;
 
 //Entidad que se encarga de procesar el pago
-public class Gateway implements Serializable{
+@Named
+public class Gateway implements Serializable {
+
+    private String user = "user";
+    private String key = "$dsa#457df8484f$#%3";
 
     public synchronized Respuesta autorizar(Map<String, String> paramValidacion) throws Exception {
         wait(2000);

@@ -14,28 +14,34 @@ public class SessionHelper {
     public static boolean existe(String key) {
         return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().containsKey(key);
     }
-    
+
     public static void eliminar(String key) {
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(key);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(key);
     }
-    
-    public static List<DetallePedido> getCarrito(){
+
+    public static List<DetallePedido> getCarrito() {
         FacesContext context = FacesContext.getCurrentInstance();
         List<DetallePedido> carrito = (List<DetallePedido>) context.getExternalContext().getSessionMap().get("carrito");
-        if (carrito == null){
+        if (carrito == null) {
             carrito = new ArrayList<>();
             context.getExternalContext().getSessionMap().put("pedido", carrito);
         }
         return carrito;
     }
-    
-    public static Pedido getPedido(){
+
+    public static Pedido getPedido() {
         FacesContext context = FacesContext.getCurrentInstance();
         Pedido pedido = (Pedido) context.getExternalContext().getSessionMap().get("pedido");
-        if (pedido == null){
+        if (pedido == null) {
             pedido = new Pedido();
             context.getExternalContext().getSessionMap().put("pedido", pedido);
         }
         return pedido;
+    }
+
+    public static Usuario getUsuario() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        Usuario usuario = (Usuario) context.getExternalContext().getSessionMap().get("user");
+        return usuario;
     }
 }

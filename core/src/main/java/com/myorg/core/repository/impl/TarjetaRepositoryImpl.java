@@ -16,7 +16,7 @@ import com.myorg.core.repository.ITarjetaRepository;
 public class TarjetaRepositoryImpl implements ITarjetaRepository {
 
     private static final long serialVersionUID = 1L;
-    
+
     @PersistenceContext(unitName = "visorPU")
     private EntityManager em;
 
@@ -45,17 +45,49 @@ public class TarjetaRepositoryImpl implements ITarjetaRepository {
 
     @Override
     public boolean update(Tarjeta t) throws Exception {
-        return false;
+        em.merge(t);
+        return true;
     }
 
     @Override
     public boolean delete(Tarjeta t) throws Exception {
-        return false;
+        em.remove(t);
+        return true;
     }
 
     @Override
     public Tarjeta findById(Tarjeta id) throws Exception {
-        return null;
+        Tarjeta tarjeta = new Tarjeta();
+
+        TypedQuery<Tarjeta> tarjetaExists = null;
+
+        try {
+            tarjetaExists = em.createQuery("Select t from Tarjeta t WHERE t.idTarjeta = @id", Tarjeta.class);
+            tarjetaExists.setParameter("@id", id);
+            tarjeta = tarjetaExists.getSingleResult();
+
+        } catch (Exception e) {
+
+        }
+        return tarjeta;
+    }
+
+    @Override
+    public List<Tarjeta> findAllByUsuario(int idUsuario) throws Exception {
+         List<Tarjeta> tarjetas = new ArrayList<>();
+
+        TypedQuery<Tarjeta> tarjetaExists = null;
+
+        try {
+            tarjetaExists = em.createQuery("Select t from Tarjeta t WHERE t.usuario.idUsuario = @id", Tarjeta.class);
+            tarjetaExists.setParameter("@id", idUsuario);
+            tarjetas = tarjetaExists.getResultList();
+
+        } catch (Exception e) {
+            tarjetas = new ArrayList<>();
+        }
+
+        return tarjetas;
     }
 
 }
