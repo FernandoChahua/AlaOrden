@@ -10,7 +10,7 @@
     <body>
         <ui:composition template="/WEB-INF/templates/master.xhtml">
             <ui:define name="content">
-                <h:form>
+                <h:form id="frmCot">
                     <p:accordionPanel value="#{proformaController.proformas}" var="lisdet">
                         <p:tab title="#{lisdet.key}">
                             <p:dataTable var="det" value="#{proformaController.buscarProforma(lisdet.key)}" sortBy="#{det.precio}">
@@ -31,9 +31,9 @@
                                         <h:outputText value="Total:" />
                                     </p:column>
                                     <p:column>
-                                        <h:outputText value="">
-                                            <f:convertNumber type="currency" currencySymbol="S/." />
-                                        </h:outputText>
+                                        <p:commandButton value="#{proformaController.subtotalProforma(lisdet.key)}" 
+                                                         actionListener="#{proformaController.elegirProforma(lisdet.key)}">
+                                        </p:commandButton>
                                     </p:column>
                                 </p:summaryRow>
                             </p:dataTable>
