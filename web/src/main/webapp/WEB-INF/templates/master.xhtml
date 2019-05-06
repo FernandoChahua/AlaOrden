@@ -4,13 +4,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title><ui:insert name="titulo"></ui:insert></title>
-<!-- SOLO USAR EN ALGUNAS PAGINAS (poner "#" -->
-<!--        <f:event listener="{masterController.checkSesion()}"
-                 type="preRenderView" />-->
-    </h:head>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head></h:head>
     <body>
         <ui:insert name="header">
             <h:form>
@@ -18,9 +14,22 @@
 
                 <html>
                     <head>
+                        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
                         <title>Menu Desplegable</title>
                         <style type="text/css">
+                            .ui-dataview-list,.ui-dataview-row {
+                                border-bottom: 1px solid #A8A8A8;
+                                padding: 25px 10px;
+                                /* with the exported variables from Nova and Luna Themes*/
+                            }
 
+                            .logo {
+                                width: 5%;
+                            }
+                            .detail {
+                                width: 85%;
+                                padding-left: 25px;
+                            }
                             * {
                                 margin:0px;
                                 padding:0px;
@@ -85,6 +94,19 @@
                                 margin-left:-180px;
                                 padding:5px;
                             }
+                            #map {
+                                width:100%;
+                                height: 400px;
+                            }
+                            html, body {
+                                height: 100%;
+                                margin: 0;
+                                padding: 0;
+                            }
+                            #direccion,#longitude,#latitude {
+                                visibility: hidden;
+                                display: none;
+                            }
 
                         </style>
                     </head>
@@ -104,18 +126,13 @@
                                 </div>
 
                             </header>
-                            <br></br>
-                            <br></br>
-
 
                             <br></br>
 
-                            <br></br>
 
                             <div id="header2"  class="header items" style =" width:1350px;">
                                 <div  class="input">
                                     <div  class="input">
-                                        <p:inputText style="margin-right:100px;width:800px;" placeholder="Buscar Producto"/>
 
                                         <p:commandButton value="Mis Listas"
                                                          style="margin-right:10px;"
@@ -127,7 +144,7 @@
 
                                                           style="margin-right:10px;"
                                                           icon="pi pi-shopping-cart"
-                                                          action="VTarjeta.xhtml"
+                                                          action="Carrito.xhtml"
                                                           />
 
                                         <p:menuButton value="">
@@ -154,61 +171,7 @@
 
                     <br></br>
 
-                    <body>
-
-
-                        <div id="header">
-                            <ul class="nav">
-                                <li><a href="">Categorias</a>
-                                    <ul>
-                                        <li><a href="">Lacteos</a></li>
-                                        <li><a href="">Bebidas</a></li>
-                                        <li><a href="">Carnes</a></li>
-                                        <li><a href="">Golosinas</a></li>
-                                        <li><a href="">ComidaInstantanea</a></li>
-                                        <li><a href="">Frutas</a></li>
-                                        <li><a href="">Verduras</a></li>
-                                        <li><a href="">Conservas</a></li>
-                                        <li><a href="">Detergente</a></li>
-                                        <li><a href="">Legumbres</a></li>
-                                        <li><a href="">Snacks</a></li>
-                                        <li><a href="">Higiene</a></li>
-                                        <li><a href="">Belleza</a></li>
-                                        <li><a href="">CuidadoPersonal</a></li>
-                                        <li><a href="">Licores</a></li>
-
-                                    </ul>
-                                </li>
-
-                                <li><a href="">Lacteos</a>
-                                    <ul>
-                                        <li><a href="">Leche evaporada sin lactosa</a></li>
-                                        <li><a href="">Leche condensada</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="">Bebidas</a></li>
-                                <li><a href="">Carnes</a></li>
-                                <li><a href="">Golosinas</a>
-                                    <ul>
-                                        <li><a href="">Galleta de vainilla con cubierta de chocolate</a></li>
-
-                                    </ul>
-                                </li>
-                                <li><a href="">ComidaInstantanea</a></li>
-                                <li><a href="">Frutas</a></li>
-                                <li><a href="">Verduras</a></li>
-                                <li><a href="">Conservas</a></li>
-                                <li><a href="">Detergente</a></li>
-                                <li><a href="">Legumbres</a></li>
-                                <li><a href="">Snacks</a></li>
-                                <li><a href="">Higiene</a></li>
-                                <li><a href="">Belleza</a></li>
-                                <li><a href="">CuidadoPersonal</a></li>
-                                <li><a href="">Licores</a></li>
-
-
-                            </ul>
-                        </div>                
+                    <body>                   
 
                     </body>
 

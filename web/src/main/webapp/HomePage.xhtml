@@ -6,59 +6,58 @@
       xmlns:p="http://primefaces.org/ui">
 
     <body>
-                <h:form id="frmGen" enctype="multipart/form-data">
-                    
-                    <html id = "html">
-                        <header id ="header" style="top:0px;">
-                            <div class="center">
-                                <header  class="center" style =" width:800px;margin-top: 100px;margin-right:50px; font-size: 25px" >
-                                    <div class="center" >
-                                        <h1>A la Orden, ahorra tiempo y dinero comprano aqui</h1>
-                                        <h3>Ingresa a tu cuenta con tu usuario y contrasena o crea una nueva totalmente gratis solo con tu nombre y correo</h3>
-                                    </div>
-                                </header>
+        <h:form id="frmGen" enctype="multipart/form-data">
 
-
-                                <div id="header1"  class="header items" style =" width:1000px;margin-top: 100px">
-                                    <div  class="input">
-                                        <div  class="input">
-                                            <p:inputText id="txtUsername1" style="margin-right:50px;width:200px;" placeholder="Usuario*" 
-                                                         value="#{loginController.usuario.apodo}" required="true"/>
-                                            <p:inputText id="txtPassword1" style="margin-right:50px;width:200px;" placeholder="Contraseña*" 
-                                                         value="#{loginController.usuario.contrasena}" required="true"/>
-                                            <p:commandButton style="background-color: yellow; color: black" value="Sign In" 
-                                                             process="@this frmGen" action="#{loginController.authentication()}"/>
-                                            <p:outputLabel id="Mensaje1" style="margin-right:50px;width:200px;" value="#{loginController.errorSignIn}"/>
-                                           
-
-                                           
-                                        </div>
-                                    </div>
-                                </div>                               
+            <html id = "html">
+                <header id ="header" style="top:0px;">
+                    <div class="center">
+                        <header  class="center" style =" width:800px;margin-top: 100px;margin-right:50px; font-size: 25px" >
+                            <div class="center" >
+                                <h1>A la Orden, ahorra tiempo y dinero comprano aqui</h1>
+                                <h3>Ingresa a tu cuenta con tu usuario y contrasena o crea una nueva totalmente gratis solo con tu nombre y correo</h3>
                             </div>
                         </header>
-                    </html>
-                    
-                    
-                </h:form>
-                <h:form id="frmGen1" enctype="multipart/form-data">
-                                <div id="header2"  class="header items" style =" width:1200px;">
-                                    <div  class="input">
-                                        <div  class="input">
-                                            <p:inputText id="txtUsername2" style="margin-right:50px;width:200px;" 
-                                                         placeholder="Usuario" value="#{loginController.nuevo.apodo}" required="true"/>
-                                            <p:inputText id="txtEmail" style="margin-right:50px;width:200px;" 
-                                                         placeholder="Email" value="#{loginController.nuevo.email}" required="true"/>
-                                            <p:inputText id="txtPassword2" style="margin-right:50px;width:200px;" 
-                                                         placeholder="Contraseña" value="#{loginController.nuevo.contrasena}" required="true"/>
-                                            <p:commandButton style="background-color: red; color: white" value="Sign Up " 
-                                                             process="@this frmGen1" action="#{loginController.registrar()}"/>
-                                            <p:outputLabel id="Mensaje2" style="margin-right:50px;width:200px;" value="#{loginController.errorSignUp}"/>
-                                           
-                                        </div>
-                                    </div>
+
+
+                        <div id="header1"  class="header items" style =" width:1000px;margin-top: 100px">
+                            <div  class="input">
+                                <div  class="input">
+
+                                    <p:inputText id="txtUsername1" style="margin-right:50px;width:200px;" placeholder="Usuario*" 
+                                                 value="#{loginController.usuario.apodo}" required="true"/>
+                                    <p:password id="feedback" value="#{loginController.usuario.contrasena}" placeholder="contraseña" style="margin-right:50px;width:200px;" feedback="true" />
+                                    <p:commandButton style="background-color: yellow; color: black" value="Sign In" 
+                                                     process="@this frmGen" action="#{loginController.authentication()}"/>
+                                    <p:outputLabel id="Mensaje1" style="margin-right:50px;width:200px;" value="#{loginController.errorSignIn}"/>
+
+
 
                                 </div>
-                </h:form>
+                            </div>
+                        </div>                               
+                    </div>
+                </header>
+            </html>
+
+
+        </h:form>
+        <h:form id="frmGen1" enctype="multipart/form-data">
+            <div id="header2"  class="header items" style =" width:1200px;">
+                <div  class="input">
+                    <div  class="input">
+                        <p:inputText id="txtUsername2" style="margin-right:50px;width:200px;" 
+                                     placeholder="Usuario" value="#{loginController.nuevo.apodo}" required="true"/>
+                        <p:inputText id="txtEmail" style="margin-right:50px;width:200px;" 
+                                     placeholder="Email" value="#{loginController.nuevo.email}" required="true"/>
+                        <p:password value="#{loginController.nuevo.contrasena}" placeholder="contraseña" style="margin-right:50px;width:200px;" feedback="true" />
+                        <p:commandButton style="background-color: red; color: white" value="Sign Up " 
+                                         process="@this frmGen1" action="#{loginController.registrar()}"/>
+                        <p:outputLabel id="Mensaje2" style="margin-right:50px;width:200px;" value="#{loginController.errorSignUp}"/>
+
+                    </div>
+                </div>
+
+            </div>
+        </h:form>
     </body>
 </html>
