@@ -43,7 +43,7 @@ public class DireccionController implements Serializable {
 		String redirect = "Destino.xhtml";
 		try {
 
-			if (!direccion.equals("")){
+                    if (!(direccion.equals(""))){
                                 Pedido pedido = (Pedido) SessionHelper.getPedido();
                                 if(pedido!=null){
                                     pedido.setDireccion(direccion);
