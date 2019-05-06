@@ -26,7 +26,7 @@ public class ProductoRepositoryImpl implements IProductoRepository {
             em.persist(p);
             rpta = true;
         } catch (Exception ex) {
-            throw ex;
+             ex.printStackTrace();
         }
         return rpta;
     }

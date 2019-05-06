@@ -148,12 +148,14 @@ public class ProductoController implements Serializable {
         try {
             if (this.productoSel.getIdProducto() != null) {
                 this.producto = this.productoSel;
+                this.strCategoria = producto.getCategoria().getNombre();
+                this.strMarca = producto.getMarca().getNombre();
 
             } else {
                 Message.messageInfo("Debe seleccionar un  producto");
             }
         } catch (Exception e) {
-            Message.messageError("Error Sede :" + e.getMessage());
+            Message.messageError("Error Producto :" + e.getMessage());
         }
 
     }
@@ -175,22 +177,28 @@ public class ProductoController implements Serializable {
 
     public List<Categoria> completeCategoria(String query) {
         List<Categoria> filter = new ArrayList<>();
-
-        for (Categoria c : categorias) {
-            if (c.getNombre().toLowerCase().contains(query)) {
-                filter.add(c);
+        if (categorias != null) {
+            for (Categoria c : categorias) {
+                if (c.getNombre().toLowerCase().contains(query)) {
+                    filter.add(c);
+                }
             }
+        } else {
+            loadCategorias();
         }
         return filter;
     }
 
     public List<Marca> completeMarca(String query) {
         List<Marca> filter = new ArrayList<>();
-
-        for (Marca m : marcas) {
-            if (m.getNombre().toLowerCase().contains(query)) {
-                filter.add(m);
+        if (marcas != null) {
+            for (Marca m : marcas) {
+                if (m.getNombre().toLowerCase().contains(query)) {
+                    filter.add(m);
+                }
             }
+        } else {
+            loadMarcas();
         }
         return filter;
     }
