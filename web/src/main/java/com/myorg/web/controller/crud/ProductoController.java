@@ -2,6 +2,7 @@ package com.myorg.web.controller.crud;
 
 import com.myorg.core.entity.*;
 import com.myorg.core.service.*;
+import com.myorg.core.service.pedido.Carrito;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import com.myorg.util.Message;
+import com.myorg.util.SessionHelper;
+import javax.faces.context.FacesContext;
 import org.primefaces.event.SelectEvent;
 
 @Named
@@ -72,6 +75,20 @@ public class ProductoController implements Serializable {
             this.marcas = marcaService.findAll();
         } catch (Exception e) {
 
+        }
+    }
+
+    public void agregarCarrito() {
+        try {
+            if (this.productoSel != null) {
+                Carrito carrito = (Carrito) SessionHelper.getCarrito();
+                carrito.agregarProducto(productoSel, 1);
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("carrito", carrito);
+            } else {
+                Message.messageInfo("Debe seleccionar un producto");
+            }
+        } catch (Exception e) {
+            Message.messageError("Error Carrito :" + e.getMessage());
         }
     }
 
