@@ -1,9 +1,10 @@
 package com.myorg.core.service.pedido;
 
 import java.awt.Point;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class RutaService {
+public class RutaService implements Serializable{
     
     BigDecimal precioBase;
     BigDecimal tarifaExtra;

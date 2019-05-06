@@ -1,8 +1,9 @@
 package com.myorg.core.service.payment;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class Respuesta {
+public class Respuesta implements Serializable{
     private boolean satisfactoria;
     private Integer nroTransacion;
     private String mensaje;

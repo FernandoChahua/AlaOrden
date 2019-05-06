@@ -1,8 +1,9 @@
 package com.myorg.web.controller;
 
 import javax.annotation.ManagedBean;
+import javax.inject.Named;
 
-@ManagedBean
+@Named
 public class PagoController {
     
 }

@@ -4,6 +4,7 @@ import com.myorg.core.entity.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class Carrito {
     
     private List<DetallePedido> lista;

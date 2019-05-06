@@ -1,7 +1,10 @@
 package com.myorg.core.service.comm;
 
 //Adapter Interface
-public abstract class ComunicadorInventario {
+
+import java.io.Serializable;
+
+public abstract class ComunicadorInventario implements Serializable{
     
     //Factory Method
     public static ComunicadorInventario establecerComunicacion(String url){

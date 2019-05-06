@@ -1,11 +1,12 @@
 package com.myorg.core.service.payment;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Random;
 
 //Entidad que se encarga de procesar el pago
-public class Gateway {
+public class Gateway implements Serializable{
 
     public synchronized Respuesta autorizar(Map<String, String> paramValidacion) throws Exception {
         wait(2000);

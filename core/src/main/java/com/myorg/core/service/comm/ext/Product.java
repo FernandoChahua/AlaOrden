@@ -1,5 +1,6 @@
 package com.myorg.core.service.comm.ext;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-public class Product {
+public class Product implements Serializable{
     @Id
     private int id;
     @Column

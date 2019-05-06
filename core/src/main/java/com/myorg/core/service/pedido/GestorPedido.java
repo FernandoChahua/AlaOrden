@@ -15,6 +15,7 @@ import java.util.Map;
         para hacer inyeccion de dependencias*/
 //PENDING: cambiar Nombre (Orden? PedidoService?...)
 //GestorPedido DEBE guardarse como atributo de la sesion para que no se pierda al cambiar de vista;
+@Deprecated
 public class GestorPedido {
 
     private Pedido pedido;

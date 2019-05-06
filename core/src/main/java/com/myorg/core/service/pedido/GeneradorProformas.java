@@ -3,14 +3,19 @@ package com.myorg.core.service.pedido;
 import com.myorg.core.service.comm.InfoProd;
 import com.myorg.core.entity.*;
 import com.myorg.core.service.comm.ComunicadorInventario;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 //PENDING: Probar si funciona
-public class GeneradorProformas {
+@Named
+public class GeneradorProformas implements Serializable{
 
+    @Inject
     private ComunicadorInventario comm;
 
     private Map<String, List<DetallePedido>> proformas;
