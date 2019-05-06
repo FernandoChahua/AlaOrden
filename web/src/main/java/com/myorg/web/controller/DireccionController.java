@@ -1,5 +1,6 @@
 package com.myorg.web.controller;
 
+import com.myorg.util.Message;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +37,22 @@ public class DireccionController implements Serializable {
             e.printStackTrace();
         }
     }
-    
+    public String siguientePaso() {
+		String redirect = "Destino.xhtml";
+		try {
+
+			if (!direccion.equals("")){
+
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("direccion", direccion);
+				redirect = "Pagos.xhtml";
+			} 
+		} catch (Exception e) {
+			Message.messageError("No se selecciono una ubicacion" + e.getMessage());
+			System.out.println(e.getMessage());
+		}
+
+		return redirect;
+	}
     public String getLatitud(){
         return this.latitud;
     }
