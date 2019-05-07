@@ -40,22 +40,7 @@ public class DireccionController implements Serializable {
         }
     }
     public String siguientePaso() {
-		String redirect = "Destino.xhtml";
-		try {
-
-                    if (!(direccion.equals(""))){
-                                Pedido pedido = (Pedido) SessionHelper.getPedido();
-                                if(pedido!=null){
-                                    pedido.setDireccion(direccion);
-                                    FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pedido", pedido);
-                                }
-				
-				redirect = "Pagos.xhtml";
-			} 
-		} catch (Exception e) {
-			Message.messageError("No se selecciono una ubicacion" + e.getMessage());
-			System.out.println(e.getMessage());
-		}
+		String redirect = "Pagos.xhtml";
 
 		return redirect;
 	}

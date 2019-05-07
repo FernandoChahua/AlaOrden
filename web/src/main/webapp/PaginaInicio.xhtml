@@ -12,24 +12,48 @@
                 <h:form id="frmGen" enctype="multipart/form-data">
 
                     <html>
-                        <head>
+                        <head>                     
+                            <body>
+                                <div id="header">
 
 
-                            
- <body>
 
+                                    <ul class="nav">
+                                        <li><a href="">Categorias</a>
+                                            <ul>
+                                                <li><a href="">Lacteos</a></li>
+                                                <li><a href="">Bebidas</a></li>
+                                                <li><a href="">Carnes</a></li>
+                                                <li><a href="">Golosinas</a></li>
+                                                <li><a href="">ComidaInstantanea</a></li>
+                                                <li><a href="">Frutas</a></li>
+                                                <li><a href="">Verduras</a></li>
+                                                <li><a href="">Conservas</a></li>
+                                                <li><a href="">Detergente</a></li>
+                                                <li><a href="">Legumbres</a></li>
+                                                <li><a href="">Snacks</a></li>
+                                                <li><a href="">Higiene</a></li>
+                                                <li><a href="">Belleza</a></li>
+                                                <li><a href="">CuidadoPersonal</a></li>
+                                                <li><a href="">Licores</a></li>
 
-                        <div id="header">
+                                            </ul>
+                                        </li>
 
-                            
-                            
-                            <ul class="nav">
-                                <li><a href="">Categorias</a>
-                                    <ul>
-                                        <li><a href="">Lacteos</a></li>
+                                        <li><a href="">Lacteos</a>
+                                            <ul>
+                                                <li><a href="">Leche evaporada sin lactosa</a></li>
+                                                <li><a href="">Leche condensada</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="">Bebidas</a></li>
                                         <li><a href="">Carnes</a></li>
-                                        <li><a href="">Golosinas</a></li>
+                                        <li><a href="">Golosinas</a>
+                                            <ul>
+                                                <li><a href="">Galleta de vainilla con cubierta de chocolate</a></li>
+
+                                            </ul>
+                                        </li>
                                         <li><a href="">ComidaInstantanea</a></li>
                                         <li><a href="">Frutas</a></li>
                                         <li><a href="">Verduras</a></li>
@@ -42,48 +66,27 @@
                                         <li><a href="">CuidadoPersonal</a></li>
                                         <li><a href="">Licores</a></li>
 
-                                    </ul>
-                                </li>
-
-                                <li><a href="">Lacteos</a>
-                                    <ul>
-                                        <li><a href="">Leche evaporada sin lactosa</a></li>
-                                        <li><a href="">Leche condensada</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="">Bebidas</a></li>
-                                <li><a href="">Carnes</a></li>
-                                <li><a href="">Golosinas</a>
-                                    <ul>
-                                        <li><a href="">Galleta de vainilla con cubierta de chocolate</a></li>
 
                                     </ul>
-                                </li>
-                                <li><a href="">ComidaInstantanea</a></li>
-                                <li><a href="">Frutas</a></li>
-                                <li><a href="">Verduras</a></li>
-                                <li><a href="">Conservas</a></li>
-                                <li><a href="">Detergente</a></li>
-                                <li><a href="">Legumbres</a></li>
-                                <li><a href="">Snacks</a></li>
-                                <li><a href="">Higiene</a></li>
-                                <li><a href="">Belleza</a></li>
-                                <li><a href="">CuidadoPersonal</a></li>
-                                <li><a href="">Licores</a></li>
+                                </div>                
 
+                            </body>
 
-                            </ul>
-                        </div>                
-
-                    </body>
-                            
                             <br></br>
                             <br></br>
                             <br></br>
                             <br></br>
 
                             <br></br>
-                            
+                            <p:toolbar>
+                                <f:facet name="right">
+                                    <p:commandButton value="Agregar a Carrito" icon="ui-icon-pencil"
+                                                     process="@this"
+                                                     actionListener="#{productoController.agregarCarrito()}"
+                                                     />
+                                </f:facet>
+                            </p:toolbar>
+                            <p:outputLabel value="#{productoController.usuario.apodo}" />
                             <p:dataTable id="datTabProducto"
                                          emptyMessage="No existen productos registrados"
                                          value="#{productoController.productos}" var="p" paginator="true"
@@ -96,7 +99,8 @@
                                         listener="#{productoController.selectProducto}" />
 
                                 <p:column headerText=" ">
-                                           <!--                        <p:outputLabel value="" />-->
+                                    <p:outputLabel value="#{p.idProducto}" />
+                                    <!--                        <p:outputLabel value="" />-->
                                 </p:column>
 
                                 <p:column headerText="">

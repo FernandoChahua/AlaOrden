@@ -2,6 +2,7 @@ package com.myorg.web.controller.crud;
 
 import com.myorg.core.entity.*;
 import com.myorg.core.service.*;
+import com.myorg.core.service.pedido.Carrito;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import com.myorg.util.Message;
+import com.myorg.util.SessionHelper;
+import javax.faces.context.FacesContext;
 import org.primefaces.event.SelectEvent;
 
 @Named
@@ -38,6 +41,8 @@ public class ProductoController implements Serializable {
     private String strMarca;
     private Marca marca;
     private List<Marca> marcas;
+    
+    private Usuario logeado;
 
     @PostConstruct
     public void init() {
@@ -45,6 +50,7 @@ public class ProductoController implements Serializable {
         productoSel = new Producto();
         categoria = new Categoria();
         marca = new Marca();
+        logeado = (Usuario) SessionHelper.getUsuario();
         this.loadProductos();
         this.loadCategorias();
         this.loadMarcas();
@@ -72,6 +78,24 @@ public class ProductoController implements Serializable {
             this.marcas = marcaService.findAll();
         } catch (Exception e) {
 
+        }
+    }
+
+    public void agregarCarrito() {
+        try {
+            if (this.productoSel != null) {
+                List<DetallePedido> carrito = (List<DetallePedido>) SessionHelper.getCarrito();
+                DetallePedido dp = new DetallePedido();
+                dp.setProducto(productoSel);
+                dp.setCantidad(1);
+                carrito.add(dp);
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("carrito", carrito);
+                Message.messageInfo("Producto agregado al carrito correctamente");
+            } else {
+                Message.messageInfo("Debe seleccionar un producto");
+            }
+        } catch (Exception e) {
+            Message.messageError("Error Carrito :" + e.getMessage());
         }
     }
 
@@ -131,12 +155,14 @@ public class ProductoController implements Serializable {
         try {
             if (this.productoSel.getIdProducto() != null) {
                 this.producto = this.productoSel;
+                this.strCategoria = producto.getCategoria().getNombre();
+                this.strMarca = producto.getMarca().getNombre();
 
             } else {
                 Message.messageInfo("Debe seleccionar un  producto");
             }
         } catch (Exception e) {
-            Message.messageError("Error Sede :" + e.getMessage());
+            Message.messageError("Error Producto :" + e.getMessage());
         }
 
     }
@@ -158,22 +184,28 @@ public class ProductoController implements Serializable {
 
     public List<Categoria> completeCategoria(String query) {
         List<Categoria> filter = new ArrayList<>();
-
-        for (Categoria c : categorias) {
-            if (c.getNombre().toLowerCase().contains(query)) {
-                filter.add(c);
+        if (categorias != null) {
+            for (Categoria c : categorias) {
+                if (c.getNombre().toLowerCase().contains(query)) {
+                    filter.add(c);
+                }
             }
+        } else {
+            loadCategorias();
         }
         return filter;
     }
 
     public List<Marca> completeMarca(String query) {
         List<Marca> filter = new ArrayList<>();
-
-        for (Marca m : marcas) {
-            if (m.getNombre().toLowerCase().contains(query)) {
-                filter.add(m);
+        if (marcas != null) {
+            for (Marca m : marcas) {
+                if (m.getNombre().toLowerCase().contains(query)) {
+                    filter.add(m);
+                }
             }
+        } else {
+            loadMarcas();
         }
         return filter;
     }
@@ -262,5 +294,10 @@ public class ProductoController implements Serializable {
     public void setStrMarca(String strMarca) {
         this.strMarca = strMarca;
     }
-
+    public Usuario getUsuario(){
+        return this.logeado;
+    }
+    public void setUsuario(Usuario usuario){
+        this.logeado = usuario;
+    }
 }
