@@ -55,5 +55,6 @@ public class ProformaController implements Serializable{
         Pedido pedido = SessionHelper.getPedido();
         pedido.setDetalles(selected);
         pedido.setSubtotal(subtotalProforma(franquicia));
+        SessionHelper.redirect("./Pagos.xhtml");
     }
 }
