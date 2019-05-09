@@ -33,7 +33,7 @@ public class ProformaController implements Serializable{
         carrito = SessionHelper.getCarrito();
         
         //generadorProformas.generarListas(carrito);
-        generadorProformas.testMe();
+        generadorProformas.testMe(carrito);
     }
     
     public List<Map.Entry<String,List<DetallePedido>>> getProformas(){

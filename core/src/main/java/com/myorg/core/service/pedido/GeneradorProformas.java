@@ -31,14 +31,16 @@ public class GeneradorProformas implements Serializable {
     
     
     //FIXME: TESTING
-    public void testMe(){
+    public void testMe(List<DetallePedido> carrito){
         
+        /*
         List<Producto> prods = null;
         try{
             prods = pR.findAll();
         }catch(Exception e){
             return;
         }
+        */
         proformas = new HashMap<>();
         
         List<String> prov = new ArrayList<>();
@@ -48,10 +50,10 @@ public class GeneradorProformas implements Serializable {
         
         for (String p : prov){
             List<DetallePedido> list = new ArrayList<>();
-            for (Producto pr : prods){
+            for (DetallePedido car : carrito){
                 DetallePedido dp = new DetallePedido();
-                dp.setProducto(pr);
-                dp.setCantidad(1);
+                dp.setProducto(car.getProducto());
+                dp.setCantidad(car.getCantidad());
                 dp.setPrecio(new BigDecimal(new Random().nextInt(3) + 5));
                 
                 list.add(dp);
