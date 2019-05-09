@@ -1,3 +1,8 @@
+insert into usuario (idUsuario,apodo,contrasena,email,estado) values (1,'admin','admin','admin@gmail.com',1);
+insert into rol (idRol,nombre) values (1,'administrador');
+insert into rol (idRol,nombre) values (2,'cliente');
+insert into rol_usuario (idUsuario,idRol)values (1,1);
+
 insert into marca (nombre) values ('Gloria');
 insert into marca (nombre) values ('Nestle');
 insert into marca (nombre) values ('Negrita');/*3*/
