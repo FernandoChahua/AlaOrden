@@ -10,6 +10,10 @@ alaorden.iml
 /web/.project
 /web/.settings/
 /core/bin/target/
-/.idea/
 .settings/
 .project
+
+.gradle
+/build/
+.idea
+
