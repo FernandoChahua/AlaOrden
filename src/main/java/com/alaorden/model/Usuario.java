@@ -20,7 +20,7 @@ import javax.persistence.Id;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUsuario;
+    private Integer idUsuario;
 
     @Column(name = "apodo")
     private String apodo;
