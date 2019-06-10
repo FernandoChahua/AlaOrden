@@ -14,11 +14,14 @@ import java.util.List;
 @Service
 public class DireccionServiceImpl implements DireccionService {
 
+    @Autowired
     DireccionRepository direccionRepository;
+    @Autowired
     UsuarioRepository usuarioRepository;
     @Autowired
-    public DireccionServiceImpl(DireccionRepository direccionRepository){
+    public DireccionServiceImpl(DireccionRepository direccionRepository,UsuarioRepository usuarioRepository){
         this.direccionRepository = direccionRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
     public Direccion createDireccion(Direccion direccion){
@@ -39,6 +42,7 @@ public class DireccionServiceImpl implements DireccionService {
         return direccionRepository.findAllByUsuario(usuario);
     }
 
-    
+
+
 
 }
