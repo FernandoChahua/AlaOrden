@@ -11,11 +11,20 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
+@Entity
+@Table(name = "Categoria")
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCategoria;
+
+    @Column(name = "Nombre")
     private String Nombre;
+
+    @Column(name = "CategoriaPadre")
     private Categoria CategoriaPadre;
+
+    @OneToMany(mappedBy = "Categoria")
     private List<Producto> Productos;
 }
