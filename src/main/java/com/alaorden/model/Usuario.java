@@ -5,10 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
     private String apodo;
     private String hashContrasena;
@@ -16,6 +22,6 @@ public class Usuario {
     private String email;
     private boolean emailValidado;
     private List<Direccion> direcciones;
-    private List<Carrito> carrito;
+    private List<CarritoItem> carrito;
 
 }

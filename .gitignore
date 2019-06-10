@@ -1,4 +1,4 @@
-alaorden.iml
+*.iml
 /core/target/
 /core/core.iml
 /core/.classpath

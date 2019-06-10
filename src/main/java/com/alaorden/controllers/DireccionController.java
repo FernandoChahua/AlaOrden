@@ -1,28 +1,27 @@
 package com.alaorden.controllers;
 import com.alaorden.model.Direccion;
-import com.alaorden.service.ServiceDireccion;
+import com.alaorden.service.DireccionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/direcciones")
 public class DireccionController {
-    ServiceDireccion serviceDireccion;
+    DireccionService direccionService;
 
     @Autowired
-    public DireccionController(ServiceDireccion serviceDireccion){
-        this.serviceDireccion = serviceDireccion;
+    public DireccionController(DireccionService direccionService){
+        this.direccionService = direccionService;
     }
     @RequestMapping
     List<Direccion> ListDireccion(){
-        return serviceDireccion.ListAll();
+        return direccionService.ListAll();
     }
     @RequestMapping(path="/{id)",method = RequestMethod.GET)
     Direccion FindById(@PathVariable int id){
-        return serviceDireccion.FindById(null);
+        return direccionService.FindById(null);
     }
     @RequestMapping(method=RequestMethod.POST)
     Direccion createDireccion(@RequestBody Direccion entity){

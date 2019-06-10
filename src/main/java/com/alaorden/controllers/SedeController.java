@@ -1,28 +1,27 @@
 package com.alaorden.controllers;
 import com.alaorden.model.Sede;
-import com.alaorden.service.ServiceSede;
+import com.alaorden.service.SedeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/sedes")
 public class SedeController {
-    ServiceSede serviceSede;
+    SedeService sedeService;
 
     @Autowired
-    public SedeController(ServiceSede serviceSede){
-        this.serviceSede = serviceSede;
+    public SedeController(SedeService sedeService){
+        this.sedeService = sedeService;
     }
     @RequestMapping
     List<Sede> ListSede(){
-        return serviceSede.ListAll();
+        return sedeService.ListAll();
     }
     @RequestMapping(path="/{id)",method = RequestMethod.GET)
     Sede FindById(@PathVariable int id){
-        return serviceSede.FindById(null);
+        return sedeService.FindById(null);
     }
     @RequestMapping(method=RequestMethod.POST)
     Sede createSede(@RequestBody Sede entity){

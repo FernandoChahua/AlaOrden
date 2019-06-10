@@ -1,28 +1,27 @@
 package com.alaorden.controllers;
 import com.alaorden.model.ProductoFranquicia;
-import com.alaorden.service.ServiceProductoFranquicia;
+import com.alaorden.service.ProductoFranquiciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/productosfranquicias")
 public class ProductoFranquiciaController {
-    ServiceProductoFranquicia serviceProductoFranquicia;
+    ProductoFranquiciaService productoFranquiciaService;
 
     @Autowired
-    public ProductoFranquiciaController(ServiceProductoFranquicia serviceProductoFranquicia){
-        this.serviceProductoFranquicia = serviceProductoFranquicia;
+    public ProductoFranquiciaController(ProductoFranquiciaService productoFranquiciaService){
+        this.productoFranquiciaService = productoFranquiciaService;
     }
     @RequestMapping
     List<ProductoFranquicia> ListProductoFranquicia(){
-        return serviceProductoFranquicia.ListAll();
+        return productoFranquiciaService.ListAll();
     }
     @RequestMapping(path="/{id)",method = RequestMethod.GET)
     ProductoFranquicia FindById(@PathVariable int id){
-        return serviceProductoFranquicia.FindById(null);
+        return productoFranquiciaService.FindById(null);
     }
     @RequestMapping(method=RequestMethod.POST)
     ProductoFranquicia createProductoFranquicia(@RequestBody ProductoFranquicia entity){

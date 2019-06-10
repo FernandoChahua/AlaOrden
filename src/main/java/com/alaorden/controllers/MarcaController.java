@@ -1,6 +1,6 @@
 package com.alaorden.controllers;
 import com.alaorden.model.Marca;
-import com.alaorden.service.ServiceMarca;
+import com.alaorden.service.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,11 +10,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/marcas")
 public class MarcaController {
-    ServiceMarca serviceMarca;
+    MarcaService marcaService;
 
     @Autowired
-    public MarcaController(ServiceMarca serviceMarca){
-        this.serviceMarca = serviceMarca;
+    public MarcaController(MarcaService marcaService){
+        this.marcaService = marcaService;
     }
     @RequestMapping
     List<Marca> ListMarca(){
@@ -28,7 +28,7 @@ public class MarcaController {
     }
     @RequestMapping(path="/{id)",method = RequestMethod.GET)
     Marca FindById(@PathVariable int id){
-        return serviceMarca.FindById(null);
+        return marcaService.FindById(null);
     }
     @RequestMapping(method=RequestMethod.POST)
     Marca createMarca(@RequestBody Marca entity){
