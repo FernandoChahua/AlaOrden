@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class Direccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDireccion;
+    private Integer idDireccion;
     private Usuario usuario;
     private BigDecimal longitud;
     private BigDecimal latitud;

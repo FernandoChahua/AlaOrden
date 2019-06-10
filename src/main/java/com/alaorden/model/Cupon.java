@@ -17,9 +17,13 @@ import javax.persistence.*;
 public class Cupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+<<<<<<< HEAD
     private int idCupon;
 
     @Column(name = "codigo")
+=======
+    private Integer idCupon;
+>>>>>>> f36e61b50c5ba9d6e098e775ea26c52c7afc8481
     private String codigo;
 
     @Column(name = "fechaEmision")

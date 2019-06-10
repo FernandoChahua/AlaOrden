@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class Franquicia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idFranquicia;
+    private Integer idFranquicia;
 
     @Column(name = "nombre")
     private String nombre;
