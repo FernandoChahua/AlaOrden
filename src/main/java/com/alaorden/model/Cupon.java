@@ -16,7 +16,7 @@ import javax.persistence.Id;
 public class Cupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCupon;
+    private Integer idCupon;
     private String codigo;
     private LocalDateTime fechaEmision;
     private LocalDateTime fechaExpiracion;
