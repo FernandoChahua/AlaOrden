@@ -20,12 +20,12 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCategoria;
 
-    @Column(name = "Nombre")
+    @Column(name = "nombre")
     private String Nombre;
 
-    @Column(name = "CategoriaPadre")
+    @Column(name = "categoriaPadre")
     private Categoria CategoriaPadre;
 
-    @OneToMany(mappedBy = "Categoria")
+    @OneToMany(mappedBy = "categoria")
     private List<Producto> Productos;
 }

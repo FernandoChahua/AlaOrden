@@ -35,6 +35,6 @@ public class Cupon {
     @Column(name = "descuento")
     private BigDecimal descuento;
 
-    @Column(name = "usadoEnPedido")
-    private Pedido usadoEnPedido;
+    @Column(name = "idPedido")
+    private Pedido idPedido;
 }
