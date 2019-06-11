@@ -22,10 +22,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     public Usuario updateUsuario(Usuario usuario){
         return usuarioRepository.save(usuario);
     }
-    public boolean existeUsuario(String apodo,String hashPassword){
-        Usuario usuario = usuarioRepository.findByApodoLike(apodo);
-        if(usuario != null){
-            return usuario.getHashContrasena() == hashPassword;
+    public boolean existeUsuario(Usuario usuario){
+        if(usuario!=null) {
+            Usuario usuarioEmail = usuarioRepository.findByEmailEquals(usuario.getEmail());
+            Usuario usuarioApodo = usuarioRepository.findByApodoEquals(usuario.getApodo());
+            return !((usuarioApodo == null) && (usuarioEmail == null));
         }
         return false;
     }
