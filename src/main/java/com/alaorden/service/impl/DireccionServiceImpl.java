@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 @Service
@@ -80,18 +77,19 @@ public class DireccionServiceImpl implements DireccionService {
         }
         return false;
     }
-    public List<Sede> listDistanciaMin(double latitud,double longitud){
+    public Map<Sede,BigDecimal> listDistanciaMin(double latitud,double longitud){
         List<Sede> sedes = sedeRepository.findAll();
         List<String>setSedes = new ArrayList<>();
 
-        List<Sede> sedesEscogidas = new ArrayList<>();
+        Map<Sede,BigDecimal> sedesEscogidas = new HashMap<>();
 
         for(Sede sede : sedes){
             double dist = calculaDistancia(latitud,longitud,sede.getLatitud().doubleValue(),sede.getLogngitud().doubleValue());
             if(dist <= 3.500)
             {
                 if(!Existe(sede.getFranquicia().getNombre(),setSedes)){
-                    sedesEscogidas.add(sede);
+                    BigDecimal precio = calculaPrecioEnvio(dist);
+                    sedesEscogidas.put(sede,precio);
                     setSedes.add(sede.getFranquicia().getNombre());
                 }
             }
