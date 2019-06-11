@@ -30,5 +30,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
         return false;
     }
+    public Usuario usuarioByApodo(String apodo){
+        return usuarioRepository.findByApodoEquals(apodo);
+    }
 
 }

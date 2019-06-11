@@ -19,22 +19,22 @@ public class CarritoServiceImpl implements CarritoService {
         this.carritoItemRepository = carritoItemRepository;
     }
 
-    public List<CarritoItem> FindByUsuario(int id){
+    public List<CarritoItem> findByUsuario(int id){
         return carritoItemRepository.findAllByUsuarioIdUsuario(id);
     }
 
     @Transactional
-    public void SaveToCart(CarritoItem entity){
+    public void saveToCart(CarritoItem entity){
         carritoItemRepository.save(entity);
     }
 
     @Transactional
-    public void DeleteFromCart(CarritoItem entity){
+    public void deleteFromCart(CarritoItem entity){
         carritoItemRepository.delete(entity);
     }
 
     @Transactional
-    public void EmptyCart(int id){
+    public void emptyCart(int id){
         carritoItemRepository.deleteAllByUsuarioIdUsuario(id);
     }
 }

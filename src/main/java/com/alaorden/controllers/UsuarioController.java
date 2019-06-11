@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 
 @RestController
-@RequestMapping("/asdfg")
+@RequestMapping("/usuario")
 public class UsuarioController {
     UsuarioService usuarioService;
 
@@ -41,4 +41,11 @@ public class UsuarioController {
         return usuario;
     }
 
+    @RequestMapping(path="/login",method = RequestMethod.GET)
+    Usuario logIn(@RequestBody Usuario usuario){
+
+
+
+        return null;
+    }
 }
