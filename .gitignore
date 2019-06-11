@@ -12,8 +12,7 @@
 /core/bin/target/
 .settings/
 .project
-
+out/
 .gradle
 /build/
 .idea
-/out/

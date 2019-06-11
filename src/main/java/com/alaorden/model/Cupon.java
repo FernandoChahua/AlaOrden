@@ -14,6 +14,9 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
+@Entity
+@Table(name = "Cupon")
 public class Cupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +38,7 @@ public class Cupon {
     @Column(name = "descuento")
     private BigDecimal descuento;
 
-    @Column(name = "usadoEnPedido")
-    private Pedido usadoEnPedido;
+    @ManyToOne
+    @JoinColumn(name = "idPedido")
+    private Pedido Pedido;
 }

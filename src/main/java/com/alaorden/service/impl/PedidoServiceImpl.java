@@ -1,6 +1,7 @@
 package com.alaorden.service.impl;
 
 import com.alaorden.model.Pedido;
+import com.alaorden.repository.PedidoRepository;
 import com.alaorden.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,11 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class PedidoServiceImpl implements PedidoService {
 
-    private PedidoService pedidoService;
+    private PedidoRepository pedidoRepository;
 
     @Autowired
-    public PedidoServiceImpl(PedidoService pedidoService){
-        this.pedidoService = pedidoService;
+    public PedidoServiceImpl(PedidoRepository pedidoRepository){
+        this.pedidoRepository = pedidoRepository;
     }
 
     

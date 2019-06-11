@@ -25,7 +25,7 @@ public class ProductoFranquicia {
 
     @ManyToOne
     @MapsId("idFranquicia")
-    @JoinColumn(name = "idProducto")
+    @JoinColumn(name = "idFranquicia")
     private Franquicia franquicia;
 
     @Column(name = "codReferencia")
