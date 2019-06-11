@@ -13,7 +13,7 @@ spring:
     hibernate:
       ddl-auto: create
       use-new-id-generator-mappings: true
-    database-plataform: org.hibernate.dialect.MySql5InnoDBDialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   datasource:
     url: jdbc:mysql://localhost/TFinal
     username: root
