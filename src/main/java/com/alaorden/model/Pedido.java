@@ -31,7 +31,8 @@ public class Pedido {
     @Column(name = "direccion")
     private String direccion;
 
-    @Column(name = "transaccion")
+    @OneToOne
+    @JoinColumn(name = "transaccion")
     private Transaccion transaccion;
 
     @Column(name = "subTotal")

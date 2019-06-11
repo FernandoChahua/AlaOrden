@@ -4,12 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 @Embeddable
-public class ProductoFranquiciaKey {
+public class ProductoFranquiciaKey  implements Serializable {
 
     @Column(name = "idProducto")
     private Integer idProducto;

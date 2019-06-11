@@ -21,11 +21,13 @@ public class Categoria {
     private Integer idCategoria;
 
     @Column(name = "nombre")
-    private String Nombre;
+    private String nombre;
 
-    @Column(name = "categoriaPadre")
-    private Categoria CategoriaPadre;
+    @ManyToOne
+    @MapsId("idCategoria")
+    @JoinColumn(name = "categoriaPadre")
+    private Categoria categoriaPadre;
 
     @OneToMany(mappedBy = "categoria")
-    private List<Producto> Productos;
+    private List<Producto> productos;
 }

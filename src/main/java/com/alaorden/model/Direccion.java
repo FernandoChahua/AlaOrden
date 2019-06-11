@@ -19,11 +19,11 @@ import javax.persistence.*;
 public class Direccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column(name = "idDireccion")
     private Integer idDireccion;
 
-    @Column(name = "usuario")
+    @ManyToOne
+    @MapsId("idDireccion")
+    @JoinColumn(name = "usuario")
     private Usuario usuario;
 
     @Column(name = "longitud")
