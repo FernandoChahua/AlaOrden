@@ -25,7 +25,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public boolean existeUsuario(String apodo,String hashPassword){
         Usuario usuario = usuarioRepository.findByApodoLike(apodo);
         if(usuario != null){
-           // return usuario.getHashContrasena().equals(hashPassword);
+            return usuario.getHashContrasena() == hashPassword;
         }
         return false;
     }
