@@ -20,8 +20,6 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-
-
     @RequestMapping(path="/create",method = RequestMethod.POST)
     Usuario createUsuario(@RequestBody Usuario usuario){
         if(!usuarioService.existeUsuario(usuario)){
