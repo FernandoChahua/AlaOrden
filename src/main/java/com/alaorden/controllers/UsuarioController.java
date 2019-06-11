@@ -43,9 +43,12 @@ public class UsuarioController {
 
     @RequestMapping(path="/login",method = RequestMethod.GET)
     Usuario logIn(@RequestBody Usuario usuario){
-
-
-
+        Usuario usuarioBackend = usuarioService.usuarioByApodo(usuario.getApodo());
+        if(usuarioBackend != null) {
+            if(usuarioBackend.getHashContrasena() == usuario.getHashContrasena()){
+                return usuarioBackend;
+            }
+        }
         return null;
     }
 }
