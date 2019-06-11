@@ -12,7 +12,6 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Entity
 @Table(name = "Categoria")
 public class Categoria {
