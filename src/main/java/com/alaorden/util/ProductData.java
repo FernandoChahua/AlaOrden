@@ -7,12 +7,16 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 
-public abstract class ProductDataReader {
+public abstract class ProductData {
 
     protected ObjectNode prodData;
 
-    ProductDataReader(URL url){
+    public ProductData(URL url){
         setFromUrl(url);
+    }
+
+    public ProductData(ObjectNode jsonData){
+        this.prodData = jsonData;
     }
 
     protected void setFromUrl(URL url) {
@@ -25,11 +29,11 @@ public abstract class ProductDataReader {
         }
     }
 
-    protected abstract boolean validate();
+    public abstract boolean validate();
 
-    protected abstract String getCodRef();
+    public abstract String getCodRef();
 
-    protected abstract BigDecimal getPrecio();
+    public abstract BigDecimal getPrecio();
 
-    protected abstract int getStock();
+    public abstract int getStock();
 }

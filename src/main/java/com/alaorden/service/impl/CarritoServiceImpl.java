@@ -34,7 +34,7 @@ public class CarritoServiceImpl implements CarritoService {
     }
 
     @Transactional
-    public void EmptyCart(int id){
+    public void EmptyCart(int id) {
         carritoItemRepository.deleteAllByUsuarioIdUsuario(id);
     }
 }

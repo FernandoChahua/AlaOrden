@@ -1,16 +1,18 @@
 package com.alaorden.util;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 
-public class MetroProductDataReader extends ProductDataReader {
+public class MetroProductData extends ProductData {
 
-    public MetroProductDataReader(URL url){
+    public MetroProductData(URL url){
         super(url);
+    }
+
+    public MetroProductData(ObjectNode jsonData) {
+        super(jsonData);
     }
 
     @Override
