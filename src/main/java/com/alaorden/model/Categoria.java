@@ -24,7 +24,7 @@ public class Categoria {
 
     @ManyToOne
     @MapsId("idCategoria")
-    @JoinColumn(name = "categoriaPadre")
+    @JoinColumn(name = "categoriaPadre",nullable=true)
     private Categoria categoriaPadre;
 
     @OneToMany(mappedBy = "categoria")
