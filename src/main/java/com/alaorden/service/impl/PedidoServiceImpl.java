@@ -22,6 +22,9 @@ public class PedidoServiceImpl implements PedidoService {
     public Pedido GenerarPedido(List<CarritoItem> carrito){
         return new Pedido();
     }
+    public Pedido listarpedidoxusuario(Pedido pedido){
+        return null;
+    }
 
 
 }
