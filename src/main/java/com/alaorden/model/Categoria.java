@@ -1,5 +1,7 @@
 package com.alaorden.model;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,12 +23,13 @@ public class Categoria {
 
     @Column(name = "nombre")
     private String nombre;
-
+/*
     @ManyToOne
     @MapsId("idCategoria")
     @JoinColumn(name = "categoriaPadre",nullable=true)
     private Categoria categoriaPadre;
-
-    @OneToMany(mappedBy = "categoria")
+*/
+    @JsonIgnore
+    @OneToMany(mappedBy = "categoria",fetch = FetchType.LAZY)
     private List<Producto> productos;
 }

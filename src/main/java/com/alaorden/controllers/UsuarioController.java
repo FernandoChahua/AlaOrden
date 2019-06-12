@@ -29,7 +29,7 @@ public class UsuarioController {
             usuario.setSal("SALSITA PAL CUERPO");
             usuarioService.createUsuario(usuario);
         }else{
-            usuario.setApodo("NO EXISTE USUARIO");
+            usuario.setApodo("EXISTE USUARIO");
         }
         return usuario;
     }
