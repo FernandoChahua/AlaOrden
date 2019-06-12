@@ -14,7 +14,7 @@ public class CarritoController {
     //Listar(usuario), Editar(usuario, producto), Eliminar(usuario,producto), Agregar(usuario), Vaciar(usuario)
     @Autowired
     public CarritoController(CarritoService carritoService) {this.carritoService = carritoService;}
-
+/*
     @RequestMapping
     List<CarritoItem> listCarritoItems(int idUsuario){return carritoService.listCarritoItem(idUsuario);}
 
@@ -31,5 +31,6 @@ public class CarritoController {
             if(Item.getproducto().getidProducto() == idProducto)
                 Item = act;
         }
-    }
+
+    }*/
 }
