@@ -7,6 +7,6 @@ public interface UsuarioService {
 
     Usuario createUsuario(Usuario usuario);
     Usuario updateUsuario(Usuario usuario);
-    boolean existeUsuario(String apodo,String hashPassword);
-
+    boolean existeUsuario(Usuario usuario);
+    Usuario usuarioByApodo(String apodo);
 }

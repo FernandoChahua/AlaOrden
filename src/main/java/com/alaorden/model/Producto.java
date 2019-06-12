@@ -21,7 +21,7 @@ import javax.persistence.*;
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idProducto;
+    private Integer idProducto;
 
     @ManyToOne
     @JoinColumn(name = "idCategoria")
