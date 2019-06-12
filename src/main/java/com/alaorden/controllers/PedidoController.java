@@ -23,9 +23,9 @@ public class PedidoController {
 
     @RequestMapping(path="/listarpedidoxusuario/{usuario}",method=RequestMethod.PUT)
     Pedido listarpedidoxusuario(@PathVariable String usuario,@RequestBody Pedido pedido){
-        pedido.setUsuario("usuario");
-        pedidoService.listarpedidoxusuario(pedido);
-        return pedido;
+       // pedido.setUsuario("usuario");
+        //pedidoService.listarpedidoxusuario(pedido);
+        return null;
     }
 
 }
