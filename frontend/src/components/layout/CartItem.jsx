@@ -14,10 +14,10 @@ class CartItem extends Component {
     changeQuantity(event){
         let detail = this.props.details;
         let cantidad = event.target.value;
-        if (cantidad < 0){
-            cantidad = 0;
+        if (cantidad < 0 || isNaN(cantidad)){
+            cantidad = 1;
         }
-        if (cantidad > 99){
+        if (cantidad > 100){
             cantidad = 99;
         }
         this.props.updateMethod(detail.idProducto, cantidad);
@@ -44,7 +44,7 @@ class CartItem extends Component {
         let imagen = 'assets/img/' + producto.imagen;
         //Genera el nombre a mostrar
         let nombre = [ producto.marca.nombre.toUpperCase() + ",", producto.nombre ];
-        let desc = [ producto.presentacion + ":", producto.magnitud, producto.unidad ]
+        let desc = [ producto.presentacion + ": ", producto.magnitud, producto.unidad ]
 
         return(
             <Form>
@@ -57,7 +57,7 @@ class CartItem extends Component {
                             <p className="m-0">{nombre.join(' ')}</p>
                         </Row>
                         <Row>
-                            <p className="text-muted mb-1">{desc.join(' ')}</p>
+                            <p className="text-muted mb-1">{desc}</p>
                         </Row>
                         <Row>
                             <Col xs={6}>

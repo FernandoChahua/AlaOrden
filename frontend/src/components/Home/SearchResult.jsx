@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import Container from "react-bootstrap/Container";
+import CardDeck from 'react-bootstrap/CardDeck'
+import ProductCard from "./ProductCard";
 
 class SearchResult extends Component {
     constructor(props) {
@@ -8,9 +11,14 @@ class SearchResult extends Component {
 
     render() {
         return(
-            <div className="bg-dark w-100" style={{"height": "800px"}}>
-                Hola
-            </div>
+            <Container>
+                <CardDeck>
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                </CardDeck>
+            </Container>
         );
     }
 }
