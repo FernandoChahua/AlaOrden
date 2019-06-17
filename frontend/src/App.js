@@ -3,6 +3,7 @@ import './App.css';
 import Header from "./components/layout/Header";
 import ShoppingList from "./components/home/ShoppingList";
 import SearchResult from "./components/home/SearchResult";
+import Steps from "./components/buy/Steps";
 
 class App extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class App extends Component {
                         <ShoppingList openlist={this.state.openlist} toggleList={this.toggleList}/>
                     </div>
                     <div id="body" className="flex-grow-1 bg-light">
-                        <SearchResult/>
+                        <Steps />
                     </div>
                 </div>
             </div>
