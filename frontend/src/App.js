@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Header from "./components/layout/Header";
+import ShoppingList from "./components/Home/ShoppingList";
+import SearchResult from "./components/Home/SearchResult";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            openlist: false
+        }
+        this.toggleList = this.toggleList.bind(this);
+    }
+
+
+    toggleList(){
+        const { openlist } = this.state;
+        this.setState({ "openlist": !openlist});
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <Header toggleList={this.toggleList}/>
+                <div className="d-flex">
+                    <div id="sidebar">
+                        <ShoppingList openlist={this.state.openlist} toggleList={this.toggleList}/>
+                    </div>
+                    <div id="body" className="flex-grow-1">
+                        <SearchResult/>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
