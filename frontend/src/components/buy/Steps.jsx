@@ -32,11 +32,15 @@ class Steps extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col sm={9}>
+                    <Col>
                         <Tab.Content>
-                            <Tab.Pane eventKey="first">
+                            <Tab.Pane eventKey="1">
                             </Tab.Pane>
-                            <Tab.Pane eventKey="second">
+                            <Tab.Pane eventKey="2">
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="3">
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="4">
                             </Tab.Pane>
                         </Tab.Content>
                     </Col>
