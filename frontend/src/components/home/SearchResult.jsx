@@ -17,6 +17,10 @@ class SearchResult extends Component {
                     <ProductCard />
                     <ProductCard />
                     <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
                 </CardDeck>
             </Container>
         );

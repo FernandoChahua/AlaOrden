@@ -11,8 +11,13 @@ class CartItem extends Component {
         this.deleteItem = this.deleteItem.bind(this);
     }
 
+    handleEvent(event){
+        event.persist();
+        console.log(event);
+    }
+
     changeQuantity(event){
-        let detail = this.props.details;
+         let detail = this.props.details;
         let cantidad = event.target.value;
         if (cantidad < 0 || isNaN(cantidad)){
             cantidad = 1;
@@ -47,8 +52,7 @@ class CartItem extends Component {
         let desc = [ producto.presentacion + ": ", producto.magnitud, producto.unidad ]
 
         return(
-            <Form>
-                <Form.Row>
+                <Row>
                     <Col xs={3}>
                         <Image src={imagen} height="70px" alt={producto.nombre} className="noselect"/>
                     </Col>
@@ -76,8 +80,7 @@ class CartItem extends Component {
                             </Col>
                         </Row>
                     </Col>
-                </Form.Row>
-            </Form>
+                </Row>
         );
     }
 }

@@ -28,7 +28,7 @@ class ProductCard extends Component {
         let desc = [ producto.presentacion + ": ", producto.magnitud, producto.unidad ]
 
         return (
-            <Card>
+            <Card className="product-card">
                 <Card.Img src={"assets/img/" + producto.imagen} alt="imagen"/>
                 <Card.Body>
                     <Container>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Button, ButtonToolbar} from "react-bootstrap";
-import AccountModal from "../Account/AccountModal";
+import AccountModal from "../account/AccountModal";
 
 class NotLoggedButton extends Component {
     constructor(props){

@@ -10,54 +10,7 @@ class ShoppingCart extends Component {
         super(props);
         this.state = {
             //FIXME: hard-coded
-            carrito: [
-                {
-                    "idUsuario": 1,
-                    "usuario": null,
-                    "idProducto": 1,
-                    "producto": {
-                        "idProducto": 1,
-                        "idCategoria": 2,
-                        "categoria": null,
-                        "idMarca": 1,
-                        "marca": {
-                            "nombre": "Gloria"
-                        },
-                        "nombre": "Leche Evaporada",
-                        "presentacion": "paquete",
-                        "cantidad": 4,
-                        "magnitud": 500,
-                        "unidad": "g",
-                        "descripcion": "Leche evaporada",
-                        "imagen": "2.jpg",
-                        "productoFranquicias": null
-                    },
-                    "cantidad": 10
-                },
-                {
-                    "idUsuario": 1,
-                    "usuario": null,
-                    "idProducto": 2,
-                    "producto": {
-                        "idProducto": 2,
-                        "idCategoria": 3,
-                        "categoria": null,
-                        "idMarca": 1,
-                        "marca": {
-                            "nombre": "Laive"
-                        },
-                        "nombre": "Yogurt Fresa",
-                        "presentacion": "botella",
-                        "cantidad": 1,
-                        "magnitud": 1000,
-                        "unidad": "ml",
-                        "descripcion": "Yogurt de sabor fresa",
-                        "imagen": "3.jpg",
-                        "productoFranquicias": null
-                    },
-                    "cantidad": 30
-                }
-            ]
+            carrito: this.props.carrito
         };
 
         //Binding
@@ -109,7 +62,7 @@ class ShoppingCart extends Component {
                             ])}
                     </div>
                     <Dropdown.Divider/>
-                    <Button block>Procesar Pedido</Button>
+                    <Button type="submit" block>Procesar Pedido</Button>
                 </DropdownMenu>
             </Dropdown>
         );
