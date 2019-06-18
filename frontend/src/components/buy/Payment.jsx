@@ -5,8 +5,14 @@ import {Row} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
 
+class Payment extends Component {
+    constructor(props) {
+        super(props);
 
-export const Payment = () => (
+    }
+
+    render() {
+        return (
     <Container>
     <Row>
         <Col className="md-8">
@@ -116,3 +122,5 @@ export const Payment = () => (
     </Row>
 </Container>
 )
+        }
+    }
