@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import Tab from 'react-bootstrap/Tab'
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -17,8 +17,7 @@ class Steps extends Component {
 
     render() {
         return (
-            <div id="stepper" >
-
+            <div id="stepper">
                 <Tab.Container id="steps" defaultActiveKey="2">
                     <Row>
                         <Col>
@@ -42,16 +41,16 @@ class Steps extends Component {
                         <Col>
                             <Tab.Content>
                                 <Tab.Pane eventKey="1">
-                                    <Location />
+                                    <Location/>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="2">
-                                    <Quotation />
+                                    <Quotation/>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="3">
-                                    <Payment />
+                                    <Payment/>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="4">
-                                    <Receipt />
+                                    <Receipt/>
                                 </Tab.Pane>
                             </Tab.Content>
                         </Col>
