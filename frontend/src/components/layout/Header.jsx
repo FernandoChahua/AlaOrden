@@ -21,56 +21,7 @@ class Header extends Component {
             user: {
                 idUsuario: 1,
                 apodo: "Default"
-            },
-            //FIXME: hard-coded
-            cart: [
-                {
-                    "idUsuario": 1,
-                    "usuario": null,
-                    "idProducto": 1,
-                    "producto": {
-                        "idProducto": 1,
-                        "idCategoria": 2,
-                        "categoria": null,
-                        "idMarca": 1,
-                        "marca": {
-                            "nombre": "Gloria"
-                        },
-                        "nombre": "Leche Evaporada",
-                        "presentacion": "paquete",
-                        "cantidad": 4,
-                        "magnitud": 500,
-                        "unidad": "g",
-                        "descripcion": "Leche evaporada",
-                        "imagen": "2.jpg",
-                        "productoFranquicias": null
-                    },
-                    "cantidad": 10
-                },
-                {
-                    "idUsuario": 1,
-                    "usuario": null,
-                    "idProducto": 2,
-                    "producto": {
-                        "idProducto": 2,
-                        "idCategoria": 3,
-                        "categoria": null,
-                        "idMarca": 1,
-                        "marca": {
-                            "nombre": "Laive"
-                        },
-                        "nombre": "Yogurt Fresa",
-                        "presentacion": "botella",
-                        "cantidad": 1,
-                        "magnitud": 1000,
-                        "unidad": "ml",
-                        "descripcion": "Yogurt de sabor fresa",
-                        "imagen": "3.jpg",
-                        "productoFranquicias": null
-                    },
-                    "cantidad": 30
-                }
-            ]
+            }
         };
 
         this.manageUser = this.manageUser.bind(this);
@@ -145,7 +96,7 @@ class Header extends Component {
                                 <AccountButton user={this.state.user} manageUser={this.manageUser}/>
                             </div>
                             <div className="mx-1">
-                                <ShoppingCart cart={this.state.cart} changeBody={this.props.changeBody}/>
+                                <ShoppingCart cart={this.props.cart} changeBody={this.props.changeBody} updateCart={this.props.updateCart}/>
                             </div>
                         </Nav>
                     </Navbar>

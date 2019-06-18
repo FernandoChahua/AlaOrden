@@ -1,22 +1,77 @@
-class CartManager {
+export default class CartManager {
     constructor(userId){
         this.userId = userId;
-        if (this.cart === "undefined"){
-            this.cart = [];
+        if (this._cart === "undefined"){
+            this._cart = [];
         }
     }
     static getCart(){
-        return this.cart;
+        return this._cart;
     }
     static addToCart(producto, cantidad){
-        this.cart.push({});
+        let idProducto= producto.idProducto;
+        let item = this._cart.find(x => x.idProducto === idProducto);
+        if (typeof item === 'undefined') {
+            this._cart.push({idProducto, producto, cantidad});
+        }
+        else {
+            item.cantidad += cantidad;
+        }
+        console.log(this._cart);
     }
     static removeFromCart(idProducto) {
-        this.cart = this.cart.filter(x => x.producto.idProducto === idProducto);
+        console.log((idProducto));
+        let index = this._cart
+        this._cart = this._cart.filter(x => x.producto.idProducto !== idProducto);
+        console.log(this._cart);
     }
     static updateCart(idProducto, cantidad) {
-        let item = this.cart.find(x => x.idProducto === idProducto);
+        let item = this._cart.find(x => x.idProducto === idProducto);
         item.cantidad = cantidad;
+        console.log(this._cart);
     }
 }
-CartManager.cart = [];
+CartManager._cart = [
+    {
+        "idProducto": 1,
+        "producto": {
+            "idProducto": 1,
+            "idCategoria": 2,
+            "categoria": null,
+            "idMarca": 1,
+            "marca": {
+                "nombre": "Gloria"
+            },
+            "nombre": "Leche Evaporada",
+            "presentacion": "paquete",
+            "cantidad": 4,
+            "magnitud": 500,
+            "unidad": "g",
+            "descripcion": "Leche evaporada",
+            "imagen": "2.jpg",
+            "productoFranquicias": null
+        },
+        "cantidad": 10
+    },
+    {
+        "idProducto": 2,
+        "producto": {
+            "idProducto": 2,
+            "idCategoria": 3,
+            "categoria": null,
+            "idMarca": 1,
+            "marca": {
+                "nombre": "Laive"
+            },
+            "nombre": "Yogurt Fresa",
+            "presentacion": "botella",
+            "cantidad": 1,
+            "magnitud": 1000,
+            "unidad": "ml",
+            "descripcion": "Yogurt de sabor fresa",
+            "imagen": "3.jpg",
+            "productoFranquicias": null
+        },
+        "cantidad": 30
+    }
+];

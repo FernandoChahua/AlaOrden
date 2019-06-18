@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {Col, Form, Image, Row, InputGroup, FormControl, Button} from "react-bootstrap";
+import {Col, Image, Row, InputGroup, FormControl, Button} from "react-bootstrap";
+import CartManager from "../../util/CartManager";
 
 class CartItem extends Component {
     constructor(props){
@@ -11,13 +12,8 @@ class CartItem extends Component {
         this.deleteItem = this.deleteItem.bind(this);
     }
 
-    handleEvent(event){
-        event.persist();
-        console.log(event);
-    }
-
     changeQuantity(event){
-         let detail = this.props.details;
+        let detail = this.props.details;
         let cantidad = event.target.value;
         if (cantidad < 0 || isNaN(cantidad)){
             cantidad = 1;
@@ -25,21 +21,25 @@ class CartItem extends Component {
         if (cantidad > 100){
             cantidad = 99;
         }
-        this.props.updateMethod(detail.idProducto, cantidad);
+        CartManager.updateCart(detail.idProducto,cantidad);
+        this.props.updateCart();
     }
 
     decreaseQuantity(){
         let detail = this.props.details;
-        this.props.updateMethod(detail.idProducto, detail.cantidad === 0? 0 : detail.cantidad - 1);
+        CartManager.updateCart(detail.idProducto, detail.cantidad === 0? 0 : detail.cantidad - 1);
+        this.props.updateCart();
     }
 
     increaseQuantity() {
         let detail = this.props.details;
-        this.props.updateMethod(detail.idProducto, detail.cantidad > 99 ? 99 : detail.cantidad + 1);
+        CartManager.updateCart(detail.idProducto, detail.cantidad > 99 ? 99 : detail.cantidad + 1);
+        this.props.updateCart();
     }
 
     deleteItem(){
-        this.props.deleteMethod(this.props.details.idProducto);
+        CartManager.removeFromCart(this.props.details.idProducto);
+        this.props.updateCart();
     }
 
     render() {

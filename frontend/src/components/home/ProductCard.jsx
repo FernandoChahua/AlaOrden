@@ -2,15 +2,26 @@ import React, { Component } from 'react'
 import Card from "react-bootstrap/Card";
 import {Button, Col, FormControl, InputGroup, Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
+import CartManager from "../../util/CartManager";
 
 class ProductCard extends Component {
     constructor(props) {
         super(props);
-        let quantity = 0;
+        this.state = {
+            quantity: 0
+        };
+        this.setQuantity = this.setQuantity.bind(this);
+        this.changeQuantity = this.changeQuantity.bind(this);
+        this.decreaseQuantity = this.decreaseQuantity.bind(this);
+        this.increaseQuantity = this.increaseQuantity.bind(this);
+        this.addToCart = this.addToCart.bind(this);
+    }
+
+    setQuantity(cantidad){
+        this.setState({ quantity: cantidad });
     }
 
     changeQuantity(event){
-        let detail = this.props.details;
         let cantidad = event.target.value;
         if (cantidad < 0 || isNaN(cantidad)){
             cantidad = 1;
@@ -18,43 +29,29 @@ class ProductCard extends Component {
         if (cantidad > 100){
             cantidad = 99;
         }
-        this.props.updateMethod(detail.idProducto, cantidad);
+        this.setQuantity(cantidad)
     }
 
     decreaseQuantity(){
-        let detail = this.props.details;
-        this.props.updateMethod(detail.idProducto, detail.cantidad === 0? 0 : detail.cantidad - 1);
+        let quantity = this.state.quantity;
+        this.setQuantity(quantity === 0? 0: quantity - 1);
     }
 
     increaseQuantity() {
-        let detail = this.props.details;
-        this.props.updateMethod(detail.idProducto, detail.cantidad > 99 ? 99 : detail.cantidad + 1);
+        let quantity = this.state.quantity;
+        this.setQuantity(quantity > 99? 99: quantity + 1);
     }
 
-    deleteItem(){
-        this.props.deleteMethod(this.props.details.idProducto);
+    addToCart(){
+        let producto = this.props.producto;
+        CartManager.addToCart(producto, this.state.quantity);
+        this.props.updateCart();
+        this.setQuantity(0);
     }
-
 
     render() {
         //FIXME: hard-coded
-        let producto = {
-            "idProducto": 1,
-                "idCategoria": 2,
-                "categoria": null,
-                "idMarca": 1,
-                "marca": {
-                "nombre": "Gloria"
-            },
-            "nombre": "Leche Evaporada",
-                "presentacion": "paquete",
-                "cantidad": 4,
-                "magnitud": 500,
-                "unidad": "g",
-                "descripcion": "Leche evaporada",
-                "imagen": "2.jpg",
-                "productoFranquicias": null
-        };
+        let producto = this.props.producto;
         let marca = producto.marca.nombre.toUpperCase();
         let nombre = [ producto.nombre ];
         let desc = [ producto.presentacion + ": ", producto.magnitud, producto.unidad ]
@@ -86,16 +83,16 @@ class ProductCard extends Component {
                         <Col xs={6}>
                             <InputGroup size="sm">
                                 <InputGroup.Prepend>
-                                    <Button variant="outline-warning">-</Button>
+                                    <Button variant="outline-warning" onClick={this.decreaseQuantity}>-</Button>
                                 </InputGroup.Prepend>
-                                <FormControl className="text-center"/>
+                                <FormControl className="text-center" value={this.state.quantity} onChange={this.changeQuantity}/>
                                 <InputGroup.Append>
-                                    <Button variant="outline-success">+</Button>
+                                    <Button variant="outline-success" onClick={this.increaseQuantity}>+</Button>
                                 </InputGroup.Append>
                             </InputGroup>
                         </Col>
                         <Col>
-                            <Button size="sm" variant="link" className="text-secondary" onClick={this.deleteItem}>Agregar</Button>
+                            <Button size="sm" variant="link" className="text-secondary" onClick={this.addToCart}>Agregar</Button>
                         </Col>
                     </Row>
                 </Card.Footer>
