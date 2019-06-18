@@ -9,11 +9,13 @@ import Table from "react-bootstrap/Table";
 
 class ProForma extends Component {
     render() {
+        let franquicia = this.props.franquicia;
         return (
             <Card>
-                <Accordion.Toggle as={Card.Header} eventKey={this.props.eventKey} className="d-inline-flex justify-content-between text-light bg-secondary">
-                    <span>Metro</span>
-                    <Image src="logo" alt="logo" className=""/>
+                <Accordion.Toggle as={Card.Header} eventKey={this.props.eventKey}
+                                  className={"d-inline-flex justify-content-between text-light " + franquicia.style}>
+                    <span>{franquicia.nombre}</span>
+                    <Image src={"/assets/img/"+franquicia.logo} alt="logo" className="" height="40px"/>
                     <div>
                         <span>TOTAL: </span>
                         <Badge variant="light">$666</Badge>
