@@ -8,7 +8,6 @@ import {Form} from 'react-bootstrap';
 class Payment extends Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {

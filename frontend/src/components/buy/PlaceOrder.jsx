@@ -9,16 +9,15 @@ import Payment from "./Payment";
 import Receipt from "./Receipt";
 import Stepper from 'react-stepper-horizontal'
 
-class Steps extends Component {
+class PlaceOrder extends Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {
         return (
             <div id="stepper">
-                <Tab.Container id="steps" defaultActiveKey="2">
+                <Tab.Container id="steps" defaultActiveKey="1">
                     <Row>
                         <Col>
                             <Nav fill variant="pills" className="flex-row">
@@ -61,4 +60,4 @@ class Steps extends Component {
     }
 }
 
-export default Steps;
+export default PlaceOrder;

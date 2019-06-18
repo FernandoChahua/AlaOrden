@@ -9,42 +9,22 @@ class ShoppingCart extends Component {
     constructor(props){
         super(props);
         this.state = {
-            //FIXME: hard-coded
-            carrito: this.props.carrito
+            cart: this.props.cart
         };
 
         //Binding
-        this.update = this.update.bind(this);
-        this.add = this.add.bind(this);
-        this.delete = this.delete.bind(this);
+        this.submitCart = this.submitCart.bind(this);
     }
 
-    update(id, quantity){
-        let carrito = this.state.carrito;
-        let item = carrito.find(x => x.idProducto === id);
-        item.cantidad = quantity;
-        this.setState({
-            carrito: carrito
-        });
-    }
-
-    delete(id) {
-        let carrito = this.state.carrito.filter(x => x.idProducto !== id);
-        this.setState({
-            carrito: carrito
-        });
-    }
-
-    //TODO: implement add to cart
-    add(id) {
-
+    submitCart() {
+        this.props.changeBody("ordering");
     }
 
     render() {
-        let carrito = this.state.carrito;
+        let cart = this.state.cart;
         let badge;
-        if (carrito.length > 0){
-            badge = <Badge variant="warning">{carrito.length}</Badge>
+        if (cart.length > 0){
+            badge = <Badge variant="warning">{cart.length}</Badge>
         }
         return (
             <Dropdown>
@@ -56,13 +36,13 @@ class ShoppingCart extends Component {
                 <DropdownMenu alignRight className="p-2" >
                     <Dropdown.Header>CARRITO</Dropdown.Header>
                     <div className="cart-menu">
-                        {carrito.map((item, i) =>
+                        {cart.map((item, i) =>
                             [<Dropdown.Divider key={"divider" + item.idProducto}/>,
                                 <CartItem key={"cart" + item.idProducto} details={item} updateMethod={this.update} deleteMethod={this.delete} />
                             ])}
                     </div>
                     <Dropdown.Divider/>
-                    <Button type="submit" block>Procesar Pedido</Button>
+                    <Button type="submit" block onClick={this.submitCart}>Procesar Pedido</Button>
                 </DropdownMenu>
             </Dropdown>
         );

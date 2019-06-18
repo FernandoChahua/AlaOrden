@@ -67,3 +67,7 @@
     margin-top: 3%;
     background-color: var(--light);
 }
+
+.proforma-table {
+    font-size: small;
+}

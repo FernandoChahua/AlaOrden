@@ -17,9 +17,7 @@ class Quotation extends Component {
                         <div className="mt-4">
                             <h4>Resultado de Búsqueda</h4>
                         </div>
-
                         <hr className="mb-2"></hr>
-
                         <div className="pr-5 m-4">
                             <ProFormaList/>
 
@@ -32,7 +30,6 @@ class Quotation extends Component {
                                     <Form.Check label="Metro" type="radio" id="r-2"/>
                                     <Form.Check label="Metro" type="radio" id="r-3"/>
                                     <Form.Check label="Metro" type="radio" id="r-4"/>
-
                                 </div>
                             </Form>
 
@@ -49,7 +46,6 @@ class Quotation extends Component {
                         </div>
                     </Col>
                 </Row>
-
             </Container>
         );
     }
