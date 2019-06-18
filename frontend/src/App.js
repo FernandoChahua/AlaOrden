@@ -28,8 +28,10 @@ class App extends Component {
                     <div id="sidebar">
                         <ShoppingList openlist={this.state.openlist} toggleList={this.toggleList}/>
                     </div>
-                    <div id="body" className="flex-grow-1 bg-light">
-                        <Steps />
+                    <div id="body" className="flex-grow-1">
+                        <div id="content">
+                            <Steps />
+                        </div>
                     </div>
                 </div>
             </div>

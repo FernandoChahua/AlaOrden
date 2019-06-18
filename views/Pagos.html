@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <!--Tarjeta-->
+            <div class="col-md-8">
+                <div>
+                    <h4>Información de Pago</h4>
+                </div>
+                <hr class="mb-2">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="mb-3">Usar Tarjeta Guardada</h6>
+                            <div class="form-group">
+                                <label for="selTarjeta">Número de Cuenta</label>
+                                <select class="form-control" id="selTarjeta">
+                                    <option>XXXX-XXXX-XXXX-XXXX</option>
+                                    <option>YYYY-YYYY-YYYY-YYYY</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <hr class="mb-2">
+                <div class="d-flex justify-content-between mb-4">
+                    <h6>Metodo de Pago</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="chkRecordar">
+                        <label class="form-check-label" for="chkRecordar">Recordar</label>
+                    </div>
+                </div>
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="txtCuenta">Numero de Cuenta</label>
+                            <input type="text" class="form-control" id="txtCuenta" placeholder="Numero de Cuenta">
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="txtExpM">Expiracion</label>
+                                <div class="row m-0 p-0">
+                                    <div class="col-md-4 pl-0">
+                                        <input type="text" class="form-control" id="txtExpM" placeholder="MM">
+                                    </div>
+                                    <div class="col-md-4 pl-0">
+                                        <input type="text" class="form-control" id="txtExpY" placeholder="YY">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="txtTitular">Titular</label>
+                            <input type="text" class="form-control" id="txtTitular" placeholder="Titular">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="txtCuenta">CCV</label>
+                            <input type="text" class="form-control" id="txtCCV" placeholder="CCV">
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-block btn-lg" type="submit">Proceder (?)</button>
+                </form>
+            </div>
+            <!--RESUMEN-->
+            <div class="col-md-4">
+                <h4 class="d-flex justify-content-between">
+                    <span>Resumen</span>
+                    <span>#</span>
+                </h4>
+                <hr class="mb-3">
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div>
+                            <h5 class="my-0">Subtotal</h5>
+                            <a href="#"><small class="text-muted">Detalles</small></a>
+                        </div>
+                        <span>$</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div>
+                            <h5 class="my-0">Precio de Envio</h5>
+                            <a href="#"><small class="text-muted">Detalles</small></a>
+                        </div>
+                        <span>$</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between text-success">
+                        <div>
+                            <h5 class="my-0">Descuento</h5>
+                            <small>CODIGO</small>
+                        </div>
+                        <span>-$</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div>
+                            <h5 class="my-0">TOTAL</h5>
+                        </div>
+                        <strong>$</strong>
+                    </li>
+                </ul>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Cupón">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-secondary">Canjear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
