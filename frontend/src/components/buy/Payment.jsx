@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {Button} from 'react-bootstrap';
 import {Container} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
