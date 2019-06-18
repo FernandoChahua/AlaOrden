@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import direccion from './direccion'
-
+import './direccion.js';
 class Location extends Component {
     render() {
         return (
-            <Container>
+            <Container id="map">
                 <Row>
                     <Col>
                         <section className="container mt-3">
@@ -17,10 +16,11 @@ class Location extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        <section id="map" className="container mt-3 mb-3">
-                        </section>
+                    <section id="map" className="container mt-3 mb-3">
+                   </section>
                     </Col>
                 </Row>
+
             </Container>
         );
     }
