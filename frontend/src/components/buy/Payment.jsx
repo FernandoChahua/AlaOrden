@@ -5,7 +5,7 @@ import {Row} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
 
-class Payment extends Component {
+class Payment extends React.Component {
     constructor(props) {
         super(props);
 
