@@ -4,6 +4,38 @@ import {Button, Col, FormControl, InputGroup, Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 
 class ProductCard extends Component {
+    constructor(props) {
+        super(props);
+        let quantity = 0;
+    }
+
+    changeQuantity(event){
+        let detail = this.props.details;
+        let cantidad = event.target.value;
+        if (cantidad < 0 || isNaN(cantidad)){
+            cantidad = 1;
+        }
+        if (cantidad > 100){
+            cantidad = 99;
+        }
+        this.props.updateMethod(detail.idProducto, cantidad);
+    }
+
+    decreaseQuantity(){
+        let detail = this.props.details;
+        this.props.updateMethod(detail.idProducto, detail.cantidad === 0? 0 : detail.cantidad - 1);
+    }
+
+    increaseQuantity() {
+        let detail = this.props.details;
+        this.props.updateMethod(detail.idProducto, detail.cantidad > 99 ? 99 : detail.cantidad + 1);
+    }
+
+    deleteItem(){
+        this.props.deleteMethod(this.props.details.idProducto);
+    }
+
+
     render() {
         //FIXME: hard-coded
         let producto = {

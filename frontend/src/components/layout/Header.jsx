@@ -23,7 +23,7 @@ class Header extends Component {
                 apodo: "Default"
             },
             //FIXME: hard-coded
-            carrito: [
+            cart: [
                 {
                     "idUsuario": 1,
                     "usuario": null,
@@ -82,7 +82,7 @@ class Header extends Component {
         this.setState({
             "query": this.state.query,
             "user": user,
-            "carrito": this.state.carrito
+            "cart": this.state.cart
         });
     }
 
@@ -90,7 +90,7 @@ class Header extends Component {
         this.setState({
             "query": event.target.value,
             "user": this.state.user,
-            "carrito": this.state.carrito
+            "cart": this.state.cart
         });
     }
 
@@ -101,7 +101,7 @@ class Header extends Component {
             this.setState({
                 "query": "",
                 "user": this.state.user,
-                "carrito": this.state.carrito
+                "cart": this.state.cart
             });
         }
     }
@@ -145,7 +145,7 @@ class Header extends Component {
                                 <AccountButton user={this.state.user} manageUser={this.manageUser}/>
                             </div>
                             <div className="mx-1">
-                                <ShoppingCart carrito={this.state.carrito}/>
+                                <ShoppingCart cart={this.state.cart} changeBody={this.props.changeBody}/>
                             </div>
                         </Nav>
                     </Navbar>
