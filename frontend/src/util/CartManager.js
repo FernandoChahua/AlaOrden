@@ -17,18 +17,15 @@ export default class CartManager {
         else {
             item.cantidad += cantidad;
         }
-        console.log(this._cart);
     }
     static removeFromCart(idProducto) {
         console.log((idProducto));
         let index = this._cart
         this._cart = this._cart.filter(x => x.producto.idProducto !== idProducto);
-        console.log(this._cart);
     }
     static updateCart(idProducto, cantidad) {
         let item = this._cart.find(x => x.idProducto === idProducto);
         item.cantidad = cantidad;
-        console.log(this._cart);
     }
 }
 CartManager._cart = [
