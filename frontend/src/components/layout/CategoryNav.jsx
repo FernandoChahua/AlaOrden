@@ -40,7 +40,78 @@ class CategoryNav extends Component {
                         name: "Embutidos"
                     }
                 ]
+            },
+            {
+                idCategoria: 4,
+                name: "Categoria",
+                subcategories: [
+                    {
+                        idCategoria: 5,
+                        name: "Subcategoria" },
+
+                ]
+            },
+            {
+                idCategoria: 4,
+                name: "Categoria",
+                subcategories: [
+                    {
+                        idCategoria: 5,
+                        name: "Subcategoria" },
+
+                ]
+            },
+            {
+                idCategoria: 4,
+                name: "Categoria",
+                subcategories: [
+                    {
+                        idCategoria: 5,
+                        name: "Subcategoria" },
+
+                ]
+            },
+            {
+                idCategoria: 4,
+                name: "Categoria",
+                subcategories: [
+                    {
+                        idCategoria: 5,
+                        name: "Subcategoria" },
+
+                ]
+            },
+            {
+                idCategoria: 4,
+                name: "Categoria",
+                subcategories: [
+                    {
+                        idCategoria: 5,
+                        name: "Subcategoria" },
+
+                ]
+            },
+            {
+                idCategoria: 4,
+                name: "Categoria",
+                subcategories: [
+                    {
+                        idCategoria: 5,
+                        name: "Subcategoria" },
+
+                ]
+            },
+            {
+                idCategoria: 4,
+                name: "Categoria",
+                subcategories: [
+                    {
+                        idCategoria: 5,
+                        name: "Subcategoria" },
+
+                ]
             }
+
         ];
 
         return(

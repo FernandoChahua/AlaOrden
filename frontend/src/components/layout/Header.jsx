@@ -69,8 +69,8 @@ class Header extends Component {
                     <Navbar expand={false} className="flex-column flex-sm-row">
                         {/* -- LOGO--- */}
                         <Navbar.Brand href="#home">
-                            <Image src="assets/img/logo.png" height={"50px"} alt="logo"/>
-                            <span className="overflow-hidden"> Placeholder</span>
+                            <Image src="assets/img/logoflash.ico" height={"50px"} alt="logo"/>
+                            <span className="overflow-hidden">A la Orden</span>
                         </Navbar.Brand>
 
                         {/* -- BARRA DE BUSQUEDA--- */}
@@ -97,6 +97,7 @@ class Header extends Component {
                             </div>
                             <div className="mx-1">
                                 <ShoppingCart cart={this.props.cart} changeBody={this.props.changeBody} updateCart={this.props.updateCart}/>
+
                             </div>
                         </Nav>
                     </Navbar>
