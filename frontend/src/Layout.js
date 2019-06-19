@@ -5,7 +5,7 @@ import ShoppingList from "./components/home/ShoppingList";
 import MainBody from "./components/home/MainBody";
 import CartManager from "./util/CartManager";
 
-class App extends Component {
+class Layout extends Component {
     constructor(props) {
         super(props);
         let cart = CartManager.getCart();
@@ -58,4 +58,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Layout;
