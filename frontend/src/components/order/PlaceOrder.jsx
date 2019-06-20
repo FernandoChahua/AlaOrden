@@ -12,11 +12,31 @@ import Stepper from 'react-stepper-horizontal'
 class PlaceOrder extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            activeStep: 1
+        };
+        this.setStep = this.setStep.bind(this);
+    }
+
+    setStep(step) {
+        if (this.state.step < step){
+            this.setState({activeStep:step});
+        }
     }
 
     render() {
+
+        let activeStep = this.state.activeStep;
+        let steps =  [
+            {title: 'Dirección', href: ''},
+            {title: 'Cotización', href: ''},
+            {title: 'Pago', href: ''},
+            {title: 'Confirmación', href: ''}
+        ];
+
         return (
-            <div id="stepper">
+            <div id="stepper" >
+                <Stepper steps={steps} activeStep={activeStep} />
                 <Tab.Container id="steps" defaultActiveKey="1">
                     <Row>
                         <Col>

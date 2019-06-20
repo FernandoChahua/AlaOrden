@@ -8,9 +8,6 @@ import CartItem from "./CartItem"
 class ShoppingCart extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            cart: this.props.cart
-        };
 
         //Binding
         this.submitCart = this.submitCart.bind(this);
@@ -21,7 +18,7 @@ class ShoppingCart extends Component {
     }
 
     render() {
-        let cart = this.state.cart;
+        let cart = this.props.cart;
         let badge;
         if (cart.length > 0){
             badge = <Badge variant="warning">{cart.length}</Badge>
@@ -38,7 +35,7 @@ class ShoppingCart extends Component {
                     <div className="cart-menu">
                         {cart.map((item, i) =>
                             [<Dropdown.Divider key={"divider" + item.idProducto}/>,
-                                <CartItem key={"cart" + item.idProducto} details={item} updateMethod={this.update} deleteMethod={this.delete} />
+                                <CartItem key={"cart" + item.idProducto} details={item} updateCart={this.props.updateCart}/>
                             ])}
                     </div>
                     <Dropdown.Divider/>

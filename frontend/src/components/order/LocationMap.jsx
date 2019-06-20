@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import "./direccion"
 
-const Map = () => {
+const LocationMap = () => {
     return (<div>Prueba</div>);
 };
 
-export default Map
+export default LocationMap

@@ -1,15 +1,15 @@
 import React from "react";
 import SearchResult from "./SearchResult";
-import PlaceOrder from "../buy/PlaceOrder";
+import PlaceOrder from "../order/PlaceOrder";
 
 export default function MainBody(props) {
     switch(props.body){
         case "search":
-            return (<SearchResult />);
+            return (<SearchResult {...props} />);
         case "ordering":
-            return (<PlaceOrder />);
+            return (<PlaceOrder {...props} />);
         default:
-            return (<SearchResult />);
+            return (<SearchResult {...props} />);
     }
 };
 
