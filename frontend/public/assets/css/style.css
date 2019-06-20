@@ -15,6 +15,13 @@
                                   supported by Chrome and Opera */
 }
 
+.grid-contatiner {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,210px);
+    grid-template-rows: repeat(auto-fit,350px);
+    grid-gap: 10px;
+}
+
 #search-bar {
     padding-left: 16px;
     padding-right: 16px;

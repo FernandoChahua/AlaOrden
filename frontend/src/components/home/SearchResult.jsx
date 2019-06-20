@@ -11,55 +11,173 @@ class SearchResult extends Component {
     }
 
     render() {
-        let producto = {
-            "idProducto": 1,
-            "idCategoria": 2,
-            "categoria": null,
-            "idMarca": 1,
-            "marca": {
-                "nombre": "Gloria"
+        let productos = [
+            {
+                "idProducto": 1,
+                "idCategoria": 2,
+                "categoria": null,
+                "idMarca": 1,
+                "marca": {
+                    "nombre": "Gloria"
+                },
+                "nombre": "Leche Evaporada",
+                "presentacion": "paquete",
+                "cantidad": 4,
+                "magnitud": 500,
+                "unidad": "g",
+                "descripcion": "Leche evaporada",
+                "imagen": "2.jpg",
+                "productoFranquicias": null
             },
-            "nombre": "Leche Evaporada",
-            "presentacion": "paquete",
-            "cantidad": 4,
-            "magnitud": 500,
-            "unidad": "g",
-            "descripcion": "Leche evaporada",
-            "imagen": "2.jpg",
-            "productoFranquicias": null
-        };
+            {
+                "idProducto": 1,
+                "idCategoria": 2,
+                "categoria": null,
+                "idMarca": 1,
+                "marca": {
+                    "nombre": "Gloria"
+                },
+                "nombre": "Leche Evaporada",
+                "presentacion": "paquete",
+                "cantidad": 4,
+                "magnitud": 500,
+                "unidad": "g",
+                "descripcion": "Leche evaporada",
+                "imagen": "2.jpg",
+                "productoFranquicias": null
+            },
+            {
+                "idProducto": 1,
+                "idCategoria": 2,
+                "categoria": null,
+                "idMarca": 1,
+                "marca": {
+                    "nombre": "Gloria"
+                },
+                "nombre": "Leche Evaporada",
+                "presentacion": "paquete",
+                "cantidad": 4,
+                "magnitud": 500,
+                "unidad": "g",
+                "descripcion": "Leche evaporada",
+                "imagen": "2.jpg",
+                "productoFranquicias": null
+            },
+            {
+                "idProducto": 1,
+                "idCategoria": 2,
+                "categoria": null,
+                "idMarca": 1,
+                "marca": {
+                    "nombre": "Gloria"
+                },
+                "nombre": "Leche Evaporada",
+                "presentacion": "paquete",
+                "cantidad": 4,
+                "magnitud": 500,
+                "unidad": "g",
+                "descripcion": "Leche evaporada",
+                "imagen": "2.jpg",
+                "productoFranquicias": null
+            },
+            {
+                "idProducto": 1,
+                "idCategoria": 2,
+                "categoria": null,
+                "idMarca": 1,
+                "marca": {
+                    "nombre": "Gloria"
+                },
+                "nombre": "Leche Evaporada",
+                "presentacion": "paquete",
+                "cantidad": 4,
+                "magnitud": 500,
+                "unidad": "g",
+                "descripcion": "Leche evaporada",
+                "imagen": "2.jpg",
+                "productoFranquicias": null
+            },
+            {
+                "idProducto": 1,
+                "idCategoria": 2,
+                "categoria": null,
+                "idMarca": 1,
+                "marca": {
+                    "nombre": "Gloria"
+                },
+                "nombre": "Leche Evaporada",
+                "presentacion": "paquete",
+                "cantidad": 4,
+                "magnitud": 500,
+                "unidad": "g",
+                "descripcion": "Leche evaporada",
+                "imagen": "2.jpg",
+                "productoFranquicias": null
+            },
+            {
+                "idProducto": 1,
+                "idCategoria": 2,
+                "categoria": null,
+                "idMarca": 1,
+                "marca": {
+                    "nombre": "Gloria"
+                },
+                "nombre": "Leche Evaporada",
+                "presentacion": "paquete",
+                "cantidad": 4,
+                "magnitud": 500,
+                "unidad": "g",
+                "descripcion": "Leche evaporada",
+                "imagen": "2.jpg",
+                "productoFranquicias": null
+            },
+            {
+                "idProducto": 1,
+                "idCategoria": 2,
+                "categoria": null,
+                "idMarca": 1,
+                "marca": {
+                    "nombre": "Gloria"
+                },
+                "nombre": "Leche Evaporada",
+                "presentacion": "paquete",
+                "cantidad": 4,
+                "magnitud": 500,
+                "unidad": "g",
+                "descripcion": "Leche evaporada",
+                "imagen": "2.jpg",
+                "productoFranquicias": null
+            },{
+                "idProducto": 1,
+                "idCategoria": 2,
+                "categoria": null,
+                "idMarca": 1,
+                "marca": {
+                    "nombre": "Gloria"
+                },
+                "nombre": "Leche Evaporada",
+                "presentacion": "paquete",
+                "cantidad": 4,
+                "magnitud": 500,
+                "unidad": "g",
+                "descripcion": "Leche evaporada",
+                "imagen": "2.jpg",
+                "productoFranquicias": null
+            },
+
+        ];
 
         return(
-            <Container>
-                <Row className="py-3">
-                    <Col xs={3}>
-                        <ProductCard producto = {producto} updateCart={this.props.updateCart}/>
-                    </Col>
-                    <Col xs={3}>
-                        <ProductCard producto = {producto} updateCart={this.props.updateCart}/>
-                    </Col>
-                    <Col xs={3}>
-                        <ProductCard producto = {producto} updateCart={this.props.updateCart}/>
-                    </Col>
-                    <Col xs={3}>
-                        <ProductCard producto = {producto} updateCart={this.props.updateCart}/>
-                    </Col>
-                </Row>
-                <Row className="py-3">
-                    <Col xs={3}>
-                        <ProductCard producto = {producto} updateCart={this.props.updateCart}/>
-                    </Col>
-                    <Col xs={3}>
-                        <ProductCard producto = {producto} updateCart={this.props.updateCart}/>
-                    </Col>
-                    <Col xs={3}>
-                        <ProductCard producto = {producto} updateCart={this.props.updateCart}/>
-                    </Col>
-                    <Col xs={3}>
-                        <ProductCard producto = {producto} updateCart={this.props.updateCart}/>
-                    </Col>
-                </Row>
-            </Container>
+            <div className="grid-contatiner">
+                <ProductCard producto = {productos[0]} updateCart={this.props.updateCart}/>
+                <ProductCard producto = {productos[1]} updateCart={this.props.updateCart}/>
+                <ProductCard producto = {productos[2]} updateCart={this.props.updateCart}/>
+                <ProductCard producto = {productos[3]} updateCart={this.props.updateCart}/>
+                <ProductCard producto = {productos[4]} updateCart={this.props.updateCart}/>
+                <ProductCard producto = {productos[5]} updateCart={this.props.updateCart}/>
+                <ProductCard producto = {productos[6]} updateCart={this.props.updateCart}/>
+                <ProductCard producto = {productos[7]} updateCart={this.props.updateCart}/>
+            </div>
         );
     }
 }
