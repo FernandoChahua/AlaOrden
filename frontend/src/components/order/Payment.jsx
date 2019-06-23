@@ -12,9 +12,10 @@ class Payment extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container className="text-left">
                 <Row>
                     <Col className="md-8">
+                        <br></br>
                         <div>
                             <h4>Información de Pago</h4>
                         </div>
@@ -75,12 +76,13 @@ class Payment extends React.Component {
                                     <input type="text" className="form-control" id="txtCCV" placeholder="CCV"/>
                                 </div>
                             </div>
-                            <hr class="mb-4"/>
-                            <Button className="btn btn-primary btn-block btn-lg" type="submit">Proceder (?)</Button>
+
                         </Form>
                     </Col>
                     <Col className="md-4">
+                        <br></br>
                         <h4 className="d-flex justify-content-between">
+
                             <span>Resumen</span>
                             <span>#</span>
                         </h4>
@@ -124,6 +126,18 @@ class Payment extends React.Component {
                                 <Button type="submit" className="btn btn-secondary">Canjear</Button>
                             </div>
                         </div>
+                    </Col>
+
+                </Row>
+                <br></br>
+                <hr className="mb-2"></hr>
+                <br></br>
+                <Row>
+                    <Col>
+                        <Button variant="outline-primary" block onClick={this.register}>Anterior</Button>
+                    </Col>
+                    <Col>
+                        <Button block onClick={this.register}>Siguiente</Button>
                     </Col>
                 </Row>
             </Container>
