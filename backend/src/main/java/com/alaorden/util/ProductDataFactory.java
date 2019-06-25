@@ -18,7 +18,7 @@ public class ProductDataFactory {
     }
 
     public ProductDataFactory(Franquicia franquicia) {
-        this.apiUrl = franquicia.getConexion();
+        this.apiUrl = franquicia.getApiUrl();
         this.nombreFranquicia = franquicia.getNombre();
     }
 

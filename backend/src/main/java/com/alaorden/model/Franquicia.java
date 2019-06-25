@@ -23,16 +23,14 @@ public class Franquicia {
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "url")
-    private String url;
+    @Column(name = "webUrl")
+    private String webUrl;
 
-
-    @Column(name = "Conexion")
-    private String Conexion;
+    @Column(name = "apiUrl")
+    private String apiUrl;
 
     @Column(name = "Logo")
     private String Logo;
-
 
     @OneToMany(mappedBy = "franquicia")
     private List<Sede> sedes;
