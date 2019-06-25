@@ -1,13 +1,15 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import PlaceOrder from "./components/order/PlaceOrder";
-import Home from "./components/home/Home";
+import {Router, Route, Switch} from "react-router-dom";
+import {createBrowserHistory} from "history";
+import Home from "./views/Home";
+
+const history = createBrowserHistory();
 
 const Routes = () => (
-    <Router>
+    <Router history={history}>
         <Switch>
             <Route exact path="/" component={Home}/>
-            <Route path="/order" component={PlaceOrder}/>
+            <Route path="/order" component={"FIXME"}/>
         </Switch>
     </Router>
 );
