@@ -11,29 +11,32 @@ import Form from "react-bootstrap/Form";
 class Quotation extends Component {
     render() {
         return (
+
             <Container className="text-left">
                 <Row>
-                    <Col md={8}>
+                    <Col className="md-8">
+                        <br></br>
+
                         <div className="mt-4">
-                            <h4>Resultado de Búsqueda</h4>
+                            <h4>Elija su lugar de compra</h4>
                         </div>
                         <hr className="mb-2"></hr>
                         <div className="pr-5 m-4">
-                            <ProFormaList/>
 
-                            <hr className="mb-2"></hr>
-
-                            <Form>
-                                <h6>Seleccione sede</h6>
-                                <div className="my-3">
-                                    <Form.Check label="Metro" type="radio" id="r-1"/>
-                                    <Form.Check label="Metro" type="radio" id="r-2"/>
-                                    <Form.Check label="Metro" type="radio" id="r-3"/>
-                                    <Form.Check label="Metro" type="radio" id="r-4"/>
+                            <div className="d-flex justify-content-between mb-4">
+                                <h6 className="mb-3">Metro</h6>
+                                <div className="form-check">
+                                    <Button block onClick={this.register}>Comprar</Button>
                                 </div>
-                            </Form>
-
+                            </div>
+                            <ProFormaList/>
+                            <br></br>
                             <hr className="mb-2"></hr>
+                            <br></br>
+
+
+
+
 
                             <Row>
                                 <Col>
@@ -47,6 +50,7 @@ class Quotation extends Component {
                     </Col>
                 </Row>
             </Container>
+
         );
     }
 }
