@@ -7,12 +7,60 @@ import {
     LOAD_INIT_CATALOG, LOAD_CATEGORY_LIST
 } from "./actions";
 
+export function loadCategories() {
+    return (dispatch) => {
+
+        dispatch(_loadCategories())
+    }
+}
+
+export function loadInitCatalog() {
+    return (dispatch) => {
+
+        dispatch(_loadInitCatalog())
+    }
+}
+
+export function getSearchResults() {
+    return (dispatch) => {
+
+        dispatch(_getSearchResults())
+    }
+}
+export function addListQuery() {
+    return (dispatch) => {
+
+        dispatch(_addListQuery())
+    }
+}
+
+export function deleteListQuery() {
+    return (dispatch) => {
+
+        dispatch(_deleteListQuery())
+    }
+}
+
+export function addFilter() {
+    return (dispatch) => {
+
+        dispatch(_addFilter())
+    }
+}
+
 const _loadCategories = (categories) => {
     return {
         type: LOAD_CATEGORY_LIST,
         categories
     }
 };
+
+export function getQueryResults() {
+    return (dispatch) => {
+
+        dispatch(_getQueryResults())
+    }
+}
 
 const _loadInitCatalog = (results) => {
     return {

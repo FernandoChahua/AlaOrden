@@ -1,5 +1,25 @@
 import {ADD_ITEM, LOAD_CART, REMOVE_ITEM, SUBMIT_CART, UPDATE_ITEM} from "./actions";
 
+export function addItem() {
+    return (dispatch) => {
+
+        dispatch(_addItem())
+    }
+}
+
+export function updateItem() {
+    return (dispatch) => {
+
+        dispatch(_updateItem())
+    }
+}
+
+export function removeItem() {
+    return (dispatch) => {
+
+        dispatch(_removeItem())
+    }
+}
 
 const _addItem = (productId, quantity) => {
     return {
