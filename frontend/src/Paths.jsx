@@ -5,7 +5,7 @@ import Home from "./views/Home";
 
 const history = createBrowserHistory();
 
-const Routes = () => (
+const Paths = () => (
     <Router history={history}>
         <Switch>
             <Route exact path="/" component={Home}/>
@@ -14,4 +14,4 @@ const Routes = () => (
     </Router>
 );
 
-export default Routes;
+export default Paths;

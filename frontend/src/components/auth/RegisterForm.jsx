@@ -5,8 +5,9 @@ import Col from "react-bootstrap/Col";
 import  {InputGroup} from "react-bootstrap"
 import Button from "react-bootstrap/Button";
 
-//TODO: validate
 class RegisterForm extends Component {
+  //TODO: validate
+
   render() {
     return (
       <Form>

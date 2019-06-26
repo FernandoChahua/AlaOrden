@@ -1,34 +1,25 @@
 export default class CartManager {
-    constructor(userId){
-        this.userId = userId;
-        if (this._cart === "undefined"){
-            this._cart = [];
-        }
-    }
-    static getCart(){
-        return this._cart;
-    }
-    static addToCart(producto, cantidad){
-        let idProducto= producto.idProducto;
-        let item = this._cart.find(x => x.idProducto === idProducto);
+
+    static addToCart(cart, productId, quantity){
+        let item = cart.find(x => x.productId === productId);
         if (typeof item === 'undefined') {
-            this._cart.push({idProducto, producto, cantidad});
+            cart.push({productId, quantity});
         }
         else {
-            item.cantidad += cantidad;
+            item.quantity += quantity;
         }
+        return cart;
     }
-    static removeFromCart(idProducto) {
-        console.log((idProducto));
-        let index = this._cart
-        this._cart = this._cart.filter(x => x.producto.idProducto !== idProducto);
+    static removeFromCart(cart, productId) {
+        return cart.filter(x => x.productId !== productId);
     }
-    static updateCart(idProducto, cantidad) {
-        let item = this._cart.find(x => x.idProducto === idProducto);
-        item.cantidad = cantidad;
+
+    static updateCart(cart, productId, quantity) {
+        let item = cart.find(x => x.productId === productId);
+        item.quantity = quantity;
     }
 }
-CartManager._cart = [
+/*CartManager._cart = [
     {
         "idProducto": 1,
         "producto": {
@@ -71,4 +62,4 @@ CartManager._cart = [
         },
         "cantidad": 30
     }
-];
+]; */

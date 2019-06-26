@@ -6,7 +6,7 @@ class Content extends Component {
     return (
       <div id="body" className="flex-grow-1">
         <div id="content">
-          <MainBody body={this.state.body} changeBody={this.changeBody} updateCart={this.updateCart}/>
+            {this.props.children}
         </div>
       </div>
     );
