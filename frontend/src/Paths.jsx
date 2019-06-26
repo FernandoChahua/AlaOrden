@@ -9,8 +9,9 @@ const history = createBrowserHistory();
 const Paths = () => (
     <Router history={history}>
         <Switch>
-            <Route exact path="/home" component={Home}/>
+            <Route exact path="/" component={Home}/>
             <Route path="/order" component={PlaceOrder}/>
+            <Redirect from="/home" to="/"/>
         </Switch>
     </Router>
 );
