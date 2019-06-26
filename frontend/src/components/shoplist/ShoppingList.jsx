@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import Collapse from "react-bootstrap/Collapse";
 import Card from "react-bootstrap/Card";
 
+/*
+local:
+state: displayShopList
+dispatch:
+ */
 class ShoppingList extends Component {
   //TODO: showList -state-, list -state-, toggleList -state-
 

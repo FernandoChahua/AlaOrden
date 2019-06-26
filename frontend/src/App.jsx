@@ -5,6 +5,8 @@ import Paths from "./Paths";
 
 const store = configureStore();
 
+console.log(JSON.stringify(store.getState()));
+
 class App extends Component {
   render() {
     return (

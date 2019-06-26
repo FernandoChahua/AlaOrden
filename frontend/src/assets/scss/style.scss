@@ -1,6 +1,7 @@
 
 
 @import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/css/all.css";
 
 @media screen and (max-width: 960px){
   .btn-desc {
@@ -17,7 +18,7 @@
                                   supported by Chrome and Opera */
 }
 
-.grid-contatiner {
+.grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill,210px);
   grid-template-rows: repeat(auto-fit,350px);
@@ -71,9 +72,8 @@
 }
 
 #content {
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 3%;
+  min-height: 700px;
+  margin: 3% 10% 2%;
   background-color: var(--light);
 }
 

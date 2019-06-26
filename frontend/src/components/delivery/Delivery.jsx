@@ -2,18 +2,23 @@ import React, {Component} from 'react'
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {Button, Dropdown, Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 
+/*
+local:
+state: addressList, address
+dispatch:
+ */
 class Delivery extends Component {
   initMap = () => {
-    var marker;
-    var map;
-    var geocoder;
-    var infowindow;
+    let marker;
+    let map;
+    let geocoder;
+    let infowindow;
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        var pos = {
+        let pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
@@ -113,7 +118,6 @@ class Delivery extends Component {
     this.renderMap();
   };
 
-
   render() {
     return (
         <Container className="text-left">
@@ -178,7 +182,6 @@ class Delivery extends Component {
     )
   }
 }
-
 
 function loadScript(url) {
   var script = window.document.createElement("script");

@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+/*
+COMP
+ */
 class ProFormaDetails extends Component {
   render() {
     return (

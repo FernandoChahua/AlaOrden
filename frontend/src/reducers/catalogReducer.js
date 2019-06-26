@@ -4,12 +4,15 @@ import {
     DELETE_LIST_QUERY,
     GET_SEARCH_RESULTS,
     GET_QUERY_RESULTS,
-    LOAD_INIT_CATALOG
+    LOAD_INIT_CATALOG, LOAD_CATEGORY_LIST
 } from "../actions/actions";
 
 
-export default function catalogReducer(state = {list:[]}, action) {
+export default function catalogReducer(state = {list:[],results:[]}, action) {
     switch (action.type) {
+        case LOAD_CATEGORY_LIST:
+            return Object.assign({}, state,
+              {categories: action.categories});
         case LOAD_INIT_CATALOG:
             return Object.assign({},state,
                 {results: action.results});

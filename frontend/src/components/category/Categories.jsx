@@ -3,12 +3,21 @@ import Form from "react-bootstrap/Form";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownItem from "react-bootstrap/DropdownItem";
+import {connect} from "react-redux";
 
-//catogories -state-
+/*
+local:
+state: categories
+dispatch:
+ */
 class Categories extends Component {
 
-    render() {
-        let categories = this.props.categories;
+    componentDidMount() {
+      //this.props.loadCategories();
+    }
+
+  render() {
+        let categories = this.props.categories || [];
 
         return (
             <Form className="text-md-left bg-light">
@@ -26,4 +35,15 @@ class Categories extends Component {
     }
 }
 
-export default Categories;
+const mapState = (state) => {
+  return {
+    categories: state.catalog.categories
+  }
+};
+
+const mapDispatch = {
+  //loadCategories
+  //searchByCategory
+};
+
+export default connect(mapState,mapDispatch)(Categories);

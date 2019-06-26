@@ -1,11 +1,18 @@
 import {combineReducers} from "redux";
-import authReducer from "./authReducer";
-import cartReducer from "./cartReducer";
-import catalogReducer from "./catalogReducer";
-import deliveryReducer from "./deliveryReducer";
-import paymentReducer from "./paymentReducer"
-import quotationReducer from "./quotationReducer"
+import auth from "./authReducer";
+import cart from "./cartReducer";
+import catalog from "./catalogReducer";
+import delivery from "./deliveryReducer";
+import payment from "./paymentReducer"
+import quotation from "./quotationReducer"
 
-const reducers = { authReducer,cartReducer,catalogReducer,deliveryReducer, paymentReducer, quotationReducer };
+const reducers = {
+  auth,
+  cart,
+  catalog,
+  delivery,
+  payment,
+  quotation
+};
 
 export default combineReducers(reducers);

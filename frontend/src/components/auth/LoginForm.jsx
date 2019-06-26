@@ -1,9 +1,18 @@
 import React, {Component} from 'react';
 import {Form,Row,Col} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import {connect} from "react-redux";
 
+/*
+local: [...form]
+state: (response)
+dispatch:
+ */
 class LoginForm extends Component {
-    //TODO: validate formulario
+
+  validateForm(){
+    //TODO: validate form
+  }
 
   render() {
     return (
@@ -32,4 +41,14 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+const mapState = state => {
+  return {
+
+  }
+};
+
+const mapDispatch = {
+
+};
+
+export default connect(mapState,mapDispatch)(LoginForm);

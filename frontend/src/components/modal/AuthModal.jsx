@@ -1,10 +1,22 @@
 import React, {Component} from 'react';
 import {Modal, Nav} from "react-bootstrap";
-import AuthForm from "./AuthForm";
+import AuthFormSwitch from "./AuthFormSwitch";
+import {Redirect} from "react-router-dom";
+import {hideModal} from "../../actions/authActions"
+import {connect} from "react-redux";
 
-
-
+/*
+local:
+state: addressList, address
+dispatch:
+ */
 class AuthModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state={ login: true};
+
+    this.handleEvent = this.handleEvent.bind(this);
+  }
 
 
   handleEvent(eventKey) {
@@ -33,11 +45,21 @@ class AuthModal extends Component {
           </Nav>
         </Modal.Header>
         <Modal.Body>
-          <AuthForm />
+          <AuthFormSwitch login={this.state.login} />
         </Modal.Body>
       </Modal>
     );
   }
 }
 
-export default AuthModal;
+const mapState = state => {
+  return {
+    show: state.auth.displayAuthModal
+  }
+};
+
+const mapDispatch = {
+  onHide: hideModal
+};
+
+export default connect(mapState,mapDispatch)(AuthModal);

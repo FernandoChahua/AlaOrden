@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import Layout from "../components/layout/Layout";
-import Catalog from "../components/catalog/Catalog";
+import Order from "../components/order/Order";
 
-class Home extends Component {
+class PlaceOrder extends Component {
   render() {
     return (
       <Layout>
-        <Catalog/>
+        <Order/>
       </Layout>
     );
   }
 }
 
-export default Home;
+export default PlaceOrder;

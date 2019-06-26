@@ -4,9 +4,18 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import  {InputGroup} from "react-bootstrap"
 import Button from "react-bootstrap/Button";
+import {connect} from "react-redux";
 
+/*
+local: [...form]
+state: (response)
+dispatch: addUser
+ */
 class RegisterForm extends Component {
-  //TODO: validate
+
+  validateForm() {
+    //TODO: validate form
+  }
 
   render() {
     return (
@@ -14,7 +23,6 @@ class RegisterForm extends Component {
         <h3 className="text-center">Registrarse</h3>
         <Row className="flex-column flex-md-row">
           <Col>
-
             <Form.Group id="formRegUsername">
               <Form.Label>Nombre de Usuario</Form.Label>
               <Form.Control type="text" placeholder="Usuario"/>
@@ -54,4 +62,14 @@ class RegisterForm extends Component {
   }
 }
 
-export default RegisterForm;
+const mapState = state => {
+  return {
+
+  }
+};
+
+const mapDispatch = {
+
+};
+
+export default connect(mapState,mapDispatch)(RegisterForm);

@@ -5,24 +5,26 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {FormControl, InputGroup} from 'react-bootstrap'
 import Button from "react-bootstrap/Button";
+import {connect} from "react-redux";
 
+/*
+local: quantity
+state:
+dispatch:
+ */
 class ProductCard extends Component {
-  //TODO: decreaseQuantity() -local-, increaseQuantity() -local-, quantity -local-, changeQuantity() -local-
-  //TODO: addToCart() -state-
-
   constructor(props) {
     super(props);
     this.state = {
       quantity: 0
     };
-    this.setQuantity = this.setQuantity.bind(this);
     this.changeQuantity = this.changeQuantity.bind(this);
     this.decreaseQuantity = this.decreaseQuantity.bind(this);
     this.increaseQuantity = this.increaseQuantity.bind(this);
   }
 
   setQuantity(quantity){
-    this.setState({ quantity: quantity });
+
   }
 
   changeQuantity(event){
@@ -33,17 +35,17 @@ class ProductCard extends Component {
     if (quantity > 100){
       quantity = 99;
     }
-    this.setQuantity(quantity)
+    this.setState({ quantity: quantity });
   }
 
   decreaseQuantity(){
     let quantity = this.state.quantity;
-    this.setQuantity(quantity === 0? 0: quantity - 1);
+    this.setState({ quantity: quantity === 0? 0: quantity - 1 });
   }
 
   increaseQuantity() {
     let quantity = this.state.quantity;
-    this.setQuantity(quantity > 99? 99: quantity + 1);
+    this.setState({ quantity: quantity > 99? 99: quantity + 1 });
   }
 
 
@@ -53,22 +55,22 @@ class ProductCard extends Component {
 
     return (
       <Card className="product-card">
-        <Card.Img src={"assets/img/" + product.imagen} alt="imagen"/>
+        <Card.Img src={"assets/img/products" + product.photo} alt="imagen"/>
         <Card.Body>
           <Container>
             <Row>
               <Col>
-                <h6 className="my-0 text-center">{product.marca}</h6>
+                <h6 className="my-0 text-center">{product.brand.name}</h6>
               </Col>
             </Row>
             <Row>
               <Col>
-                <p className="m-0">{product.nombre}</p>
+                <p className="m-0">{product.name}</p>
               </Col>
             </Row>
             <Row>
               <Col>
-                <p className="text-muted mb-0">{product.descripcion}</p>
+                <p className="text-muted mb-0">{product.description}</p>
               </Col>
             </Row>
           </Container>
@@ -96,4 +98,14 @@ class ProductCard extends Component {
   }
 }
 
-export default ProductCard;
+const mapState = (state,ownProps) => {
+  return {
+    product: state.catalog.results[ownProps.index]
+  }
+};
+
+const mapDispatch = {
+  //addToCart
+};
+
+export default connect(mapState,mapDispatch)(ProductCard);

@@ -4,6 +4,9 @@ import Nav from "react-bootstrap/Nav";
 import Cart from "../cart/Cart";
 import SessionButton from "../auth/SessionButton";
 
+/*
+COMP
+ */
 class ControlButtons extends Component {
   render() {
     return (

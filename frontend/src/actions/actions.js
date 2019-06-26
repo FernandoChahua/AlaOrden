@@ -1,8 +1,11 @@
 //auth
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
+export const SHOW_AUTH_MODAL = 'SHOW_AUTH_MODAL';
+export const HIDE_AUTH_MODAL = 'HIDE_AUTH_MODAL';
 
 //catalog(search/list/category)
+export const LOAD_CATEGORY_LIST = 'LOAD_CATEGORY_LIST';
 export const LOAD_INIT_CATALOG = 'LOAD_INIT_CATALOG';
 export const GET_SEARCH_RESULTS = 'GET_SEARCH_RESULTS';
 export const ADD_LIST_QUERY = 'ADD_LIST_QUERY';

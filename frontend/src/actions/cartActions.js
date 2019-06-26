@@ -1,6 +1,7 @@
 import {ADD_ITEM, LOAD_CART, REMOVE_ITEM, SUBMIT_CART, UPDATE_ITEM} from "./actions";
 
-export function addItem(productId, quantity){
+
+const _addItem = (productId, quantity) => {
     return {
         type: ADD_ITEM,
         id: productId,
@@ -8,15 +9,15 @@ export function addItem(productId, quantity){
     }
 }
 
-export function updateItem(productId, quantity) {
+const _updateItem = (productId, quantity) => {
     return {
         type: UPDATE_ITEM,
         id: productId,
         quantity: quantity
     }
-}
+};
 
-export function removeItem(productId) {
+const _removeItem = (productId) => {
     return {
         type: REMOVE_ITEM,
         id: productId

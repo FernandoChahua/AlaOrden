@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import Table from "react-bootstrap/Table";
 
+/*
+local:
+state: order
+dispatch:
+ */
 class Receipt extends Component {
   render() {
 

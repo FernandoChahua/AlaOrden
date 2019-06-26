@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import Stepper from "react-stepper-horizontal/lib/Stepper"
 
+/*
+local:
+state: orderStep, maxStep
+dispatch:
+ */
 class Order extends Component {
   //TODO: maxStep -state-, activeStep -local-
   render() {

@@ -1,16 +1,22 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import {Col,Row,Form} from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 
 //FIXME: Nested forms
+/*
+local: [...forms]
+state: creditCards, cardToken, coupons
+dispatch:
+*/
 class Payment extends Component {
   render() {
     return (
         <Container className="text-left">
           <Row>
             <Col className="md-8">
-              <br></br>
+              <br />
               <div>
                 <h4>Información de Pago</h4>
               </div>
@@ -75,7 +81,7 @@ class Payment extends Component {
               </Form>
             </Col>
             <Col className="md-4">
-              <br></br>
+              <br />
               <h4 className="d-flex justify-content-between">
 
                 <span>Resumen</span>
@@ -124,9 +130,9 @@ class Payment extends Component {
             </Col>
 
           </Row>
-          <br></br>
+          <br />
           <hr className="mb-2"></hr>
-          <br></br>
+          <br />
           <Row>
             <Col>
               <Button variant="outline-primary" block onClick={this.register}>Anterior</Button>

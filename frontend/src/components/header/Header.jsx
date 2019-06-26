@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import { Navbar } from "react-bootstrap"
 
+/*
+COMP
+ */
 class Header extends Component {
   render() {
     return (

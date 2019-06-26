@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import {Button, Col, Container, Row} from "react-bootstrap";
 
+/*
+local:
+state: proformaList, order
+dispatch:
+ */
 class Quotation extends Component {
   render() {
     return (

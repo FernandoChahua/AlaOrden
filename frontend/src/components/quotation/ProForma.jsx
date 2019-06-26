@@ -7,6 +7,11 @@ import ProFormaDetails from "./ProFormaDetails";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 import Table from "react-bootstrap/Table";
 
+/*
+local:
+state: proformaList[i]
+dispatch:
+ */
 class ProForma extends Component {
   render() {
     const franchise = this.props.franchise

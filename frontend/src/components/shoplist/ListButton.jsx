@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import Button from "react-bootstrap/Button";
 
+/*
+local:
+state: displayShopList
+dispatch:
+ */
 class ListButton extends Component {
   //TODO: toggleList() -state-, list (state)
 

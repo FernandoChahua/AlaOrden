@@ -5,16 +5,17 @@ import Badge from "react-bootstrap/Badge";
 import DropdownMenu from "react-bootstrap/DropdownMenu";
 import Button from "react-bootstrap/Button";
 import CartItem from "./CartItem";
+import {connect} from "react-redux";
 
+/*
+local:
+state: user, cart
+dispatch: submitCart
+*/
 class Cart extends Component {
-  //TODO: cart -state-, submitCart -local, orderStep -state-
-
-  submitCart(){
-    //TODO: implement
-  }
 
   render() {
-    const cart = this.props.cart;
+    const cart = this.props.cart || [];
 
     return (
       <Dropdown>
@@ -27,16 +28,26 @@ class Cart extends Component {
           <Dropdown.Header>CARRITO</Dropdown.Header>
           <div className="cart-menu">
             {cart.map((item, i) =>
-              [<Dropdown.Divider key={i}/>,
-                <CartItem key={i} index={i}/>
+              [<Dropdown.Divider key={'dvd' + i}/>,
+                <CartItem key={'item' + i} index={i}/>
               ])}
           </div>
           <Dropdown.Divider/>
-          <Button type="submit" block onClick={this.submitCart}>Procesar Pedido</Button>
+          <Button type="submit" block onClick={this.props.submitCart}>Procesar Pedido</Button>
         </DropdownMenu>
       </Dropdown>
     );
   }
 }
 
-export default Cart;
+const mapState = state => {
+  return {
+    cart: state.cart.cart
+  }
+};
+
+const mapDispatch = {
+  //submitCart
+};
+
+export default connect(mapState, mapDispatch)(Cart);
