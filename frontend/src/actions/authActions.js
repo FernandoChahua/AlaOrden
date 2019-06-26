@@ -3,13 +3,14 @@ import {HIDE_AUTH_MODAL, LOGIN, LOGOUT, SHOW_AUTH_MODAL} from "./actions";
 export function logIn() {
     return (dispatch) => {
 
-        dispatch(_logIn())
+        dispatch(_logIn());
     }
 }
 
 export function logOut() {
     return (dispatch) => {
         //TODO: implement
+        dispatch(_logOut());
     }
 }
 

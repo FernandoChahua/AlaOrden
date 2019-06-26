@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Button from "react-bootstrap/Button";
+import {toggleList} from "../../actions/catalogActions";
+import {connect} from "react-redux";
 
 /*
 local:
@@ -8,10 +10,6 @@ dispatch:
  */
 class ListButton extends Component {
   //TODO: toggleList() -state-, list (state)
-
-  toggleList() {
-    //TODO: implement
-  }
 
   render() {
     return (
@@ -25,4 +23,8 @@ class ListButton extends Component {
   }
 }
 
-export default ListButton;
+const mapDispatch = {
+  toggleList: toggleList
+};
+
+export default connect(null,mapDispatch)(ListButton);

@@ -6,7 +6,7 @@ COMP
 class Content extends Component {
   render() {
     return (
-        <div id="content">
+        <div id="content" className="flex-grow-1">
             {this.props.children}
         </div>
     );

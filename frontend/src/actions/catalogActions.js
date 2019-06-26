@@ -4,7 +4,7 @@ import {
     DELETE_LIST_QUERY,
     ADD_FILTER,
     GET_QUERY_RESULTS,
-    LOAD_INIT_CATALOG, LOAD_CATEGORY_LIST
+    LOAD_INIT_CATALOG, LOAD_CATEGORY_LIST, TOGGLE_LIST
 } from "./actions";
 
 export function loadCategories() {
@@ -45,6 +45,13 @@ export function addFilter() {
     return (dispatch) => {
 
         dispatch(_addFilter())
+    }
+}
+
+export function toggleList() {
+    return (dispatch) => {
+
+        dispatch(_toggleList())
     }
 }
 
@@ -103,3 +110,9 @@ const _getQueryResults = (results) => {
         results
     }
 };
+
+const _toggleList = () => {
+    return {
+        type: TOGGLE_LIST
+    }
+}

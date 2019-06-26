@@ -6,6 +6,7 @@ import Sidebar from "../body/Sidebar";
 import Categories from "../category/Categories";
 import Content from "../body/Content";
 import ControlButtons from "../header/ControlButtons";
+import Body from "../body/Body";
 
 class Layout extends Component {
   render() {
@@ -17,12 +18,9 @@ class Layout extends Component {
           <ControlButtons/>
         </Header>
         <Categories/>
-        <div id="body" className="flex-grow-1">
-          <Sidebar />
-          <Content>
-            {this.props.children}
-          </Content>
-        </div>
+        <Body>
+          {this.props.children}
+        </Body>
       </div>
     );
   }
