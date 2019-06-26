@@ -36,6 +36,8 @@ public class Usuario {
 
     @Column(name = "emailValidado")
     private boolean emailValidado;
+    @Column(name="estado")
+    private Integer estado;
 
     @OneToMany(mappedBy = "usuario")
     private List<Direccion> direcciones;
