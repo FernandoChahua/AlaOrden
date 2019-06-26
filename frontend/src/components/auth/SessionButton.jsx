@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
-import Dropdown from "react-bootstrap/Dropdown";
+import UserButton from "../user/UserButton";
+import LoginButton from "./LoginButton";
+import Button from "react-bootstrap/Button";
+import AuthModal from "../modal/AuthModal";
+import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import DropdownToggle from "react-bootstrap/DropdownToggle";
 import DropdownMenu from "react-bootstrap/DropdownMenu";
+import Dropdown from "react-bootstrap/Dropdown";
 
-class UserButton extends Component {
+class SessionButton extends Component {
   render() {
-    return (
-      <Dropdown>
+    return this.props.authenticated ?
+      (<Dropdown>
         <DropdownToggle variant="outline-danger" id="account-dropdown">
           <i className="far fa-user"> </i>
           <span className="btn-desc"> {this.props.user.apodo}</span>
@@ -19,14 +24,16 @@ class UserButton extends Component {
           <Dropdown.Divider/>
           <Dropdown.Item onClick={this.logOut}>Cerrar Sesión</Dropdown.Item>
         </DropdownMenu>
-      </Dropdown>
-    );
+      </Dropdown>) :
+      (<ButtonToolbar>
+        <Button variant="danger"
+                onClick={() => this.setState({displayModal: true})}>
+          <i className="far fa-user"> </i>
+          <span className="btn-desc">Iniciar Sesion</span>
+        </Button>
+        <AuthModal/>
+      </ButtonToolbar>);
   }
 }
 
-//MapState
-
-
-//MapDispatch
-
-export default UserButton;
+export default SessionButton;

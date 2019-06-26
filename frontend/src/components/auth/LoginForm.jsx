@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {Form,Row,Col} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 
-//TODO: validate
 class LoginForm extends Component {
+    //TODO: validate formulario
+
   render() {
     return (
       <Form>

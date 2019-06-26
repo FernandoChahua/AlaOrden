@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 import {BrowserRouter,Switch,Route} from "react-router-dom";
-import Location from "../location/Location";
-import Payment from "../payment/Payment";
+import Order from "../order/Order";
+import Catalog from "../catalog/Catalog";
 
 class MainBody extends Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path={"/location"} component={Location}/>
-          <Route path={"/payment"} component={Payment} />
-          <Route path={"/quotation"} component={Quotattion}/>
+          <Route path={"/catalog"} component={Catalog}/>
+          <Route path={"/order"} component={Order} />
         </Switch>
       </BrowserRouter>
     );

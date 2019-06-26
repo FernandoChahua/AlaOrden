@@ -2,18 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cc51ecf-7d1d-43eb-a1b0-168d0129c2b4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/actions/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/actions/authActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/actions/cartActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/actions/catalogActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/actions/deliveryActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/actions/paymentActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/actions/quotationActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/auth/LoginButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/auth/SessionButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/category/Categories.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/reducers/authReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/reducers/cartReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/reducers/catalogReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/reducers/deliveryReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/reducers/paymentReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/reducers/quotationReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/RepositoyConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/RepositoyConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/controllers/CarritoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/controllers/CotizacionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/controllers/DireccionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/controllers/PedidoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/controllers/ProductoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/controllers/TransaccionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/controllers/UsuarioController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/CarritoItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/CarritoItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/CarritoItemKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/CarritoItemKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/Categoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/DetallePedidoKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/DetallePedidoKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/Franquicia.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/Franquicia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/ProductoFranquiciaKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/ProductoFranquiciaKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/util/ProductDataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/alaorden/util/ProductDataFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Paths.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/script/direccion.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/script/directionmap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/AuthButton.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/LoginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/LoginForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/RegisterForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/RegisterForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/body/Content.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/body/Content.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/body/MainBody.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/body/MainBody.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/category/Category.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/header/ControlButtons.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/header/ControlButtons.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/Layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/location/Location.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/delivery/Delivery.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/modal/AuthModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/modal/AuthModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/payment/Payment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/payment/Payment.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/quotation/Quotation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/quotation/Quotation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/user/UserButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/user/UserButton.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/reducers/rootReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/util/CartManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/util/CartManager.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -62,8 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+            <state relative-caret-position="166">
+              <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -80,8 +113,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/alaorden/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+            <state relative-caret-position="306">
+              <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#319#320#0" expanded="true" />
@@ -351,12 +384,12 @@
       <workItem from="1560197750070" duration="22095000" />
       <workItem from="1560277867418" duration="22535000" />
       <workItem from="1561485754366" duration="318000" />
-      <workItem from="1561486253952" duration="15145000" />
+      <workItem from="1561486253952" duration="15753000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60093000" />
+    <option name="totallyTimeSpent" value="60701000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -369,9 +402,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="13" width="1400" height="784" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13059701" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13059701" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -388,7 +420,7 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4986577" weight="0.3286119" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4986577" weight="0.3286119" />
       <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49477613" visible="true" weight="0.04601227" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49477613" visible="true" weight="0.04601227" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5052239" side_tool="true" visible="true" weight="0.04601227" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32719547" />
@@ -792,15 +824,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+        <state relative-caret-position="166">
+          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/alaorden/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        <state relative-caret-position="306">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#319#320#0" expanded="true" />
