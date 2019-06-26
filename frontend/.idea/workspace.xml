@@ -2,56 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54982ac6-6642-4c43-b394-4112ba2a3887" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/modal/AuthFormSwitch.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/PlaceOrder.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Paths.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Paths.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/bankaccountActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/authActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/cartActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/cartActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/catalogActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/catalogActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/deliveryActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/deliveryActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/paymentActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/paymentActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/quotationActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/quotationActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/LoginButton.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/LoginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/LoginForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/RegisterForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/RegisterForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/SessionButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/SessionButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/body/Content.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/body/Content.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/body/MainBody.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cart/Cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cart/Cart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cart/CartItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cart/CartItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/catalog/Catalog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/catalog/Catalog.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/category/Categories.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/Categories.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/delivery/Delivery.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/delivery/Delivery.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/Brand.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Brand.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/ControlButtons.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/ControlButtons.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/body/Sidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/AuthForm.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/AuthModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/AuthModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/order/Order.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/Order.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/payment/Payment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/payment/Payment.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/ProductCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/catalog/ProductCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/quotation/ProForma.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/quotation/ProForma.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/quotation/ProFormaDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/quotation/ProFormaDetails.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/quotation/Quotation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/quotation/Quotation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/receipt/Receipt.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/receipt/Receipt.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/search/SearchBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/SearchBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shoplist/ListButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shoplist/ListButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shoplist/ShoppingList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shoplist/ShoppingList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/user/UserButton.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/authReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/catalogReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/catalogReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/rootReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/configureStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -103,11 +56,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/authActions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+            <state relative-caret-position="23">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/store/configureStore.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -132,15 +97,6 @@
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/react-router/esm/react-router.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="269" column="9" selection-start-line="269" selection-start-column="9" selection-end-line="269" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -196,7 +152,6 @@
         <option value="$PROJECT_DIR$/src/components/auth/LoginButton.jsx" />
         <option value="$PROJECT_DIR$/src/views/Home.jsx" />
         <option value="$PROJECT_DIR$/src/views/PlaceOrder.jsx" />
-        <option value="$PROJECT_DIR$/src/store/configureStore.js" />
         <option value="$PROJECT_DIR$/src/components/header/ControlButtons.jsx" />
         <option value="$PROJECT_DIR$/src/components/header/Header.jsx" />
         <option value="$PROJECT_DIR$/src/components/layout/Sidebar.jsx" />
@@ -240,6 +195,7 @@
         <option value="$PROJECT_DIR$/src/components/modal/AuthFormSwitch.jsx" />
         <option value="$PROJECT_DIR$/src/components/modal/AuthModal.jsx" />
         <option value="$PROJECT_DIR$/src/actions/authActions.js" />
+        <option value="$PROJECT_DIR$/src/store/configureStore.js" />
       </list>
     </option>
   </component>
@@ -386,6 +342,12 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="reducers" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -468,7 +430,7 @@
       <workItem from="1560971571954" duration="2599000" />
       <workItem from="1561175581460" duration="24124000" />
       <workItem from="1561399224311" duration="3778000" />
-      <workItem from="1561490145664" duration="42173000" />
+      <workItem from="1561490145664" duration="42395000" />
     </task>
     <task id="LOCAL-00001" summary="accordion can load different franchises now">
       <created>1560897536655</created>
@@ -507,7 +469,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="265060000" />
+    <option name="totallyTimeSpent" value="265282000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -536,8 +498,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32941177" />
       <window_info anchor="bottom" id="TypeScript" order="9" weight="0.32941177" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5014881" side_tool="true" weight="0.3512605" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.20168068" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5014881" side_tool="true" visible="true" weight="0.16302522" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4985119" visible="true" weight="0.16302522" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32941177" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -672,16 +634,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/configureStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1011,8 +963,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/authActions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        <state relative-caret-position="23">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/configureStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
