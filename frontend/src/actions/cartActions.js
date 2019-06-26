@@ -21,6 +21,21 @@ export function removeItem() {
     }
 }
 
+export function loadCart() {
+    return (dispatch) => {
+
+        dispatch(_loadCart())
+    }
+}
+
+export function submitCart() {
+    return (dispatch) => {
+
+        dispatch(_submitCart())
+    }
+}
+
+
 const _addItem = (productId, quantity) => {
     return {
         type: ADD_ITEM,
@@ -43,15 +58,14 @@ const _removeItem = (productId) => {
         id: productId
     }
 }
-
-export function loadCart(cart) {
+const _loadCart = (cart) => {
     return {
         type: LOAD_CART,
         cart: cart
     }
 }
 
-export function submitCart() {
+const _submitCart = () => {
     return {
         type: SUBMIT_CART
     }

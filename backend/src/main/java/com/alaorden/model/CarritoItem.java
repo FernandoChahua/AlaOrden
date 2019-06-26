@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class CarritoItem {
 
     @EmbeddedId
-    private DetallePedidoKey pk;
+    private CarritoItemKey pk;
 
     @ManyToOne
     @MapsId("idUsuario")

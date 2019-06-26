@@ -25,8 +25,7 @@ public class Categoria {
     private String nombre;
 
     @ManyToOne
-    @MapsId("idCategoria")
-    @JoinColumn(name = "categoriaPadre",nullable=true)
+    @JoinColumn(name = "categoriaPadre",referencedColumnName = "idCategoria")
     private Categoria categoriaPadre;
 
     @OneToMany(mappedBy = "categoria",fetch = FetchType.LAZY)
