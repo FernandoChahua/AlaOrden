@@ -27,10 +27,10 @@ class Categories extends Component {
             <Form className="text-md-left bg-light">
                 <ButtonGroup>
                     {categories.map((cat,i) =>
-                        <Dropdown key={"ddn"+cat.idCategoria}>
-                            <Dropdown.Toggle key={"tgg"+cat.idCategoria} variant="light">{cat.nombre}</Dropdown.Toggle>
-                            <Dropdown.Menu key={"mnu"+cat.idCategoria} rootCloseEvent="click">
-                                {cat.subcategorias.map((s,i) => <DropdownItem key={"itm"+s.idCategoria} onClick={this.filterByCategory.bind(this)}>{s.name}</DropdownItem>)}
+                        <Dropdown key={"ddn"+cat.idCategory}>
+                            <Dropdown.Toggle key={"tgg"+cat.idCategory} variant="light">{cat.name}</Dropdown.Toggle>
+                            <Dropdown.Menu key={"mnu"+cat.idCategory} rootCloseEvent="click">
+                                {cat.subCategories.map((s,i) => <DropdownItem key={"itm"+s.idCategory} onClick={this.filterByCategory.bind(this)}>{s.name}</DropdownItem>)}
                             </Dropdown.Menu>
                         </Dropdown>)}
                 </ButtonGroup>
