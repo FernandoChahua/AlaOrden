@@ -24,7 +24,7 @@ public class ProductoController {
     List<Product> getProductos(){
         return productService.listProducts();
     }
-    @RequestMapping(path="/usuarios",method= RequestMethod.GET)
+    @RequestMapping(path="/categorias",method= RequestMethod.GET)
     List<Category> getCategoria(){
         return productService.listCategories();
     }

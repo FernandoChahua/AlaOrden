@@ -32,7 +32,7 @@ public class Franchise {
     @Column(name = "logo")
     private String logo;
 
-    @OneToMany(mappedBy = "franquise")
+    @OneToMany(mappedBy = "franchise")
     private List<Location> locations;
 
 }
