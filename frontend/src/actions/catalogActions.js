@@ -6,11 +6,34 @@ import {
     GET_QUERY_RESULTS,
     LOAD_INIT_CATALOG, LOAD_CATEGORY_LIST
 } from "./actions";
+import axios from "axios";
+
 
 export function loadCategories() {
     return (dispatch) => {
+        let categories = [];
+        axios
+            .get("http://localhost:9090/api/categorias")
+            .then(function(response) {
+                //console.log(response);
+                console.log(response);
+               categories = response.data._embedded.categorias;
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
 
-        dispatch(_loadCategories())
+        console.log(JSON.stringify(categories));
+        console.log('AEA')
+
+        let categoria;
+        let categorias=[];
+        for(let i=0;i<categories.lenght;i++){
+            categoria = {name:categories[i].nombre};
+            categorias.push(categoria);
+        }
+
+        dispatch(_loadCategories(categorias))
     }
 }
 

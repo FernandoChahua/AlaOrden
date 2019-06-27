@@ -4,6 +4,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import {connect} from "react-redux";
+import {loadCategories} from "../../actions/catalogActions";
 
 /*
 local:
@@ -13,7 +14,7 @@ dispatch:
 class Categories extends Component {
 
     componentDidMount() {
-      //this.props.loadCategories();
+      this.props.loadCategories();
     }
 
   render() {
@@ -42,7 +43,7 @@ const mapState = (state) => {
 };
 
 const mapDispatch = {
-  //loadCategories
+  loadCategories:loadCategories
   //searchByCategory
 };
 
