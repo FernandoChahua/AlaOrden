@@ -1,8 +1,8 @@
 package com.alaorden.controllers;
 
-import com.alaorden.model.CarritoItem;
-import com.alaorden.model.Usuario;
-import com.alaorden.service.UsuarioService;
+import com.alaorden.model.CartItem;
+import com.alaorden.model.User;
+import com.alaorden.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,40 +13,40 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
-    UsuarioService usuarioService;
+    UserService userService;
 
     @Autowired
-    public UsuarioController(UsuarioService usuarioService){
-        this.usuarioService = usuarioService;
+    public UsuarioController(UserService userService){
+        this.userService = userService;
     }
 
     @RequestMapping(path="/create",method = RequestMethod.POST)
-    Usuario createUsuario(@RequestBody Usuario usuario){
-        if(!usuarioService.existeUsuario(usuario)){
-            usuario.setCarrito(new ArrayList<>());
-            usuario.setDirecciones(new ArrayList<>());
-            usuario.setEmailValidado(false);
-            usuario.setSal("SALSITA PAL CUERPO");
-            usuarioService.createUsuario(usuario);
+    User createUser(@RequestBody User user){
+        if(!userService.existUser(user)){
+            user.setCart(new ArrayList<>());
+            user.setAddresses(new ArrayList<>());
+            user.setEmailValidated(false);
+            user.setSalt("SALSITA PAL CUERPO");
+            userService.createUser(user);
         }else{
-            usuario.setApodo("NO EXISTE USUARIO");
+            user.setNickname("NO EXISTE USUARIO");
         }
-        return usuario;
+        return user;
     }
 
     @RequestMapping(path="/update/{id}",method=RequestMethod.PUT)
-    Usuario updateUsuario(@PathVariable int id,@RequestBody Usuario usuario){
-        usuario.setIdUsuario(id);
-        usuarioService.updateUsuario(usuario);
-        return usuario;
+    User updateUser(@PathVariable int id,@RequestBody User user){
+        user.setIdUser(id);
+        userService.updateUser(user);
+        return user;
     }
 
     @RequestMapping(path="/login",method = RequestMethod.GET)
-    Usuario logIn(@RequestBody Usuario usuario){
-        Usuario usuarioBackend = usuarioService.usuarioByApodo(usuario.getApodo());
-        if(usuarioBackend != null) {
-            if(usuarioBackend.getHashContrasena() == usuario.getHashContrasena()){
-                return usuarioBackend;
+    User logIn(@RequestBody User user){
+        User userBackend = userService.userByNickname(user.getNickname());
+        if(userBackend != null) {
+            if(userBackend.getHashPassword() == user.getHashPassword()){
+                return userBackend;
             }
         }
         return null;

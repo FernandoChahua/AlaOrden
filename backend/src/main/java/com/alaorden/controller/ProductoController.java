@@ -1,9 +1,9 @@
 package com.alaorden.controllers;
 
-import com.alaorden.model.Categoria;
-import com.alaorden.model.Marca;
-import com.alaorden.model.Producto;
-import com.alaorden.service.ProductoService;
+import com.alaorden.model.Category;
+import com.alaorden.model.Brand;
+import com.alaorden.model.Product;
+import com.alaorden.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,22 +14,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/serv")
 public class ProductoController {
-    ProductoService productoService;
+    ProductService productService;
     @Autowired
-    public ProductoController(ProductoService productoService){
-        this.productoService = productoService;
+    public ProductoController(ProductService productService){
+        this.productService = productService;
     }
 
     @RequestMapping(path="/productos",method= RequestMethod.GET)
-    List<Producto> getProductos(){
-        return productoService.listProductos();
+    List<Product> getProductos(){
+        return productService.listProducts();
     }
     @RequestMapping(path="/usuarios",method= RequestMethod.GET)
-    List<Categoria> getCategoria(){
-        return productoService.listCategorias();
+    List<Category> getCategoria(){
+        return productService.listCategories();
     }
     @RequestMapping(path="/marcas",method= RequestMethod.GET)
-    List<Marca> getMarcas(){
-        return productoService.listMarca();
+    List<Brand> getMarcas(){
+        return productService.listBrand();
     }
 }

@@ -33,7 +33,7 @@ public abstract class ProductData {
 
     public abstract String getCodRef();
 
-    public abstract BigDecimal getPrecio();
+    public abstract BigDecimal getPrice();
 
     public abstract int getStock();
 }
