@@ -32,19 +32,19 @@ public class Product {
     private Brand brand;
 
     @Column(name = "name")
-    private String nombre;
+    private String name;
 
-    @Column(name = "presentation")
-    private String presentation;
+    @Column(name = "packaging")
+    private String packaging;
 
     @Column(name = "quantity")
     private int quantity;
 
-    @Column(name = "magnitude")
-    private BigDecimal magnitude;
+    @Column(name = "measure")
+    private BigDecimal measure;
 
-    @Column(name = "unity")
-    private String unity;
+    @Column(name = "unit")
+    private String unit;
 
     @Column(name = "description")
     private String description;
