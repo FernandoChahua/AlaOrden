@@ -38,7 +38,6 @@ public class CarritoController {
         {
             cartService.deleteByUserId(idUser);
         }
-        return carritos;
     }
     @RequestMapping(path="/{idUser}/{idProduct}",method=RequestMethod.DELETE)
     void deleteCarrito(@PathVariable int idUser,@PathVariable int idProduct)
@@ -48,19 +47,18 @@ public class CarritoController {
         {
             cartService.deleteByUserAndProduct(idUser,idProduct);
         }
-        return carrito;
     }
     @RequestMapping(method=RequestMethod.POST)
-    void createItemCarrito(@PathBody CarritoItem carritoItem){
+    void createItemCarrito(@RequestBody CartItem carritoItem){
         CartItem cartItem = new CartItem();
         cartItem.setPk(new CartItemKey());
-        cartItem.getPk().setIdUser(carritoItem.getIdUser());
-        cartItem.getPk().setIdProduct(carritoItem.getIdProduct());
+        cartItem.getPk().setIdUser(carritoItem.getUser().getIdUser());
+        cartItem.getPk().setIdProduct(carritoItem.getProduct().getIdProduct());
         cartItem.setProduct(new Product());
         cartItem.setUser(new User());
 
-        cartItem.getProduct().setIdProduct(carritoItem.getIdProduct());
-        cartItem.getUser().setIdUser(carritoItem.getIdUser());
+        cartItem.getProduct().setIdProduct(carritoItem.getProduct().getIdProduct());
+        cartItem.getUser().setIdUser(carritoItem.getUser().getIdUser());
 
         cartService.deleteFromCart(cartItem);
 
