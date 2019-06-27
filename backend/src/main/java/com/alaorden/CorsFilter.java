@@ -2,6 +2,8 @@ package com.myorg;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
