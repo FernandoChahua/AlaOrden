@@ -13,10 +13,10 @@ export function loadCategories() {
     return (dispatch) => {
         let categories;
         axios
-            .get("http://localhost:9090/api/categorias")
+            .get("http://localhost:9090/api/serv/categorias")
             .then(function(response) {
                 //console.log(response);
-               categories = response.data._embedded.categorias;
+               categories = response.data;
                console.log(categories);
                dispatch(_loadCategories(categories))
             })

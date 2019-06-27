@@ -30,7 +30,7 @@ class Categories extends Component {
                         <Dropdown key={"ddn"+cat.idCategory}>
                             <Dropdown.Toggle key={"tgg"+cat.idCategory} variant="light">{cat.name}</Dropdown.Toggle>
                             <Dropdown.Menu key={"mnu"+cat.idCategory} rootCloseEvent="click">
-                                {cat.subcategorias.map((s,i) => <DropdownItem key={"itm"+s.idCategory} onClick={this.filterByCategory.bind(this)}>{s.name}</DropdownItem>)}
+                                {cat.subCategories.map((s,i) => <DropdownItem key={"itm"+s.idCategory} onClick={this.filterByCategory.bind(this)}>{s.name}</DropdownItem>)}
                             </Dropdown.Menu>
                         </Dropdown>)}
                 </ButtonGroup>
