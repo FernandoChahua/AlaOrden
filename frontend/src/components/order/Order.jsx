@@ -23,7 +23,7 @@ class Order extends Component {
     ];
 
     return (
-      <div>
+      <div id="order-steps">
         <Stepper steps={steps} activeStep={this.props.activeStep} />
         <Route path={`${this.props.match.path}/delivery`} component={Delivery}/>
         <Route path={`${this.props.match.path}/quotation`} component={Quotation}/>

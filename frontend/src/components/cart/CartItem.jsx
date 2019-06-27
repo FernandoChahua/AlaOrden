@@ -56,7 +56,7 @@ class CartItem extends Component {
     return (
       <Row>
         <Col xs={3}>
-          <Image src={product.photo} height="70px" alt={product.name} className="noselect"/>
+          <Image src={product.image} height="70px" alt={product.name} className="noselect"/>
         </Col>
         <Col>
           <Row>

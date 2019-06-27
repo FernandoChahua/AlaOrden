@@ -10,7 +10,7 @@ dispatch:
 class Catalog extends Component {
 
   render() {
-    let results = this.props.results || [];
+    let results = this.props.results;
 
     let title = results.length === 0 ?
       (<h5>No se han encontrado coincidencias a su busqueda</h5>) :

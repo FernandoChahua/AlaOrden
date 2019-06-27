@@ -21,45 +21,45 @@ export default class CartManager {
 }
 /*CartManager._cart = [
     {
-        "idProducto": 1,
+        "productId": 1,
         "producto": {
-            "idProducto": 1,
-            "idCategoria": 2,
-            "categoria": null,
-            "idMarca": 1,
-            "marca": {
-                "nombre": "Gloria"
+            "productId": 1,
+            "categoryId": 2,
+            "category": null,
+            "brandId": 1,
+            "brand": {
+                "name": "Gloria"
             },
-            "nombre": "Leche Evaporada",
-            "presentacion": "paquete",
-            "cantidad": 4,
-            "magnitud": 500,
-            "unidad": "g",
-            "descripcion": "Leche evaporada",
-            "imagen": "2.jpg",
-            "productoFranquicias": null
+            "name": "Leche Evaporada",
+            "packaging": "paquete",
+            "packageUnit": 4,
+            "measure": 500,
+            "unit": "g",
+            "description": "Leche evaporada",
+            "image": "2.jpg",
+            "inventory": null
         },
-        "cantidad": 10
+        "packageUnit": 10
     },
     {
-        "idProducto": 2,
+        "productId": 2,
         "producto": {
-            "idProducto": 2,
-            "idCategoria": 3,
-            "categoria": null,
-            "idMarca": 1,
-            "marca": {
-                "nombre": "Laive"
+            "productId": 2,
+            "categoryId": 3,
+            "category": null,
+            "brandId": 1,
+            "brand": {
+                "name": "Laive"
             },
-            "nombre": "Yogurt Fresa",
-            "presentacion": "botella",
-            "cantidad": 1,
-            "magnitud": 1000,
-            "unidad": "ml",
-            "descripcion": "Yogurt de sabor fresa",
-            "imagen": "3.jpg",
-            "productoFranquicias": null
+            "name": "Yogurt Fresa",
+            "packaging": "botella",
+            "packageUnit": 1,
+            "measure": 1000,
+            "unit": "ml",
+            "description": "Yogurt de sabor fresa",
+            "image": "3.jpg",
+            "inventory": null
         },
-        "cantidad": 30
+        "packageUnit": 30
     }
 ]; */

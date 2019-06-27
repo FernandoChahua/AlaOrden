@@ -20,7 +20,7 @@ class ProForma extends Component {
       <Card>
         <Card.Header eventKey={this.props.eventKey}
                      className={"d-inline-flex justify-content-between text-light " + franchise.style}>
-          <span>{franchise.nombre}</span>
+          <span>{franchise.name}</span>
           <Image src={"/assets/img/" + franchise.logo} alt="logo" className="" height="40px"/>
           <div>
             <span>TOTAL: </span>
