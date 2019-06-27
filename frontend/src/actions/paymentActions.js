@@ -1,10 +1,29 @@
 import {APPLY_COUPON, REMOVE_COUPON, REMOVE_ITEM, SEND_PAY} from "./actions";
 
 
-export function applyCoupon() {
-    return (dispatch) => {
+export function applyCoupon(coupon) {
+    return function (dispatch, getState) {
+        fetch('http://localhost:8080/api/operations/applyRequests', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(coupon)
+        })
+            .then(async response => {
+                return Object.assign({}, {error: !response.ok}, await response.json());
+            })
+            .then(jsonData => {
+                dispatch(setapplyCoupon(jsonData))
+            })
+    };
+}
 
-        dispatch(_applyCoupon())
+export function setapplyCoupon(couponResult) {
+    return {
+        type: APPLY_COUPON,
+        couponResult
     }
 }
 
