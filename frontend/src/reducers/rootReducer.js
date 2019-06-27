@@ -5,6 +5,7 @@ import catalog from "./catalogReducer";
 import delivery from "./deliveryReducer";
 import payment from "./paymentReducer"
 import quotation from "./quotationReducer"
+import order from "./orderReducer"
 
 const reducers = {
   auth,
@@ -12,7 +13,8 @@ const reducers = {
   catalog,
   delivery,
   payment,
-  quotation
+  quotation,
+  order
 };
 
 export default combineReducers(reducers);

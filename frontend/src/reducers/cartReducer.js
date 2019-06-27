@@ -1,4 +1,4 @@
-import {ADD_ITEM, UPDATE_ITEM, REMOVE_ITEM, LOAD_CART} from "../actions/actions"
+import {ADD_ITEM, UPDATE_ITEM, REMOVE_ITEM, LOAD_CART, SUBMIT_CART} from "../actions/actions"
 import CartManager from "../util/CartManager";
 
 export default function cartReducer(state = { cart: [] }, action) {
@@ -14,6 +14,9 @@ export default function cartReducer(state = { cart: [] }, action) {
                 {cart: CartManager.removeFromCart(state.cart,action.id)});
         case LOAD_CART:
             return Object.assign({},state, {cart:action.cart});
+        case SUBMIT_CART:
+            return Object.assign({}, state,
+              {})
         default:
             return state;
     }

@@ -28,10 +28,10 @@ export function loadCart() {
     }
 }
 
-export function submitCart() {
+export function checkOut() {
     return (dispatch) => {
 
-        dispatch(_submitCart())
+        dispatch(_submitCart)
     }
 }
 

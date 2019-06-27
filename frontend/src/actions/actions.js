@@ -21,6 +21,10 @@ export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const LOAD_CART = 'LOAD_CART';
 export const SUBMIT_CART = 'SUBMIT_CART';
 
+//order
+export const SET_MAX_STEP = 'SET_MAX_STEP';
+export const SET_STEP = 'SET_STEP';
+
 //delivery
 export const PICK_ADDRESS = 'PICK_ADDRESS';
 export const LOAD_ADDRESS_LIST = 'LOAD_ADDRESS_LIST';

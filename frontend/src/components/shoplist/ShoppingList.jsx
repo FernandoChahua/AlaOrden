@@ -12,10 +12,6 @@ dispatch:
 class ShoppingList extends Component {
   //TODO: showList -state-, list -state-, toggleList -state-
 
-  toggleList() {
-    //TODO: implement
-  }
-
   render() {
     return (
       <Collapse in={this.props.showList}>

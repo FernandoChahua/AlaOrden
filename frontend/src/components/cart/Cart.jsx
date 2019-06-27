@@ -6,16 +6,17 @@ import DropdownMenu from "react-bootstrap/DropdownMenu";
 import Button from "react-bootstrap/Button";
 import CartItem from "./CartItem";
 import {connect} from "react-redux";
+import {checkOut} from "../../actions/cartActions";
 
 /*
 local:
 state: user, cart
-dispatch: submitCart
+dispatch: checkOut
 */
 class Cart extends Component {
 
   render() {
-    const cart = this.props.cart || [];
+    const cart = this.props.cart ;
 
     return (
       <Dropdown>
@@ -33,7 +34,7 @@ class Cart extends Component {
               ])}
           </div>
           <Dropdown.Divider/>
-          <Button type="submit" block onClick={this.props.submitCart}>Procesar Pedido</Button>
+          <Button block onClick={this.props.checkOut}>Procesar Pedido</Button>
         </DropdownMenu>
       </Dropdown>
     );
@@ -47,7 +48,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  //submitCart
+  checkOut: checkOut
 };
 
 export default connect(mapState, mapDispatch)(Cart);

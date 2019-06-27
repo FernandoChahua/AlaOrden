@@ -26,10 +26,9 @@ class Quotation extends Component {
                     <Button block onClick={this.register}>Comprar</Button>
                   </div>
                 </div>
-                <ProFormaList/>
-                <br></br>
-                <hr className="mb-2"></hr>
-                <br></br>
+                <br />
+                <hr className="mb-2" />
+                <br />
 
                 <Row>
                   <Col>
