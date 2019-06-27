@@ -26,7 +26,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     public List<Product> listProducts(){
-        return productRepository.findAll();
+        List<Product> products = productRepository.findAll();
+        for(int i=0;i<products.size();i++){
+            products.get(i).getCategory().setParent(null);
+            products.get(i).getCategory().setProducts(null);
+        }
+        return products;
     }
     public List<Category> listCategories(){
         List<Category> categorias = new ArrayList<>();
@@ -39,7 +44,8 @@ public class ProductServiceImpl implements ProductService {
                     if (i!=j){
                         if(categorias.get(j).getParent() !=null && categorias.get(j).getParent().getIdCategory() == categorias.get(i).getIdCategory()){
                            categorias.get(j).setParent(null);
-                            subcategories.add(categorias.get(j));
+                           categorias.get(j).setProducts(null);
+                           subcategories.add(categorias.get(j));
                         }
                     }
                 }
