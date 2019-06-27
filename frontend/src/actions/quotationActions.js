@@ -4,7 +4,7 @@ import {LOAD_OPTIONS, PICK_OPTION} from "./actions";
 export function loadOptions() {
     return (dispatch) => {
 
-        dispatch(_loadOptions())
+        dispatch(_loadOptions([]))
     }
 }
 

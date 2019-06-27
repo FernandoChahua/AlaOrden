@@ -4,6 +4,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {Button, Form} from "react-bootstrap";
 
+
+let apiKey = "AIzaSyDzB-76_WJJt-fAqyqnT23jyCpNwm3jqcg";
+apiKey = "";
+
 /*
 local:
 state: addressList, address
@@ -22,8 +26,8 @@ class Delivery extends Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        geocoder = new window.google.maps.Geocoder;
-        infowindow = new window.google.maps.InfoWindow;
+        geocoder = new window.google.maps.Geocoder();
+        infowindow = new window.google.maps.InfoWindow();
         map = new window.google.maps.Map(document.getElementById("map"), {
           center: {
             lat: pos.lat,
@@ -110,12 +114,13 @@ class Delivery extends Component {
   };
 
   renderMap = () => {
-    loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDzB-76_WJJt-fAqyqnT23jyCpNwm3jqcg&libraries=places&callback=initMap");
+    loadScript(`https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initMap`);
     window.initMap = this.initMap;
   };
 
   componentDidMount() {
-    this.renderMap();
+    if (apiKey !== "")
+      this.renderMap();
   };
 
   render() {
@@ -123,7 +128,7 @@ class Delivery extends Component {
         <Container className="text-left">
           <Row>
             <Col className="md-8">
-              <br></br>
+              <br/>
               <div>
                 <h4>Direccion de Entrega</h4>
               </div>
@@ -138,7 +143,7 @@ class Delivery extends Component {
                 <div className="input-group-append">
                   <h6 className="mb-3">Direccion Reciente</h6>
                 </div>
-                <br></br>
+                <br/>
                 <Form>
 
                   <select className="form-control" id="selDireccion">
@@ -146,27 +151,27 @@ class Delivery extends Component {
                     <option>Calle yyy Nro ###</option>
                   </select>
                 </Form>
-                <br></br>
+                <br/>
 
                 <div className="d-flex justify-content-between mb-4">
                   <h6 className="mb-3">Direccion Nueva</h6>
                   <div className="form-check">
                     <input className="form-check-input" type="checkbox" id="chkRecordar"/>
-                    <Form.Label className="form-check-label" for="chkRecordar">Recordar</Form.Label>
+                    <Form.Label className="form-check-label" htmlFor="chkRecordar">Recordar</Form.Label>
                   </div>
                 </div>
                 <Form>
                   <section className="container mt-3">
-                    <input id="autocomplete" className="form-control " type="text"></input>
+                    <input id="autocomplete" className="form-control " type="text"/>
                   </section>
 
                 </Form>
-                <br></br>
+                <br/>
                 <section id="map" className="container mt-3 mb-3">
                 </section>
-                <br></br>
-                <hr className="mb-2"></hr>
-                <br></br>
+                <br/>
+                <hr className="mb-2"/>
+                <br/>
                 <Row>
                   <Col>
                     <Button variant="outline-primary" block onClick={this.register}>Cancelar</Button>
@@ -184,8 +189,8 @@ class Delivery extends Component {
 }
 
 function loadScript(url) {
-  var script = window.document.createElement("script");
-  var index = window.document.getElementsByTagName("script")[0];
+  let script = window.document.createElement("script");
+  let index = window.document.getElementsByTagName("script")[0];
   script.src = url;
   script.async = true;
   script.defer = true;

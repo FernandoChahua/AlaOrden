@@ -16,15 +16,14 @@ class Order extends Component {
 
 
   render() {
-    let activeStep = this.props.activeStep;
     let steps =  [
-      {title: 'Dirección', onClick: () => { this.props.setStep(2); console.log(this.props.activeStep); this.props.history.push("/order/delivery")  }},
+      {title: 'Dirección', onClick: () => { this.props.history.push("/order/delivery")  }},
       {title: 'Cotización',onClick: () => { this.props.history.push("/order/quotation") }},
       {title: 'Pago', onClick: () => { this.props.history.push("/order/payment") }}
     ];
 
     return (
-      <div>
+      <div id="order-steps">
         <Stepper steps={steps} activeStep={this.props.activeStep} />
         <Route path={`${this.props.match.path}/delivery`} component={Delivery}/>
         <Route path={`${this.props.match.path}/quotation`} component={Quotation}/>

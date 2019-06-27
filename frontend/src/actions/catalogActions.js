@@ -23,34 +23,168 @@ export function loadCategories() {
             .catch(function(error) {
                 console.log(error);
             });
-
-        // return function (dispatch, getState) {
-        //
-        //     fetch("http://localhost:9090/api/categoria")
-        //         .then(response => response.json())
-        //         .then(jsonData => {
-        //             dispatch(setCategoriaList(jsonData))
-        //         })
-        // };
-
-
     }
 }
 
 export function loadInitCatalog() {
     return (dispatch) => {
-        let results;
-        axios
-            .get("http://localhost:9090/api/resultados")
-            .then(function (response) {
 
-                results = response.data._embedded.resultados;
-                console.log(results);
-                dispatch(_loadInitCatalog(results))
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        let productos = [
+            {
+                "idProduct": 1,
+                "idCategory": 2,
+                "category": null,
+                "idBrand": 1,
+                "brand": {
+                    "name": "Gloria"
+                },
+                "name": "Leche Evaporada",
+                "packaging": "paquete",
+                "quantity": 4,
+                "measure": 500,
+                "unit": "g",
+                "description": "Leche evaporada",
+                "image": "2.jpg",
+                "inventory": null
+            },
+            {
+                "idProduct": 2,
+                "idCategory": 2,
+                "category": null,
+                "idBrand": 1,
+                "brand": {
+                    "name": "Laive"
+                },
+                "name": "Leche Evaporada",
+                "packaging": "paquete",
+                "quantity": 4,
+                "measure": 500,
+                "unit": "g",
+                "description": "Leche evaporada",
+                "image": "2.jpg",
+                "inventory": null
+            },
+            {
+                "idProduct": 3,
+                "idCategory": 2,
+                "category": null,
+                "idBrand": 1,
+                "brand": {
+                    "name": "IDEAL"
+                },
+                "name": "Leche Evaporada",
+                "packaging": "paquete",
+                "quantity": 4,
+                "measure": 500,
+                "unit": "g",
+                "description": "Leche evaporada",
+                "image": "2.jpg",
+                "inventory": null
+            },
+            {
+                "idProduct": 1,
+                "idCategory": 2,
+                "category": null,
+                "idBrand": 1,
+                "brand": {
+                    "name": "Gloria"
+                },
+                "name": "Leche Evaporada",
+                "packaging": "paquete",
+                "quantity": 4,
+                "measure": 500,
+                "unit": "g",
+                "description": "Leche evaporada",
+                "image": "2.jpg",
+                "inventory": null
+            },
+            {
+                "idProduct": 1,
+                "idCategory": 2,
+                "category": null,
+                "idBrand": 1,
+                "brand": {
+                    "name": "Gloria"
+                },
+                "name": "Leche Evaporada",
+                "packaging": "paquete",
+                "quantity": 4,
+                "measure": 500,
+                "unit": "g",
+                "description": "Leche evaporada",
+                "image": "2.jpg",
+                "inventory": null
+            },
+            {
+                "idProduct": 1,
+                "idCategory": 2,
+                "category": null,
+                "idBrand": 1,
+                "brand": {
+                    "name": "Gloria"
+                },
+                "name": "Leche Evaporada",
+                "packaging": "paquete",
+                "quantity": 4,
+                "measure": 500,
+                "unit": "g",
+                "description": "Leche evaporada",
+                "image": "2.jpg",
+                "inventory": null
+            },
+            {
+                "idProduct": 1,
+                "idCategory": 2,
+                "category": null,
+                "idBrand": 1,
+                "brand": {
+                    "name": "Gloria"
+                },
+                "name": "Leche Evaporada",
+                "packaging": "paquete",
+                "quantity": 4,
+                "measure": 500,
+                "unit": "g",
+                "description": "Leche evaporada",
+                "image": "2.jpg",
+                "inventory": null
+            },
+            {
+                "idProduct": 1,
+                "idCategory": 2,
+                "category": null,
+                "idBrand": 1,
+                "brand": {
+                    "name": "Gloria"
+                },
+                "name": "Leche Evaporada",
+                "packaging": "paquete",
+                "quantity": 4,
+                "measure": 500,
+                "unit": "g",
+                "description": "Leche evaporada",
+                "image": "2.jpg",
+                "inventory": null
+            },{
+                "idProduct": 1,
+                "idCategory": 2,
+                "category": null,
+                "idBrand": 1,
+                "brand": {
+                    "name": "Gloria"
+                },
+                "name": "Leche Evaporada",
+                "packaging": "paquete",
+                "quantity": 4,
+                "measure": 500,
+                "unit": "g",
+                "description": "Leche evaporada",
+                "image": "2.jpg",
+                "inventory": null
+            },
+        ];
+
+        dispatch(_loadInitCatalog(productos))
     }
 }
 

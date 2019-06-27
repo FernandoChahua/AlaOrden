@@ -1,7 +1,10 @@
 import {LOAD_OPTIONS, PICK_OPTION} from "../actions/actions";
 
+const initial = {
+    proformaList: []
+};
 
-export default function quotationReducer(state = {}, action) {
+export default function quotationReducer(state = initial, action) {
     switch (action.type) {
         case LOAD_OPTIONS:
             return Object.assign({}, state,

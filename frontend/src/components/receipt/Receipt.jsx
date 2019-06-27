@@ -21,7 +21,7 @@ class Receipt extends Component {
       "estado": 'Entregado',
       "fechaRealizacion": "2019-03-30T00:00:00",
       "direccion": {
-        "descripcion": 'Mercedes Gallagher de Parks #342'
+        "description": 'Mercedes Gallagher de Parks #342'
       },
       "subtotal": 31.00,
       "precioEnvio": 10.00,
@@ -29,57 +29,57 @@ class Receipt extends Component {
       "detallePedido":[
         {
           "producto":{
-            "nombre":'Sprite',
-            "presentacion":'botella',
-            "descripcion":"Bebida gasificada sabor limón",
-            "unidad":'ml',
-            "magnitud":625,
-            "marca":{
-              "nombre":'Coca Cola'
+            "name":'Sprite',
+            "packaging":'botella',
+            "description":"Bebida gasificada sabor limón",
+            "unit":'ml',
+            "measure":625,
+            "brand":{
+              "name":'Coca Cola'
             },
-            "cantidad":1,
-            "categoria":{
-              "nombre":'Gaseosa'
+            "quantity":1,
+            "category":{
+              "name":'Gaseosa'
             }
           },
           "precio":2.00,
-          "cantidad":10
+          "quantity":10
         },
         {
           "producto":{
-            "nombre":'San Luis',
-            "presentacion":'botella',
-            "descripcion":"six pack de agua mineral de manantial",
-            "unidad":'ml',
-            "magnitud":625,
-            "marca":{
-              "nombre":'Coca Cola'
+            "name":'San Luis',
+            "packaging":'botella',
+            "description":"six pack de agua mineral de manantial",
+            "unit":'ml',
+            "measure":625,
+            "brand":{
+              "name":'Coca Cola'
             },
-            "cantidad":6,
-            "categoria":{
-              "nombre":'Agua'
+            "quantity":6,
+            "category":{
+              "name":'Agua'
             }
           },
           "precio":8.00,
-          "cantidad":1
+          "quantity":1
         },
         {
           "producto":{
-            "nombre":'Oreo',
-            "presentacion":'paquete de 4 unidades',
-            "descripcion":"Galleta de chocolote con relleno",
-            "unidad":'g',
-            "magnitud":18,
-            "marca":{
-              "nombre":'Nabisco'
+            "name":'Oreo',
+            "packaging":'paquete de 4 unidades',
+            "description":"Galleta de chocolote con relleno",
+            "unit":'g',
+            "measure":18,
+            "brand":{
+              "name":'Nabisco'
             },
-            "cantidad":1,
-            "categoria":{
-              "nombre":'Galletas'
+            "quantity":1,
+            "category":{
+              "name":'Galletas'
             }
           },
           "precio":0.5,
-          "cantidad":6
+          "quantity":6
         }
       ]
     }
@@ -88,9 +88,9 @@ class Receipt extends Component {
       d=>
         <tr>
           <td>{++cont}</td>
-          <td className="text-left">{`${d.cantidad} de: ${d.producto.categoria.nombre} ${d.producto.nombre} 
-                    ${d.producto.magnitud} ${d.producto.unidad}, ${d.producto.descripcion}, ${d.producto.cantidad} unidad(es)`}</td>
-          <td>S/.{(d.precio * d.cantidad).toFixed(2)}</td>
+          <td className="text-left">{`${d.quantity} de: ${d.producto.category.name} ${d.producto.name} 
+                    ${d.producto.measure} ${d.producto.unit}, ${d.producto.description}, ${d.producto.quantity} unidad(es)`}</td>
+          <td>S/.{(d.precio * d.quantity).toFixed(2)}</td>
         </tr>
     );
 

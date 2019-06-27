@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ProductCard from "./ProductCard";
 import {connect} from "react-redux";
+import {loadInitCatalog} from "../../actions/catalogActions";
 
 /*
 local:
@@ -9,8 +10,12 @@ dispatch:
  */
 class Catalog extends Component {
 
+  componentDidMount() {
+    this.props.loadInitCatalog();
+  }
+
   render() {
-    let results = this.props.results || [];
+    let results = this.props.results;
 
     let title = results.length === 0 ?
       (<h5>No se han encontrado coincidencias a su busqueda</h5>) :
@@ -34,7 +39,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  //loadInitialCatalog()
+  loadInitCatalog: loadInitCatalog
 };
 
 export default connect(mapState, mapDispatch)(Catalog);

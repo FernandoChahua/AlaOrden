@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import Header from "../header/Header";
 import Brand from "../header/Brand";
 import SearchBar from "../search/SearchBar";
-import Sidebar from "../body/Sidebar";
 import Categories from "../category/Categories";
-import Content from "../body/Content";
 import ControlButtons from "../header/ControlButtons";
 import Body from "../body/Body";
 

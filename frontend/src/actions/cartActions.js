@@ -1,23 +1,23 @@
 import {ADD_ITEM, LOAD_CART, REMOVE_ITEM, SUBMIT_CART, UPDATE_ITEM} from "./actions";
 
-export function addItem() {
+export function addItem(product, quantity) {
     return (dispatch) => {
 
-        dispatch(_addItem())
+        dispatch(_addItem(product, quantity))
     }
 }
 
-export function updateItem() {
+export function updateItem(productId,quantity) {
     return (dispatch) => {
 
-        dispatch(_updateItem())
+        dispatch(_updateItem(productId,quantity))
     }
 }
 
-export function removeItem() {
+export function removeItem(productId) {
     return (dispatch) => {
 
-        dispatch(_removeItem())
+        dispatch(_removeItem(productId))
     }
 }
 
@@ -36,13 +36,13 @@ export function checkOut() {
 }
 
 
-const _addItem = (productId, quantity) => {
+const _addItem = (product, quantity) => {
     return {
         type: ADD_ITEM,
-        id: productId,
+        product: product,
         quantity: quantity
     }
-}
+};
 
 const _updateItem = (productId, quantity) => {
     return {
@@ -57,16 +57,16 @@ const _removeItem = (productId) => {
         type: REMOVE_ITEM,
         id: productId
     }
-}
+};
 const _loadCart = (cart) => {
     return {
         type: LOAD_CART,
         cart: cart
     }
-}
+};
 
 const _submitCart = () => {
     return {
         type: SUBMIT_CART
     }
-}
+};

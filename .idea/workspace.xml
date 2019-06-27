@@ -2,8 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cc51ecf-7d1d-43eb-a1b0-168d0129c2b4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/actions/cartActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/cartActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/actions/catalogActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/catalogActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/actions/quotationActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/quotationActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/scss/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/LoginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/LoginForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/auth/RegisterForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/auth/RegisterForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/cart/Cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/cart/Cart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/cart/CartItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/cart/CartItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/catalog/Catalog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/catalog/Catalog.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/catalog/ProductCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/catalog/ProductCard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/category/Categories.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/category/Categories.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/delivery/Delivery.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/delivery/Delivery.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/Layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/modal/AuthFormSwitch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/modal/AuthFormSwitch.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/modal/AuthModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/modal/AuthModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/order/Order.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/order/Order.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/payment/Payment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/payment/Payment.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/quotation/ProForma.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/quotation/ProForma.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/quotation/ProFormaDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/quotation/ProFormaDetails.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/quotation/Quotation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/quotation/Quotation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/receipt/Receipt.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/receipt/Receipt.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/reducers/cartReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/reducers/cartReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/reducers/quotationReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/reducers/quotationReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/util/CartManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/util/CartManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/PlaceOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/PlaceOrder.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -47,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/src/components/category/Categories.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="31" column="89" lean-forward="true" selection-start-line="31" selection-start-column="89" selection-end-line="31" selection-end-column="89" />
+            <state relative-caret-position="1">
+              <caret line="36" column="19" lean-forward="true" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -70,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/actions/catalogActions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-969">
+            <state relative-caret-position="153">
               <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
               <folding>
                 <element signature="e#0#189#0" expanded="true" />
@@ -404,12 +429,12 @@
       <workItem from="1560277867418" duration="22535000" />
       <workItem from="1561485754366" duration="318000" />
       <workItem from="1561486253952" duration="47429000" />
-      <workItem from="1561616406004" duration="9201000" />
+      <workItem from="1561616406004" duration="9751000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101578000" />
+    <option name="totallyTimeSpent" value="102128000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -424,7 +449,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31543624" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31543624" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -441,7 +466,7 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4986577" weight="0.3286119" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4986577" weight="0.3286119" />
       <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49261746" visible="true" weight="0.38101983" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49261746" visible="true" weight="0.38101983" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5073826" side_tool="true" weight="0.27478755" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32719547" />
@@ -885,16 +910,6 @@
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/alaorden/model/Brand.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/actions/catalogActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-969">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#189#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/reducers/catalogReducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -904,10 +919,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/actions/catalogActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#189#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/components/category/Categories.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="31" column="89" lean-forward="true" selection-start-line="31" selection-start-column="89" selection-end-line="31" selection-end-column="89" />
+        <state relative-caret-position="1">
+          <caret line="36" column="19" lean-forward="true" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
