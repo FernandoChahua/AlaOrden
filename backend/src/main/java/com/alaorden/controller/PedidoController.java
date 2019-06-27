@@ -1,9 +1,9 @@
 package com.alaorden.controllers;
 
-import com.alaorden.model.CarritoItem;
-import com.alaorden.model.Pedido;
-import com.alaorden.model.Usuario;
-import com.alaorden.service.PedidoService;
+import com.alaorden.model.CartItem;
+import com.alaorden.model.Order;
+import com.alaorden.model.User;
+import com.alaorden.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,18 +14,18 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/asdfg")
 public class PedidoController {
-    PedidoService pedidoService;
+    OrderService orderService;
 
     @Autowired
-    public PedidoController(PedidoService pedidoService){
-        this.pedidoService = pedidoService;
+    public PedidoController(OrderService orderService){
+        this.orderService = orderService;
     }
 
     @RequestMapping(path="/listarpedidoxusuario/{usuario}",method=RequestMethod.PUT)
-    Pedido listarpedidoxusuario(@PathVariable String usuario,@RequestBody Pedido pedido){
-        pedido.setUsuario("usuario");
-        pedidoService.listarpedidoxusuario(pedido);
-        return pedido;
+    Order listarpedidoxusuario(@PathVariable String usuario,@RequestBody Order order){
+        order.setUser(null);
+        orderService.listOrderByUser(order);
+        return order;
     }
 
 }

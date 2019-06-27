@@ -1,6 +1,6 @@
 package com.alaorden.util;
 
-import com.alaorden.model.Franquicia;
+import com.alaorden.model.Franchise;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -9,17 +9,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class ProductDataFactory {
-    private String nombreFranquicia;
+    private String franchiseName;
     private String apiUrl;
 
-    public ProductDataFactory(String apiUrl, String franquicia){
-        this.nombreFranquicia = franquicia;
+    public ProductDataFactory(String apiUrl, String franchise){
+        this.franchiseName = franchise;
         this.apiUrl = apiUrl;
     }
 
-    public ProductDataFactory(Franquicia franquicia) {
-        this.apiUrl = franquicia.getApiUrl();
-        this.nombreFranquicia = franquicia.getNombre();
+    public ProductDataFactory(Franchise franchise) {
+        this.apiUrl = franchise.getApiUrl();
+        this.franchiseName = franchise.getName();
     }
 
     //Factory Method
@@ -33,7 +33,7 @@ public class ProductDataFactory {
 
         ProductData pd = null;
 
-        switch (nombreFranquicia) {
+        switch (franchiseName) {
             case "metro":
                 pd = new MetroProductData(data);
                 break;
@@ -41,12 +41,12 @@ public class ProductDataFactory {
         return pd;
     }
 
-    public String getNombreFranquicia() {
-        return nombreFranquicia;
+    public String getFranchiseName() {
+        return franchiseName;
     }
 
-    public void setNombreFranquicia(String nombreFranquicia) {
-        this.nombreFranquicia = nombreFranquicia;
+    public void setFranchiseName(String franchiseName) {
+        this.franchiseName = franchiseName;
     }
 
     public String getApiUrl() {

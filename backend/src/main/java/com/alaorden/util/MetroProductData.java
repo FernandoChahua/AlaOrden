@@ -29,8 +29,8 @@ public class MetroProductData extends ProductData {
     }
 
     @Override
-    public BigDecimal getPrecio() {
-        return BigDecimal.valueOf(prodData.get("precio").asDouble());
+    public BigDecimal getPrice() {
+        return BigDecimal.valueOf(prodData.get("price").asDouble());
     }
 
     @Override

@@ -1,8 +1,8 @@
 package com.alaorden.controller;
 
-import com.alaorden.model.CarritoItem;
-import com.alaorden.model.Producto;
-import com.alaorden.service.CarritoService;
+import com.alaorden.model.CartItem;
+import com.alaorden.model.Product;
+import com.alaorden.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,26 +10,27 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class CarritoController {
-    CarritoService carritoService;
+    CartService cartService;
     //Listar(usuario), Editar(usuario, producto), Eliminar(usuario,producto), Agregar(usuario), Vaciar(usuario)
     @Autowired
-    public CarritoController(CarritoService carritoService) {this.carritoService = carritoService;}
+    public CarritoController(CartService cartService) {this.cartService = cartService;}
 
     @RequestMapping
-    List<CarritoItem> listCarritoItems(int idUsuario){return carritoService.listCarritoItem(idUsuario);}
+    List<CartItem> listCarritoItems(int idUsuario){return cartService.findByUser(idUsuario);}
 
     @RequestMapping(method=RequestMethod.PUT)
-    CarritoItem updateCarrito(int idUsuario, int idProducto, int cantidad){
-        List<CarritoItem> lista = carritoService.findByUsuario(idUsuario);
-        CarritoItem act;
-        for (CarritoItem Item : lista){
-            if(Item.getproducto().getidProducto() == idProducto)
+    CartItem updateCarrito(int idUsuario, int idProducto, int cantidad){
+        List<CartItem> lista = cartService.findByUser(idUsuario);
+        CartItem act = new CartItem();
+        for (CartItem Item : lista){
+            if(Item.getProduct().getIdProduct() == idProducto)
                 act = Item;
         }
-        act.setcantidad(cantidad);
-        for (CarritoItem Item : lista){
-            if(Item.getproducto().getidProducto() == idProducto)
+        act.setQuantity(cantidad);
+        for (CartItem Item : lista){
+            if(Item.getProduct().getIdProduct() == idProducto)
                 Item = act;
         }
+        return act;
     }
 }
