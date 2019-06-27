@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Form, Row, Col} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
+import {logIn} from "../../actions/authActions";
 
 /*
 local: [...form]
@@ -38,6 +39,8 @@ class LoginForm extends Component {
 
   login(event) {
     event.preventDefault();
+
+    this.props.logIn(this.state.user,this.state.pass);
 
     //TODO: validate form
     this.setState({
@@ -79,6 +82,8 @@ const mapState = state => {
   return {}
 };
 
-const mapDispatch = {};
+const mapDispatch = {
+  logIn: logIn
+};
 
 export default connect(mapState, mapDispatch)(LoginForm);

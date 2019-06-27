@@ -44,7 +44,7 @@ export function loadInitCatalog() {
                 "measure": 500,
                 "unit": "g",
                 "description": "Leche evaporada",
-                "image": "2.jpg",
+                "image": "1.jpg",
                 "inventory": null
             },
             {
@@ -78,11 +78,11 @@ export function loadInitCatalog() {
                 "measure": 500,
                 "unit": "g",
                 "description": "Leche evaporada",
-                "image": "2.jpg",
+                "image": "3.jpg",
                 "inventory": null
             },
             {
-                "idProduct": 1,
+                "idProduct": 4,
                 "idCategory": 2,
                 "category": null,
                 "idBrand": 1,
@@ -95,11 +95,11 @@ export function loadInitCatalog() {
                 "measure": 500,
                 "unit": "g",
                 "description": "Leche evaporada",
-                "image": "2.jpg",
+                "image": "4.jpg",
                 "inventory": null
             },
             {
-                "idProduct": 1,
+                "idProduct": 5,
                 "idCategory": 2,
                 "category": null,
                 "idBrand": 1,
@@ -112,11 +112,11 @@ export function loadInitCatalog() {
                 "measure": 500,
                 "unit": "g",
                 "description": "Leche evaporada",
-                "image": "2.jpg",
+                "image": "5.jpg",
                 "inventory": null
             },
             {
-                "idProduct": 1,
+                "idProduct": 6,
                 "idCategory": 2,
                 "category": null,
                 "idBrand": 1,
@@ -129,11 +129,11 @@ export function loadInitCatalog() {
                 "measure": 500,
                 "unit": "g",
                 "description": "Leche evaporada",
-                "image": "2.jpg",
+                "image": "6.jpg",
                 "inventory": null
             },
             {
-                "idProduct": 1,
+                "idProduct": 7,
                 "idCategory": 2,
                 "category": null,
                 "idBrand": 1,
@@ -146,11 +146,11 @@ export function loadInitCatalog() {
                 "measure": 500,
                 "unit": "g",
                 "description": "Leche evaporada",
-                "image": "2.jpg",
+                "image": "7.jpg",
                 "inventory": null
             },
             {
-                "idProduct": 1,
+                "idProduct": 8,
                 "idCategory": 2,
                 "category": null,
                 "idBrand": 1,
@@ -163,10 +163,10 @@ export function loadInitCatalog() {
                 "measure": 500,
                 "unit": "g",
                 "description": "Leche evaporada",
-                "image": "2.jpg",
+                "image": "8.jpg",
                 "inventory": null
             },{
-                "idProduct": 1,
+                "idProduct": 9,
                 "idCategory": 2,
                 "category": null,
                 "idBrand": 1,
@@ -179,7 +179,7 @@ export function loadInitCatalog() {
                 "measure": 500,
                 "unit": "g",
                 "description": "Leche evaporada",
-                "image": "2.jpg",
+                "image": "9.jpg",
                 "inventory": null
             },
         ];

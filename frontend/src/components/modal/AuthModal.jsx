@@ -15,8 +15,8 @@ class AuthModal extends Component {
     this.state={ login: true};
 
     this.handleEvent = this.handleEvent.bind(this);
+    this.onHide = this.onHide.bind(this);
   }
-
 
   handleEvent(eventKey) {
     if (eventKey !== "login") {
@@ -26,11 +26,16 @@ class AuthModal extends Component {
     }
   }
 
+  onHide(){
+    this.setState({"login": true});
+    this.props.hideModal();
+  }
+
   render() {
     return (
       <Modal
         show={this.props.show}
-        onHide={this.props.onHide}
+        onHide={this.onHide}
         centered>
         <Modal.Header closeButton>
           <Nav justify className="d-inline-flex flex-row w-100" defaultActiveKey="login"
@@ -58,7 +63,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  onHide: hideModal
+  hideModal: hideModal
 };
 
 export default connect(mapState,mapDispatch)(AuthModal);

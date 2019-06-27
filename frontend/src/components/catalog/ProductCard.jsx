@@ -48,11 +48,13 @@ class ProductCard extends Component {
 
   addToCart() {
     this.props.addItem(this.props.product,this.state.quantity);
+    this.setState({quantity: 0});
   }
 
   render() {
     //TODO: validate
     const product = this.props.product;
+    let details = product.packaging + " x" + product.quantity + ": " + product.measure + product.unit;
 
     return (
       <Card className="product-card">
@@ -61,7 +63,7 @@ class ProductCard extends Component {
           <Container>
             <Row>
               <Col>
-                <h6 className="my-0 text-center">{product.brand.name}</h6>
+                <h6 className="my-0 text-center">{product.brand.name.toUpperCase()}</h6>
               </Col>
             </Row>
             <Row>
@@ -71,7 +73,7 @@ class ProductCard extends Component {
             </Row>
             <Row>
               <Col>
-                <p className="text-muted mb-0">{product.description}</p>
+                <p className="text-muted mb-0">{details}</p>
               </Col>
             </Row>
           </Container>
