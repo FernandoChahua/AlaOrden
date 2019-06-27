@@ -10,7 +10,7 @@ import com.alaorden.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -29,7 +29,34 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
     public List<Category> listCategories(){
-        return categoryRepository.findAll();
+        List<Category> categorias = new ArrayList<>();
+        categorias = categoryRepository.findAll();
+        List<Category> categories = new ArrayList<>();
+        for(int i=0;i<categorias.size();i++){
+            List<Category> subcategories = new ArrayList<>();
+            if(categorias.get(i).getParent() == null) {
+                for (int j = 0; j < categorias.size(); j++) {
+                    if (i!=j){
+                        if(categorias.get(j).getParent() !=null && categorias.get(j).getParent().getIdCategory() == categorias.get(i).getIdCategory()){
+                           categorias.get(j).setParent(null);
+                            subcategories.add(categorias.get(j));
+                        }
+                    }
+                }
+                categorias.get(i).setSubCategories(subcategories);
+                categories.add(categorias.get(i));
+            }
+        }
+
+        List<Category> categoriasFilter = new ArrayList<>();
+
+        for(int i=0;i<categories.size();i++){
+            if(categories.get(i).getSubCategories().size()>0){
+                categoriasFilter.add(categories.get(i));
+            }
+        }
+
+        return categoriasFilter;
     }
     public List<Brand> listBrand(){
         return brandRepository.findAll();
