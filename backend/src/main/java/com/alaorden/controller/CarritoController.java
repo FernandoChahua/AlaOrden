@@ -1,7 +1,7 @@
 package com.alaorden.controller;
 
-import com.alaorden.model.CartItem;
-import com.alaorden.model.Product;
+
+import com.alaorden.model.*;
 import com.alaorden.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,18 +21,48 @@ public class CarritoController {
     List<CartItem> listCarritoItems(@PathVariable int idUsuario){return cartService.findByUser(idUsuario);}
 
     @RequestMapping(path="/{idUsuario}/{idProducto}/{cantidad}",method=RequestMethod.PUT)
-    CartItem updateCarrito(int idUsuario, int idProducto, int cantidad){
-        List<CartItem> lista = cartService.findByUser(idUsuario);
-        CartItem act = new CartItem();
-        for (CartItem Item : lista){
-            if(Item.getProduct().getIdProduct() == idProducto)
-                act = Item;
-        }
+    CartItem updateCarrito(@PathVariable int idUsuario,@PathVariable int idProducto,@PathVariable int cantidad){
+
+        CartItem act = cartService.findByUserAndProduct(idUsuario,idProducto);
         act.setQuantity(cantidad);
-        for (CartItem Item : lista){
-            if(Item.getProduct().getIdProduct() == idProducto)
-                Item = act;
-        }
+
+        cartService.saveToCart(act);
+
         return act;
+    }
+    @RequestMapping(path="/{idUser}",method=RequestMethod.DELETE)
+    void deleteCarrito(@PathVariable int idUser)
+    {
+        List<CartItem> carritos = cartService.findByUser(idUser);
+        if(carritos != null)
+        {
+            cartService.deleteByUserId(idUser);
+        }
+        return carritos;
+    }
+    @RequestMapping(path="/{idUser}/{idProduct}",method=RequestMethod.DELETE)
+    void deleteCarrito(@PathVariable int idUser,@PathVariable int idProduct)
+    {
+        CartItem carrito = cartService.findByUserAndProduct(idUser,idProduct);
+        if(carrito != null)
+        {
+            cartService.deleteByUserAndProduct(idUser,idProduct);
+        }
+        return carrito;
+    }
+    @RequestMapping(method=RequestMethod.POST)
+    void createItemCarrito(@PathBody CarritoItem carritoItem){
+        CartItem cartItem = new CartItem();
+        cartItem.setPk(new CartItemKey());
+        cartItem.getPk().setIdUser(carritoItem.getIdUser());
+        cartItem.getPk().setIdProduct(carritoItem.getIdProduct());
+        cartItem.setProduct(new Product());
+        cartItem.setUser(new User());
+
+        cartItem.getProduct().setIdProduct(carritoItem.getIdProduct());
+        cartItem.getUser().setIdUser(carritoItem.getIdUser());
+
+        cartService.deleteFromCart(cartItem);
+
     }
 }
