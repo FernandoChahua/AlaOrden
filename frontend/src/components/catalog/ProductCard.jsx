@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import {FormControl, InputGroup} from 'react-bootstrap'
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
+import {addItem} from "../../actions/cartActions";
 
 /*
 local: quantity
@@ -21,10 +22,7 @@ class ProductCard extends Component {
     this.changeQuantity = this.changeQuantity.bind(this);
     this.decreaseQuantity = this.decreaseQuantity.bind(this);
     this.increaseQuantity = this.increaseQuantity.bind(this);
-  }
-
-  setQuantity(quantity){
-
+    this.addToCart = this.addToCart.bind(this);
   }
 
   changeQuantity(event){
@@ -48,6 +46,9 @@ class ProductCard extends Component {
     this.setState({ quantity: quantity > 99? 99: quantity + 1 });
   }
 
+  addToCart() {
+    this.props.addItem(this.props.product,this.state.quantity);
+  }
 
   render() {
     //TODO: validate
@@ -55,7 +56,7 @@ class ProductCard extends Component {
 
     return (
       <Card className="product-card">
-        <Card.Img src={"assets/img/products" + product.photo} alt="imagen"/>
+        <Card.Img src={"img/products/" + product.image} alt="imagen"/>
         <Card.Body>
           <Container>
             <Row>
@@ -105,7 +106,7 @@ const mapState = (state,ownProps) => {
 };
 
 const mapDispatch = {
-  //addToCart
+  addItem: addItem
 };
 
 export default connect(mapState,mapDispatch)(ProductCard);

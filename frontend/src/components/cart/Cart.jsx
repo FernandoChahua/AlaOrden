@@ -8,7 +8,6 @@ import CartItem from "./CartItem";
 import {connect} from "react-redux";
 import {checkOut} from "../../actions/cartActions";
 import Alert from "react-bootstrap/Alert";
-import {Redirect} from "react-router-dom"
 
 /*
 local:
@@ -25,14 +24,10 @@ class Cart extends Component {
   }
 
   goToCheckout() {
-    if (this.prop.cart.length === 0) {
-      return null;
-    }
-    return <Redirect to="/order" />
   }
 
   render() {
-    const cart = this.props.cart ;
+    let cart = this.props.cart ;
 
     let menu = cart.length === 0 ?
       (<Alert variant="secondary">Su carrito de compras está vacio</Alert>) :
@@ -46,7 +41,7 @@ class Cart extends Component {
         <DropdownToggle variant="outline-warning">
           <i className="fas fa-shopping-cart"> </i>
           <span className="btn-desc"> Carrito </span>
-          {cart.lenght > 0 && <Badge variant="warning">{cart.length}</Badge>}
+          {cart.length > 0 && <Badge variant="warning">{cart.length}</Badge>}
         </DropdownToggle>
         <DropdownMenu alignRight className="p-2" >
           <Dropdown.Header>Resumen de compra</Dropdown.Header>

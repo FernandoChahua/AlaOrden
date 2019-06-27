@@ -21,7 +21,7 @@
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill,210px);
-  grid-template-rows: repeat(auto-fit,350px);
+  grid-template-rows: repeat(auto-fit,375px);
   grid-gap: 10px;
 }
 
@@ -58,8 +58,8 @@
 
 .card.product-card {
   min-width:200px;
-  width:200px;
-  max-width: 200px;
+  width:210px;
+  max-width: 210px;
 }
 
 #map {
@@ -73,7 +73,7 @@
 
 #content {
   min-height: 700px;
-  margin: 3% 20% 2%;
+  margin: 3% 10% 2%;
   padding: 10px 20px 0;
   background-color: var(--light);
 }

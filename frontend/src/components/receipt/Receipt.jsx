@@ -37,13 +37,13 @@ class Receipt extends Component {
             "brand":{
               "name":'Coca Cola'
             },
-            "packageUnit":1,
+            "quantity":1,
             "category":{
               "name":'Gaseosa'
             }
           },
           "precio":2.00,
-          "packageUnit":10
+          "quantity":10
         },
         {
           "producto":{
@@ -55,13 +55,13 @@ class Receipt extends Component {
             "brand":{
               "name":'Coca Cola'
             },
-            "packageUnit":6,
+            "quantity":6,
             "category":{
               "name":'Agua'
             }
           },
           "precio":8.00,
-          "packageUnit":1
+          "quantity":1
         },
         {
           "producto":{
@@ -73,13 +73,13 @@ class Receipt extends Component {
             "brand":{
               "name":'Nabisco'
             },
-            "packageUnit":1,
+            "quantity":1,
             "category":{
               "name":'Galletas'
             }
           },
           "precio":0.5,
-          "packageUnit":6
+          "quantity":6
         }
       ]
     }
@@ -88,9 +88,9 @@ class Receipt extends Component {
       d=>
         <tr>
           <td>{++cont}</td>
-          <td className="text-left">{`${d.packageUnit} de: ${d.producto.category.name} ${d.producto.name} 
-                    ${d.producto.measure} ${d.producto.unit}, ${d.producto.description}, ${d.producto.packageUnit} unidad(es)`}</td>
-          <td>S/.{(d.precio * d.packageUnit).toFixed(2)}</td>
+          <td className="text-left">{`${d.quantity} de: ${d.producto.category.name} ${d.producto.name} 
+                    ${d.producto.measure} ${d.producto.unit}, ${d.producto.description}, ${d.producto.quantity} unidad(es)`}</td>
+          <td>S/.{(d.precio * d.quantity).toFixed(2)}</td>
         </tr>
     );
 

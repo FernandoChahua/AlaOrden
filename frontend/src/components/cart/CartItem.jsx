@@ -27,43 +27,46 @@ class CartItem extends Component {
     if (quantity > 100) {
       quantity = 99;
     }
-    this.props.updateItem(cartItem.productId, quantity);
+    this.props.updateItem(cartItem.idProduct, quantity);
   }
 
   decreaseQuantity() {
     let cartItem = this.props.cartItem;
-    let newQuantity = cartItem.quantity === 0 ? 0 : cartItem.quantity - 1;
+    let newQuantity = cartItem.quantity === 0 ? 1 : cartItem.quantity - 1;
 
-    this.props.updateItem(cartItem.productId, newQuantity);
+    this.props.updateItem(cartItem.idProduct, newQuantity);
   }
 
   increaseQuantity() {
     let cartItem = this.props.cartItem;
     let newQuantity = cartItem.quantity > 99 ? 99 : cartItem.quantity + 1;
 
-    this.props.updateItem(cartItem.productId, newQuantity);
+    this.props.updateItem(cartItem.idProduct, newQuantity);
   }
 
   deleteItem() {
-    this.props.removeItem(this.state.cartItem.productId);
+    this.props.removeItem(this.props.cartItem.product.idProduct);
   }
 
 
   render() {
     let product = this.props.cartItem.product;
-    let prName = product.name;
+    let quantity = this.props.cartItem.quantity;
+
+    let name = [product.brand.name.toUpperCase(),product.name].join(' ');
+    let details = product.packaging + " x" + product.quantity + ": " + product.measure + product.unit;
 
     return (
       <Row>
         <Col xs={3}>
-          <Image src={product.image} height="70px" alt={product.name} className="noselect"/>
+          <Image src={"img/products/"+product.image} height="70px" alt={product.name} className="noselect"/>
         </Col>
         <Col>
           <Row>
-            <p className="m-0">{prName}</p>
+            <p className="m-0">{name}</p>
           </Row>
           <Row>
-            <p className="text-muted mb-1">{product.description}</p>
+            <p className="text-muted mb-1">{details}</p>
           </Row>
           <Row>
             <Col xs={6}>

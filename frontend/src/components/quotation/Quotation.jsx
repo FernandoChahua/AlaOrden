@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import {Button, Col, Container, Row} from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
+import ProForma from "./ProForma";
+import {connect} from "react-redux";
+import {loadOptions} from "../../actions/quotationActions";
 
 /*
 local:
@@ -7,7 +11,17 @@ state: proformaList, order
 dispatch:
  */
 class Quotation extends Component {
+
+  componentDidMount() {
+    this.props.loadOptions();
+    console.log(this.props.proformaList)
+  }
+
   render() {
+    let shoppingOptions = this.props.proformaList.length === 0 ?
+      (<Alert variant="danger">Los sentimos, no hemos encontrado nada</Alert>) :
+      (this.props.proformaList.map((x,i) => <ProForma key={i} index={i}/>));
+
     return (
       <Container className="text-left">
         <Row>
@@ -18,12 +32,9 @@ class Quotation extends Component {
             </div>
             <hr className="mb-2"/>
             <div className="pr-5 m-4">
-              <div className="d-flex justify-content-between mb-4">
-                <h6 className="mb-3">Metro</h6>
-                <div className="form-check">
-                  <Button block onClick={this.register}>Comprar</Button>
-                </div>
-              </div>
+
+              {shoppingOptions}
+
               <br/>
               <hr className="mb-2"/>
               <br/>
@@ -43,4 +54,14 @@ class Quotation extends Component {
   }
 }
 
-export default Quotation;
+const mapState = state => {
+  return {
+    proformaList: state.quotation.proformaList
+  }
+};
+
+const mapDispatch = {
+  loadOptions: loadOptions
+};
+
+export default connect(mapState,mapDispatch)(Quotation);

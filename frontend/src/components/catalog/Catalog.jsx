@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ProductCard from "./ProductCard";
 import {connect} from "react-redux";
+import {loadInitCatalog} from "../../actions/catalogActions";
 
 /*
 local:
@@ -8,6 +9,10 @@ state: results
 dispatch:
  */
 class Catalog extends Component {
+
+  componentDidMount() {
+    this.props.loadInitCatalog();
+  }
 
   render() {
     let results = this.props.results;
@@ -34,7 +39,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  //loadInitialCatalog()
+  loadInitCatalog: loadInitCatalog
 };
 
 export default connect(mapState, mapDispatch)(Catalog);

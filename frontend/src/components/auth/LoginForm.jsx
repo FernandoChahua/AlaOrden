@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Form,Row,Col} from "react-bootstrap";
+import {Form, Row, Col} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
 
@@ -9,31 +9,65 @@ state: (response)
 dispatch:
  */
 class LoginForm extends Component {
+  constructor(props) {
+    super(props);
 
-  validateForm(){
+    this.state = {
+      user: '',
+      pass: '',
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.login = this.login.bind(this);
+  }
+
+
+  handleChange(event) {
+    let state = this.state;
+    switch (event.target.name) {
+      case "user":
+        state.user = event.target.value;
+        break;
+      case "pass":
+        state.pass = event.target.value;
+        break;
+      default:
+        return;
+    }
+    this.setState(state);
+  }
+
+  login(event) {
+    event.preventDefault();
+
     //TODO: validate form
+    this.setState({
+      user: '',
+      pass: '',
+    });
   }
 
   render() {
     return (
-      <Form>
+      <Form onSubmit={e => this.login(e)}>
         <h3 className="text-center">Iniciar Sesión</h3>
         <Row className="flex-column flex-md-row">
           <Col>
             <Form.Group id="formLogUser">
               <Form.Label>Email o username</Form.Label>
-              <Form.Control type="text" placeholder="Email o username" />
+              <Form.Control type="text" placeholder="Email o username" name="user" value={this.state.user}
+                            onChange={this.handleChange}/>
             </Form.Group>
           </Col>
           <Col>
             <Form.Group controlId="formLogPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control type="password" placeholder="Password" name="pass" value={this.state.pass}
+                            onChange={this.handleChange}/>
             </Form.Group>
           </Col>
         </Row>
         <hr></hr>
-        <Button block type="submit" onClick={this.login}>
+        <Button block type="submit">
           Iniciar Sesion
         </Button>
       </Form>
@@ -42,13 +76,9 @@ class LoginForm extends Component {
 }
 
 const mapState = state => {
-  return {
-
-  }
+  return {}
 };
 
-const mapDispatch = {
+const mapDispatch = {};
 
-};
-
-export default connect(mapState,mapDispatch)(LoginForm);
+export default connect(mapState, mapDispatch)(LoginForm);
