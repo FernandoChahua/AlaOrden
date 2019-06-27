@@ -74,7 +74,7 @@ class CartItem extends Component {
                 <InputGroup.Prepend>
                   <Button variant="outline-warning" onClick={this.decreaseQuantity}>-</Button>
                 </InputGroup.Prepend>
-                <FormControl className="text-center" value={this.props.cartItem.quantity}
+                <FormControl className="text-center" value={quantity}
                              onChange={this.changeQuantity}/>
                 <InputGroup.Append>
                   <Button variant="outline-success" onClick={this.increaseQuantity}>+</Button>

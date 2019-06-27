@@ -24,6 +24,7 @@ class Cart extends Component {
   }
 
   goToCheckout() {
+    
   }
 
   render() {

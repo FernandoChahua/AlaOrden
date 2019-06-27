@@ -14,13 +14,16 @@ state: authenticated, user, displayAuthModal
 dispatch:
  */
 class SessionButton extends Component {
+  componentWillUpdate(nextProps, nextState, nextContext) {
+  }
+
   render() {
     return this.props.authenticated ?
       //UserButton
       (<Dropdown>
         <DropdownToggle variant="outline-danger" id="account-dropdown">
           <i className="far fa-user"> </i>
-          <span className="btn-desc"> {this.props.user.username}</span>
+          <span className="btn-desc"> {this.props.user.nickname }</span>
         </DropdownToggle>
 
         <DropdownMenu alignRight>
@@ -53,7 +56,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  logout: logOut,
+  logOut: logOut,
   showModal: showModal
 };
 
