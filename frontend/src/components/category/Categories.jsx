@@ -14,9 +14,12 @@ dispatch:
 class Categories extends Component {
 
     componentDidMount() {
-      this.props.loadCategories();
+    this.props.loadCategories();
+    console.log(this.props.categories);
     }
-
+    filterByCategory(){
+        alert("aea mano");
+    }
   render() {
         let categories = this.props.categories || [];
 
@@ -25,9 +28,9 @@ class Categories extends Component {
                 <ButtonGroup>
                     {categories.map((cat,i) =>
                         <Dropdown key={"ddn"+cat.idCategoria}>
-                            <Dropdown.Toggle key={"tgg"+cat.idCategoria} variant="light">{cat.name}</Dropdown.Toggle>
+                            <Dropdown.Toggle key={"tgg"+cat.idCategoria} variant="light">{cat.nombre}</Dropdown.Toggle>
                             <Dropdown.Menu key={"mnu"+cat.idCategoria} rootCloseEvent="click">
-                                {cat.subcategories.map((s,i) => <DropdownItem key={"itm"+s.idCategoria} onClick={this.filterByCategory}>{s.name}</DropdownItem>)}
+                                {cat.subcategorias.map((s,i) => <DropdownItem key={"itm"+s.idCategoria} onClick={this.filterByCategory.bind(this)}>{s.name}</DropdownItem>)}
                             </Dropdown.Menu>
                         </Dropdown>)}
                 </ButtonGroup>

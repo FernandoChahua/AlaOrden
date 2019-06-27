@@ -11,29 +11,20 @@ import axios from "axios";
 
 export function loadCategories() {
     return (dispatch) => {
-        let categories = [];
+        let categories;
         axios
             .get("http://localhost:9090/api/categorias")
             .then(function(response) {
                 //console.log(response);
-                console.log(response);
                categories = response.data._embedded.categorias;
+               console.log(categories);
+               dispatch(_loadCategories(categories))
             })
             .catch(function(error) {
                 console.log(error);
             });
 
-        console.log(JSON.stringify(categories));
-        console.log('AEA')
 
-        let categoria;
-        let categorias=[];
-        for(let i=0;i<categories.lenght;i++){
-            categoria = {name:categories[i].nombre};
-            categorias.push(categoria);
-        }
-
-        dispatch(_loadCategories(categorias))
     }
 }
 
