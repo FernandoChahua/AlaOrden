@@ -6,11 +6,25 @@ import {
     GET_QUERY_RESULTS,
     LOAD_INIT_CATALOG, LOAD_CATEGORY_LIST, TOGGLE_LIST
 } from "./actions";
+import axios from "axios";
+
 
 export function loadCategories() {
     return (dispatch) => {
+        let categories;
+        axios
+            .get("http://localhost:9090/api/categorias")
+            .then(function(response) {
+                //console.log(response);
+               categories = response.data._embedded.categorias;
+               console.log(categories);
+               dispatch(_loadCategories(categories))
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
 
-        dispatch(_loadCategories())
+
     }
 }
 
