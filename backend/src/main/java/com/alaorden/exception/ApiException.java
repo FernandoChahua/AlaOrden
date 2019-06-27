@@ -1,4 +1,4 @@
-package com.vintago.exception;
+package com.alaorden.exception;
 
 public class ApiException extends ApplicationException {
 
