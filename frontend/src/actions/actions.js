@@ -12,6 +12,7 @@ export const ADD_LIST_QUERY = 'ADD_LIST_QUERY';
 export const DELETE_LIST_QUERY = 'DELETE_LIST_QUERY';
 export const GET_QUERY_RESULTS = 'GET_QUERY_RESULTS';
 export const ADD_FILTER = 'ADD_FILTER';
+export const TOGGLE_LIST = 'TOGGLE_LIST';
 
 //cart
 export const ADD_ITEM = 'ADD_ITEM';

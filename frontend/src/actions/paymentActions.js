@@ -11,7 +11,7 @@ export function applyCoupon() {
 export function removeCoupon() {
     return (dispatch) => {
 
-        dispatch(_removeCoupon())
+        dispatch(_removeCoupon());
     }
 }
 
@@ -19,10 +19,9 @@ export function removeCoupon() {
 export function sendPay() {
     return (dispatch) => {
 
-        dispatch(_sendPay())
+        dispatch(_sendPay());
     }
 }
-
 
 
 const _applyCoupon = (code,discount) => {

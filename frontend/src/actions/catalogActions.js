@@ -4,7 +4,7 @@ import {
     DELETE_LIST_QUERY,
     ADD_FILTER,
     GET_QUERY_RESULTS,
-    LOAD_INIT_CATALOG, LOAD_CATEGORY_LIST
+    LOAD_INIT_CATALOG, LOAD_CATEGORY_LIST, TOGGLE_LIST
 } from "./actions";
 import axios from "axios";
 
@@ -71,6 +71,13 @@ export function addFilter() {
     }
 }
 
+export function toggleList() {
+    return (dispatch) => {
+
+        dispatch(_toggleList())
+    }
+}
+
 const _loadCategories = (categories) => {
     return {
         type: LOAD_CATEGORY_LIST,
@@ -126,3 +133,9 @@ const _getQueryResults = (results) => {
         results
     }
 };
+
+const _toggleList = () => {
+    return {
+        type: TOGGLE_LIST
+    }
+}

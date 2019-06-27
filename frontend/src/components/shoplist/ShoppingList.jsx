@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Collapse from "react-bootstrap/Collapse";
 import Card from "react-bootstrap/Card";
+import {toggleList} from "../../actions/catalogActions";
+import {connect} from "react-redux";
 
 /*
 local:
@@ -26,7 +28,6 @@ class ShoppingList extends Component {
             </button>
           </Card.Header>
           <Card.Body>
-
           </Card.Body>
         </Card>
       </Collapse>
@@ -34,4 +35,14 @@ class ShoppingList extends Component {
   }
 }
 
-export default ShoppingList;
+const mapState = state => {
+  return {
+    showList: state.catalog.displayShopList
+  }
+};
+
+const mapDispatch = {
+  toggleList: toggleList
+};
+
+export default connect(mapState,mapDispatch)(ShoppingList);
