@@ -68,4 +68,22 @@ public class ProductServiceImpl implements ProductService {
         return brandRepository.findAll();
     }
 
+    public List<Product> listProductsByCategory(int id){
+        List<Product> products = productRepository.findAllByCategoryIdCategory(id);
+        for(int i=0;i<products.size();i++){
+            products.get(i).getCategory().setParent(null);
+            products.get(i).getCategory().setProducts(null);
+        }
+        return products;
+    }
+    public List<Product> listProductSearch(String name){
+        List<Product> products = productRepository.findByNameContaining(name);
+
+        for(int i=0;i<products.size();i++){
+            products.get(i).getCategory().setParent(null);
+            products.get(i).getCategory().setProducts(null);
+        }
+        return products;
+    }
+
 }

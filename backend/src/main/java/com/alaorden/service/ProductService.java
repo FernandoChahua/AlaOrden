@@ -10,4 +10,6 @@ public interface ProductService {
      List<Product> listProducts();
      List<Category> listCategories();
      List<Brand> listBrand();
+     List<Product> listProductsByCategory(int id);
+     List<Product> listProductSearch(String name);
 }

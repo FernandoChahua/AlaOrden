@@ -9,14 +9,16 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+@RestController
+@RequestMapping("/cart")
 public class CarritoController {
     CartService cartService;
     //Listar(usuario), Editar(usuario, producto), Eliminar(usuario,producto), Agregar(usuario), Vaciar(usuario)
     @Autowired
     public CarritoController(CartService cartService) {this.cartService = cartService;}
 
-    @RequestMapping
-    List<CartItem> listCarritoItems(int idUsuario){return cartService.findByUser(idUsuario);}
+    @RequestMapping(path="/{idUsuario}",method= RequestMethod.GET)
+    List<CartItem> listCarritoItems(@PathVariable int idUsuario){return cartService.findByUser(idUsuario);}
 
     @RequestMapping(method=RequestMethod.PUT)
     CartItem updateCarrito(int idUsuario, int idProducto, int cantidad){

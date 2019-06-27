@@ -20,7 +20,14 @@ public class CartServiceImpl implements CartService {
     }
 
     public List<CartItem> findByUser(int id){
-        return cartItemRepository.findAllByUserIdUser(id);
+        List<CartItem>users = cartItemRepository.findAllByUserIdUser(id);
+        for(int i=0;i<users.size();i++)
+        {
+            users.get(i).setUser(null);
+            users.get(i).getProduct().getCategory().setParent(null);
+            users.get(i).getProduct().getCategory().setProducts(null);
+        }
+        return users;
     }
 
     @Transactional
