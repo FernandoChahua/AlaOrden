@@ -24,14 +24,33 @@ export function loadCategories() {
                 console.log(error);
             });
 
+        // return function (dispatch, getState) {
+        //
+        //     fetch("http://localhost:9090/api/categoria")
+        //         .then(response => response.json())
+        //         .then(jsonData => {
+        //             dispatch(setCategoriaList(jsonData))
+        //         })
+        // };
+
 
     }
 }
 
 export function loadInitCatalog() {
     return (dispatch) => {
+        let results;
+        axios
+            .get("http://localhost:9090/api/resultados")
+            .then(function (response) {
 
-        dispatch(_loadInitCatalog())
+                results = response.data._embedded.resultados;
+                console.log(results);
+                dispatch(_loadInitCatalog(results))
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 }
 
