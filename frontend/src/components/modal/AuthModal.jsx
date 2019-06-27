@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Modal, Nav} from "react-bootstrap";
 import AuthFormSwitch from "./AuthFormSwitch";
-import {Redirect} from "react-router-dom";
 import {hideModal} from "../../actions/authActions"
 import {connect} from "react-redux";
 

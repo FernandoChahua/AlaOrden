@@ -7,17 +7,17 @@ export function addItem() {
     }
 }
 
-export function updateItem() {
+export function updateItem(productId,quantity) {
     return (dispatch) => {
 
-        dispatch(_updateItem())
+        dispatch(_updateItem(productId,quantity))
     }
 }
 
-export function removeItem() {
+export function removeItem(productId) {
     return (dispatch) => {
 
-        dispatch(_removeItem())
+        dispatch(_removeItem(productId))
     }
 }
 
@@ -42,7 +42,7 @@ const _addItem = (productId, quantity) => {
         id: productId,
         quantity: quantity
     }
-}
+};
 
 const _updateItem = (productId, quantity) => {
     return {
@@ -57,16 +57,16 @@ const _removeItem = (productId) => {
         type: REMOVE_ITEM,
         id: productId
     }
-}
+};
 const _loadCart = (cart) => {
     return {
         type: LOAD_CART,
         cart: cart
     }
-}
+};
 
 const _submitCart = () => {
     return {
         type: SUBMIT_CART
     }
-}
+};

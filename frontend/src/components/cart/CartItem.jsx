@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Col, Image, Row, InputGroup, FormControl, Button} from "react-bootstrap";
 import {connect} from "react-redux";
+import {removeItem, updateItem} from "../../actions/cartActions";
 
 /*
 local:
@@ -8,7 +9,7 @@ state: cart[i]
 dispatch:
  */
 class CartItem extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.changeQuantity = this.changeQuantity.bind(this);
@@ -17,32 +18,34 @@ class CartItem extends Component {
     this.deleteItem = this.deleteItem.bind(this);
   }
 
-  changeQuantity(event){
+  changeQuantity(event) {
     let cartItem = this.props.cartItem;
     let quantity = event.target.value;
-    if (quantity < 0 || isNaN(quantity)){
+    if (quantity < 0 || isNaN(quantity)) {
       quantity = 1;
     }
-    if (quantity > 100){
+    if (quantity > 100) {
       quantity = 99;
     }
-    //TODO: updateCart
+    this.props.updateItem(cartItem.productId, quantity);
   }
 
-  decreaseQuantity(){
+  decreaseQuantity() {
     let cartItem = this.props.cartItem;
-    let newQuantity = cartItem.quantity === 0? 0 : cartItem.quantity - 1;
-    //TODO: updateCart
+    let newQuantity = cartItem.quantity === 0 ? 0 : cartItem.quantity - 1;
+
+    this.props.updateItem(cartItem.productId, newQuantity);
   }
 
   increaseQuantity() {
     let cartItem = this.props.cartItem;
     let newQuantity = cartItem.quantity > 99 ? 99 : cartItem.quantity + 1;
-    //TODO: updateCart
+
+    this.props.updateItem(cartItem.productId, newQuantity);
   }
 
-  deleteItem(){
-    //TODO: updateCart
+  deleteItem() {
+    this.props.removeItem(this.state.cartItem.productId);
   }
 
 
@@ -68,7 +71,8 @@ class CartItem extends Component {
                 <InputGroup.Prepend>
                   <Button variant="outline-warning" onClick={this.decreaseQuantity}>-</Button>
                 </InputGroup.Prepend>
-                <FormControl className="text-center" value={this.props.cartItem.quantity} onChange={this.changeQuantity}/>
+                <FormControl className="text-center" value={this.props.cartItem.quantity}
+                             onChange={this.changeQuantity}/>
                 <InputGroup.Append>
                   <Button variant="outline-success" onClick={this.increaseQuantity}>+</Button>
                 </InputGroup.Append>
@@ -84,14 +88,15 @@ class CartItem extends Component {
   }
 }
 
-const mapState = (state,ownProps) => {
+const mapState = (state, ownProps) => {
   return {
     cartItem: state.cart.cart[ownProps.index]
   }
 };
 
 const mapDispatch = {
-  //updateCart
+  updateItem: updateItem,
+  removeItem: removeItem
 };
 
-export default connect(mapState,mapDispatch)(CartItem);
+export default connect(mapState, mapDispatch)(CartItem);

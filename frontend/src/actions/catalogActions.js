@@ -23,8 +23,6 @@ export function loadCategories() {
             .catch(function(error) {
                 console.log(error);
             });
-
-
     }
 }
 

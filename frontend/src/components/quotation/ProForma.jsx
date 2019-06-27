@@ -19,9 +19,9 @@ class ProForma extends Component {
     return (
       <Card>
         <Card.Header eventKey={this.props.eventKey}
-                          className={"d-inline-flex justify-content-between text-light " + franchise.style}>
+                     className={"d-inline-flex justify-content-between text-light " + franchise.style}>
           <span>{franchise.nombre}</span>
-          <Image src={"/assets/img/"+franchise.logo} alt="logo" className="" height="40px"/>
+          <Image src={"/assets/img/" + franchise.logo} alt="logo" className="" height="40px"/>
           <div>
             <span>TOTAL: </span>
             <Badge variant="light">$666</Badge>
@@ -39,11 +39,11 @@ class ProForma extends Component {
               </tr>
               </thead>
               <tbody>
-              <ProFormaDetails />
-              <ProFormaDetails />
-              <ProFormaDetails />
-              <ProFormaDetails />
-              <ProFormaDetails />
+              <ProFormaDetails/>
+              <ProFormaDetails/>
+              <ProFormaDetails/>
+              <ProFormaDetails/>
+              <ProFormaDetails/>
               </tbody>
             </Table>
           </ListGroupItem>
