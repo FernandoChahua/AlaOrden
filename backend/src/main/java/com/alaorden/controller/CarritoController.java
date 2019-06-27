@@ -20,7 +20,7 @@ public class CarritoController {
     @RequestMapping(path="/{idUsuario}",method= RequestMethod.GET)
     List<CartItem> listCarritoItems(@PathVariable int idUsuario){return cartService.findByUser(idUsuario);}
 
-    @RequestMapping(method=RequestMethod.PUT)
+    @RequestMapping(path="/{idUsuario}/{idProducto}/{cantidad}",method=RequestMethod.PUT)
     CartItem updateCarrito(int idUsuario, int idProducto, int cantidad){
         List<CartItem> lista = cartService.findByUser(idUsuario);
         CartItem act = new CartItem();

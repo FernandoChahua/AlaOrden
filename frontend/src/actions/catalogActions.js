@@ -28,8 +28,23 @@ export function loadCategories() {
 
 export function loadInitCatalog() {
     return (dispatch) => {
+        let products=[];
+        axios
+            .get("http://localhost:9090/api/serv/productos")
+            .then(function(response) {
+                //console.log(response);
+                products = response.data;
+                console.log(products);
+                dispatch(_loadInitCatalog(products))
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
 
-        let productos = [
+
+    }
+}
+/* let productos = [
             {
                 "idProduct": 1,
                 "idCategory": 2,
@@ -182,11 +197,7 @@ export function loadInitCatalog() {
                 "image": "9.jpg",
                 "inventory": null
             },
-        ];
-
-        dispatch(_loadInitCatalog(productos))
-    }
-}
+        ];*/
 
 export function getSearchResults() {
     return (dispatch) => {

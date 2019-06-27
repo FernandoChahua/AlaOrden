@@ -13,12 +13,16 @@ dispatch:
  */
 class Categories extends Component {
 
+    constructor(props){
+        super(props);
+        this.filterByCategory = this.filterByCategory.bind(this);
+    }
     componentDidMount() {
     this.props.loadCategories();
     console.log(this.props.categories);
     }
-    filterByCategory(){
-        alert("aea mano");
+    filterByCategory(idCategory){
+
     }
   render() {
         let categories = this.props.categories || [];
@@ -30,7 +34,7 @@ class Categories extends Component {
                         <Dropdown key={"ddn"+cat.idCategory}>
                             <Dropdown.Toggle key={"tgg"+cat.idCategory} variant="light">{cat.name}</Dropdown.Toggle>
                             <Dropdown.Menu key={"mnu"+cat.idCategory} rootCloseEvent="click">
-                                {cat.subCategories.map((s,i) => <DropdownItem key={"itm"+s.idCategory} onClick={this.filterByCategory.bind(this)}>{s.name}</DropdownItem>)}
+                                {cat.subCategories.map((s,i) => <DropdownItem key={"itm"+s.idCategory} onClick={this.filterByCategory}>{s.name}</DropdownItem>)}
                             </Dropdown.Menu>
                         </Dropdown>)}
                 </ButtonGroup>
