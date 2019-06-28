@@ -26,6 +26,7 @@ public class CartServiceImpl implements CartService {
             users.get(i).setUser(null);
             users.get(i).getProduct().getCategory().setParent(null);
             users.get(i).getProduct().getCategory().setProducts(null);
+            users.get(i).getProduct().setInventory(null);
         }
         return users;
     }

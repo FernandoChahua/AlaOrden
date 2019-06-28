@@ -17,13 +17,15 @@ public class CotizacionController {
         this.addressService = addressService;
         }
 
-        @RequestMapping(method=RequestMethod.POST)
-            List<Order> generarListas(@RequestBody List<CartItem>carrito,@RequestBody Address address){
-            Map<Location,BigDecimal> listLocations = addressService.listDistanceMin(address.getLatitude().doubleValue(),address.getLongitude().doubleValue());
+        @RequestMapping(path="/{latitud}/{longitud}",method=RequestMethod.POST)
+            List<Order> generarListas(String latitud,String longitud,@RequestBody List<CartItem>carrito){
+            double latitude = Double.parseDouble(latitud);
+            double longitude = Double.parseDouble(longitud);
+            Map<Location,BigDecimal> listLocations = addressService.listDistanceMin(latitude,longitude);
             List<Order> orders = quotationService.generateList(carrito,listLocations);
 
             for(int i=0;i<orders.size();i++){
-                double distance=addressService.computeDistance(orders.get(i).getLocation().getLatitude().doubleValue(),orders.get(i).getLocation().getLongitude().doubleValue(),address.getLatitude().doubleValue(),address.getLongitude().doubleValue());
+                double distance=addressService.computeDistance(orders.get(i).getLocation().getLatitude().doubleValue(),orders.get(i).getLocation().getLongitude().doubleValue(),latitude,longitude);
                 BigDecimal price=addressService.computeDeliveryPrice(distance);
                 orders.get(i).setPriceDelivery(price);
             }
