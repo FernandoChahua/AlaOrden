@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route} from "react-router-dom"
+import {Route,Redirect} from "react-router-dom"
 import Stepper from "react-stepper-horizontal/lib/Stepper"
 import Delivery from "../delivery/Delivery";
 import Payment from "../payment/Payment";
@@ -27,7 +27,7 @@ class Order extends Component {
         <Stepper steps={steps} activeStep={this.props.activeStep} />
         <Route path={`${this.props.match.path}/delivery`} component={Delivery}/>
         <Route path={`${this.props.match.path}/quotation`} component={Quotation}/>
-        <Route path={`${this.props.match.path}/payment`} component={Payment}/>
+        <Route path={`${this.props.match.path}/payment`} component={Payment} />
       </div>
     );
   }
@@ -36,7 +36,8 @@ class Order extends Component {
 const mapState = state => {
   return {
     activeStep: state.order.activeStep,
-    maxStep: state.order.maxStep
+    maxStep: state.order.maxStep,
+    allowCheckout: state.cart.allowCheckout
   }
 };
 

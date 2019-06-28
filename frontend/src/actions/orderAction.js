@@ -2,6 +2,7 @@ import {SET_MAX_STEP, SET_STEP} from "./actions";
 
 export function setStep (step) {
   return (dispatch) => {
+
     dispatch(_setStep(step));
   }
 }

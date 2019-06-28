@@ -11,6 +11,7 @@ export function loadDirections() {
     return (dispatch) => {
 
         dispatch(_loadDirections());
+
     }
 }
 

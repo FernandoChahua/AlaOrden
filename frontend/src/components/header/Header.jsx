@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import { Navbar } from "react-bootstrap"
+import {withRouter} from "react-router-dom"
 
 /*
 COMP
@@ -19,4 +20,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);

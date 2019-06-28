@@ -3,10 +3,15 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {Button, Form} from "react-bootstrap";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
+import loadScript from "../../util/ScriptLoader";
+import {setStep} from "../../actions/orderAction";
 
 
 let apiKey = "AIzaSyDzB-76_WJJt-fAqyqnT23jyCpNwm3jqcg";
-apiKey = "";
+//apiKey = "";
 
 /*
 local:
@@ -14,12 +19,32 @@ state: addressList, address
 dispatch:
  */
 class Delivery extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      lat: 0,
+      lng: 0,
+      dir: ''
+    };
+
+    this.nextStep = this.nextStep.bind(this);
+  }
+
+
+  nextStep() {
+    this.props.history.push("/order/quotation");
+
+    this.props.setStep(1);
+  }
+
   initMap = () => {
     let marker;
     let map;
     let geocoder;
     let infowindow;
 
+    const me = this;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         let pos = {
@@ -84,8 +109,11 @@ class Delivery extends Component {
                 addMarker(longitud, map);
                 infowindow.setContent(results[0].formatted_address);
                 infowindow.open(map, marker);
-                if (document.getElementById("autocomplete"))
+                if (document.getElementById("autocomplete")) {
                   document.getElementById("autocomplete").value = results[0].formatted_address;
+
+                  me.setState({ lat: latlng.lat, lng: latlng.lng, dir: results[0].formatted_address });
+                }
               } else {
                 window.alert('No results found');
               }
@@ -96,7 +124,11 @@ class Delivery extends Component {
         }
 
         window.google.maps.event.addListener(map, 'click', function (event) {
-          geocodeLatLng(event.latLng);
+          let pos2 = {
+            lat: event.latLng.lat(),
+            lng: event.latLng.lng()
+          };
+          geocodeLatLng(pos2);
         });
       }, function () {
         handleLocationError(true, infowindow, map.getCenter());
@@ -125,76 +157,73 @@ class Delivery extends Component {
 
   render() {
     return (
-        <Container className="text-left">
-          <Row>
-            <Col className="md-8">
+      <Container className="text-left">
+        <Row>
+          <Col className="md-8">
+            <br/>
+            <div>
+              <h4>Direccion de Entrega</h4>
+            </div>
+            <hr className="mb-2"/>
+            <div className="pr-5 m-4">
+              <div className="input-group-append">
+                <h6 className="mb-3">Direccion Reciente</h6>
+              </div>
               <br/>
-              <div>
-                <h4>Direccion de Entrega</h4>
+              <Form>
+                <select className="form-control" id="selDireccion">
+                  <option>Calle xxx Nro ###</option>
+                  <option>Calle yyy Nro ###</option>
+                </select>
+              </Form>
+              <br/>
+              <div className="d-flex justify-content-between mb-4">
+                <h6 className="mb-3">Direccion Nueva</h6>
+                <div className="form-check">
+                  <input className="form-check-input" type="checkbox" id="chkRecordar"/>
+                  <Form.Label className="form-check-label" htmlFor="chkRecordar">Recordar</Form.Label>
+                </div>
               </div>
-
-              <hr className="mb-2"/>
-
-              <div className="pr-5 m-4">
-
-
-
-
-                <div className="input-group-append">
-                  <h6 className="mb-3">Direccion Reciente</h6>
-                </div>
-                <br/>
-                <Form>
-
-                  <select className="form-control" id="selDireccion">
-                    <option>Calle xxx Nro ###</option>
-                    <option>Calle yyy Nro ###</option>
-                  </select>
-                </Form>
-                <br/>
-
-                <div className="d-flex justify-content-between mb-4">
-                  <h6 className="mb-3">Direccion Nueva</h6>
-                  <div className="form-check">
-                    <input className="form-check-input" type="checkbox" id="chkRecordar"/>
-                    <Form.Label className="form-check-label" htmlFor="chkRecordar">Recordar</Form.Label>
-                  </div>
-                </div>
-                <Form>
-                  <section className="container mt-3">
-                    <input id="autocomplete" className="form-control " type="text"/>
-                  </section>
-
-                </Form>
-                <br/>
-                <section id="map" className="container mt-3 mb-3">
+              <Form>
+                <section className="container mt-3">
+                  <input id="autocomplete" className="form-control " type="text"/>
                 </section>
-                <br/>
-                <hr className="mb-2"/>
-                <br/>
-                <Row>
-                  <Col>
-                    <Button variant="outline-primary" block onClick={this.register}>Cancelar</Button>
-                  </Col>
-                  <Col>
-                    <Button block onClick={this.register}>Siguiente</Button>
-                  </Col>
-                </Row>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+
+              </Form>
+              <br/>
+              <section id="map" className="container mt-3 mb-3">
+              </section>
+              <br/>
+              <hr className="mb-2"/>
+              <br/>
+              <p>LAT: {this.state.lat}</p>
+              <p>LNG: {this.state.lng}</p>
+              <p>DIR: {this.state.dir}</p>
+
+              <Row>
+                <Col>
+                  <Button variant="outline-primary" block onClick={this.register}>Cancelar</Button>
+                </Col>
+                <Col>
+                  <Button block onClick={this.nextStep}>Siguiente</Button>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     )
   }
 }
 
-function loadScript(url) {
-  let script = window.document.createElement("script");
-  let index = window.document.getElementsByTagName("script")[0];
-  script.src = url;
-  script.async = true;
-  script.defer = true;
-  index.parentNode.insertBefore(script, index);
-}
+const mapState = state => {
+  return {
 
-export default Delivery;
+  }
+};
+
+const mapDispatch = {
+  setStep: setStep
+};
+
+export default compose(withRouter,connect(mapState,mapDispatch))(Delivery);

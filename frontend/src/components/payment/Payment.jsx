@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import {Col, Row, Form, FormGroup, FormCheck, InputGroup} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import {connect} from "react-redux";
+import {applyCoupon} from "../../actions/paymentActions";
 
 
 //FIXME: Nested forms
@@ -11,6 +13,61 @@ state: creditCards, cardToken, coupons
 dispatch:
 */
 class Payment extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      storedCard: '',
+      card: '',
+      person: '',
+      month: '',
+      year: '',
+      ccv: '',
+      couponInput: '',
+      remember: false
+    };
+
+    this.checkout = this.checkout.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.toggleCheck = this.toggleCheck.bind(this);
+    this.addCoupon = this.addCoupon.bind(this);
+  }
+
+  addCoupon() {
+    this.props.applyCoupon(this.state.couponInput);
+    this.setState({...this.state,couponInput:''});
+  }
+
+  toggleCheck() {
+    this.setState({ ...this.state, remember: !this.state.remember});
+  }
+
+  handleChange(event) {
+    let state = this.state;
+    let value = event.target.value;
+    switch (event.target.name) {
+      case 'card':
+        state.card = value; break;
+      case 'person':
+        state.person = value; break;
+      case 'month':
+        state.month = value; break;
+      case 'year':
+        state.year = value; break;
+      case 'ccv':
+        state.ccv = value; break;
+      case 'couponInput':
+        state.couponInput = value; break;
+      default:
+        break;
+    }
+    this.setState(state);
+  }
+
+  checkout() {
+
+  }
+
   render() {
     return (
       <Container className="text-left">
@@ -21,7 +78,7 @@ class Payment extends Component {
               <h4>Información de Pago</h4>
             </div>
             <hr className="mb-2"/>
-            <Form>
+            <Form onSubmit={this.checkout}>
               <Row>
                 <Col className="col-md-6">
                   <h6 className="mb-3">Usar Tarjeta Guardada</h6>
@@ -40,7 +97,7 @@ class Payment extends Component {
               <h6>Metodo de Pago</h6>
               <Form inline>
                 <FormGroup>
-                  <FormCheck type="checkbox" label="Recordar"/>
+                  <FormCheck type="checkbox" label="Recordar" checked={this.state.remember} onChange={this.toggleCheck} />
                 </FormGroup>
               </Form>
             </div>
@@ -50,7 +107,8 @@ class Payment extends Component {
                   <FormGroup>
                     <Form.Label htmlFor="txtCuenta">Numero de Cuenta</Form.Label>
                     <Form.Control type="text" className="form-control" id="txtCuenta"
-                                  placeholder="Numero de Cuenta"/>
+                                  placeholder="Numero de Cuenta"
+                                  name="card" value={this.state.card} onChange={this.handleChange}/>
                   </FormGroup>
                 </Col>
 
@@ -60,14 +118,16 @@ class Payment extends Component {
                       <FormGroup>
                         <Form.Label htmlFor="txtExpM">Mes</Form.Label>
                         <Form.Control type="text" id="txtExpM"
-                                      placeholder="MM"/>
+                                      placeholder="MM"
+                                      name="month" value={this.state.month} onChange={this.handleChange}/>
                       </FormGroup>
                     </Col>
                     <Col>
                       <FormGroup>
                         <Form.Label htmlFor="txtExpY">Año</Form.Label>
                         <Form.Control type="text" id="txtExpY"
-                                      placeholder="YYYY"/>
+                                      placeholder="YYYY"
+                                      name="year" value={this.state.year} onChange={this.handleChange}/>
                       </FormGroup>
                     </Col>
                   </Row>
@@ -78,13 +138,15 @@ class Payment extends Component {
                 <Col className="col-md-6">
                   <FormGroup>
                     <Form.Label htmlFor="txtTitular">Titular</Form.Label>
-                    <Form.Control type="text" id="txtTitular" placeholder="Titular"/>
+                    <Form.Control type="text" id="txtTitular" placeholder="Titular"
+                                  name="person" value={this.state.person} onChange={this.handleChange}/>
                   </FormGroup>
                 </Col>
                 <Col className="col-md-2">
                   <FormGroup>
                     <Form.Label htmlFor="txtCuenta">CCV</Form.Label>
-                    <Form.Control type="text" id="txtCCV" placeholder="CCV"/>
+                    <Form.Control type="text" id="txtCCV" placeholder="CCV"
+                                  name="ccv" value={this.state.ccv} onChange={this.handleChange}/>
                   </FormGroup>
                 </Col>
               </Row>
@@ -120,9 +182,11 @@ class Payment extends Component {
               <li className="list-group-item d-flex justify-content-between text-success">
                 <div>
                   <h5 className="my-0">Descuento</h5>
-                  <small>CODIGO</small>
+                  <ul>
+                    {this.props.coupons.map((x,i) => <li key={i}>{x.code}</li>)}
+                  </ul>
                 </div>
-                <span>-$</span>
+                <span>-${this.props.discount}</span>
               </li>
               <li className="list-group-item d-flex justify-content-between">
                 <div>
@@ -132,13 +196,13 @@ class Payment extends Component {
               </li>
             </ul>
             <InputGroup>
-              <Form.Control type="text" placeholder="Cupón"/>
+              <Form.Control type="text" placeholder="Cupón"
+                            name="couponInput" value={this.state.couponInput} onChange={this.handleChange}/>
               <InputGroup.Append>
-                <Button type="submit" variant="secondary">Canjear</Button>
+                <Button variant="secondary" onClick={this.addCoupon}>Canjear</Button>
               </InputGroup.Append>
             </InputGroup>
           </Col>
-
         </Row>
         <br/>
         <hr className="mb-2"/>
@@ -156,4 +220,16 @@ class Payment extends Component {
   }
 }
 
-export default Payment;
+const mapState = state => {
+  return {
+    coupons: state.payment.coupons,
+    order: state.quotation.order,
+    discount: state.payment.discount
+  }
+};
+
+const mapDispatch = {
+  applyCoupon: applyCoupon
+};
+
+export default connect(mapState,mapDispatch)(Payment);

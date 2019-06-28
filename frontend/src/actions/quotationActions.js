@@ -1,8 +1,9 @@
 import {LOAD_OPTIONS, PICK_OPTION} from "./actions";
 
 
-export function loadOptions() {
+export function loadOptions(cart, direction) {
     return (dispatch) => {
+        //
 
         dispatch(_loadOptions([]))
     }

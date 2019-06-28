@@ -8,6 +8,8 @@ import CartItem from "./CartItem";
 import {connect} from "react-redux";
 import {checkOut} from "../../actions/cartActions";
 import Alert from "react-bootstrap/Alert";
+import {compose} from "redux";
+import {withRouter} from "react-router-dom"
 
 /*
 local:
@@ -21,10 +23,13 @@ class Cart extends Component {
     this.state = {
       cartMessage: ''
     };
+
+    this.goToCheckout = this.goToCheckout.bind(this);
   }
 
   goToCheckout() {
-    
+    this.props.checkOut();
+    this.props.history.push("/order");
   }
 
   render() {
@@ -50,7 +55,7 @@ class Cart extends Component {
             {menu}
           </div>
           <Dropdown.Divider/>
-          <Button block onClick={this.props.checkOut} disabled={cart.length===0}>Procesar Pedido</Button>
+          <Button block onClick={this.goToCheckout} disabled={!this.props.allowCheckout}>Procesar Pedido</Button>
         </DropdownMenu>
       </Dropdown>
     );
@@ -59,7 +64,8 @@ class Cart extends Component {
 
 const mapState = state => {
   return {
-    cart: state.cart.cart
+    cart: state.cart.cart,
+    allowCheckout: state.cart.allowCheckout
   }
 };
 
@@ -67,4 +73,4 @@ const mapDispatch = {
   checkOut: checkOut
 };
 
-export default connect(mapState, mapDispatch)(Cart);
+export default compose(withRouter,connect(mapState, mapDispatch))  (Cart);

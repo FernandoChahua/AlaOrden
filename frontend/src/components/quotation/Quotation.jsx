@@ -4,6 +4,7 @@ import Alert from "react-bootstrap/Alert";
 import ProForma from "./ProForma";
 import {connect} from "react-redux";
 import {loadOptions} from "../../actions/quotationActions";
+import {setStep} from "../../actions/orderAction";
 
 /*
 local:
@@ -11,10 +12,21 @@ state: proformaList, order
 dispatch:
  */
 class Quotation extends Component {
+  constructor(props) {
+    super(props);
+
+    this.nextStep = this.nextStep.bind(this);
+  }
+
 
   componentDidMount() {
-    this.props.loadOptions();
-    console.log(this.props.proformaList)
+    this.props.loadOptions(this.props.cart,this.props.address);
+  }
+
+  nextStep() {
+    this.props.history.push("/order/payment");
+
+    this.props.setStep(2);
   }
 
   render() {
@@ -40,10 +52,10 @@ class Quotation extends Component {
               <br/>
               <Row>
                 <Col>
-                  <Button variant="outline-primary" block onClick={this.register}>Anterior</Button>
+                  <Button variant="outline-primary" block onClick={() => {}}>Anterior</Button>
                 </Col>
                 <Col>
-                  <Button block onClick={this.register}>Siguiente</Button>
+                  <Button block onClick={this.nextStep}>Siguiente</Button>
                 </Col>
               </Row>
             </div>
@@ -56,12 +68,15 @@ class Quotation extends Component {
 
 const mapState = state => {
   return {
-    proformaList: state.quotation.proformaList
+    proformaList: state.quotation.proformaList,
+    cart: state.cart.cart,
+    address: state.delivery.address
   }
 };
 
 const mapDispatch = {
-  loadOptions: loadOptions
+  loadOptions: loadOptions,
+  setStep: setStep
 };
 
 export default connect(mapState,mapDispatch)(Quotation);
