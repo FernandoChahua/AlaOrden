@@ -9,5 +9,8 @@ public interface CartService {
     List<CartItem> findByUser(int id);
     void saveToCart(CartItem entity);
     void deleteFromCart(CartItem entity);
+    void deleteByUserId(int id);
     void emptyCart(int id);
+    CartItem findByUserAndProduct(int idUser,int idProduct);
+    void deleteByUserAndProduct(int idUser,int idProduct);
 }
