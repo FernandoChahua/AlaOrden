@@ -21,33 +21,33 @@ class SearchBar extends Component {
   }
 
   changeQuery(event) {
+
     this.setState({
       query: event.target.value,
     });
   }
 
   search(event) {
+    event.preventDefault();
     if ((event.type === "click" || event.key === "Enter") && this.state.query.length > 2) {
-      alert(`BUSCAR: "${this.state.query}" 
-            TODO: implementar búsqueda`);
-      this.setState({
-        "query": ""
-      });
+
+      this.props.getSearchResults(this.state.query);
+
     }
   }
 
   render() {
     return (
-      <Form inline className="flex-grow-1">
+      <div inline className="flex-grow-1">
         <InputGroup id="search-bar">
           <InputGroup.Prepend>
             <Button variant="outline-secondary" onClick={this.search}><i
               className="fas fa-search"> </i></Button>
           </InputGroup.Prepend>
           <FormControl placeholder="Busca tus productos"
-                       onChange={this.changeQuery.bind(this)} onKeyUp={this.search}/>
+                       onChange={this.changeQuery} onKeyUp={this.search}/>
         </InputGroup>
-      </Form>
+      </div>
     );
   }
 }

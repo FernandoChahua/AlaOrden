@@ -29,7 +29,7 @@ class Cart extends Component {
 
   goToCheckout() {
     this.props.checkOut();
-    this.props.history.push("/order");
+    this.props.history.push("/order/delivery");
   }
 
   render() {

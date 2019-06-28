@@ -15,9 +15,8 @@ import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+
 
 @Service
 public class QuotationServiceImpl implements QuotationService {
@@ -34,7 +33,7 @@ public class QuotationServiceImpl implements QuotationService {
 
     public List<Order> generateList(List<CartItem> cart, Map<Location,BigDecimal> available) {
 
-        List<Location> providers = (List)available.keySet();
+        List<Location> providers = new ArrayList<Location>(available.keySet());
 
         List<Order> proformas = new ArrayList();
 

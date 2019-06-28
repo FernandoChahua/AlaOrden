@@ -10,12 +10,24 @@ dispatch:
  */
 class Catalog extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      results:[]
+    }
+  }
   componentDidMount() {
     this.props.loadInitCatalog();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.results){
+      this.setState({results: nextProps.results})
+    }
+  }
+
   render() {
-    let results = this.props.results;
+    let results = this.state.results;
 
     let title = results.length === 0 ?
       (<h5>No se han encontrado coincidencias a su busqueda</h5>) :

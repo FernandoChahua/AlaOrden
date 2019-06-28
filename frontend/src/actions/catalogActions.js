@@ -199,10 +199,20 @@ export function loadInitCatalog() {
             },
         ];*/
 
-export function getSearchResults() {
+export function getSearchResults(name) {
     return (dispatch) => {
+        axios
+            .get("http://localhost:9090/api/serv/productosName/"+name)
+            .then(function(response) {
+                //console.log(response);
+                let products = response.data;
 
-        dispatch(_getSearchResults())
+                console.log("HOA");
+                dispatch(_getSearchResults(products))
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 }
 export function addListQuery() {

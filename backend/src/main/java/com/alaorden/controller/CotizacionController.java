@@ -11,16 +11,19 @@ import org.springframework.web.bind.annotation.*;
 public class CotizacionController {
         private QuotationService quotationService;
         private AddressService addressService;
+        private CartService cartService;
         @Autowired
-        public CotizacionController(QuotationService quotationService,AddressService addressService){
+        public CotizacionController(QuotationService quotationService,AddressService addressService,CartService cartService){
         this.quotationService = quotationService;
         this.addressService = addressService;
+        this.cartService = cartService;
         }
 
-        @RequestMapping(path="/{latitud}/{longitud}",method=RequestMethod.POST)
-            List<Order> generarListas(String latitud,String longitud,@RequestBody List<CartItem>carrito){
-            double latitude = Double.parseDouble(latitud);
-            double longitude = Double.parseDouble(longitud);
+        @RequestMapping(path="/{idUser}",method=RequestMethod.POST)
+            List<Order> generarListas(@PathVariable int idUser){
+            double latitude = -12.077053;
+            double longitude = -77.081605;
+            List<CartItem> carrito = cartService.findByUser(idUser);
             Map<Location,BigDecimal> listLocations = addressService.listDistanceMin(latitude,longitude);
             List<Order> orders = quotationService.generateList(carrito,listLocations);
 

@@ -1,4 +1,5 @@
 import {ADD_ITEM, LOAD_CART, REMOVE_ITEM, SUBMIT_CART, UPDATE_ITEM} from "./actions";
+import axios from "axios";
 
 export function addItem(product, quantity) {
     return (dispatch) => {
@@ -16,7 +17,6 @@ export function updateItem(productId,quantity) {
 
 export function removeItem(productId) {
     return (dispatch) => {
-
         dispatch(_removeItem(productId))
     }
 }
@@ -24,7 +24,8 @@ export function removeItem(productId) {
 export function loadCart() {
     return (dispatch) => {
 
-        dispatch(_loadCart())
+        let carrito = [];
+        dispatch(_loadCart(carrito))
     }
 }
 
