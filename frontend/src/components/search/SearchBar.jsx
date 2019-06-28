@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Form from "react-bootstrap/Form";
 import {FormControl, InputGroup} from "react-bootstrap"
 import Button from "react-bootstrap/Button";
+import {getSearchResults} from "../../actions/catalogActions";
+import {connect} from "react-redux";
 
 /*
 local:
@@ -50,4 +52,14 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+const mapState = state => {
+  return {
+
+  }
+};
+
+const mapDispatch = {
+  getSearchResults: getSearchResults
+};
+
+export default connect(mapState,mapDispatch)(SearchBar);
