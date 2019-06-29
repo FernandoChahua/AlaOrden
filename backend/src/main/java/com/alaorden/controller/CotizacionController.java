@@ -1,4 +1,4 @@
-package com.alaorden.controllers;
+package com.alaorden.controller;
 
 import com.alaorden.model.*;
 import com.alaorden.service.*;
@@ -24,7 +24,7 @@ public class CotizacionController {
             double latitude = -12.077053;
             double longitude = -77.081605;
             List<CartItem> carrito = cartService.findByUser(idUser);
-            Map<Location,BigDecimal> listLocations = addressService.listDistanceMin(latitude,longitude);
+            List<Location> listLocations = addressService.listDistanceMin(latitude,longitude);
             List<Order> orders = quotationService.generateList(carrito,listLocations);
 
             for(int i=0;i<orders.size();i++){

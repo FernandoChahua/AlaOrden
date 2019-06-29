@@ -14,5 +14,5 @@ public interface AddressService {
     BigDecimal computeDeliveryPrice(double distancia);
     double computeDistance(double latA,double longA,double latB,double longB);
     boolean Exist(String s,List<String>ls);
-    Map<Location,BigDecimal> listDistanceMin(double latitud,double longitud);
+    List<Location> listDistanceMin(double latitud,double longitud);
 }

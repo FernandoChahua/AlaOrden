@@ -78,7 +78,7 @@ public class ProductServiceImpl implements ProductService {
         return products;
     }
     public List<Product> listProductSearch(String name){
-        List<Product> products = productRepository.findByNameContaining(name);
+        List<Product> products = productRepository.findByNameIsContaining(name);
 
         for(int i=0;i<products.size();i++){
             products.get(i).getCategory().setParent(null);

@@ -77,19 +77,18 @@ public class AddressServiceImpl implements AddressService {
         }
         return false;
     }
-    public Map<Location,BigDecimal> listDistanceMin(double latitud,double longitud){
+    public List<Location> listDistanceMin(double latitud,double longitud){
         List<Location> locations = locationRepository.findAll();
         List<String>setLocations = new ArrayList<>();
 
-        Map<Location,BigDecimal> selectedLocations = new HashMap<>();
+        List<Location> selectedLocations = new ArrayList<>();
 
         for(Location location : locations){
             double dist = computeDistance(latitud,longitud,location.getLatitude().doubleValue(),location.getLongitude().doubleValue());
-            if(dist <= 3.500)
+            if(dist <= 3.500)//<---- Distancia minima de 3.5 kilometros
             {
                 if(!Exist(location.getFranchise().getName(),setLocations)){
-                    BigDecimal price = computeDeliveryPrice(dist);
-                    selectedLocations.put(location,price);
+                    selectedLocations.add(location);
                     setLocations.add(location.getFranchise().getName());
                 }
             }

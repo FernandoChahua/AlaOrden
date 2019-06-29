@@ -1,4 +1,4 @@
-package com.alaorden.controllers;
+package com.alaorden.controller;
 
 
 import com.alaorden.service.AddressService;

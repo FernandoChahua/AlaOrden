@@ -1,4 +1,4 @@
-package com.alaorden.controllers;
+package com.alaorden.controller;
 
 import com.alaorden.model.CartItem;
 import com.alaorden.model.User;
@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -20,18 +21,13 @@ public class UsuarioController {
         this.userService = userService;
     }
 
-    @RequestMapping(path="/create",method = RequestMethod.POST)
-    User createUser(@RequestBody User user){
-        if(!userService.existUser(user)){
-            user.setCart(new ArrayList<>());
-            user.setAddresses(new ArrayList<>());
-            user.setEmailValidated(false);
-            user.setSalt("SALSITA PAL CUERPO");
-            userService.createUser(user);
-        }else{
-            user.setNickname("NO EXISTE USUARIO");
-        }
-        return user;
+    @RequestMapping(method = RequestMethod.GET)
+    List<User> listAllUsers(){
+        return userService.listAllUsers();
+    }
+    @RequestMapping(method = RequestMethod.POST)
+    String createUser(@RequestBody User user){
+      return userService.createUser(user);
     }
 
     @RequestMapping(path="/update/{id}",method=RequestMethod.PUT)
@@ -41,14 +37,8 @@ public class UsuarioController {
         return user;
     }
 
-    @RequestMapping(path="/login",method = RequestMethod.GET)
-    User logIn(@RequestBody User user){
-        User userBackend = userService.userByNickname(user.getNickname());
-        if(userBackend != null) {
-            if(userBackend.getHashPassword() == user.getHashPassword()){
-                return userBackend;
-            }
-        }
-        return null;
+    @RequestMapping(path="/login/{nickname}/{password}",method = RequestMethod.GET)
+    String logIn(@PathVariable String nickname,@PathVariable String password){
+        return userService.logIn(nickname,password);
     }
 }

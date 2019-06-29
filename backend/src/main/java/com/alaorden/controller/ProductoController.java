@@ -1,4 +1,4 @@
-package com.alaorden.controllers;
+package com.alaorden.controller;
 
 import com.alaorden.model.Category;
 import com.alaorden.model.Brand;
@@ -42,13 +42,13 @@ public class ProductoController {
         return productService.listBrand();
     }
 
-    @RequestMapping(path="/productosId/{id}",method= RequestMethod.GET)
+    @RequestMapping(path="/ById/{id}",method= RequestMethod.GET)
     List<Product> getProductos(@PathVariable int id){
         return productService.listProductsByCategory(id);
     }
-    @RequestMapping(value="/productosName/{name}",method= RequestMethod.GET)
+    @RequestMapping(value="/ByName/{name}",method= RequestMethod.GET)
     @ResponseBody
-    public  List<Product> getProductosName( @PathVariable("name") String name){
+    public  List<Product> getProductosName(@PathVariable("name") String name){
         return productService.listProductSearch(name);
     }
 }

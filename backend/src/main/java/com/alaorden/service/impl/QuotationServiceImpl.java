@@ -31,9 +31,9 @@ public class QuotationServiceImpl implements QuotationService {
 
 
 
-    public List<Order> generateList(List<CartItem> cart, Map<Location,BigDecimal> available) {
+    public List<Order> generateList(List<CartItem> cart, List<Location> available) {
 
-        List<Location> providers = new ArrayList<Location>(available.keySet());
+        List<Location> providers = available;
 
         List<Order> proformas = new ArrayList();
 
@@ -52,9 +52,6 @@ public class QuotationServiceImpl implements QuotationService {
                     subTotal = subTotal.add(dp.getPrice());
                 }
 
-                BigDecimal deliveryPrice = available.get(prov);
-
-                pe.setPriceDelivery(deliveryPrice);
                 pe.setLocation(prov);
                 pe.setOrderDetails(list);
                 pe.setSubTotal(subTotal);
