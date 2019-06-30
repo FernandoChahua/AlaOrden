@@ -39,7 +39,7 @@ class ProForma extends Component {
                        className="d-inline-flex justify-content-between">
             <Image src={process.env.PUBLIC_URL + "/img/franchises/" + franchise.logo} alt="logo" className="" height="40px"/>
             <div>
-              <b>TOTAL: </b>
+              <b>TOTAL: S/</b>
               <Badge pill  variant="light">{this.props.proforma.subTotal}</Badge>
             </div>
           </Card.Header>
@@ -49,8 +49,8 @@ class ProForma extends Component {
                 <thead>
                 <tr>
                   <th>producto</th>
-                  <th>cantidad</th>
                   <th>precio</th>
+                  <th>cantidad</th>
                   <th>subtotal</th>
                 </tr>
                 </thead>
