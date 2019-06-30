@@ -47,8 +47,10 @@ public class ProductoController {
         return productService.listProductsByCategory(id);
     }
     @RequestMapping(value="/ByName/{name}",method= RequestMethod.GET)
-    @ResponseBody
     public  List<Product> getProductosName(@PathVariable("name") String name){
+        if(name.equals("*")){
+            name = "";
+        }
         return productService.listProductSearch(name);
     }
 }
