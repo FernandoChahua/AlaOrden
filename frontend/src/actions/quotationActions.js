@@ -16,10 +16,11 @@ export function askForOptions(dispatch, state, history) {
     });
 }
 
-export function pickOption(order) {
+export function pickOption(order,history) {
   return (dispatch) => {
-    //TODO: implement
-    dispatch(_setOrder(order))
+    dispatch(_setOrder(order));
+    dispatch(_setStep(3));
+    history.push("/order/payment");
   }
 }
 

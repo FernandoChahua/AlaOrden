@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {Button, Col, Container, Row} from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
 import ProForma from "./ProForma";
+import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
+import {compose} from "redux";
 
 /*
 local:
@@ -12,8 +14,6 @@ dispatch:
 class Quotation extends Component {
   constructor(props) {
     super(props);
-
-    this.nextStep = this.nextStep.bind(this);
   }
 
 
@@ -21,14 +21,10 @@ class Quotation extends Component {
 
   }
 
-  nextStep() {
-    this.props.history.push("/order/payment");
-  }
-
   render() {
     let shoppingOptions = this.props.proformaList.length === 0 ?
       (<Alert variant="danger">Los sentimos, no hemos encontrado nada</Alert>) :
-      (this.props.proformaList.map((x,i) => <ProForma key={i} index={i}/>));
+      (this.props.proformaList.map((x,i) => <ProForma key={i} index={i} history={this.props.history}/>));
 
     return (
       <Container className="text-left">
@@ -49,9 +45,6 @@ class Quotation extends Component {
               <Row>
                 <Col>
                   <Button variant="outline-primary" block onClick={() => {}}>Anterior</Button>
-                </Col>
-                <Col>
-                  <Button block onClick={this.nextStep}>Siguiente</Button>
                 </Col>
               </Row>
             </div>
@@ -74,4 +67,4 @@ const mapDispatch = {
 
 };
 
-export default connect(mapState,mapDispatch)(Quotation);
+export default compose(withRouter,connect(mapState,mapDispatch))(Quotation);

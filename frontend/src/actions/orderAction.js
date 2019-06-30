@@ -20,4 +20,4 @@ export const _isOrdering = (status) => {
     type: CHANGE_STATUS,
     status
   }
-}
+};

@@ -8,6 +8,7 @@ import ListGroupItem from "react-bootstrap/ListGroupItem";
 import Table from "react-bootstrap/Table";
 import {Button} from "react-bootstrap";
 import {connect} from "react-redux";
+import {pickOption} from "../../actions/quotationActions";
 
 /*
 local:
@@ -19,10 +20,13 @@ class ProForma extends Component {
     super(props);
     this.state = {
       show: false
-    }
+    };
+    this.pickOrder = this.pickOrder.bind(this);
   }
 
-
+  pickOrder(){
+    this.props.pickOption(this.props.proforma,this.props.history)
+  }
   render() {
     const franchise = this.props.proforma.location.franchise;
 
@@ -31,7 +35,7 @@ class ProForma extends Component {
         <div className="d-flex justify-content-between mb-2">
           <h6 className="align-self-end">{franchise.name}</h6>
           <div className="form-check">
-            <Button block onClick={this.register}>Comprar</Button>
+            <Button block onClick={this.pickOrder}>Comprar</Button>
           </div>
         </div>
         <Card>
@@ -40,7 +44,7 @@ class ProForma extends Component {
             <Image src={process.env.PUBLIC_URL + "/img/franchises/" + franchise.logo} alt="logo" className="" height="40px"/>
             <div>
               <b>TOTAL: </b>
-              <Badge pill  variant="light">{this.props.proforma.subTotal}</Badge>
+              <Badge pill variant="light">{this.props.proforma.subTotal}</Badge>
             </div>
           </Card.Header>
           <Collapse in={this.state.show}>
@@ -73,7 +77,7 @@ const mapState = (state, ownProps) => {
 };
 
 const mapDispatch = {
-
+  pickOption: pickOption
 };
 
 export default connect(mapState,mapDispatch)(ProForma);
