@@ -33,13 +33,11 @@ public class QuotationServiceImpl implements QuotationService {
 
     public List<Order> generateList(List<CartItem> cart, List<Location> available) {
 
-        List<Location> providers = available;
+        List<Order> proformas = new ArrayList<>();
 
-        List<Order> proformas = new ArrayList();
+        if (available != null && !available.isEmpty()) {
 
-        if (providers != null && !providers.isEmpty()) {
-
-            for (Location prov : providers) {
+            for (Location prov : available) {
                 List<OrderDetail> list = generateListByFranchise(cart, prov.getFranchise());
 
                 //FIXME: pls

@@ -38,7 +38,7 @@ public class UsuarioController {
     }
 
     @RequestMapping(path="/login/{nickname}/{password}",method = RequestMethod.GET)
-    String logIn(@PathVariable String nickname,@PathVariable String password){
+    User logIn(@PathVariable String nickname,@PathVariable String password){
         return userService.logIn(nickname,password);
     }
 }

@@ -55,18 +55,25 @@ public class UserServiceImpl implements UserService {
     public User userByNickname(String nickname){
         return userRepository.findByNicknameEquals(nickname);
     }
-    public String logIn(String nickname, String password){
+    public User logIn(String nickname, String password){
+        ///// por ahora retorna eso como usuario no logeado
+        User u = new User();
+        u.setIdUser(0);
+        ////////
         User user = userRepository.findByNicknameEqualsOrEmailEquals(nickname,nickname);
         if(user!=null){
             if(user.getHashPassword().equals(password))
             {
-                return "Logeado";
+                user.setCart(null);
+                user.setAddresses(null);
+                user.setHashPassword("");
+                return user;
             }else{
-                return "Contraseña Incorrecta";
+                return u;
             }
         }
 
-        return "El usuario no existe";
+        return u;
     }
 
 

@@ -11,6 +11,6 @@ public interface UserService {
     User updateUser(User user);
     boolean existUser(User user);
     User userByNickname(String nickname);
-    String logIn(String nickname, String password);
+    User logIn(String nickname, String password);
     List<User> listAllUsers();
 }
