@@ -7,6 +7,7 @@ export const HIDE_AUTH_MODAL = 'HIDE_AUTH_MODAL';
 //catalog(search/list/category)
 export const SET_QUERY = 'SET_QUERY';
 export const LOAD_CATEGORY_LIST = 'LOAD_CATEGORY_LIST';
+export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
 export const SET_RESULTS = 'SET_RESULTS';
 //list
 export const UPDATE_LIST_QUERY = 'UPDATE_LIST_QUERY';

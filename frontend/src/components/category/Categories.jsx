@@ -4,7 +4,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import {connect} from "react-redux";
-import {loadCategories} from "../../actions/catalogActions";
+import {loadCategories, showCategories} from "../../actions/catalogActions";
 
 /*
 local:
@@ -21,8 +21,8 @@ class Categories extends Component {
     this.props.loadCategories();
 
     }
-    filterByCategory(idCategory){
-
+    filterByCategory(event,idCategory){
+      this.props.showCategories(idCategory);
     }
   render() {
         let categories = this.props.categories || [];
@@ -34,7 +34,7 @@ class Categories extends Component {
                         <Dropdown key={"ddn"+cat.idCategory}>
                             <Dropdown.Toggle key={"tgg"+cat.idCategory} variant="light">{cat.name}</Dropdown.Toggle>
                             <Dropdown.Menu key={"mnu"+cat.idCategory} rootCloseEvent="click">
-                                {cat.subCategories.map((s,i) => <DropdownItem key={"itm"+s.idCategory} onClick={this.filterByCategory}>{s.name}</DropdownItem>)}
+                                {cat.subCategories.map((s,i) => <DropdownItem key={s.idCategory} onClick={e => {this.filterByCategory(e,s.idCategory)}}>{s.name}</DropdownItem>)}
                             </Dropdown.Menu>
                         </Dropdown>)}
                 </ButtonGroup>
@@ -50,8 +50,8 @@ const mapState = (state) => {
 };
 
 const mapDispatch = {
-  loadCategories:loadCategories
-  //searchByCategory
+  loadCategories:loadCategories,
+  showCategories:showCategories
 };
 
 export default connect(mapState,mapDispatch)(Categories);

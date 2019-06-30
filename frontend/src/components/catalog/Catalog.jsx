@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ProductCard from "./ProductCard";
 import {connect} from "react-redux";
-import {loadInitCatalog, loadResults} from "../../actions/catalogActions";
+import {loadProducts} from "../../actions/catalogActions";
 
 /*
 local:
@@ -52,7 +52,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  loadInitCatalog: loadResults
+  loadInitCatalog: loadProducts
 };
 
 export default connect(mapState, mapDispatch)(Catalog);

@@ -1,10 +1,10 @@
-import {SET_QUERY, UPDATE_LIST_QUERY, SET_RESULTS, LOAD_CATEGORY_LIST, TOGGLE_LIST} from "./actions";
+import {SET_QUERY, UPDATE_LIST_QUERY, SET_RESULTS, LOAD_CATEGORY_LIST, TOGGLE_LIST, LOAD_PRODUCTS} from "./actions";
 import axios from "axios";
 
 export function loadCategories() {
   return (dispatch, getState) => {
 
-    if (getState().catalog.categories.length === 0){
+    if (getState().catalog.categories.length === 0) {
       axios
         .get("api/serv/categorias")
         .then(function (response) {
@@ -19,11 +19,11 @@ export function loadCategories() {
 }
 
 //TODO: implement query search
-export function loadResults(params = '') {
+export function loadProducts() {
   return (dispatch, getState) => {
 
     axios
-      .get(`api/serv/productos${"/"+ params}`)
+      .get(`api/serv/productos/`)
       .then(function (response) {
         dispatch(_loadCatalog(response.data))
       }).catch(function (error) {
@@ -32,6 +32,29 @@ export function loadResults(params = '') {
   }
 }
 
+export function getResults(query) {
+  return (dispatch, getState) => {
+    let products = getState().catalog.products;
+    let results = products;
+    if (query.length > 0) {
+      query = query.toLowerCase();
+      results = products.filter(x =>
+        x.name.toLowerCase().includes(query) ||
+        x.brand.name.toLowerCase().includes(query) ||
+        x.packaging.toLowerCase().includes(query));
+    }
+    dispatch(_setResults(results));
+  }
+}
+
+export function showCategories(categoryId) {
+  return (dispatch, getState) => {
+    let products = getState().catalog.products
+    let results = products.filter(x =>
+      x.category.idCategory == categoryId);
+    dispatch(_setResults(results));
+  }
+}
 
 export function setQuery(query, params) {
   return (dispatch) => {
@@ -51,7 +74,7 @@ export function removeFromList(index) {
   return (dispatch, getState) => {
     let list = getState().catalog.list;
 
-    dispatch(_updateListQuery(list.splice(0,index)));
+    dispatch(_updateListQuery(list.splice(0, index)));
   }
 }
 
@@ -84,7 +107,14 @@ const _loadCategories = (categories) => {
 };
 
 
-const _loadCatalog = (results) => {
+const _loadCatalog = (products) => {
+  return {
+    type: LOAD_PRODUCTS,
+    products
+  }
+};
+
+const _setResults = (results) => {
   return {
     type: SET_RESULTS,
     results

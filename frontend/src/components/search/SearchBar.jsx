@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Form from "react-bootstrap/Form";
 import {FormControl, InputGroup} from "react-bootstrap"
 import Button from "react-bootstrap/Button";
-import {getSearchResults, setQuery} from "../../actions/catalogActions";
+import {getResults, getSearchResults, setQuery} from "../../actions/catalogActions";
 import {connect} from "react-redux";
 
 /*
@@ -10,28 +10,33 @@ local:
 state:
 dispatch:
  */
+
+
 class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ''
+      query: '',
+      autoSearch: () => {}
     };
     this.changeQuery = this.changeQuery.bind(this);
     this.search = this.search.bind(this);
   }
 
   changeQuery(event) {
-
+    let autoSearch = this.state.autoSearch;
+    clearTimeout(autoSearch);
     this.setState({
       query: event.target.value,
     });
+    autoSearch = setTimeout(()=>{this.props.getSearchResults(this.state.query)},1500);
   }
 
   search(event) {
     event.preventDefault();
-    if ((event.type === "click" || event.key === "Enter") && this.state.query.length > 2) {
+    if ((event.type === "click" || event.key === "Enter")) {
 
-      this.props.setQuery(this.state.query);
+      this.props.getSearchResults(this.state.query);
 
     }
   }
@@ -61,7 +66,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  setQuery: setQuery
+  getSearchResults: getResults
 };
 
 export default connect(mapState,mapDispatch)(SearchBar);
