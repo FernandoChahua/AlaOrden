@@ -1,13 +1,14 @@
 package com.alaorden.service;
 
 import com.alaorden.model.CartItem;
-import com.alaorden.model.Order;
+import com.alaorden.model.Orders;
+import com.alaorden.model.Orders;
 
 import java.util.List;
 
 public interface OrderService {
 
-    Order GenerateOrder(List<CartItem> cart);
-    Order listOrderByUser(Order order);
+    Orders GenerateOrder(List<CartItem> cart);
+    Orders listOrderByUser(Orders order);
 
 }

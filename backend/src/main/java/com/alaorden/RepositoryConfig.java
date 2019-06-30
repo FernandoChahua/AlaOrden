@@ -17,7 +17,7 @@ class RepositoryConfig {
         return new RepositoryRestConfigurerAdapter() {
             @Override
             public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-                config.exposeIdsFor(CartItem.class,Category.class,Coupon.class,OrderDetail.class,Address.class,Order.class,Product.class,Inventory.class,Location.class,Transaction.class,Brand.class, User.class,Franchise.class);
+                config.exposeIdsFor(CartItem.class,Category.class,Coupon.class,OrderDetail.class,Address.class,Orders.class,Product.class,Inventory.class,Location.class,Transaction.class,Brand.class, User.class,Franchise.class);
             }
         };
     }

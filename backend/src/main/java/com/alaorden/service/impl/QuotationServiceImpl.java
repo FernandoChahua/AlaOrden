@@ -28,19 +28,18 @@ import java.net.URL;
 @Service
 public class QuotationServiceImpl implements QuotationService {
 
-    private InventoryRepository inventoryRepository;
-    private ProductDataFactory productDataFactory;
+
     private static HttpURLConnection connection;
     @Autowired
-    public QuotationServiceImpl(InventoryRepository inventoryRepository) {
-        this.inventoryRepository = inventoryRepository;
+    public QuotationServiceImpl() {
+
     }
 
 
 
-    public List<Order> generateList(List<CartItem> cart, List<Location> available) {
+    public List<Orders> generateList(List<CartItem> cart, List<Location> available) {
 
-        List<Order> proformas = new ArrayList<>();
+        List<Orders> proformas = new ArrayList<>();
 
         if (available != null && !available.isEmpty()) {
 
@@ -49,7 +48,7 @@ public class QuotationServiceImpl implements QuotationService {
 
                 //FIXME: pls
                 //TODO: no puedo :'(
-                Order pe = new Order();
+                Orders pe = new Orders();
 
                 BigDecimal subTotal = BigDecimal.valueOf(0);
 
@@ -119,8 +118,7 @@ public class QuotationServiceImpl implements QuotationService {
                 od.setPrice(price);
                 od.setQuantity(cart.getQuantity());
                 od.getPk().setIdProduct(cart.getPk().getIdProduct());
-                od.setProduct(new Product());
-                od.getProduct().setIdProduct(cart.getPk().getIdProduct());
+                od.setProduct(cart.getProduct());
             }
 
         }

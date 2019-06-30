@@ -26,8 +26,8 @@ public class Location {
     private Franchise franchise;
 
     @Column(name = "longitude")
-    private BigDecimal longitude;
+    private double longitude;
 
     @Column(name = "latitude")
-    private BigDecimal latitude;
+    private double latitude;
 }

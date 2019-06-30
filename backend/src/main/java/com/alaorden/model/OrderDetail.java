@@ -18,9 +18,9 @@ public class OrderDetail {
     private OrderDetailKey pk;
 
     @ManyToOne
-    @MapsId("idOrder")
-    @JoinColumn(name = "idOrder")
-    private Order order;
+    @MapsId("idOrders")
+    @JoinColumn(name = "idOrders")
+    private Orders orders;
 
     @ManyToOne
     @MapsId("idProduct")

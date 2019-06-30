@@ -27,10 +27,10 @@ public class Address {
     private User user;
 
     @Column(name = "longitude")
-    private BigDecimal longitude;
+    private double longitude;
 
     @Column(name = "latitude")
-    private BigDecimal latitude;
+    private double latitude;
 
     @Column(name = "description")
     private String description;

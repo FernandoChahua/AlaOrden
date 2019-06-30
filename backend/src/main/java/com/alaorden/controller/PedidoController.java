@@ -1,7 +1,7 @@
 package com.alaorden.controller;
 
 import com.alaorden.model.CartItem;
-import com.alaorden.model.Order;
+import com.alaorden.model.Orders;
 import com.alaorden.model.User;
 import com.alaorden.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class PedidoController {
     }
 
     @RequestMapping(path="/listarpedidoxusuario/{usuario}",method=RequestMethod.PUT)
-    Order listarpedidoxusuario(@PathVariable String usuario,@RequestBody Order order){
+    Orders listarpedidoxusuario(@PathVariable String usuario,@RequestBody Orders order){
         order.setUser(null);
         orderService.listOrderByUser(order);
         return order;
