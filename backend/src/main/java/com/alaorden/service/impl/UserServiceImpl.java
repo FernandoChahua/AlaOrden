@@ -22,16 +22,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public String createUser(User user){
+    public User createUser(User user){
+        ///// BORRARME POR UNA EXCEPCION :v
+        User us = new User();
+        us.setIdUser(0);
+        /////
         User u = userRepository.findByNicknameEqualsOrEmailEquals(user.getNickname(),user.getEmail());
         if(u==null){
             user.setEmailValidated(false);
             user.setSalt("salt");
             user.setState(1);
             userRepository.save(user);
-            return "Registrado Correctamente";
+            User userReturn =userRepository.findByNicknameEquals(user.getNickname());
+            userReturn.setAddresses(null);
+            userReturn.setCart(null);
+
+            return userReturn;
         }
 
+        /*
         if(u.getNickname().equals(user.getNickname()) && u.getEmail().equals(user.getEmail())){
                 return "El nickname y email ya existe";
         }
@@ -39,6 +48,9 @@ public class UserServiceImpl implements UserService {
             return "El nickname ya existe";
         }
         return "El email ya existe";
+
+         */
+        return us;
 
     }
     public User updateUser(User user){
@@ -55,18 +67,25 @@ public class UserServiceImpl implements UserService {
     public User userByNickname(String nickname){
         return userRepository.findByNicknameEquals(nickname);
     }
-    public String logIn(String nickname, String password){
+    public User logIn(String nickname, String password){
+        ///// por ahora retorna eso como usuario no logeado
+        User u = new User();
+        u.setIdUser(0);
+        ////////
         User user = userRepository.findByNicknameEqualsOrEmailEquals(nickname,nickname);
         if(user!=null){
             if(user.getHashPassword().equals(password))
             {
-                return "Logeado";
+                user.setCart(null);
+                user.setAddresses(null);
+                user.setHashPassword("");
+                return user;
             }else{
-                return "Contraseña Incorrecta";
+                return u;
             }
         }
 
-        return "El usuario no existe";
+        return u;
     }
 
 

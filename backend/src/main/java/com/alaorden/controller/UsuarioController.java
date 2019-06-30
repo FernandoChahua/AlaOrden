@@ -26,7 +26,7 @@ public class UsuarioController {
         return userService.listAllUsers();
     }
     @RequestMapping(method = RequestMethod.POST)
-    String createUser(@RequestBody User user){
+    User createUser(@RequestBody User user){
       return userService.createUser(user);
     }
 
@@ -38,7 +38,7 @@ public class UsuarioController {
     }
 
     @RequestMapping(path="/login/{nickname}/{password}",method = RequestMethod.GET)
-    String logIn(@PathVariable String nickname,@PathVariable String password){
+    User logIn(@PathVariable String nickname,@PathVariable String password){
         return userService.logIn(nickname,password);
     }
 }

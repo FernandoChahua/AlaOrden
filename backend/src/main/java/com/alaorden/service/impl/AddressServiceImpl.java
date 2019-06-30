@@ -98,8 +98,8 @@ public class AddressServiceImpl implements AddressService {
         List<Location> selectedLocations = new ArrayList<>();
 
         for(Location location : locations){
-            double dist = computeDistance(latitud,longitud,location.getLatitude().doubleValue(),location.getLongitude().doubleValue());
-            if(dist <= 3.500)//<---- Distancia minima de 3.5 kilometros
+            double dist = computeDistance(latitud,longitud,location.getLatitude(),location.getLongitude());
+            if(dist <= 500.5)//<---- Distancia minima de 500.5 kilometros
             {
                 if(!Exist(location.getFranchise().getName(),setLocations)){
                     selectedLocations.add(location);

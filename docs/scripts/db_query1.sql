@@ -10,7 +10,7 @@ insert into tfinal.brand(name) values('Coca Cola'),
 ('Costa'),
 ('Pepsico'),
 ('Donofrio');
-
+select * from tfinal.product;
 
 	insert into tfinal.category(name, parent) values('Bebidas', null),
 	('Abarrotes', null),
@@ -68,15 +68,15 @@ insert into tfinal.brand(name) values('Coca Cola'),
 		('San Miguel 15087',  '-12.079253' , '-77.088456', '4'),
 		('Zinc, Los Olivos 15311',  '-11.965446', '-77.066993', '4');
 
-		insert into tfinal.location(address, idFranchise, longitude, latitude) values
-		('Av. Universitaria 3, Pueblo Libre 15084', '1', '-77.081605', '-12.077053', 'Wongo Plaza San Miguel'),
-		('Av. Sta. Cruz 771, Miraflores 15074', '1', '-77.036466', '-12.110091', 'Wong Ovalo Gutierrez'),
-		('Av. de la Marina 2500, San Miguel 15088', '2', '-77.089390', '-12.076645', 'Metro La Marina'),
-		('Av Alfredo Mendiola 3900, Independencia 15311', '2', '-77.063322', '-11.988214', 'Metro Independencia'),
-		('Av. Arequipa 2250, Lince 15046', '3', '-77.034525', '-12.086598', 'Plaza Vea Centro Comercial Risso'),
-		('Av Alfredo Mendiola 3900, Independencia 15311', '3', '-77.063365', '-11.989074', 'Plaza Vea Independecia'),
-		('San Miguel 15087', '4', '-77.088456', '-12.079253', 'Tottus Open Plaza'),
-		('Zinc, Los Olivos 15311', '4', '-77.066993', '-11.965446', 'Tottus Los Olivos');
+		insert into tfinal.location(address, id_franchise, longitude, latitude) values
+		('Av. Universitaria 3, Pueblo Libre 15084', '1', '-77.081605', '-12.077053'),
+		('Av. Sta. Cruz 771, Miraflores 15074', '1', '-77.036466', '-12.110091'),
+		('Av. de la Marina 2500, San Miguel 15088', '2', '-77.089390', '-12.076645'),
+		('Av Alfredo Mendiola 3900, Independencia 15311', '2', '-77.063322', '-11.988214'),
+		('Av. Arequipa 2250, Lince 15046', '3', '-77.034525', '-12.086598'),
+		('Av Alfredo Mendiola 3900, Independencia 15311', '3', '-77.063365', '-11.989074'),
+		('San Miguel 15087', '4', '-77.088456', '-12.079253'),
+		('Zinc, Los Olivos 15311', '4', '-77.066993', '-11.965446');
 
 	insert into tfinal.product(id_category, id_brand, name, packaging, quantity, measure, unit, description, image) values
 
@@ -130,8 +130,8 @@ insert into tfinal.inventory(id_franchise, id_product, ref_code) values
         (1, 23, 23),(2, 23, 23),(3, 23, 23),(4, 23, 23),
         (1, 24, 24),(2, 24, 24),(3, 24, 24),(4, 24, 24);
 
-
-insert into tfinal.coupon(active, code, discount,expiration_date, issue_date, id_order) values
+select * from tfinal.product;
+insert into tfinal.coupon(active, code, discount,expiration_date, issue_date, id_orders) values
 		(1, 'SCOTIA1', 10,'2019-12-30 00:00:00', '2019-01-01 00:00:00', null),
         (1, 'MAMA', 20,'2019-05-30 00:00:00', '2019-05-01 00:00:00', null),
         (1, 'PAPA', 20,'2019-06-30 00:00:00', '2019-06-01 00:00:00', null),

@@ -13,8 +13,8 @@ import java.util.Objects;
 @Embeddable
 public class OrderDetailKey implements Serializable {
 
-    @Column(name = "idOrder")
-    private Integer idOrder;
+    @Column(name = "idOrders")
+    private Integer idOrders;
 
     @Column(name = "idProduct")
     private Integer idProduct;
@@ -26,12 +26,12 @@ public class OrderDetailKey implements Serializable {
         if (!(obj instanceof OrderDetailKey))
             return false;
         OrderDetailKey key = (OrderDetailKey) obj;
-        return Objects.equals(this.idOrder, key.idOrder) &&
+        return Objects.equals(this.idOrders, key.idOrders) &&
                 Objects.equals(this.idProduct, key.idProduct);
     }
 
     @Override
     public int hashCode(){
-        return Objects.hash(idOrder, idProduct);
+        return Objects.hash(idOrders, idProduct);
     }
 }

@@ -39,6 +39,6 @@ public class Coupon {
     private BigDecimal discount;
 
     @ManyToOne
-    @JoinColumn(name = "idOrder")
-    private Order order;
+    @JoinColumn(name = "idOrders")
+    private Orders orders;
 }
