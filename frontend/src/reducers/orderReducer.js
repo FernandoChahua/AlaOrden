@@ -1,9 +1,10 @@
-import {SET_ORDER, SET_STEP} from "../actions/actions";
+import {CHANGE_STATUS, SET_ORDER, SET_STEP} from "../actions/actions";
 
 
 const initial = {
   activeStep: 0,
-  order: {}
+  order: {},
+  isOrdering: false
 };
 
 export default function orderReducer(state = initial, action) {
@@ -14,6 +15,9 @@ export default function orderReducer(state = initial, action) {
     case SET_ORDER:
       return Object.assign({},state,
         {order: action.order});
+    case CHANGE_STATUS:
+      return Object.assign({},state,
+        {isOrdering: action.status});
     default:
       return state;
   }

@@ -46,7 +46,6 @@ export function removeItem(productId) {
 
 
 export function loadCart(dispatch, idUser) {
-    console.log("USER:" + idUser);
     axios.get(`api/cart/${idUser}`)
       .then(response => { dispatch(_updateCart(response.data)) })
       .catch(error => { /*TODO: handle error*/ });
@@ -65,7 +64,7 @@ const _updateCart = (cart) => {
   }
 };
 
-const _clearCart = () => {
+export const _clearCart = () => {
   return {
     type: CLEAR_CART,
   }

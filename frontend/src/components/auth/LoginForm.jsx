@@ -43,7 +43,7 @@ class LoginForm extends Component {
 
     this.props.logIn(this.state.user,this.state.pass);
 
-    //TODO: validate form
+
     this.setState({
       user: '',
       pass: '',

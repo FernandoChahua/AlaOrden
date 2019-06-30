@@ -27,21 +27,21 @@ class CartItem extends Component {
     if (quantity > 100) {
       quantity = 99;
     }
-    this.props.updateItem(cartItem.idProduct, quantity);
+    this.props.updateItem(cartItem.product, quantity);
   }
 
   decreaseQuantity() {
     let cartItem = this.props.cartItem;
     let newQuantity = cartItem.quantity === 0 ? 1 : cartItem.quantity - 1;
 
-    this.props.updateItem(cartItem.idProduct, newQuantity);
+    this.props.updateItem(cartItem.product, newQuantity);
   }
 
   increaseQuantity() {
     let cartItem = this.props.cartItem;
     let newQuantity = cartItem.quantity > 99 ? 99 : cartItem.quantity + 1;
 
-    this.props.updateItem(cartItem.idProduct, newQuantity);
+    this.props.updateItem(cartItem.product, newQuantity);
   }
 
   deleteItem() {
@@ -59,7 +59,7 @@ class CartItem extends Component {
     return (
       <Row>
         <Col xs={3}>
-          <Image src={"img/products/"+product.image} height="70px" alt={product.name} className="noselect"/>
+          <Image src={process.env.PUBLIC_URL + "/img/products/"+product.image} height="70px" alt={product.name} className="noselect"/>
         </Col>
         <Col>
           <Row>

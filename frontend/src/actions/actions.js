@@ -19,6 +19,7 @@ export const CLEAR_CART = 'CLEAR_CART';
 //order
 export const SET_STEP = 'SET_STEP';
 export const SET_ORDER = 'SET_ORDER';
+export const CHANGE_STATUS = '';
 
 //delivery
 export const SET_ADDRESS = 'SET_ADDRESS';

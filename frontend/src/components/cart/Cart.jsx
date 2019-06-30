@@ -64,7 +64,7 @@ class Cart extends Component {
 const mapState = state => {
   return {
     cart: state.cart.cart,
-    allowCheckout: state.cart.allowCheckout
+    allowCheckout: !state.order.isOrdering
   }
 };
 

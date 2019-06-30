@@ -7,6 +7,7 @@ import ProFormaDetails from "./ProFormaDetails";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 import Table from "react-bootstrap/Table";
 import {Button} from "react-bootstrap";
+import {connect} from "react-redux";
 
 /*
 local:
@@ -14,28 +15,35 @@ state: proformaList[i]
 dispatch:
  */
 class ProForma extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false
+    }
+  }
+
+
   render() {
-    const franchise = this.props.franchise
+    const franchise = this.props.proforma.location.franchise;
 
     return (
       <div>
-        <div className="d-flex justify-content-between mb-4">
-          <h6 className="mb-3">Metro</h6>
+        <div className="d-flex justify-content-between mb-2">
+          <h6 className="align-self-end">{franchise.name}</h6>
           <div className="form-check">
             <Button block onClick={this.register}>Comprar</Button>
           </div>
         </div>
         <Card>
-          <Card.Header eventKey={this.props.eventKey}
-                       className={"d-inline-flex justify-content-between text-light " + franchise.style}>
-            <span>{franchise.name}</span>
-            <Image src={"/assets/img/" + franchise.logo} alt="logo" className="" height="40px"/>
+          <Card.Header eventKey={this.props.eventKey} onClick={() => {this.setState({show: !this.state.show})}}
+                       className="d-inline-flex justify-content-between">
+            <Image src={process.env.PUBLIC_URL + "/img/franchises/" + franchise.logo} alt="logo" className="" height="40px"/>
             <div>
-              <span>TOTAL: </span>
-              <Badge variant="light">$666</Badge>
+              <b>TOTAL: </b>
+              <Badge pill  variant="light">{this.props.proforma.subTotal}</Badge>
             </div>
           </Card.Header>
-          <Collapse>
+          <Collapse in={this.state.show}>
             <ListGroupItem variant="flush">
               <Table responsive className="proforma-table" size="sm">
                 <thead>
@@ -47,11 +55,7 @@ class ProForma extends Component {
                 </tr>
                 </thead>
                 <tbody>
-                <ProFormaDetails/>
-                <ProFormaDetails/>
-                <ProFormaDetails/>
-                <ProFormaDetails/>
-                <ProFormaDetails/>
+                {this.props.proforma.orderDetails.map((x,i) => (<ProFormaDetails key={i} details={x}/>))}
                 </tbody>
               </Table>
             </ListGroupItem>
@@ -62,4 +66,14 @@ class ProForma extends Component {
   }
 }
 
-export default ProForma;
+const mapState = (state, ownProps) => {
+  return {
+    proforma: state.quotation.proformaList[ownProps.index]
+  }
+};
+
+const mapDispatch = {
+
+};
+
+export default connect(mapState,mapDispatch)(ProForma);

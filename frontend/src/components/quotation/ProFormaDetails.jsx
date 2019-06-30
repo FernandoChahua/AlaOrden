@@ -6,12 +6,17 @@ COMP
  */
 class ProFormaDetails extends Component {
   render() {
+
+    const details = this.props.details;
+    const product = details.product;
+    const name = [product.brand.name.toUpperCase()+",", product.name,"-", product.packaging,"x"+product.quantity+":", product.measure,product.unit];
+
     return (
       <tr>
-        <td>Marca, nombre presentacion x 1: 500 mg</td>
-        <td>cantidad (en carrito)</td>
-        <td>1</td>
-        <td><Badge>$ 111</Badge></td>
+        <td>{name.join(" ")}</td>
+        <td>{details.price}</td>
+        <td>{details.quantity}</td>
+        <td><b>{details.price * details.quantity}</b></td>
       </tr>
     );
   }

@@ -31,11 +31,12 @@ class Catalog extends Component {
 
     let title = results.length === 0 ?
       (<h5>No se han encontrado coincidencias a su busqueda</h5>) :
-      (<h5>Mostrando: {results.length} de {"x"} </h5>);
+      (<h5>Mostrando: {results.length} resultados de {results.length} </h5>);
 
     return (
       <div>
         {title}
+        <br />
         <div className="grid-container">
           {results.map((x, i) => <ProductCard key={i} index={i}/>)}
         </div>

@@ -1,4 +1,4 @@
-import {SET_ORDER, SET_STEP} from "./actions";
+import {CHANGE_STATUS, SET_ORDER, SET_STEP} from "./actions";
 
 
 export const _setStep = (activeStep) => {
@@ -14,3 +14,10 @@ export const _setOrder = (order) => {
     order
   }
 };
+
+export const _isOrdering = (status) => {
+  return {
+    type: CHANGE_STATUS,
+    status
+  }
+}

@@ -1,6 +1,6 @@
 import {HIDE_AUTH_MODAL, LOGIN, LOGOUT, SHOW_AUTH_MODAL} from "./actions";
 import axios from "axios";
-import {loadCart} from "./cartActions";
+import {_clearCart, loadCart} from "./cartActions";
 
 export function logIn(input, pass) {
   return (dispatch) => {
@@ -16,6 +16,7 @@ export function logIn(input, pass) {
 export function logOut() {
   return (dispatch) => {
     dispatch(_logOut());
+    dispatch(_clearCart())
   }
 }
 

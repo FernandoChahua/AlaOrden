@@ -1,6 +1,7 @@
 package com.alaorden.service.impl;
 
 
+import com.alaorden.exception.BusinessException;
 import com.alaorden.model.Address;
 import com.alaorden.model.CartItem;
 import com.alaorden.model.User;
@@ -68,24 +69,21 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByNicknameEquals(nickname);
     }
     public User logIn(String nickname, String password){
-        ///// por ahora retorna eso como usuario no logeado
-        User u = new User();
-        u.setIdUser(0);
-        ////////
         User user = userRepository.findByNicknameEqualsOrEmailEquals(nickname,nickname);
         if(user!=null){
-            if(user.getHashPassword().equals(password))
-            {
+            if(user.getHashPassword().equals(password)) {
                 user.setCart(null);
                 user.setAddresses(null);
                 user.setHashPassword("");
-                return user;
-            }else{
-                return u;
+            }
+            else {
+                throw new BusinessException("contraseña incorrecta");
             }
         }
-
-        return u;
+        else{
+            throw new BusinessException("usuario no existe");
+        }
+        return user;
     }
 
 

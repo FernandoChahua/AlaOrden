@@ -4,10 +4,7 @@ package com.alaorden.controller;
 import com.alaorden.model.Address;
 import com.alaorden.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +25,10 @@ public class DireccionController {
     @RequestMapping(path="/{idUsuario}",method= RequestMethod.GET)
     List<Address> getAddresses(@PathVariable int idUsuario){
         return addressService.listAddressByUser(idUsuario);
+    }
+
+    @PostMapping
+    Address saveAddress(@RequestBody Address address) {
+        return this.addressService.createAddress(address);
     }
 }

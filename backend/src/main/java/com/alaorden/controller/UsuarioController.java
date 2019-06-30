@@ -1,5 +1,7 @@
 package com.alaorden.controller;
 
+import com.alaorden.exception.ApiException;
+import com.alaorden.exception.BusinessException;
 import com.alaorden.model.CartItem;
 import com.alaorden.model.User;
 import com.alaorden.service.UserService;
@@ -39,6 +41,12 @@ public class UsuarioController {
 
     @RequestMapping(path="/login/{nickname}/{password}",method = RequestMethod.GET)
     User logIn(@PathVariable String nickname,@PathVariable String password){
-        return userService.logIn(nickname,password);
+        try {
+            return userService.logIn(nickname, password);
+        }
+        catch (BusinessException e){
+            throw new ApiException(e.getMessage(),e);
+        }
+
     }
 }

@@ -7,11 +7,11 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import loadScript from "../../util/ScriptLoader";
-import {setStep} from "../../actions/orderAction";
+import {loadAddress, pickAddress} from "../../actions/deliveryActions";
 
 
 let apiKey = "AIzaSyDzB-76_WJJt-fAqyqnT23jyCpNwm3jqcg";
-apiKey = "";
+//apiKey = "";
 
 /*
 local:
@@ -23,19 +23,107 @@ class Delivery extends Component {
     super(props);
 
     this.state = {
+      using: 'old',
+      save: true,
+      address: {},
       lat: 0,
       lng: 0,
       dir: ''
     };
 
-    this.nextStep = this.nextStep.bind(this);
+    this.goToQuotation = this.goToQuotation.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
+  handleSelect(event) {
+    let state = this.state;
+    this.setState(Object.assign({}, state, {address: event.target.value}));
+  }
 
-  nextStep() {
-    this.props.history.push("/order/quotation");
+  changeGeoLoc() {
 
-    this.props.setStep(1);
+  }
+
+  goToQuotation() {
+    this.props.setAddress({
+        latitude: this.state.lat,
+        longitude: this.state.lng,
+        description: this.state.dir
+      }, this.state.save,this.props.history);
+  }
+
+  componentDidMount() {
+    if (apiKey !== "")
+      this.renderMap();
+    this.props.loadAddress()
+  };
+
+  render() {
+    return (
+      <Container className="text-left">
+        <Row>
+          <Col className="md-8">
+            <br/>
+            <div>
+              <h4>Direccion de Entrega</h4>
+            </div>
+            <hr className="mb-2"/>
+            <div className="pr-5 m-4">
+              <div className="input-group-append">
+                <Form.Check type="radio" name="usingAddress"/>
+                <h6 className="mb-3">Direccion Reciente</h6>
+              </div>
+              <br/>
+              <h6>___ {this.state.address.description}</h6>
+              <h6>LAT {this.state.lat}</h6>
+              <h6>LNG {this.state.lng}</h6>
+              <h6>DIR {this.state.dir}</h6>
+              <Form>
+                <select className="form-control" id="selDireccion"
+                        value={this.state.address} onChange={this.handleSelect}>
+                  <option value={{}}>Seleccione Dirección</option>
+                  {this.props.addressList.map((x, i) => (<option key={i} value={x}>{x.description}</option>))}
+                </select>
+              </Form>
+              <br/>
+              <div className="d-flex justify-content-between mb-4">
+
+                <div className="d-inline-flex">
+                  <Form.Check type="radio" name="usingAddress"/>
+                  <h6 className="mb-3">Direccion Nueva</h6>
+                </div>
+
+                <div className="form-check">
+                  <input className="form-check-input" type="checkbox" id="chkRecordar"
+                         checked={this.state.save}
+                         onChange={() => this.setState({...this.state, save: !this.state.save})}/>
+                  <Form.Label className="form-check-label" htmlFor="chkRecordar">Recordar</Form.Label>
+                </div>
+              </div>
+              <Form>
+                <section className="container mt-3">
+                  <input id="autocomplete" className="form-control " type="text" onChange={this.changeGeoLoc}/>
+                </section>
+              </Form>
+              <br/>
+              <section id="map" className="container mt-3 mb-3">
+              </section>
+              <br/>
+              <hr className="mb-2"/>
+              <br/>
+              <Row>
+                <Col>
+                  <Button variant="outline-primary" block onClick={this.register}>Cancelar</Button>
+                </Col>
+                <Col>
+                  <Button block onClick={this.goToQuotation}>Siguiente</Button>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    )
   }
 
   initMap = () => {
@@ -112,7 +200,7 @@ class Delivery extends Component {
                 if (document.getElementById("autocomplete")) {
                   document.getElementById("autocomplete").value = results[0].formatted_address;
 
-                  me.setState({ lat: latlng.lat, lng: latlng.lng, dir: results[0].formatted_address });
+                  me.setState({lat: latlng.lat, lng: latlng.lng, dir: results[0].formatted_address});
                 }
               } else {
                 window.alert('No results found');
@@ -144,86 +232,21 @@ class Delivery extends Component {
         'Error: Your browser doesn\'t support geolocation.');
     }
   };
-
   renderMap = () => {
-    loadScript(`https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initMap`);
+    loadScript(`https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initMap`, "google-maps-api");
     window.initMap = this.initMap;
   };
-
-  componentDidMount() {
-    if (apiKey !== "")
-      this.renderMap();
-  };
-
-  render() {
-    return (
-      <Container className="text-left">
-        <Row>
-          <Col className="md-8">
-            <br/>
-            <div>
-              <h4>Direccion de Entrega</h4>
-            </div>
-            <hr className="mb-2"/>
-            <div className="pr-5 m-4">
-              <div className="input-group-append">
-                <h6 className="mb-3">Direccion Reciente</h6>
-              </div>
-              <br/>
-              <Form>
-                <select className="form-control" id="selDireccion">
-                  <option>Calle xxx Nro ###</option>
-                  <option>Calle yyy Nro ###</option>
-                </select>
-              </Form>
-              <br/>
-              <div className="d-flex justify-content-between mb-4">
-                <h6 className="mb-3">Direccion Nueva</h6>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" id="chkRecordar"/>
-                  <Form.Label className="form-check-label" htmlFor="chkRecordar">Recordar</Form.Label>
-                </div>
-              </div>
-              <Form>
-                <section className="container mt-3">
-                  <input id="autocomplete" className="form-control " type="text"/>
-                </section>
-
-              </Form>
-              <br/>
-              <section id="map" className="container mt-3 mb-3">
-              </section>
-              <br/>
-              <hr className="mb-2"/>
-              <br/>
-              <p>LAT: {this.state.lat}</p>
-              <p>LNG: {this.state.lng}</p>
-              <p>DIR: {this.state.dir}</p>
-
-              <Row>
-                <Col>
-                  <Button variant="outline-primary" block onClick={this.register}>Cancelar</Button>
-                </Col>
-                <Col>
-                  <Button block onClick={this.nextStep}>Siguiente</Button>
-                </Col>
-              </Row>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    )
-  }
 }
 
 const mapState = state => {
   return {
-
+    addressList: state.delivery.addressList
   }
 };
 
 const mapDispatch = {
-
+  loadAddress: loadAddress,
+  setAddress: pickAddress
 };
 
-export default compose(withRouter,connect(mapState,mapDispatch))(Delivery);
+export default compose(withRouter, connect(mapState, mapDispatch))(Delivery);
