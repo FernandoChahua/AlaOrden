@@ -2,6 +2,8 @@ package com.alaorden.controller;
 
 import com.alaorden.model.*;
 import com.alaorden.service.*;
+
+import java.time.LocalDateTime;
 import java.util.*;
 import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +33,10 @@ public class CotizacionController {
             for(int i=0;i<orders.size();i++){
                 double distance=addressService.computeDistance(orders.get(i).getLocation().getLatitude(),orders.get(i).getLocation().getLongitude(),latitude,longitude);
                 BigDecimal price=addressService.computeDeliveryPrice(distance);
-                orders.get(i).setPriceDelivery(price);
+                orders.get(i).setPriceDelivery(price.setScale(2, BigDecimal.ROUND_UP));
                 orders.get(i).setAddress(address.getDescription());
+                orders.get(i).setState("Procesando");
+                orders.get(i).setDate(LocalDateTime.now());
             }
 
             return orders;

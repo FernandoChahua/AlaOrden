@@ -53,7 +53,7 @@ public class QuotationServiceImpl implements QuotationService {
                 BigDecimal subTotal = BigDecimal.valueOf(0);
 
                 for (OrderDetail dp : list){
-                    subTotal = subTotal.add(dp.getPrice()).multiply(BigDecimal.valueOf((double)dp.getQuantity()));
+                    subTotal = subTotal.add(BigDecimal.valueOf(dp.getPrice().doubleValue()*(double)(dp.getQuantity())));
                 }
 
                 pe.setLocation(prov);

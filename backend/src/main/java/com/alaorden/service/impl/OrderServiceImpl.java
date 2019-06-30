@@ -4,6 +4,7 @@ import com.alaorden.model.CartItem;
 import com.alaorden.model.Orders;
 import com.alaorden.repository.OrdersRepository;
 import com.alaorden.service.OrderService;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,8 @@ public class OrderServiceImpl implements OrderService {
     public Orders listOrderByUser(Orders order){
         return null;
     }
-
+    public Orders SaveOrder(Orders order){
+        return ordersRepository.save(order);
+    }
 
 }
