@@ -3,6 +3,7 @@ import {Form, Row, Col} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
 import {logIn} from "../../actions/authActions";
+import {loadCart} from "../../actions/cartActions";
 
 /*
 local: [...form]
@@ -83,7 +84,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  logIn: logIn
+  logIn: logIn,
 };
 
 export default connect(mapState, mapDispatch)(LoginForm);

@@ -48,7 +48,6 @@ class ProductCard extends Component {
 
   addToCart() {
     this.props.addItem(this.props.product,this.state.quantity);
-    this.props.loadCart();
     this.setState({quantity: 0});
   }
 
@@ -110,7 +109,6 @@ const mapState = (state,ownProps) => {
 
 const mapDispatch = {
   addItem: addItem,
-  loadCart: loadCart
 };
 
 export default connect(mapState,mapDispatch)(ProductCard);

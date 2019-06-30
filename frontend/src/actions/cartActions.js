@@ -11,7 +11,7 @@ export function addItem(product, quantity) {
       product: product,
       quantity: quantity
     }).then(response => {
-      loadCart(user.idUser);
+      loadCart(dispatch,user.idUser);
     }).catch(error => {
 
     });
@@ -28,7 +28,7 @@ export function updateItem(product, quantity) {
       product: product,
       quantity: quantity
     }).then(response => {
-      loadCart(user.idUser);
+      loadCart(dispatch ,user.idUser);
     }).catch(error => {
 
     });
@@ -39,26 +39,23 @@ export function removeItem(productId) {
   return (dispatch, getState) => {
     let user = getState().auth.user;
     axios.delete(`api/cart/${user.idUser}/${productId}`)
-      .then(response => { loadCart(user.idUser); })
+      .then(response => { loadCart(dispatch, user.idUser); })
       .catch(error => {  });
   }
 }
 
 
-export function loadCart(idUser) {
-  return (dispatch) => {
+export function loadCart(dispatch, idUser) {
+    console.log("USER:" + idUser);
     axios.get(`api/cart/${idUser}`)
       .then(response => { dispatch(_updateCart(response.data)) })
       .catch(error => { /*TODO: handle error*/ });
-  }
 }
 
-export function emptyCart(idUser) {
-  return (dispatch) => {
+export function emptyCart(dispatch, idUser) {
     axios.delete(`api/cart/${idUser}`)
       .then(response => { dispatch(_clearCart()) })
       .catch(error => { /*TODO: handle error*/ });
-  }
 }
 
 const _updateCart = (cart) => {
