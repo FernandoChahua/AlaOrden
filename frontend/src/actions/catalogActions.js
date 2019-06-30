@@ -1,306 +1,89 @@
-import {
-    UPDATE_LIST_QUERY,
-    GET_SEARCH_RESULTS,
-    DELETE_LIST_QUERY,
-    ADD_FILTER,
-    GET_QUERY_RESULTS,
-    SET_RESULTS, LOAD_CATEGORY_LIST, TOGGLE_LIST
-} from "./actions";
+import {SET_QUERY, UPDATE_LIST_QUERY, SET_RESULTS, LOAD_CATEGORY_LIST, TOGGLE_LIST} from "./actions";
 import axios from "axios";
 
-
 export function loadCategories() {
-    return (dispatch) => {
-        let categories;
-        axios
-            .get("http://localhost:9090/api/serv/categorias")
-            .then(function(response) {
-                //console.log(response);
-               categories = response.data;
-               console.log(categories);
-               dispatch(_loadCategories(categories))
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-    }
+  return (dispatch) => {
+    axios
+      .get("api/serv/categorias")
+      .then(function (response) {
+        //console.log(response);
+        dispatch(_loadCategories(response.data))
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 }
 
-export function loadInitCatalog() {
-    return (dispatch) => {
-        let products=[];
-        axios
-            .get("http://localhost:9090/api/serv/productos")
-            .then(function(response) {
-                //console.log(response);
-                products = response.data;
-                console.log(products);
-                dispatch(_loadInitCatalog(products))
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
+export function loadResults() {
+  return (dispatch, getState) => {
+
+    axios
+      .get("api/serv/productos")
+      .then(function (response) {
+        //console.log(response);
+        dispatch(_loadCatalog(response.data))
+      }).catch(function (error) {
+        console.log(error);
+      });
 
 
-    }
+  }
 }
-/* let productos = [
-            {
-                "idProduct": 1,
-                "idCategory": 2,
-                "category": null,
-                "idBrand": 1,
-                "brand": {
-                    "name": "Gloria"
-                },
-                "name": "Leche Evaporada",
-                "packaging": "paquete",
-                "quantity": 4,
-                "measure": 500,
-                "unit": "g",
-                "description": "Leche evaporada",
-                "image": "1.jpg",
-                "inventory": null
-            },
-            {
-                "idProduct": 2,
-                "idCategory": 2,
-                "category": null,
-                "idBrand": 1,
-                "brand": {
-                    "name": "Laive"
-                },
-                "name": "Leche Evaporada",
-                "packaging": "paquete",
-                "quantity": 4,
-                "measure": 500,
-                "unit": "g",
-                "description": "Leche evaporada",
-                "image": "2.jpg",
-                "inventory": null
-            },
-            {
-                "idProduct": 3,
-                "idCategory": 2,
-                "category": null,
-                "idBrand": 1,
-                "brand": {
-                    "name": "IDEAL"
-                },
-                "name": "Leche Evaporada",
-                "packaging": "paquete",
-                "quantity": 4,
-                "measure": 500,
-                "unit": "g",
-                "description": "Leche evaporada",
-                "image": "3.jpg",
-                "inventory": null
-            },
-            {
-                "idProduct": 4,
-                "idCategory": 2,
-                "category": null,
-                "idBrand": 1,
-                "brand": {
-                    "name": "Gloria"
-                },
-                "name": "Leche Evaporada",
-                "packaging": "paquete",
-                "quantity": 4,
-                "measure": 500,
-                "unit": "g",
-                "description": "Leche evaporada",
-                "image": "4.jpg",
-                "inventory": null
-            },
-            {
-                "idProduct": 5,
-                "idCategory": 2,
-                "category": null,
-                "idBrand": 1,
-                "brand": {
-                    "name": "Gloria"
-                },
-                "name": "Leche Evaporada",
-                "packaging": "paquete",
-                "quantity": 4,
-                "measure": 500,
-                "unit": "g",
-                "description": "Leche evaporada",
-                "image": "5.jpg",
-                "inventory": null
-            },
-            {
-                "idProduct": 6,
-                "idCategory": 2,
-                "category": null,
-                "idBrand": 1,
-                "brand": {
-                    "name": "Gloria"
-                },
-                "name": "Leche Evaporada",
-                "packaging": "paquete",
-                "quantity": 4,
-                "measure": 500,
-                "unit": "g",
-                "description": "Leche evaporada",
-                "image": "6.jpg",
-                "inventory": null
-            },
-            {
-                "idProduct": 7,
-                "idCategory": 2,
-                "category": null,
-                "idBrand": 1,
-                "brand": {
-                    "name": "Gloria"
-                },
-                "name": "Leche Evaporada",
-                "packaging": "paquete",
-                "quantity": 4,
-                "measure": 500,
-                "unit": "g",
-                "description": "Leche evaporada",
-                "image": "7.jpg",
-                "inventory": null
-            },
-            {
-                "idProduct": 8,
-                "idCategory": 2,
-                "category": null,
-                "idBrand": 1,
-                "brand": {
-                    "name": "Gloria"
-                },
-                "name": "Leche Evaporada",
-                "packaging": "paquete",
-                "quantity": 4,
-                "measure": 500,
-                "unit": "g",
-                "description": "Leche evaporada",
-                "image": "8.jpg",
-                "inventory": null
-            },{
-                "idProduct": 9,
-                "idCategory": 2,
-                "category": null,
-                "idBrand": 1,
-                "brand": {
-                    "name": "Gloria"
-                },
-                "name": "Leche Evaporada",
-                "packaging": "paquete",
-                "quantity": 4,
-                "measure": 500,
-                "unit": "g",
-                "description": "Leche evaporada",
-                "image": "9.jpg",
-                "inventory": null
-            },
-        ];*/
 
-export function getSearchResults(name) {
-    return (dispatch) => {
-        axios
-            .get("http://localhost:9090/api/serv/productosName/"+name)
-            .then(function(response) {
-                //console.log(response);
-                let products = response.data;
-
-                console.log("HOA");
-                dispatch(_getSearchResults(products))
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-    }
-}
 export function addListQuery() {
-    return (dispatch) => {
+  return (dispatch) => {
 
-        dispatch(_addListQuery())
-    }
-}
-
-export function deleteListQuery() {
-    return (dispatch) => {
-
-        dispatch(_deleteListQuery())
-    }
-}
-
-export function addFilter() {
-    return (dispatch) => {
-
-        dispatch(_addFilter())
-    }
+    dispatch(_updateListQuery())
+  }
 }
 
 export function toggleList() {
-    return (dispatch) => {
+  return (dispatch) => {
 
-        dispatch(_toggleList())
-    }
+    dispatch(_toggleList())
+  }
 }
+
+export function setQuery(query, params) {
+  return (dispatch) => {
+
+    dispatch(_setQuery(query));
+  }
+}
+
+const _setQuery = (query) => {
+  return {
+    type: SET_QUERY,
+    query
+  }
+};
 
 const _loadCategories = (categories) => {
-    return {
-        type: LOAD_CATEGORY_LIST,
-        categories
-    }
+  return {
+    type: LOAD_CATEGORY_LIST,
+    categories
+  }
 };
 
-export function getQueryResults() {
-    return (dispatch) => {
 
-        dispatch(_getQueryResults())
-    }
-}
-
-const _loadInitCatalog = (results) => {
-    return {
-        type: SET_RESULTS,
-        results
-    }
+const _loadCatalog = (results) => {
+  return {
+    type: SET_RESULTS,
+    results
+  }
 };
 
-const _getSearchResults = (results) => {
-    return {
-        type: GET_SEARCH_RESULTS,
-        results
-    }
+const _updateListQuery = (list) => {
+  return {
+    type: UPDATE_LIST_QUERY,
+    list
+  }
 };
 
-const _addListQuery = (query) => {
-    return {
-        type: UPDATE_LIST_QUERY,
-        query
-    }
-};
-
-const _deleteListQuery = (index) => {
-    return {
-        type: DELETE_LIST_QUERY,
-        index
-    }
-};
-
-const _addFilter = (filter) => {
-    return {
-        type: ADD_FILTER,
-        filter
-    }
-};
-
-const _getQueryResults = (results) => {
-    return {
-        type: GET_QUERY_RESULTS,
-        results
-    }
-};
 
 const _toggleList = () => {
-    return {
-        type: TOGGLE_LIST
-    }
-}
+  return {
+    type: TOGGLE_LIST
+  }
+};

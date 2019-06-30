@@ -1,21 +1,16 @@
 import {HIDE_AUTH_MODAL, LOGIN, LOGOUT, SHOW_AUTH_MODAL} from "./actions";
+import axios from "axios";
 
 export function logIn(input, pass) {
   return (dispatch) => {
-    //axios.get...
-
-    let user = {
-      nickname: input,
-      hashPassword: pass,
-      email: input
-    };
-    dispatch(_logIn(user));
+    axios.get(`api/usuario/login/${input}/${pass}`)
+      .then(response => {dispatch(_logIn(response.data))})
+      .catch(error => { /*TODO: handle error*/ });
   }
 }
 
 export function logOut() {
   return (dispatch) => {
-    //TODO: implement
     dispatch(_logOut());
   }
 }
@@ -29,6 +24,7 @@ export function showModal() {
 export function hideModal() {
   return (dispatch) => {
     dispatch(_hideAuthModal());
+    //TODO: review
   }
 }
 

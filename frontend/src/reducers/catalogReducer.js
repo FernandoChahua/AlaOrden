@@ -1,11 +1,4 @@
-import {
-  ADD_FILTER,
-  UPDATE_LIST_QUERY,
-  DELETE_LIST_QUERY,
-  GET_SEARCH_RESULTS,
-  GET_QUERY_RESULTS,
-  SET_RESULTS, LOAD_CATEGORY_LIST, TOGGLE_LIST
-} from "../actions/actions";
+import {SET_QUERY, UPDATE_LIST_QUERY, SET_RESULTS, LOAD_CATEGORY_LIST, TOGGLE_LIST}  from "../actions/actions";
 
 
 export default function catalogReducer(state = {list: [], results: []}, action) {

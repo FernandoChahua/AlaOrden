@@ -1,72 +1,75 @@
-import {ADD_ITEM, LOAD_CART, REMOVE_ITEM, SUBMIT_CART, UPDATE_ITEM} from "./actions";
+import {CLEAR_CART, UPDATE_CART} from "./actions";
+import axios from "axios";
 
 export function addItem(product, quantity) {
-    return (dispatch) => {
+  return (dispatch, getState) => {
+    let user = getState().auth.user;
 
-        dispatch(_addItem(product, quantity))
-    }
+    axios.post(`api/cart`, {
+      pk: {idUser: user.idUser, idProduct: product.idProduct },
+      user: user,
+      product: product,
+      quantity: quantity
+    }).then(response => {
+      loadCart(user.idUser);
+    }).catch(error => {
+
+    });
+  }
 }
 
-export function updateItem(productId,quantity) {
-    return (dispatch) => {
+export function updateItem(product, quantity) {
+  return (dispatch, getState) => {
+    let user = getState().auth.user;
 
-        dispatch(_updateItem(productId,quantity))
-    }
+    axios.put(`api/cart`, {
+      pk: {idUser: user.idUser, idProduct: product.idProduct },
+      user: user,
+      product: product,
+      quantity: quantity
+    }).then(response => {
+      loadCart(user.idUser);
+    }).catch(error => {
+
+    });
+  }
 }
 
 export function removeItem(productId) {
-    return (dispatch) => {
-        dispatch(_removeItem(productId))
-    }
-}
-
-export function loadCart() {
-    return (dispatch) => {
-
-        let carrito = [];
-        dispatch(_loadCart(carrito))
-    }
-}
-
-export function checkOut() {
-    return (dispatch) => {
-
-        dispatch(_submitCart)
-    }
+  return (dispatch, getState) => {
+    let user = getState().auth.user;
+    axios.delete(`api/cart/${user.idUser}/${productId}`)
+      .then(response => { loadCart(user.idUser); })
+      .catch(error => {  });
+  }
 }
 
 
-const _addItem = (product, quantity) => {
-    return {
-        type: ADD_ITEM,
-        product: product,
-        quantity: quantity
-    }
+export function loadCart(idUser) {
+  return (dispatch) => {
+    axios.get(`api/cart/${idUser}`)
+      .then(response => { dispatch(_updateCart(response.data)) })
+      .catch(error => { /*TODO: handle error*/ });
+  }
+}
+
+export function emptyCart(idUser) {
+  return (dispatch) => {
+    axios.delete(`api/cart/${idUser}`)
+      .then(response => { dispatch(_clearCart()) })
+      .catch(error => { /*TODO: handle error*/ });
+  }
+}
+
+const _updateCart = (cart) => {
+  return {
+    type: UPDATE_CART,
+    cart: cart
+  }
 };
 
-const _updateItem = (productId, quantity) => {
-    return {
-        type: UPDATE_ITEM,
-        id: productId,
-        quantity: quantity
-    }
-};
-
-const _removeItem = (productId) => {
-    return {
-        type: REMOVE_ITEM,
-        id: productId
-    }
-};
-const _loadCart = (cart) => {
-    return {
-        type: LOAD_CART,
-        cart: cart
-    }
-};
-
-const _submitCart = () => {
-    return {
-        type: SUBMIT_CART
-    }
+const _clearCart = () => {
+  return {
+    type: CLEAR_CART,
+  }
 };
