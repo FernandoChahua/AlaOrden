@@ -23,6 +23,7 @@ public class CotizacionController {
             List<Order> generarListas(@PathVariable int idUser){
             double latitude = -12.077053;
             double longitude = -77.081605;
+
             List<CartItem> carrito = cartService.findByUser(idUser);
             List<Location> listLocations = addressService.listDistanceMin(latitude,longitude);
             List<Order> orders = quotationService.generateList(carrito,listLocations);
@@ -32,6 +33,7 @@ public class CotizacionController {
                 BigDecimal price=addressService.computeDeliveryPrice(distance);
                 orders.get(i).setPriceDelivery(price);
             }
+
             return orders;
         }
 }

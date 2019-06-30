@@ -9,12 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Entity
 @Table(name = "Order")
 public class Order {
@@ -27,20 +27,20 @@ public class Order {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "IdSede")
+    @JoinColumn(name = "idLocation")
     private Location location;
 
     @Column(name = "state")
     private String state;
 
     @Column(name = "date")
-    private String date;
+    private LocalDateTime date;
 
     @Column(name = "address")
     private String address;
 
     @OneToOne
-    @JoinColumn(name = "transaction")
+    @JoinColumn(name = "idTransaction")
     private Transaction transaction;
 
     @Column(name = "subTotal")
