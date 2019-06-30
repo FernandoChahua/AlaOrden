@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserService {
 
-    String createUser(User user);
+    User createUser(User user);
     User updateUser(User user);
     boolean existUser(User user);
     User userByNickname(String nickname);

@@ -22,16 +22,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public String createUser(User user){
+    public User createUser(User user){
+        ///// BORRARME POR UNA EXCEPCION :v
+        User us = new User();
+        us.setIdUser(0);
+        /////
         User u = userRepository.findByNicknameEqualsOrEmailEquals(user.getNickname(),user.getEmail());
         if(u==null){
             user.setEmailValidated(false);
             user.setSalt("salt");
             user.setState(1);
             userRepository.save(user);
-            return "Registrado Correctamente";
+            User userReturn =userRepository.findByNicknameEquals(user.getNickname());
+            userReturn.setAddresses(null);
+            userReturn.setCart(null);
+
+            return userReturn;
         }
 
+        /*
         if(u.getNickname().equals(user.getNickname()) && u.getEmail().equals(user.getEmail())){
                 return "El nickname y email ya existe";
         }
@@ -39,6 +48,9 @@ public class UserServiceImpl implements UserService {
             return "El nickname ya existe";
         }
         return "El email ya existe";
+
+         */
+        return us;
 
     }
     public User updateUser(User user){

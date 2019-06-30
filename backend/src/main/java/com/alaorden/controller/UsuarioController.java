@@ -26,7 +26,7 @@ public class UsuarioController {
         return userService.listAllUsers();
     }
     @RequestMapping(method = RequestMethod.POST)
-    String createUser(@RequestBody User user){
+    User createUser(@RequestBody User user){
       return userService.createUser(user);
     }
 
