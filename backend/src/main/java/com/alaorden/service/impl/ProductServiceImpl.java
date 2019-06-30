@@ -74,11 +74,12 @@ public class ProductServiceImpl implements ProductService {
         for(int i=0;i<products.size();i++){
             products.get(i).getCategory().setParent(null);
             products.get(i).getCategory().setProducts(null);
+            products.get(i).setInventory(null);
         }
         return products;
     }
     public List<Product> listProductSearch(String name){
-        List<Product> products = productRepository.findByNameIsContaining(name);
+        List<Product> products = productRepository.findByNameIsContainingOrCategoryNameIsContainingOrBrandNameIsContaining(name,name,name);
 
         for(int i=0;i<products.size();i++){
             products.get(i).getCategory().setParent(null);

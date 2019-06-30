@@ -18,9 +18,9 @@ import java.util.*;
 public class AddressServiceImpl implements AddressService {
 
 
-    AddressRepository addressRepository;
-    UserRepository userRepository;
-    LocationRepository locationRepository;
+    private AddressRepository addressRepository;
+    private UserRepository userRepository;
+    private LocationRepository locationRepository;
     @Autowired
     public AddressServiceImpl(AddressRepository addressRepository, UserRepository userRepository, LocationRepository locationRepository){
         this.addressRepository = addressRepository;
@@ -33,7 +33,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     public Address deleteAddress(int id){
-        Address address = addressRepository.findById(id).get();
+        Address address = addressRepository.findByIdAddress(id);
         if(address == null){
             return null;
         }else{
@@ -42,8 +42,22 @@ public class AddressServiceImpl implements AddressService {
         }
     }
     public List<Address> listAddressByUser(int id){
-        User user = userRepository.findById(id).get();
-        return addressRepository.findAllByUser(user);
+        User user = userRepository.findByIdUser(id);
+        List<Address> addresses = addressRepository.findAllByUser(user);
+        for(Address address : addresses){
+            address.setUser(new User());
+            address.getUser().setIdUser(id);
+        }
+        return addresses;
+    }
+    public List<Address> listAddress(){
+        List<Address> addresses = addressRepository.findAll();
+        for(Address address : addresses){
+            int id = address.getUser().getIdUser();
+            address.setUser(new User());
+            address.getUser().setIdUser(id);
+        }
+        return addresses;
     }
     public BigDecimal computeDeliveryPrice(double distancia){
         return BigDecimal.valueOf(distancia*0.05 + 5.00);
@@ -73,7 +87,7 @@ public class AddressServiceImpl implements AddressService {
 
     public boolean Exist(String s,List<String>ls){
         for(String franchise : ls){
-            if(s == franchise)return true;
+            if(s.equals(franchise) )return true;
         }
         return false;
     }

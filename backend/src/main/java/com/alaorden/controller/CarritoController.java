@@ -31,36 +31,37 @@ public class CarritoController {
         return act;
     }
     @RequestMapping(path="/{idUser}",method=RequestMethod.DELETE)
-    void deleteCarrito(@PathVariable int idUser)
+    String deleteCarrito(@PathVariable int idUser)
     {
         List<CartItem> carritos = cartService.findByUser(idUser);
         if(carritos != null)
         {
             cartService.deleteByUserId(idUser);
+            return "Eliminado correctamente";
         }
+        return "No existe el carrito del Usuario con Id "+idUser;
     }
     @RequestMapping(path="/{idUser}/{idProduct}",method=RequestMethod.DELETE)
-    void deleteCarrito(@PathVariable int idUser,@PathVariable int idProduct)
+    String deleteCarrito(@PathVariable int idUser,@PathVariable int idProduct)
     {
         CartItem carrito = cartService.findByUserAndProduct(idUser,idProduct);
         if(carrito != null)
         {
             cartService.deleteByUserAndProduct(idUser,idProduct);
+            return "Eliminado correctamente";
         }
+        return ("No existe el item carrito del usuario con id "+idUser+" y producto con id "+idProduct);
     }
     @RequestMapping(method=RequestMethod.POST)
     void createItemCarrito(@RequestBody CartItem carritoItem){
-        CartItem cartItem = new CartItem();
-        cartItem.setPk(new CartItemKey());
-        cartItem.getPk().setIdUser(carritoItem.getUser().getIdUser());
-        cartItem.getPk().setIdProduct(carritoItem.getProduct().getIdProduct());
-        cartItem.setProduct(new Product());
-        cartItem.setUser(new User());
-
-        cartItem.getProduct().setIdProduct(carritoItem.getProduct().getIdProduct());
-        cartItem.getUser().setIdUser(carritoItem.getUser().getIdUser());
-
-        cartService.deleteFromCart(cartItem);
-
+        if(carritoItem != null) {
+            cartService.saveToCart(carritoItem);
+        }
+    }
+    @RequestMapping(method=RequestMethod.PUT)
+    void updateItemCarrito(@RequestBody CartItem carritoItem){
+        if(carritoItem != null) {
+            cartService.saveToCart(carritoItem);
+        }
     }
 }

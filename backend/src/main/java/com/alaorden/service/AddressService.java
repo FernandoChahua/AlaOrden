@@ -11,6 +11,7 @@ public interface AddressService {
     Address createAddress(Address address);
     Address deleteAddress(int id);
     List<Address> listAddressByUser(int id);
+    List<Address> listAddress();
     BigDecimal computeDeliveryPrice(double distancia);
     double computeDistance(double latA,double longA,double latB,double longB);
     boolean Exist(String s,List<String>ls);

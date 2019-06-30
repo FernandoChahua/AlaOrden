@@ -1,6 +1,7 @@
 package com.alaorden.service.impl;
 
 import com.alaorden.model.CartItem;
+import com.alaorden.model.User;
 import com.alaorden.repository.CartItemRepository;
 import com.alaorden.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +21,17 @@ public class CartServiceImpl implements CartService {
     }
 
     public List<CartItem> findByUser(int id){
-        List<CartItem>users = cartItemRepository.findAllByUserIdUser(id);
-        for(int i=0;i<users.size();i++)
+        List<CartItem>carrito = cartItemRepository.findAllByUserIdUser(id);
+        for(int i=0;i<carrito.size();i++)
         {
-            users.get(i).setUser(null);
-            users.get(i).getProduct().getCategory().setParent(null);
-            users.get(i).getProduct().getCategory().setProducts(null);
+            carrito.get(i).setUser(new User());
+            carrito.get(i).getUser().setIdUser(id);
+            carrito.get(i).getProduct().getCategory().setParent(null);
+            carrito.get(i).getProduct().getCategory().setProducts(null);
+            carrito.get(i).getProduct().getCategory().setSubCategories(null);
+            carrito.get(i).getProduct().setInventory(null);
         }
-        return users;
+        return carrito;
     }
 
     @Transactional
