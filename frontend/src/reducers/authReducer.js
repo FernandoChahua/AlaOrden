@@ -1,10 +1,9 @@
-import {HIDE_AUTH_MODAL, LOGIN, LOGOUT, SHOW_AUTH_MODAL} from "../actions/actions";
+import { HIDE_AUTH_MODAL, LOGIN, LOGOUT, SHOW_AUTH_MODAL } from "../actions/actions";
 
 const initial = {
     authenticated:false,
     displayAuthModal: false,
-    user: null,
-    userId: 0
+    user: {},
 };
 
 

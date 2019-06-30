@@ -1,18 +1,25 @@
-import {LOAD_OPTIONS, PICK_OPTION} from "./actions";
+import {LOAD_OPTIONS} from "./actions";
+import {_setOrder, _setStep} from "./orderAction";
+import axios from "axios";
 
 
-export function loadOptions(cart, direction) {
-    return (dispatch) => {
-        //
+export function askForOptions(address) {
+    return (dispatch, getState) => {
+        let user = getState.auth.user;
 
-        dispatch(_loadOptions([]))
+        axios.post(`api/cotizacion/${user.idUser}`,address)
+          .then(response => {
+              dispatch(_loadOptions( response.data));
+              dispatch(_setStep(2));
+          })
     }
+
 }
 
-export function pickOption() {
+export function pickOption(order) {
     return (dispatch) => {
         //TODO: implement
-        dispatch(_pickOption())
+        dispatch(_setOrder(order))
     }
 }
 
@@ -21,12 +28,5 @@ const _loadOptions = (proformaList) => {
     return {
         type: LOAD_OPTIONS,
         proformaList
-    }
-};
-
-const _pickOption = (order) => {
-    return {
-        type: PICK_OPTION,
-        order
     }
 };

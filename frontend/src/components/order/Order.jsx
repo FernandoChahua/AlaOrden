@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {Route,Redirect} from "react-router-dom"
+import {Route} from "react-router-dom"
 import Stepper from "react-stepper-horizontal/lib/Stepper"
 import Delivery from "../delivery/Delivery";
 import Payment from "../payment/Payment";
 import Quotation from "../quotation/Quotation";
-import {setStep} from "../../actions/orderAction";
 import {connect} from "react-redux";
 
 /*
@@ -42,7 +41,6 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  setStep: setStep
 };
 
 export default connect(mapState,mapDispatch)(Order);

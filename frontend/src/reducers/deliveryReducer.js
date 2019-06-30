@@ -1,4 +1,4 @@
-import {LOAD_ADDRESS_LIST, PICK_ADDRESS} from "../actions/actions";
+import {LOAD_ADDRESS_LIST, SET_ADDRESS} from "../actions/actions";
 
 
 export default function deliveryReducer(state = {}, action) {
@@ -6,7 +6,7 @@ export default function deliveryReducer(state = {}, action) {
         case LOAD_ADDRESS_LIST:
             return Object.assign({},state,
                 {addressList :action.addressList, address:null});
-        case PICK_ADDRESS:
+        case SET_ADDRESS:
             return Object.assign({},state,
                 {address: action.address});
         default:

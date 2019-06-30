@@ -1,32 +1,39 @@
-import {LOAD_ADDRESS_LIST, PICK_ADDRESS} from "./actions";
+import {LOAD_ADDRESS_LIST, SET_ADDRESS} from "./actions";
+import axios from "axios";
+import {askForOptions} from "./quotationActions";
 
-export function pickDirection() {
-    return (dispatch) => {
 
-        dispatch(_pickDirection());
+export function pickAddress(address,save) {
+    return (dispatch, getState) => {
+        dispatch(_setAddress(address));
+
+        if (save) {
+            //TODO: save address;
+        }
+        askForOptions(address);
     }
 }
 
-export function loadDirections() {
-    return (dispatch) => {
+export function loadAddress() {
+    return (dispatch, getState) => {
+        let user = getState().auth.user;
 
-        dispatch(_loadDirections());
-
+        axios.get(`api/direccion/${user.idUser}`)
+          .then(response =>  dispatch(_loadAddressList(response.data)))
+          .catch(error => {  })
     }
 }
 
-
-
-const _pickDirection = (direction) => {
+const _setAddress = (address) => {
     return {
-        type: PICK_ADDRESS,
-        direction
+        type: SET_ADDRESS,
+        address
     }
 };
 
-const _loadDirections = (addressList) => {
+const _loadAddressList = (addressList) => {
     return {
         type: LOAD_ADDRESS_LIST,
-        directionList: addressList
+        addressList
     }
 };

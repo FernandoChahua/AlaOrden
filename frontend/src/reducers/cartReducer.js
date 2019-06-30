@@ -1,7 +1,6 @@
 import {CLEAR_CART, UPDATE_CART} from "../actions/actions"
-import CartManager from "../util/CartManager";
 
-const initial = { cart: [], allowCheckout: false };
+const initial = { cart: [] };
 
 export default function cartReducer(state = initial, action) {
     switch (action.type) {

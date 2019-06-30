@@ -223,7 +223,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  setStep: setStep
+
 };
 
 export default compose(withRouter,connect(mapState,mapDispatch))(Delivery);

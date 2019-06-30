@@ -19,7 +19,7 @@ class Categories extends Component {
     }
     componentDidMount() {
     this.props.loadCategories();
-    console.log(this.props.categories);
+
     }
     filterByCategory(idCategory){
 

@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import {FormControl, InputGroup} from 'react-bootstrap'
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
-import {addItem} from "../../actions/cartActions";
+import {addItem, loadCart} from "../../actions/cartActions";
 
 /*
 local: quantity
@@ -48,6 +48,7 @@ class ProductCard extends Component {
 
   addToCart() {
     this.props.addItem(this.props.product,this.state.quantity);
+    this.props.loadCart();
     this.setState({quantity: 0});
   }
 
@@ -108,7 +109,8 @@ const mapState = (state,ownProps) => {
 };
 
 const mapDispatch = {
-  addItem: addItem
+  addItem: addItem,
+  loadCart: loadCart
 };
 
 export default connect(mapState,mapDispatch)(ProductCard);

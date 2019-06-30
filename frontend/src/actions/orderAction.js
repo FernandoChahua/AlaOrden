@@ -1,8 +1,16 @@
-import {SET_MAX_STEP, SET_STEP} from "./actions";
+import {SET_ORDER, SET_STEP} from "./actions";
 
-const _setStep = (activeStep) => {
+
+export const _setStep = (activeStep) => {
   return {
     type: SET_STEP,
     activeStep
+  }
+};
+
+export const _setOrder = (order) => {
+  return {
+    type: SET_ORDER,
+    order
   }
 };

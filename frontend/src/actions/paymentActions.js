@@ -1,19 +1,24 @@
-import {APPLY_COUPON, REMOVE_COUPON, REMOVE_ITEM, SEND_PAY} from "./actions";
+import {APPLY_COUPON, REMOVE_COUPON, REMOVE_ITEM } from "./actions";
+import axios from "axios";
 
 
 export function applyCoupon(code) {
-    return function (dispatch,getState) {
-        //getDiscount
-
-        let discount = 10;
-        dispatch(_applyCoupon(code,discount));
+    return function (dispatch) {
+        //validate Coupon (returns discount amount)
+        axios.get(`api/payment/coupon/${code}`)
+          .then(response => {
+              //FIXME: hard-coded
+              let discount = 10;
+              dispatch(_applyCoupon(code,discount));
+          })
+          .catch(error => { });
     };
 }
 
-export function removeCoupon() {
+export function removeCoupon(index) {
     return (dispatch) => {
 
-        dispatch(_removeCoupon());
+        dispatch(_removeCoupon(index));
     }
 }
 
@@ -21,7 +26,7 @@ export function removeCoupon() {
 export function sendPay() {
     return (dispatch) => {
 
-        dispatch(_sendPay());
+
     }
 }
 
@@ -37,12 +42,5 @@ const _removeCoupon = (index) => {
     return {
         type: REMOVE_COUPON,
         index
-    }
-};
-
-const _sendPay = (response) => {
-    return {
-        type: SEND_PAY,
-        response
     }
 };

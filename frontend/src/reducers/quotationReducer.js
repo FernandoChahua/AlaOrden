@@ -1,7 +1,7 @@
-import {LOAD_OPTIONS, PICK_OPTION} from "../actions/actions";
+import {LOAD_OPTIONS} from "../actions/actions";
 
 const initial = {
-    proformaList: []
+    proformaList: [],
 };
 
 export default function quotationReducer(state = initial, action) {
@@ -9,9 +9,6 @@ export default function quotationReducer(state = initial, action) {
         case LOAD_OPTIONS:
             return Object.assign({}, state,
                 { proformaList: action.proformaList });
-        case PICK_OPTION:
-            return Object.assign({},state,
-                {order:action.order});
         default:
             return state;
     }

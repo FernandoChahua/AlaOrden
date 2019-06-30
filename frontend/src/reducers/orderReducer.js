@@ -1,8 +1,9 @@
-import {SET_MAX_STEP, SET_STEP} from "../actions/actions";
+import {SET_ORDER, SET_STEP} from "../actions/actions";
 
 
 const initial = {
-  activeStep: 0
+  activeStep: 0,
+  order: {}
 };
 
 export default function orderReducer(state = initial, action) {
@@ -10,9 +11,9 @@ export default function orderReducer(state = initial, action) {
     case SET_STEP:
       return Object.assign({}, state,
         {activeStep: action.activeStep});
-    case SET_MAX_STEP:
+    case SET_ORDER:
       return Object.assign({},state,
-        {maxStep: action.maxStep});
+        {order: action.order});
     default:
       return state;
   }

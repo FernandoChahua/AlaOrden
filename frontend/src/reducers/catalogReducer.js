@@ -1,7 +1,13 @@
 import {SET_QUERY, UPDATE_LIST_QUERY, SET_RESULTS, LOAD_CATEGORY_LIST, TOGGLE_LIST}  from "../actions/actions";
 
+const initial = {
+  list: [],
+  results: [],
+  categories: [],
+  query: ''
+};
 
-export default function catalogReducer(state = {list: [], results: []}, action) {
+export default function catalogReducer(state = initial, action) {
   switch (action.type) {
     case LOAD_CATEGORY_LIST:
       return Object.assign({}, state,
@@ -9,21 +15,12 @@ export default function catalogReducer(state = {list: [], results: []}, action) 
     case SET_RESULTS:
       return Object.assign({}, state,
         {results: action.results});
-    case GET_SEARCH_RESULTS:
+    case SET_QUERY:
       return Object.assign({}, state,
-        {results: action.results, query: ''});
+        {query: action.query});
     case UPDATE_LIST_QUERY:
       return Object.assign({}, state,
-        {list: state.list.concat([action.query])});
-    case DELETE_LIST_QUERY:
-      return Object.assign({}, state,
-        {list: state.list.splice(0, action.index)});
-    case GET_QUERY_RESULTS:
-      return Object.assign({}, state,
-        {results: action.results});
-    case ADD_FILTER:
-      return Object.assign({}, state,
-        {query: state.query.concat(action.filter)});
+        {list: action.list});
     case TOGGLE_LIST:
       return Object.assign({}, state,
         { displayShopList: !state.displayShopList});

@@ -3,7 +3,7 @@ import {Button, Col, Container, Row} from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
 import ProForma from "./ProForma";
 import {connect} from "react-redux";
-import {loadOptions} from "../../actions/quotationActions";
+import {askForOptions} from "../../actions/quotationActions";
 import {setStep} from "../../actions/orderAction";
 
 /*
@@ -25,8 +25,6 @@ class Quotation extends Component {
 
   nextStep() {
     this.props.history.push("/order/payment");
-
-    this.props.setStep(2);
   }
 
   render() {
@@ -75,8 +73,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  loadOptions: loadOptions,
-  setStep: setStep
+  loadOptions: askForOptions
 };
 
 export default connect(mapState,mapDispatch)(Quotation);

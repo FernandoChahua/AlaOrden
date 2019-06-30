@@ -28,7 +28,6 @@ class Cart extends Component {
   }
 
   goToCheckout() {
-    this.props.checkOut();
     this.props.history.push("/order/delivery");
   }
 
@@ -70,7 +69,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  checkOut: checkOut
+
 };
 
 export default compose(withRouter,connect(mapState, mapDispatch))  (Cart);

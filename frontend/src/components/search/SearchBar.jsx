@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Form from "react-bootstrap/Form";
 import {FormControl, InputGroup} from "react-bootstrap"
 import Button from "react-bootstrap/Button";
-import {getSearchResults} from "../../actions/catalogActions";
+import {getSearchResults, setQuery} from "../../actions/catalogActions";
 import {connect} from "react-redux";
 
 /*
@@ -31,14 +31,14 @@ class SearchBar extends Component {
     event.preventDefault();
     if ((event.type === "click" || event.key === "Enter") && this.state.query.length > 2) {
 
-      this.props.getSearchResults(this.state.query);
+      this.props.setQuery(this.state.query);
 
     }
   }
 
   render() {
     return (
-      <div inline className="flex-grow-1">
+      <div className="flex-grow-1">
         <InputGroup id="search-bar">
 
           <FormControl placeholder="Busca tus productos"
@@ -61,7 +61,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  getSearchResults: getSearchResults
+  setQuery: setQuery
 };
 
 export default connect(mapState,mapDispatch)(SearchBar);

@@ -21,11 +21,10 @@ export const SET_STEP = 'SET_STEP';
 export const SET_ORDER = 'SET_ORDER';
 
 //delivery
-export const PICK_ADDRESS = 'PICK_ADDRESS';
+export const SET_ADDRESS = 'SET_ADDRESS';
 export const LOAD_ADDRESS_LIST = 'LOAD_ADDRESS_LIST';
 
 //quotation
-export const PICK_OPTION = 'PICK_OPTION';
 export const LOAD_OPTIONS = 'VIEW_OPTIONS';
 
 //payment
