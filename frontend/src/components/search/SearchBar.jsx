@@ -40,12 +40,14 @@ class SearchBar extends Component {
     return (
       <div inline className="flex-grow-1">
         <InputGroup id="search-bar">
-          <InputGroup.Prepend>
-            <Button variant="outline-secondary" onClick={this.search}><i
-              className="fas fa-search"> </i></Button>
-          </InputGroup.Prepend>
+
           <FormControl placeholder="Busca tus productos"
                        onChange={this.changeQuery} onKeyUp={this.search}/>
+          <InputGroup.Append>
+            <Button variant="outline-secondary" onClick={this.search}>
+              <i className="fas fa-search"/>
+            </Button>
+          </InputGroup.Append>
         </InputGroup>
       </div>
     );

@@ -1,10 +1,10 @@
 import {
-    ADD_LIST_QUERY,
+    UPDATE_LIST_QUERY,
     GET_SEARCH_RESULTS,
     DELETE_LIST_QUERY,
     ADD_FILTER,
     GET_QUERY_RESULTS,
-    LOAD_INIT_CATALOG, LOAD_CATEGORY_LIST, TOGGLE_LIST
+    SET_RESULTS, LOAD_CATEGORY_LIST, TOGGLE_LIST
 } from "./actions";
 import axios from "axios";
 
@@ -259,7 +259,7 @@ export function getQueryResults() {
 
 const _loadInitCatalog = (results) => {
     return {
-        type: LOAD_INIT_CATALOG,
+        type: SET_RESULTS,
         results
     }
 };
@@ -273,7 +273,7 @@ const _getSearchResults = (results) => {
 
 const _addListQuery = (query) => {
     return {
-        type: ADD_LIST_QUERY,
+        type: UPDATE_LIST_QUERY,
         query
     }
 };

@@ -36,7 +36,7 @@ class Cart extends Component {
     let cart = this.props.cart ;
 
     let menu = cart.length === 0 ?
-      (<Alert variant="secondary">Su carrito de compras está vacio</Alert>) :
+      (<Alert variant="secondary" className="m-2">Su carrito de compras está vacio</Alert>) :
       cart.map((item, i) =>
         [<Dropdown.Divider key={'dvd' + i}/>,
           <CartItem key={'item' + i} index={i}/>

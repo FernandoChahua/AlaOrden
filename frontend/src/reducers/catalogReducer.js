@@ -1,10 +1,10 @@
 import {
   ADD_FILTER,
-  ADD_LIST_QUERY,
+  UPDATE_LIST_QUERY,
   DELETE_LIST_QUERY,
   GET_SEARCH_RESULTS,
   GET_QUERY_RESULTS,
-  LOAD_INIT_CATALOG, LOAD_CATEGORY_LIST, TOGGLE_LIST
+  SET_RESULTS, LOAD_CATEGORY_LIST, TOGGLE_LIST
 } from "../actions/actions";
 
 
@@ -13,13 +13,13 @@ export default function catalogReducer(state = {list: [], results: []}, action) 
     case LOAD_CATEGORY_LIST:
       return Object.assign({}, state,
         {categories: action.categories});
-    case LOAD_INIT_CATALOG:
+    case SET_RESULTS:
       return Object.assign({}, state,
         {results: action.results});
     case GET_SEARCH_RESULTS:
       return Object.assign({}, state,
         {results: action.results, query: ''});
-    case ADD_LIST_QUERY:
+    case UPDATE_LIST_QUERY:
       return Object.assign({}, state,
         {list: state.list.concat([action.query])});
     case DELETE_LIST_QUERY:

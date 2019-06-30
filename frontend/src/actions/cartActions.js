@@ -1,5 +1,4 @@
 import {ADD_ITEM, LOAD_CART, REMOVE_ITEM, SUBMIT_CART, UPDATE_ITEM} from "./actions";
-import axios from "axios";
 
 export function addItem(product, quantity) {
     return (dispatch) => {
