@@ -30,6 +30,7 @@ class RegisterForm extends Component {
     event.preventDefault();
 
     //TODO: validate inputs;
+    if((pass1 == pass2)&&(pass1.length>5)&&(email.length>10)&&(user.length>6) ){
 
     this.setState({
       user: '',
@@ -37,6 +38,7 @@ class RegisterForm extends Component {
       pass1: '',
       pass2: ''
     });
+  }
   }
 
   handleChange(event) {
