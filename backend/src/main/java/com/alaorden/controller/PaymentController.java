@@ -30,11 +30,11 @@ public class PaymentController {
         orderService.listOrderByUser(order);
         return order;
     }
-    @RequestMapping(path="/{cardNumber}",method = RequestMethod.POST)
-    Orders realizarPago(@PathVariable String cardNumber,@RequestBody Orders order){
+    @RequestMapping(method = RequestMethod.POST)
+    Orders realizarPago(@RequestBody Orders order){
 
         Transaction transaction = new Transaction();
-        transaction.setCardNumber(cardNumber);
+        transaction.setCardNumber(order.getTransaction().getCardNumber());
         transaction = transactionService.saveTransaction(transaction);
 
         order.setTransaction(transaction);
