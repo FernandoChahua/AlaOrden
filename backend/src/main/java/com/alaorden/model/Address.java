@@ -23,7 +23,7 @@ public class Address {
 
     @ManyToOne
     @MapsId("idUser")
-    @JoinColumn(name = "idUser")
+    @JoinColumn(name = "user")
     private User user;
 
     @Column(name = "longitude")
