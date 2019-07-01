@@ -5,6 +5,9 @@ import Col from "react-bootstrap/Col";
 import  {InputGroup} from "react-bootstrap"
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
+import {compose} from "redux";
+import {register} from "../../actions/authActions";
 
 /*
 local: [...form]
@@ -105,7 +108,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-
+  register: register
 };
 
-export default connect(mapState,mapDispatch)(RegisterForm);
+export default compose(withRouter,connect(mapState,mapDispatch))(RegisterForm);

@@ -3,8 +3,8 @@ import {Form, Row, Col} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
 import {logIn} from "../../actions/authActions";
-import {loadUserCart} from "../../actions/cartActions";
-
+import {compose} from "redux";
+import {withRouter} from "react-router-dom"
 /*
 local: [...form]
 state: (response)
@@ -41,7 +41,7 @@ class LoginForm extends Component {
   login(event) {
     event.preventDefault();
 
-    this.props.logIn(this.state.user,this.state.pass);
+    this.props.logIn(this.state.user,this.state.pass,this.props.history);
 
     this.setState({
       user: '',
@@ -86,4 +86,4 @@ const mapDispatch = {
   logIn: logIn,
 };
 
-export default connect(mapState, mapDispatch)(LoginForm);
+export default compose(withRouter,connect(mapState, mapDispatch))(LoginForm);

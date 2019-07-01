@@ -137,10 +137,9 @@ class Payment extends Component {
     let response = this.props.response;
     if (response.status === 200) {
       console.log("finishing");
-      this.props.finish()
+      this.props.finish(this.props.history);
     }
     else {
-      console.log("wtf");
     }
   }
 

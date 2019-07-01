@@ -2,14 +2,17 @@ import {HIDE_AUTH_MODAL, LOGIN, LOGOUT, SHOW_AUTH_MODAL} from "./actions";
 import axios from "axios";
 import {_clearCart, loadUserCart} from "./cartActions";
 
-export function logIn(input, pass) {
+export function logIn(input, pass,history) {
   return (dispatch) => {
     axios.get(`api/usuario/login/${input}/${pass}`)
       .then(response => {
         dispatch(_logIn(response.data));
         loadUserCart(dispatch, response.data.idUser);
+        history.push("/");
       })
-      .catch(error => { /*TODO: handle error*/ });
+      .catch(error => {
+
+      });
   }
 }
 

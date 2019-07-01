@@ -39,7 +39,7 @@ export function sendPay(card, save) {
   }
 }
 
-export function finish() {
+export function finish(history) {
   return (dispatch, getState) => {
     let order = getState().order.order;
     let response = getState().payment.response;
@@ -51,7 +51,7 @@ export function finish() {
 
     axios.post("api/payment/", order)
       .then(response => {
-
+        this.history.push("/");
       })
       .catch(error => {
       });

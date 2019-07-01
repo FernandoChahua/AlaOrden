@@ -26,7 +26,7 @@ class Delivery extends Component {
     this.state = {
       showModal: false,
       using: 'old',
-      save: true,
+      save: false,
       address: {},
       lat: 0,
       lng: 0,
@@ -75,24 +75,23 @@ class Delivery extends Component {
             </div>
             <hr className="mb-2"/>
             <div className="pr-5 m-4">
-              <div className="input-group-append">
-                <Form.Check type="radio" name="usingAddress"/>
-                <h6 className="mb-3">Direccion Reciente</h6>
-              </div>
-              <br/>
-              <h6>___ {this.state.address.description}</h6>
-              <h6>LAT {this.state.lat}</h6>
-              <h6>LNG {this.state.lng}</h6>
-              <h6>DIR {this.state.dir}</h6>
-              <Form>
-                <select className="form-control" id="selDireccion"
-                        value={this.state.address} onChange={this.handleSelect}>
-                  <option value={{}}>Seleccione Dirección</option>
-                  {this.props.addressList.map((x, i) => (<option key={i} value={x}>{x.description}</option>))}
-                </select>
-              </Form>
-              <br/>
-              <div className="d-flex justify-content-between mb-4">
+              {/*<div>
+                <div className="input-group-append">
+                  <Form.Check type="radio" name="usingAddress"/>
+                  <h6 className="mb-3">Direccion Reciente</h6>
+                </div>
+                <br/>
+                <Form>
+                  <select className="form-control" id="selDireccion"
+                          value={this.state.address} onChange={this.handleSelect}>
+                    <option value={{}}>Seleccione Dirección</option>
+                    {this.props.addressList.map((x, i) => (<option key={i} value={x}>{x.description}</option>))}
+                  </select>
+                </Form>
+                <br/>
+              </div>*/}
+
+              {/*<div className="d-flex justify-content-between mb-4">
 
                 <div className="d-inline-flex">
                   <Form.Check type="radio" name="usingAddress"/>
@@ -105,7 +104,7 @@ class Delivery extends Component {
                          onChange={() => this.setState({...this.state, save: !this.state.save})}/>
                   <Form.Label className="form-check-label" htmlFor="chkRecordar">Recordar</Form.Label>
                 </div>
-              </div>
+              </div>*/}
               <Form>
                 <section className="container mt-3">
                   <input id="autocomplete" className="form-control " type="text" onChange={this.changeGeoLoc}/>
