@@ -35,7 +35,7 @@ export function sendPay(card, save) {
       status: 200,
       card,
     };
-      setTimeout(dispatch(_setResponse(response)),2000);
+    dispatch(_setResponse(response));
   }
 }
 
@@ -44,13 +44,14 @@ export function finish() {
     let order = getState().order.order;
     let response = getState().payment.response;
 
-    order.transacion = {
-      cardNumber: getState().payment.respond.card.cardNumber
+    order.transaction = {
+      cardNumber: getState().payment.response.card.cardNumber
     };
+    console.log(order);
 
-    axios.post(`api/payment/${response.card}`, order)
+    axios.post("api/payment/", order)
       .then(response => {
-
+        console.log(":DDDD")
       })
       .catch(error => {
       });

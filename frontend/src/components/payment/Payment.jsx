@@ -47,10 +47,7 @@ class Payment extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      response: this.props.response,
-      ...initialState
-    };
+    this.state = initialState;
 
     this.checkout = this.checkout.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -62,13 +59,13 @@ class Payment extends Component {
     this.toggleDetails = this.toggleDetails.bind(this);
   }
 
-  componentWillReceiveProps(nextProps, nextContext) {
-    if (JSON.stringify(nextProps.response) !== JSON.stringify(this.props.response)) {
-      this.setState({...this.state,response: nextProps.response});
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.response !== this.props.response) {
       console.log("received response");
       this.getResponse();
     }
   }
+
 
   checkout() {
 
@@ -136,10 +133,14 @@ class Payment extends Component {
 
   getResponse() {
     console.log("here");
-    let response = this.state.response;
+    console.log(this.props.response);
+    let response = this.props.response;
     if (response.status === 200) {
       console.log("finishing");
       this.props.finish()
+    }
+    else {
+      console.log("wtf");
     }
   }
 
