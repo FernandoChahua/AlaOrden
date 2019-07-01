@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Col, Image, Row, InputGroup, FormControl, Button} from "react-bootstrap";
+import {Col, Image, Row, InputGroup, FormControl, Button, Container} from "react-bootstrap";
 import {connect} from "react-redux";
 import {removeItem, updateItem} from "../../actions/cartActions";
 
@@ -16,6 +16,18 @@ class CartItem extends Component {
     this.increaseQuantity = this.increaseQuantity.bind(this);
     this.decreaseQuantity = this.decreaseQuantity.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.commitChange = this.commitChange.bind(this);
+
+    this.state = {
+      quantity: this.props.cartItem.quantity,
+      updateTimer: () => {}
+    }
+  }
+
+  componentWillReceiveProps(nextProps, nextContext) {
+    if (this.state.quantity !== nextProps.cartItem.quantity){
+      this.setState({...this.state, quantity: nextProps.cartItem.quantity});
+    }
   }
 
   changeQuantity(event) {
@@ -27,21 +39,30 @@ class CartItem extends Component {
     if (quantity > 100) {
       quantity = 99;
     }
-    this.props.updateItem(cartItem.product, quantity);
+    this.commitChange(cartItem.product, quantity);
+  }
+
+  commitChange(product,quantity) {
+    clearTimeout(this.state.updateTimer);
+    this.setState({quantity, updateTimer: setTimeout(() => {this.props.updateItem(product, quantity)},1000) });
   }
 
   decreaseQuantity() {
-    let cartItem = this.props.cartItem;
-    let newQuantity = cartItem.quantity === 0 ? 1 : cartItem.quantity - 1;
 
-    this.props.updateItem(cartItem.product, newQuantity);
+
+    let cartItem = this.props.cartItem;
+    let newQuantity = this.state.quantity - 1;
+    if (newQuantity > 0 ){
+      this.commitChange(cartItem.product, newQuantity);
+    }
   }
 
   increaseQuantity() {
     let cartItem = this.props.cartItem;
-    let newQuantity = cartItem.quantity > 99 ? 99 : cartItem.quantity + 1;
-
-    this.props.updateItem(cartItem.product, newQuantity);
+    let newQuantity =  this.state.quantity + 1;
+    if (newQuantity < 100) {
+      this.commitChange(cartItem.product, newQuantity);
+    }
   }
 
   deleteItem() {
@@ -51,7 +72,7 @@ class CartItem extends Component {
 
   render() {
     let product = this.props.cartItem.product;
-    let quantity = this.props.cartItem.quantity;
+    let quantity = this.state.quantity;
 
     let name = [product.brand.name.toUpperCase(),product.name].join(' ');
     let details = product.packaging + " x" + product.quantity + ": " + product.measure + product.unit;
@@ -59,32 +80,34 @@ class CartItem extends Component {
     return (
       <Row>
         <Col xs={3}>
-          <Image src={process.env.PUBLIC_URL + "/img/products/"+product.image} height="70px" alt={product.name} className="noselect"/>
+          <Image src={process.env.PUBLIC_URL + "/img/products/"+product.image} height="70px" width="70px" alt={product.name} className="noselect p-1"/>
         </Col>
         <Col>
-          <Row>
-            <p className="m-0">{name}</p>
-          </Row>
-          <Row>
-            <p className="text-muted mb-1">{details}</p>
-          </Row>
-          <Row>
-            <Col xs={6}>
-              <InputGroup size="sm">
-                <InputGroup.Prepend>
-                  <Button variant="outline-warning" onClick={this.decreaseQuantity}>-</Button>
-                </InputGroup.Prepend>
-                <FormControl className="text-center" value={quantity}
-                             onChange={this.changeQuantity}/>
-                <InputGroup.Append>
-                  <Button variant="outline-success" onClick={this.increaseQuantity}>+</Button>
-                </InputGroup.Append>
-              </InputGroup>
-            </Col>
-            <Col>
-              <Button size="sm" variant="link" className="text-danger" onClick={this.deleteItem}>Eliminar</Button>
-            </Col>
-          </Row>
+          <Container>
+            <Row>
+              <p className="m-0">{name}</p>
+            </Row>
+            <Row>
+              <p className="text-muted mb-1">{details}</p>
+            </Row>
+            <Row noGutters>
+              <Col xs={6}>
+                <InputGroup size="sm">
+                  <InputGroup.Prepend>
+                    <Button variant="outline-warning" onClick={this.decreaseQuantity}>-</Button>
+                  </InputGroup.Prepend>
+                  <FormControl className="text-center" value={quantity}
+                               onChange={this.changeQuantity}/>
+                  <InputGroup.Append>
+                    <Button variant="outline-success" onClick={this.increaseQuantity}>+</Button>
+                  </InputGroup.Append>
+                </InputGroup>
+              </Col>
+              <Col>
+                <Button size="sm" variant="link" className="text-danger" onClick={this.deleteItem}>Eliminar</Button>
+              </Col>
+            </Row>
+          </Container>
         </Col>
       </Row>
     );

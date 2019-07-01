@@ -9,7 +9,7 @@ export function askForOptions(dispatch, state, history) {
     axios.post(`api/cotizacion/${user.idUser}`, address)
       .then(response => {
         dispatch(_loadOptions(response.data));
-        dispatch(_setStep(2));
+        dispatch(_setStep(1));
         history.push("/order/quotation");
       }).catch(error => {
       console.log(error)
@@ -19,7 +19,7 @@ export function askForOptions(dispatch, state, history) {
 export function pickOption(order,history) {
   return (dispatch) => {
     dispatch(_setOrder(order));
-    dispatch(_setStep(3));
+    dispatch(_setStep(2));
     history.push("/order/payment");
   }
 }

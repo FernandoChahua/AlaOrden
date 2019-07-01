@@ -52,6 +52,14 @@ public class PaymentController {
 
     }
 
+    @RequestMapping(path="/{code}",method= RequestMethod.POST)
+    Coupon saveAddress(@PathVariable String code) {
+        return this.transactionService.validarCoupon(code);
+    }
 
+    @RequestMapping(method= RequestMethod.POST)
+    Coupon saveAddress(@RequestBody Coupon coupon) {
+        return this.transactionService.saveCoupon(coupon);
+    }
 }
 

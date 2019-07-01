@@ -3,7 +3,9 @@ import Container from "react-bootstrap/Container";
 import {Col, Row, Form, FormGroup, FormCheck, InputGroup} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
-import {applyCoupon} from "../../actions/paymentActions";
+import {applyCoupon, finish, sendPay} from "../../actions/paymentActions";
+import {compose} from "redux";
+import {withRouter} from "react-router-dom";
 
 
 //FIXME: Nested forms
@@ -12,19 +14,42 @@ local: [...forms]
 state: creditCards, cardToken, coupons
 dispatch:
 */
+
+const cleanForm = {
+  card: '',
+  holder: '',
+  month: '',
+  year: '',
+  ccv: '',
+  couponInput: '',
+  cardError: '',
+  holderError: '',
+  monthError: '',
+  yearError: '',
+  ccvError: '',
+  couponInputError: ''
+};
+
 class Payment extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      storedCard: '',
+      response: this.props.response,
       card: '',
-      person: '',
+      holder: '',
       month: '',
       year: '',
       ccv: '',
       couponInput: '',
+      cardError: '',
+      holderError: '',
+      monthError: '',
+      yearError: '',
+      ccvError: '',
+      couponInputError: '',
       remember: false,
+      usingNew: false,
       showDetails: false,
       showShipping: false,
     };
@@ -35,6 +60,27 @@ class Payment extends Component {
     this.addCoupon = this.addCoupon.bind(this);
 
     this.toggleDetails = this.toggleDetails.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps, nextContext) {
+    if (JSON.stringify(nextProps.response) !== JSON.stringify(this.props.response)){
+
+    }
+  }
+
+  checkout() {
+    let card = {
+      cardNumber: this.state.card,
+      holder: this.state.holder,
+    };
+    this.props.sendPay(card,this.state.remember)
+  }
+
+  validate() {
+    let response = this.state.response;
+    if (response.status === 200){
+      this.props.finish()
+    }
   }
 
   toggleDetails(event) {
@@ -58,8 +104,8 @@ class Payment extends Component {
       case 'card':
         state.card = value;
         break;
-      case 'person':
-        state.person = value;
+      case 'holder':
+        state.holder = value;
         break;
       case 'month':
         state.month = value;
@@ -79,10 +125,6 @@ class Payment extends Component {
     this.setState(state);
   }
 
-  checkout() {
-
-  }
-
   render() {
     let order = this.props.order;
     let total = order.subTotal + order.priceDelivery - order.discount;
@@ -99,13 +141,13 @@ class Payment extends Component {
     return (
       <Container className="text-left">
         <Row>
-          <Col className="col-md-8">
+          <Col id="payment-form" className="col-md-8">
             <br/>
             <div>
               <h4>Información de Pago</h4>
             </div>
             <hr className="mb-2"/>
-            <Form onSubmit={this.checkout}>
+            <Form>
               <Row>
                 <Col className="col-md-6">
                   <h6 className="mb-3">Usar Tarjeta Guardada</h6>
@@ -134,7 +176,7 @@ class Payment extends Component {
                   <FormGroup>
                     <Form.Label htmlFor="txtCuenta">Numero de Cuenta</Form.Label>
                     <Form.Control type="text" className="form-control" id="txtCuenta"
-                                  placeholder="Numero de Cuenta"
+                                  placeholder="Numero de Cuenta" required={this.state.usingNew}
                                   name="card" value={this.state.card} onChange={this.handleChange}/>
                   </FormGroup>
                 </Col>
@@ -145,7 +187,7 @@ class Payment extends Component {
                       <FormGroup>
                         <Form.Label htmlFor="txtExpM">Mes</Form.Label>
                         <Form.Control type="text" id="txtExpM"
-                                      placeholder="MM"
+                                      placeholder="MM" required={this.state.usingNew}
                                       name="month" value={this.state.month} onChange={this.handleChange}/>
                       </FormGroup>
                     </Col>
@@ -153,7 +195,7 @@ class Payment extends Component {
                       <FormGroup>
                         <Form.Label htmlFor="txtExpY">Año</Form.Label>
                         <Form.Control type="text" id="txtExpY"
-                                      placeholder="YYYY"
+                                      placeholder="YYYY" required={this.state.usingNew}
                                       name="year" value={this.state.year} onChange={this.handleChange}/>
                       </FormGroup>
                     </Col>
@@ -165,14 +207,14 @@ class Payment extends Component {
                 <Col className="col-md-6">
                   <FormGroup>
                     <Form.Label htmlFor="txtTitular">Titular</Form.Label>
-                    <Form.Control type="text" id="txtTitular" placeholder="Titular"
-                                  name="person" value={this.state.person} onChange={this.handleChange}/>
+                    <Form.Control type="text" id="txtTitular" placeholder="Titular" required={this.state.usingNew}
+                                  name="holder" value={this.state.holder} onChange={this.handleChange}/>
                   </FormGroup>
                 </Col>
                 <Col className="col-md-2">
                   <FormGroup>
                     <Form.Label htmlFor="txtCuenta">CCV</Form.Label>
-                    <Form.Control type="text" id="txtCCV" placeholder="CCV"
+                    <Form.Control type="text" id="txtCCV" placeholder="CCV" required={this.state.usingNew}
                                   name="ccv" value={this.state.ccv} onChange={this.handleChange}/>
                   </FormGroup>
                 </Col>
@@ -180,7 +222,7 @@ class Payment extends Component {
 
             </Form>
           </Col>
-          <Col className="col-md-4">
+          <Col id="order-resume" className="col-md-4">
             <br/>
             <h4 className="d-flex justify-content-between">
               <span>Resumen</span>
@@ -240,10 +282,10 @@ class Payment extends Component {
         <br/>
         <Row>
           <Col>
-            <Button variant="outline-primary" block onClick={this.register}>Anterior</Button>
+            <Button variant="outline-primary" block onClick={() => {this.props.history.goBack()}}>Anterior</Button>
           </Col>
           <Col>
-            <Button block onClick={this.register}>Siguiente</Button>
+            <Button block onClick={this.checkout}>Siguiente</Button>
           </Col>
         </Row>
       </Container>
@@ -253,6 +295,7 @@ class Payment extends Component {
 
 const mapState = state => {
   return {
+    response: state.payment.response,
     coupons: state.payment.coupons,
     order: state.order.order,
     discount: state.payment.discount
@@ -260,7 +303,9 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  applyCoupon: applyCoupon
+  applyCoupon: applyCoupon,
+  sendPay: sendPay,
+  finish: finish
 };
 
-export default connect(mapState, mapDispatch)(Payment);
+export default compose(withRouter,connect(mapState, mapDispatch))(Payment);

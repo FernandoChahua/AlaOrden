@@ -5,6 +5,7 @@ import Delivery from "../delivery/Delivery";
 import Payment from "../payment/Payment";
 import Quotation from "../quotation/Quotation";
 import {connect} from "react-redux";
+import Forbidden from "../user/Forbidden";
 
 /*
 local:
@@ -21,6 +22,10 @@ class Order extends Component {
       {title: 'Pago', onClick: () => { this.props.history.push("/order/payment") }}
     ];
 
+    if (!this.props.authenticated){
+      return (<Forbidden />)
+    }
+
     return (
       <div id="order-steps">
         <Stepper steps={steps} activeStep={this.props.activeStep} />
@@ -35,8 +40,7 @@ class Order extends Component {
 const mapState = state => {
   return {
     activeStep: state.order.activeStep,
-    maxStep: state.order.maxStep,
-    allowCheckout: state.cart.allowCheckout
+    authenticated: state.auth.authenticated
   }
 };
 

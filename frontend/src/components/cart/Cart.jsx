@@ -6,10 +6,11 @@ import DropdownMenu from "react-bootstrap/DropdownMenu";
 import Button from "react-bootstrap/Button";
 import CartItem from "./CartItem";
 import {connect} from "react-redux";
-import {checkOut} from "../../actions/cartActions";
+import {checkOut, clearCart} from "../../actions/cartActions";
 import Alert from "react-bootstrap/Alert";
 import {compose} from "redux";
 import {withRouter} from "react-router-dom"
+import {showModal} from "../../actions/authActions";
 
 /*
 local:
@@ -41,6 +42,31 @@ class Cart extends Component {
           <CartItem key={'item' + i} index={i}/>
         ]);
 
+    let cartButton = {
+      text: "Procesar Pedido",
+      action: this.goToCheckout,
+      disabled: cart.length === 0,
+      variant: "primary"
+    };
+
+    if(this.props.authenticated) {
+      if (this.props.isOrdering){
+        cartButton = {
+          text: "Regresar ",
+          action: this.props.showModal,
+          disabled: true,
+          variant: "warning"
+        }
+      }
+    } else {
+      cartButton = {
+        text: "Iniciar Sesion",
+        action: this.props.showModal,
+        disabled: false,
+        variant: "danger"
+      }
+    }
+
     return (
       <Dropdown>
         <DropdownToggle variant="outline-warning">
@@ -49,12 +75,15 @@ class Cart extends Component {
           {cart.length > 0 && <Badge variant="warning">{cart.length}</Badge>}
         </DropdownToggle>
         <DropdownMenu alignRight className="p-2" >
-          <Dropdown.Header>Resumen de compra</Dropdown.Header>
+          <Dropdown.Header className="d-flex justify-content-between align-items-center">
+            Resumen de compra
+            <Button variant="link" size="sm" onClick={this.props.clearCart}>Vaciar Carrito</Button>
+          </Dropdown.Header>
           <div className="cart-menu">
             {menu}
           </div>
           <Dropdown.Divider/>
-          <Button block onClick={this.goToCheckout} disabled={!this.props.allowCheckout}>Procesar Pedido</Button>
+          <Button block variant={cartButton.variant} onClick={cartButton.action} disabled={cartButton.disabled}>{cartButton.text}</Button>
         </DropdownMenu>
       </Dropdown>
     );
@@ -64,12 +93,14 @@ class Cart extends Component {
 const mapState = state => {
   return {
     cart: state.cart.cart,
-    allowCheckout: !state.order.isOrdering
+    isOrdering: state.order.isOrdering,
+    authenticated: state.auth.authenticated
   }
 };
 
 const mapDispatch = {
-
+  showModal: showModal,
+  clearCart: clearCart
 };
 
 export default compose(withRouter,connect(mapState, mapDispatch))  (Cart);

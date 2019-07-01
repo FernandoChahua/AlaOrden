@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import {FormControl, InputGroup} from 'react-bootstrap'
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
-import {addItem, loadCart} from "../../actions/cartActions";
+import {addItem, loadUserCart} from "../../actions/cartActions";
 
 /*
 local: quantity
@@ -47,8 +47,10 @@ class ProductCard extends Component {
   }
 
   addToCart() {
-    this.props.addItem(this.props.product,this.state.quantity);
-    this.setState({quantity: 0});
+    if (this.state.quantity > 0){
+      this.props.addItem(this.props.product,this.state.quantity);
+      this.setState({quantity: 0});
+    }
   }
 
   render() {
@@ -58,25 +60,23 @@ class ProductCard extends Component {
 
     return (
       <Card className="product-card">
-        <Card.Img src={"img/products/" + product.image} alt="imagen"/>
-        <Card.Body>
-          <Container>
+        <Card.Img src={"img/products/" + product.image} alt={product.name}/>
+        <Card.Body className="d-flex flex-column  justify-content-around text-center">
             <Row>
               <Col>
-                <h6 className="my-0 text-center">{product.brand.name.toUpperCase()}</h6>
+                <h6 className="my-0">{product.brand.name.toUpperCase()}</h6>
               </Col>
             </Row>
-            <Row>
+            <Row noGutters>
               <Col>
-                <p className="m-0">{product.name}</p>
+                <p className="m-0">{product.category.name + " " + product.name}</p>
               </Col>
             </Row>
-            <Row>
+            <Row noGutters>
               <Col>
                 <p className="text-muted mb-0">{details}</p>
               </Col>
             </Row>
-          </Container>
         </Card.Body>
         <Card.Footer>
           <Row noGutters>

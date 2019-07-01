@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import loadScript from "../../util/ScriptLoader";
 import {loadAddress, pickAddress} from "../../actions/deliveryActions";
+import ConfirmAddress from "../modal/ConfirmAddress";
 
 
 let apiKey = "AIzaSyDzB-76_WJJt-fAqyqnT23jyCpNwm3jqcg";
@@ -23,6 +24,7 @@ class Delivery extends Component {
     super(props);
 
     this.state = {
+      showModal: false,
       using: 'old',
       save: true,
       address: {},
@@ -42,6 +44,10 @@ class Delivery extends Component {
 
   changeGeoLoc() {
 
+  }
+
+  toggleConfirmation() {
+    this.setState({...this.state, showModal: !this.state.showModal})
   }
 
   goToQuotation() {
@@ -113,10 +119,14 @@ class Delivery extends Component {
               <br/>
               <Row>
                 <Col>
-                  <Button variant="outline-primary" block onClick={this.register}>Cancelar</Button>
+                  <Button variant="outline-primary" block onClick={() => {this.props.history.goBack()}}>Cancelar</Button>
                 </Col>
                 <Col>
-                  <Button block onClick={this.goToQuotation}>Siguiente</Button>
+                  <Button block onClick={() => {this.setState({...this.state,showModal: true})}}>Siguiente</Button>
+                  <ConfirmAddress show={this.state.showModal}
+                                  toggle={this.toggleConfirmation.bind(this)}
+                                  confirm={this.goToQuotation}
+                                  object={this.state.dir}/>
                 </Col>
               </Row>
             </div>

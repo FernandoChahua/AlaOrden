@@ -33,6 +33,7 @@ export const LOAD_OPTIONS = 'VIEW_OPTIONS';
 export const APPLY_COUPON = 'APPLY_COUPON';
 export const REMOVE_COUPON = 'REMOVE_COUPON';
 export const SET_TOKEN = 'SET_TOKEN';
+export const SET_RESPONSE = 'SET_RESPONSE';
 
 /* CRUD */
 //USER[lse] (direction[l])

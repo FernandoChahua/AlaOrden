@@ -7,6 +7,7 @@ import DropdownMenu from "react-bootstrap/DropdownMenu";
 import Dropdown from "react-bootstrap/Dropdown";
 import {connect} from "react-redux";
 import {logOut, showModal} from "../../actions/authActions";
+import {Link} from "react-router-dom";
 
 /*
 local:
@@ -31,7 +32,7 @@ class SessionButton extends Component {
           <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
           <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
           <Dropdown.Divider/>
-          <Dropdown.Item onClick={this.props.logOut}>Cerrar Sesión</Dropdown.Item>
+          <Dropdown.Item onClick={this.props.logOut} as={Link} to={"/"}>Cerrar Sesión</Dropdown.Item>
         </DropdownMenu>
       </Dropdown>) :
 

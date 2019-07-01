@@ -3,7 +3,7 @@ import {Form, Row, Col} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
 import {logIn} from "../../actions/authActions";
-import {loadCart} from "../../actions/cartActions";
+import {loadUserCart} from "../../actions/cartActions";
 
 /*
 local: [...form]

@@ -49,9 +49,9 @@ export function getResults(query) {
 
 export function showCategories(categoryId) {
   return (dispatch, getState) => {
-    let products = getState().catalog.products
+    let products = getState().catalog.products;
     let results = products.filter(x =>
-      x.category.idCategory == categoryId);
+      x.category.idCategory === categoryId);
     dispatch(_setResults(results));
   }
 }

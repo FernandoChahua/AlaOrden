@@ -27,8 +27,11 @@ public class DireccionController {
         return addressService.listAddressByUser(idUsuario);
     }
 
-    @PostMapping
+    @RequestMapping(method= RequestMethod.POST)
     Address saveAddress(@RequestBody Address address) {
         return this.addressService.createAddress(address);
     }
+
+
+
 }

@@ -44,17 +44,13 @@ public class CartServiceImpl implements CartService {
         cartItemRepository.delete(entity);
     }
 
-    @Transactional
-    public void emptyCart(int id){
-        cartItemRepository.deleteAllByUserIdUser(id);
-    }
 
     public CartItem findByUserAndProduct(int idUser,int idProduct){
         return cartItemRepository.findByUserIdUserAndProductIdProduct(idUser,idProduct);
     }
     @Transactional
     public void deleteByUserId(int id){
-        cartItemRepository.deleteAllByUserIdUser(id);
+        cartItemRepository.deleteByUserIdUser(id);
     }
     @Transactional
     public void deleteByUserAndProduct(int idUser,int idProduct){
