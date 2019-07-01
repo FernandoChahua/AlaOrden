@@ -37,6 +37,7 @@ public class CotizacionController {
                 orders.get(i).setAddress(address.getDescription());
                 orders.get(i).setState("Procesando");
                 orders.get(i).setDate(LocalDateTime.now());
+                orders.get(i).setSubTotal(orders.get(i).getSubTotal().setScale(2, BigDecimal.ROUND_UP));
             }
 
             return orders;
