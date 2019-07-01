@@ -69,18 +69,19 @@ export function clearCart() {
   return (dispatch,getState) => {
     if (getState().auth.authenticated){
       let user = getState().auth.user;
-
-      axios.delete(`api/cart/${user.idUser}`)
-        .then(response => {
-          dispatch(_clearCart());
-        })
-        .catch(error => { /*TODO: handle error*/
-        });
+      let cart = getState().cart.cart;
+      cart.map(x => {
+        axios.delete(`api/cart/${x.user.idUser}/${x.product.idProduct}`)
+          .then(response => {
+            loadUserCart(dispatch, user.idUser);
+          })
+          .catch(error => {
+          });
+      });
     }
     else {
       dispatch(_clearCart());
     }
-
   }
 }
 

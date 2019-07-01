@@ -1,4 +1,4 @@
-import {APPLY_COUPON, REMOVE_COUPON, SET_RESPONSE} from "../actions/actions";
+import {APPLY_COUPON, REMOVE_COUPON, SET_PAYMENT_RESPONSE} from "../actions/actions";
 
 const initial = {
   coupons: [],
@@ -24,7 +24,7 @@ export default function paymentReducer(state = initial, action) {
       });
       return Object.assign({}, state,
         {coupons: couponList, discount: discount});
-    case SET_RESPONSE:
+    case SET_PAYMENT_RESPONSE:
       return Object.assign({}, state,
         {response: action.response});
     default:

@@ -3,6 +3,7 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const SHOW_AUTH_MODAL = 'SHOW_AUTH_MODAL';
 export const HIDE_AUTH_MODAL = 'HIDE_AUTH_MODAL';
+export const SET_LOGIN_RESPONSE = 'SET_LOGIN_RESPONSE';
 
 //catalog(search/list/category)
 export const SET_QUERY = 'SET_QUERY';
@@ -33,7 +34,7 @@ export const LOAD_OPTIONS = 'VIEW_OPTIONS';
 export const APPLY_COUPON = 'APPLY_COUPON';
 export const REMOVE_COUPON = 'REMOVE_COUPON';
 export const SET_TOKEN = 'SET_TOKEN';
-export const SET_RESPONSE = 'SET_RESPONSE';
+export const SET_PAYMENT_RESPONSE = 'SET_PAYMENT_RESPONSE';
 
 /* CRUD */
 //USER[lse] (direction[l])
