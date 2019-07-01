@@ -22,7 +22,7 @@ public class Address {
     private Integer idAddress;
 
     @ManyToOne
-    @MapsId("idAddress")
+    @MapsId("idUser")
     @JoinColumn(name = "user")
     private User user;
 

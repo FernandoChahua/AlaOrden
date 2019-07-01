@@ -28,6 +28,9 @@ public class CotizacionController {
 
             List<CartItem> carrito = cartService.findByUser(idUser);
             List<Location> listLocations = addressService.listDistanceMin(latitude,longitude);
+            if(listLocations == null){
+                return null;
+            }
             List<Orders> orders = quotationService.generateList(carrito,listLocations);
 
             for(int i=0;i<orders.size();i++){
