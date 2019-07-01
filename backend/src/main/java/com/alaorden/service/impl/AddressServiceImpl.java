@@ -99,7 +99,7 @@ public class AddressServiceImpl implements AddressService {
 
         for(Location location : locations){
             double dist = computeDistance(latitud,longitud,location.getLatitude(),location.getLongitude());
-            if(dist <= 500.5)//<---- Distancia minima de 500.5 kilometros
+            if(dist <= 30)//<---- Distancia minima de 30 kilometros
             {
                 if(!Exist(location.getFranchise().getName(),setLocations)){
                     selectedLocations.add(location);
