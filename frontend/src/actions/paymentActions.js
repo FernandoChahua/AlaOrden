@@ -51,7 +51,7 @@ export function finish() {
 
     axios.post("api/payment/", order)
       .then(response => {
-        console.log(":DDDD")
+
       })
       .catch(error => {
       });

@@ -7,16 +7,17 @@ export function pickAddress(address, save, history) {
   return (dispatch, getState) => {
     address.user = getState().auth.user;
 
-      if (save){
-        axios.post("api/direccion", address)
-          .then(response => {
+    console.log(address);
+    if (save) {
+      axios.post("api/direccion", address)
+        .then(response => {
 
-          }).catch(error => {
+        }).catch(error => {
 
-        });
-      }
-      dispatch(_setAddress(address));
-      askForOptions(dispatch,getState(),history);
+      });
+    }
+    dispatch(_setAddress(address));
+    askForOptions(dispatch, getState(), history);
   }
 }
 
