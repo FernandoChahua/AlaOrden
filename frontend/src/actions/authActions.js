@@ -1,4 +1,4 @@
-import {HIDE_AUTH_MODAL, LOGIN, LOGOUT, SHOW_AUTH_MODAL} from "./actions";
+import {HIDE_AUTH_MODAL, LOGIN, LOGOUT, SET_LOGIN_RESPONSE, SHOW_AUTH_MODAL} from "./actions";
 import axios from "axios";
 import {_clearCart, loadUserCart} from "./cartActions";
 
@@ -70,5 +70,12 @@ const _showAuthModal = () => {
 const _hideAuthModal = () => {
   return {
     type: HIDE_AUTH_MODAL,
+  }
+};
+
+const _setLoginResponse = (response) => {
+  return {
+    type: SET_LOGIN_RESPONSE,
+    response
   }
 };

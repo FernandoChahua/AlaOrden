@@ -1,4 +1,4 @@
-import {APPLY_COUPON, REMOVE_COUPON, REMOVE_ITEM, SET_RESPONSE} from "./actions";
+import {APPLY_COUPON, REMOVE_COUPON, REMOVE_ITEM, SET_PAYMENT_RESPONSE} from "./actions";
 import axios from "axios";
 
 
@@ -75,7 +75,7 @@ const _removeCoupon = (index) => {
 
 const _setResponse = (response) => {
   return {
-    type: SET_RESPONSE,
+    type: SET_PAYMENT_RESPONSE,
     response
   }
 };
