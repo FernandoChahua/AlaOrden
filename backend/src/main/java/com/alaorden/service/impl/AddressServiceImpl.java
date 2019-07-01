@@ -9,6 +9,7 @@ import com.alaorden.repository.UserRepository;
 import com.alaorden.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -27,11 +28,11 @@ public class AddressServiceImpl implements AddressService {
         this.userRepository = userRepository;
         this.locationRepository = locationRepository;
     }
-
+    @Transactional
     public Address createAddress(Address address){
         return addressRepository.save(address);
     }
-
+    @Transactional
     public Address deleteAddress(int id){
         Address address = addressRepository.findByIdAddress(id);
         if(address == null){

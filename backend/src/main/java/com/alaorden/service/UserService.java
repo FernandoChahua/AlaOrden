@@ -8,9 +8,11 @@ import java.util.List;
 public interface UserService {
 
     User createUser(User user);
-    User updateUser(User user);
+    void updateUser(User user);
     boolean existUser(User user);
     User userByNickname(String nickname);
     User logIn(String nickname, String password);
     List<User> listAllUsers();
+    void deleteUser(int idUser);
+    User findByIdUser(int idUser);
 }

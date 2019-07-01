@@ -16,31 +16,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     public UsuarioController(UserService userService){
         this.userService = userService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    List<User> listAllUsers(){
-        return userService.listAllUsers();
-    }
-    @RequestMapping(method = RequestMethod.POST)
-    User createUser(@RequestBody User user){
-      return userService.createUser(user);
-    }
 
-    @RequestMapping(path="/update/{id}",method=RequestMethod.PUT)
-    User updateUser(@PathVariable int id,@RequestBody User user){
-        user.setIdUser(id);
-        userService.updateUser(user);
-        return user;
-    }
+
 
     @RequestMapping(path="/login/{nickname}/{password}",method = RequestMethod.GET)
-    User logIn(@PathVariable String nickname,@PathVariable String password){
+    public User logIn(@PathVariable String nickname,@PathVariable String password){
         try {
             return userService.logIn(nickname, password);
         }
@@ -48,5 +35,27 @@ public class UsuarioController {
             throw new ApiException(e.getMessage(),e);
         }
 
+    }
+
+////////////// CRUUUD ---- USER
+    @RequestMapping(method = RequestMethod.GET)
+    public List<User> listAllUsers(){
+        return userService.listAllUsers();
+    }
+    @RequestMapping(method = RequestMethod.POST)
+    public User createUser(@RequestBody User user){
+        return userService.createUser(user);
+    }
+    @RequestMapping(method=RequestMethod.PUT)
+    public void updateUser(@RequestBody User user){
+        userService.updateUser(user);
+    }
+    @RequestMapping(path="/{idUser}",method=RequestMethod.DELETE)
+    public void deleteUser(@PathVariable int idUser){
+        userService.deleteUser(idUser);
+    }
+    @RequestMapping(path="/{idUser}",method = RequestMethod.GET)
+    public User findByIdUser(@PathVariable int idUser){
+        return userService.findByIdUser(idUser);
     }
 }

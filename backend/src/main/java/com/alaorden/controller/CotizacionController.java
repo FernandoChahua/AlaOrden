@@ -22,7 +22,7 @@ public class CotizacionController {
         }
 
         @RequestMapping(path="/{idUser}",method=RequestMethod.POST)
-            List<Orders> generarListas(@PathVariable int idUser,@RequestBody Address address){
+         public   List<Orders> generarListas(@PathVariable int idUser,@RequestBody Address address){
             double latitude = address.getLatitude();
             double longitude = address.getLongitude();
 
