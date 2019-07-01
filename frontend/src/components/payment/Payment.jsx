@@ -24,22 +24,31 @@ class Payment extends Component {
       year: '',
       ccv: '',
       couponInput: '',
-      remember: false
+      remember: false,
+      showDetails: false,
+      showShipping: false,
     };
 
     this.checkout = this.checkout.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.toggleCheck = this.toggleCheck.bind(this);
     this.addCoupon = this.addCoupon.bind(this);
+
+    this.toggleDetails = this.toggleDetails.bind(this);
+  }
+
+  toggleDetails(event) {
+    console.log(this.state.showDetails);
+    this.setState({...this.state, showDetails: !this.state.showDetails});
   }
 
   addCoupon() {
     this.props.applyCoupon(this.state.couponInput);
-    this.setState({...this.state,couponInput:''});
+    this.setState({...this.state, couponInput: ''});
   }
 
   toggleCheck() {
-    this.setState({ ...this.state, remember: !this.state.remember});
+    this.setState({...this.state, remember: !this.state.remember});
   }
 
   handleChange(event) {
@@ -47,17 +56,23 @@ class Payment extends Component {
     let value = event.target.value;
     switch (event.target.name) {
       case 'card':
-        state.card = value; break;
+        state.card = value;
+        break;
       case 'person':
-        state.person = value; break;
+        state.person = value;
+        break;
       case 'month':
-        state.month = value; break;
+        state.month = value;
+        break;
       case 'year':
-        state.year = value; break;
+        state.year = value;
+        break;
       case 'ccv':
-        state.ccv = value; break;
+        state.ccv = value;
+        break;
       case 'couponInput':
-        state.couponInput = value; break;
+        state.couponInput = value;
+        break;
       default:
         break;
     }
@@ -69,6 +84,18 @@ class Payment extends Component {
   }
 
   render() {
+    let order = this.props.order;
+    let total = order.subTotal + order.priceDelivery - order.discount;
+    let details = this.state.showDetails ?
+      (<ul className="pl-2">{order.orderDetails.map((x, i) =>
+        <li key={i} className="d-flex justify-content-between">
+          <small>{x.product.category.name + " " +x.product.name + " x" + x.quantity}</small>
+          <small>{Math.round(x.quantity * x.price * 100) /100}</small>
+        </li>)}
+      </ul>) :
+      (null);
+
+
     return (
       <Container className="text-left">
         <Row>
@@ -85,8 +112,7 @@ class Payment extends Component {
                   <FormGroup>
                     <Form.Label htmlFor="selTarjeta">Número de Cuenta</Form.Label>
                     <select className="form-control" id="selTarjeta">
-                      <option>XXXX-XXXX-XXXX-XXXX</option>
-                      <option>YYYY-YYYY-YYYY-YYYY</option>
+                      <option>Seleccione Tarjeta</option>
                     </select>
                   </FormGroup>
                 </Col>
@@ -97,7 +123,8 @@ class Payment extends Component {
               <h6>Metodo de Pago</h6>
               <Form inline>
                 <FormGroup>
-                  <FormCheck type="checkbox" label="Recordar" checked={this.state.remember} onChange={this.toggleCheck} />
+                  <FormCheck type="checkbox" label="Recordar" checked={this.state.remember}
+                             onChange={this.toggleCheck}/>
                 </FormGroup>
               </Form>
             </div>
@@ -161,38 +188,42 @@ class Payment extends Component {
             </h4>
             <hr className="mb-3"/>
             <ul className="list-group mb-3">
-              <li className="list-group-item d-flex justify-content-between">
-                <div>
-                  <h5 className="my-0">Subtotal</h5>
-                  <a href="#">
-                    <small className="text-muted">Detalles</small>
-                  </a>
+              <li className="list-group-item">
+                <div className="d-flex justify-content-between">
+                  <div>
+                    <h5 className="my-0">Subtotal</h5>
+                    <a href="javascript:void(0)" onClick={this.toggleDetails}>
+                      <small className="text-muted">Detalles</small>
+                    </a>
+
+                  </div>
+                  <span>S/. {this.props.order.subTotal}</span>
                 </div>
-                <span>$</span>
+                {details}
               </li>
               <li className="list-group-item d-flex justify-content-between">
                 <div>
                   <h5 className="my-0">Precio de Envio</h5>
-                  <a href="#">
+                  <a>
                     <small className="text-muted">Detalles</small>
                   </a>
                 </div>
-                <span>$</span>
+                <span>S/. {this.props.order.priceDelivery}</span>
               </li>
               <li className="list-group-item d-flex justify-content-between text-success">
                 <div>
                   <h5 className="my-0">Descuento</h5>
                   <ul>
-                    {this.props.coupons.map((x,i) => <li key={i}>{x.code}</li>)}
+                    {this.props.coupons.map((x, i) => <li key={i}>{x.code}</li>)}
                   </ul>
                 </div>
-                <span>-${this.props.discount}</span>
+                <span>-S/.{this.props.discount}</span>
               </li>
               <li className="list-group-item d-flex justify-content-between">
                 <div>
                   <h5 className="my-0">TOTAL</h5>
                 </div>
-                <strong>$</strong>
+                <strong>S/. {Math.round(total * 100) / 100}</strong>
               </li>
             </ul>
             <InputGroup>
@@ -223,7 +254,7 @@ class Payment extends Component {
 const mapState = state => {
   return {
     coupons: state.payment.coupons,
-    order: state.quotation.order,
+    order: state.order.order,
     discount: state.payment.discount
   }
 };
@@ -232,4 +263,4 @@ const mapDispatch = {
   applyCoupon: applyCoupon
 };
 
-export default connect(mapState,mapDispatch)(Payment);
+export default connect(mapState, mapDispatch)(Payment);

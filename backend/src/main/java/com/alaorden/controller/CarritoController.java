@@ -17,21 +17,13 @@ public class CarritoController {
     @Autowired
     public CarritoController(CartService cartService) {this.cartService = cartService;}
 
+    //TODO: usuario no existe
     @RequestMapping(path="/{idUsuario}",method= RequestMethod.GET)
     List<CartItem> listCarritoItems(@PathVariable int idUsuario){return cartService.findByUser(idUsuario);}
 
-    @RequestMapping(path="/{idUsuario}/{idProducto}/{cantidad}",method=RequestMethod.PUT)
-    CartItem updateCarrito(@PathVariable int idUsuario,@PathVariable int idProducto,@PathVariable int cantidad){
 
-        CartItem act = cartService.findByUserAndProduct(idUsuario,idProducto);
-        act.setQuantity(cantidad);
-
-        cartService.saveToCart(act);
-
-        return act;
-    }
     @RequestMapping(path="/{idUser}",method=RequestMethod.DELETE)
-    String deleteCarrito(@PathVariable int idUser)
+    String empyCarrito(@PathVariable int idUser)
     {
         List<CartItem> carritos = cartService.findByUser(idUser);
         if(carritos != null)
@@ -41,6 +33,8 @@ public class CarritoController {
         }
         return "No existe el carrito del Usuario con Id "+idUser;
     }
+
+    //TODO:
     @RequestMapping(path="/{idUser}/{idProduct}",method=RequestMethod.DELETE)
     String deleteCarrito(@PathVariable int idUser,@PathVariable int idProduct)
     {
@@ -52,12 +46,16 @@ public class CarritoController {
         }
         return ("No existe el item carrito del usuario con id "+idUser+" y producto con id "+idProduct);
     }
+
+    //TODO:
     @RequestMapping(method=RequestMethod.POST)
     void createItemCarrito(@RequestBody CartItem carritoItem){
         if(carritoItem != null) {
             cartService.saveToCart(carritoItem);
         }
     }
+
+    //TODO: no existe
     @RequestMapping(method=RequestMethod.PUT)
     void updateItemCarrito(@RequestBody CartItem carritoItem){
         if(carritoItem != null) {

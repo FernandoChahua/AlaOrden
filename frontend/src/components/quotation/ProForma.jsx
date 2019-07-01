@@ -39,12 +39,12 @@ class ProForma extends Component {
           </div>
         </div>
         <Card>
-          <Card.Header eventKey={this.props.eventKey} onClick={() => {this.setState({show: !this.state.show})}}
+          <Card.Header onClick={() => {this.setState({show: !this.state.show})}}
                        className="d-inline-flex justify-content-between">
             <Image src={process.env.PUBLIC_URL + "/img/franchises/" + franchise.logo} alt="logo" className="" height="40px"/>
             <div>
               <b>TOTAL: S/</b>
-              <Badge pill variant="light">{this.props.proforma.subTotal}</Badge>
+              <Badge pill variant="light">{Math.round(this.props.proforma.subTotal*100)/100}</Badge>
             </div>
           </Card.Header>
           <Collapse in={this.state.show}>

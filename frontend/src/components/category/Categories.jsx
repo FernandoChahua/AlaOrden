@@ -5,6 +5,8 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import {connect} from "react-redux";
 import {loadCategories, showCategories} from "../../actions/catalogActions";
+import {compose} from "redux";
+import {withRouter} from "react-router-dom"
 
 /*
 local:
@@ -22,7 +24,8 @@ class Categories extends Component {
 
     }
     filterByCategory(event,idCategory){
-      this.props.showCategories(idCategory);
+      this.props.history.push("/");
+      setTimeout(this.props.showCategories(idCategory),4000);
     }
   render() {
         let categories = this.props.categories || [];
@@ -54,4 +57,4 @@ const mapDispatch = {
   showCategories:showCategories
 };
 
-export default connect(mapState,mapDispatch)(Categories);
+export default compose(withRouter,connect(mapState,mapDispatch))(Categories);
