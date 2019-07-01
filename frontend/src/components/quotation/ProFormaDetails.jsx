@@ -14,9 +14,9 @@ class ProFormaDetails extends Component {
     return (
       <tr>
         <td>{name.join(" ")}</td>
-        <td>{details.price}</td>
+        <td>S/.{details.price}</td>
         <td>{details.quantity}</td>
-        <td><b>S/{Math.round(details.price * details.quantity*100)/100}</b></td>
+        <td><b>S/.{Math.round(details.price * details.quantity*100)/100}</b></td>
       </tr>
     );
   }
