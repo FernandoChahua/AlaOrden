@@ -29,14 +29,13 @@ export function sendPay(card, save) {
     //TODO: fake payment
 
     if (save) {
-
+      //SAVE CARD
     }
-
     let response = {
       status: 200,
       card,
     };
-      dispatch(_setResponse(response))
+      setTimeout(dispatch(_setResponse(response)),2000);
   }
 }
 
@@ -45,8 +44,13 @@ export function finish() {
     let order = getState().order.order;
     let response = getState().payment.response;
 
+    order.transacion = {
+      cardNumber: getState().payment.respond.card.cardNumber
+    };
+
     axios.post(`api/payment/${response.card}`, order)
       .then(response => {
+
       })
       .catch(error => {
       });
