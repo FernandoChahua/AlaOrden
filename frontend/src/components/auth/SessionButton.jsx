@@ -28,9 +28,7 @@ class SessionButton extends Component {
         </DropdownToggle>
 
         <DropdownMenu alignRight>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+          <Dropdown.Item as={Link} to={"/admin/user"}>CRUD: usuarios</Dropdown.Item>
           <Dropdown.Divider/>
           <Dropdown.Item onClick={this.props.logOut} as={Link} to={"/"}>Cerrar Sesión</Dropdown.Item>
         </DropdownMenu>
