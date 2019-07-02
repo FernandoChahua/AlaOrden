@@ -12,18 +12,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/cart")
 public class CarritoController {
-    CartService cartService;
+    private CartService cartService;
     //Listar(usuario), Editar(usuario, producto), Eliminar(usuario,producto), Agregar(usuario), Vaciar(usuario)
     @Autowired
     public CarritoController(CartService cartService) {this.cartService = cartService;}
 
     //TODO: usuario no existe
     @RequestMapping(path="/{idUsuario}",method= RequestMethod.GET)
-    List<CartItem> listCarritoItems(@PathVariable int idUsuario){return cartService.findByUser(idUsuario);}
+    public List<CartItem> listCarritoItems(@PathVariable int idUsuario){return cartService.findByUser(idUsuario);}
 
 
     @RequestMapping(path="/{idUser}",method=RequestMethod.DELETE)
-    String empyCarrito(@PathVariable int idUser)
+    public String empyCarrito(@PathVariable int idUser)
     {
         List<CartItem> carritos = cartService.findByUser(idUser);
         if(carritos != null)
@@ -36,7 +36,7 @@ public class CarritoController {
 
     //TODO:
     @RequestMapping(path="/{idUser}/{idProduct}",method=RequestMethod.DELETE)
-    String deleteCarrito(@PathVariable int idUser,@PathVariable int idProduct)
+    public String deleteCarrito(@PathVariable int idUser,@PathVariable int idProduct)
     {
         CartItem carrito = cartService.findByUserAndProduct(idUser,idProduct);
         if(carrito != null)
@@ -49,7 +49,7 @@ public class CarritoController {
 
     //TODO:
     @RequestMapping(method=RequestMethod.POST)
-    void createItemCarrito(@RequestBody CartItem carritoItem){
+    public void createItemCarrito(@RequestBody CartItem carritoItem){
         if(carritoItem != null) {
             cartService.saveToCart(carritoItem);
         }
@@ -57,7 +57,7 @@ public class CarritoController {
 
     //TODO: no existe
     @RequestMapping(method=RequestMethod.PUT)
-    void updateItemCarrito(@RequestBody CartItem carritoItem){
+    public void updateItemCarrito(@RequestBody CartItem carritoItem){
         if(carritoItem != null) {
             cartService.saveToCart(carritoItem);
         }

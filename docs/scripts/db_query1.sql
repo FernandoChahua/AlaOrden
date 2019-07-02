@@ -55,7 +55,7 @@ select * from tfinal.product;
 	insert into tfinal.franchise(api_Url, logo , name, web_Url) values
 	('api/WongProducto',  'wong.png','Wong', 'www.wong.com'),
 		('api/MetroProducto',  'metro.png','Metro', 'www.metro.com'),
-		('api/PlazaVea','Plaza Vea',  'plazavea.png', 'www.plazavea.com'),
+		('api/PlazaVea','plazavea.png',  'Plaza Vea', 'www.plazavea.com'),
 		('api/TottusProducto',  'tottus.png','Tottus', 'www.tottus.com');
 
 	insert into tfinal.address( description,latitude , longitude, user) values
@@ -104,7 +104,8 @@ select * from tfinal.product;
 		('11', '11', 'Doritos', 'bolsa', '1', '62', 'g', 'Bolsa con aire y unos doritos', 'doritos.png' ),
 		('13', '12', 'PeziDuri', 'pote', '1', '1', 'l', 'Pote de helado de vainilla', 'peziduri.png' ),
 		('13', '12', 'Frio Rico', 'cono', '1', '75', 'g', 'Cono con helado de vainilla y chispas de chocolate', 'friorico.png' );
-
+select*from tfinal.order_detail;
+select * from tfinal.franchise;
 insert into tfinal.inventory(id_franchise, id_product, ref_code) values
 		(1, 1, 1),(2, 1, 1),(3, 1, 1),(4, 1, 1),
         (1, 2, 2),(2, 2, 2),(3, 2, 2),(4, 2, 2),
@@ -129,7 +130,7 @@ insert into tfinal.inventory(id_franchise, id_product, ref_code) values
         (1, 22, 22),(2, 22, 22),(3, 22, 22),(4, 22, 22),
         (1, 23, 23),(2, 23, 23),(3, 23, 23),(4, 23, 23),
         (1, 24, 24),(2, 24, 24),(3, 24, 24),(4, 24, 24);
-
+select*from tfinal.location;
 select * from tfinal.product;
 insert into tfinal.coupon(active, code, discount,expiration_date, issue_date, id_orders) values
 		(1, 'SCOTIA1', 10,'2019-12-30 00:00:00', '2019-01-01 00:00:00', null),

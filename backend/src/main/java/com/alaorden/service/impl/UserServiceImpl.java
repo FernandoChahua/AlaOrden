@@ -22,33 +22,8 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    @Transactional
-    public User createUser(User user) {
-        User u = userRepository.findByNicknameEqualsOrEmailEquals(user.getNickname(), user.getEmail());
-        if (u == null) {
-            user.setEmailValidated(false);
-            user.setSalt("salt");
-            user.setState(1);
-            userRepository.save(user);
-        }
-        else {
 
-            if(u.getEmail().equalsIgnoreCase(user.getEmail())){
-                throw new BusinessException("El email ya está en uso");
-            }
-            if(u.getNickname().equalsIgnoreCase(user.getNickname())){
-                throw new BusinessException("El nickname ya existe");
-            }
-        }
-        User userReturn = userRepository.findByNicknameEquals(user.getNickname());
-        userReturn.setAddresses(null);
-        userReturn.setCart(null);
-        return userReturn;
-    }
 
-    public User updateUser(User user) {
-        return userRepository.save(user);
-    }
 
     public boolean existUser(User user) {
         if (user != null) {
@@ -80,6 +55,10 @@ public class UserServiceImpl implements UserService {
     }
 
 
+
+
+
+    /////// ----------------- CRUD ------------------------
     public List<User> listAllUsers() {
         List<User> users = userRepository.findAll();
         for (User user : users) {
@@ -92,4 +71,49 @@ public class UserServiceImpl implements UserService {
         }
         return users;
     }
+
+    public User findByIdUser(int idUser){
+        return userRepository.findByIdUser(idUser);
+    }
+
+    @Transactional
+    public void deleteUser(int idUser){ // REGLA DE NEGOCIO NO ELIMINA COMPLETAMENTE SOLO CAMBIA EL ESTADO A BANEADO O DESACTIVADO
+        User user = userRepository.findByIdUser(idUser);
+
+        if(user!=null){
+            user.setState(3);// ESTADO 3 <---- BAN,(2)DESACTIVADO,(1)ACTIVADO
+            userRepository.save(user);
+        }
+
+    }
+    @Transactional
+    public void updateUser(User user) {
+        if(user!=null)
+        userRepository.save(user);
+    }
+    @Transactional
+    public User createUser(User user) {
+        User u = userRepository.findByNicknameEqualsOrEmailEquals(user.getNickname(), user.getEmail());
+        if (u == null) {
+            user.setEmailValidated(false);
+            user.setSalt("salt");
+            user.setState(1);
+            userRepository.save(user);
+        }
+        else {
+
+            if(u.getEmail().equalsIgnoreCase(user.getEmail())){
+                throw new BusinessException("El email ya está en uso");
+            }
+            if(u.getNickname().equalsIgnoreCase(user.getNickname())){
+                throw new BusinessException("El nickname ya existe");
+            }
+        }
+        User userReturn = userRepository.findByNicknameEquals(user.getNickname());
+        userReturn.setAddresses(null);
+        userReturn.setCart(null);
+        return userReturn;
+    }
+
+
 }
