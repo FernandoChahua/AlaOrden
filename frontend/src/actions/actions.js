@@ -39,7 +39,7 @@ export const SET_PAYMENT_RESPONSE = 'SET_PAYMENT_RESPONSE';
 /* CRUD */
 //USER[lse] (direction[l])
 export const VIEW_USER_LIST = 'VIEW_USER_LIST';
-export const VIEW_USER_DIR = 'VIEW_USER_DIR';
+export const VIEW_USER_ADDRESS = 'VIEW_USER_ADDRESS';
 
 //PRODUCT[lse] (brand[g],category[g], location[l])
 export const VIEW_PRODUCT_LIST = 'VIEW_PRODUCT_LIST';
@@ -50,4 +50,6 @@ export const VIEW_ORDER_DETAILS = 'VIEW_ORDER_DETAILS';
 
 //FRANCHISE[l] (store[lsed])
 export const VIEW_FRANCHISES = 'VIEW_FRANCHISES' ;
-export const DELETE_LOCATION = 'DELETE_LOCATION';
+export const VIEW_LOCATIONS = 'VIEW_LOCATIONS';
+
+export const VIEW_COUPON_LIST = 'VIEW_COUPON_LIST';

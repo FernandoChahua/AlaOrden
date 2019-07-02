@@ -80,7 +80,7 @@ class LoginForm extends Component {
 
 const mapState = state => {
   return {
-    
+
   }
 };
 

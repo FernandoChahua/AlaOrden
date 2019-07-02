@@ -3,9 +3,10 @@ import auth from "./authReducer";
 import cart from "./cartReducer";
 import catalog from "./catalogReducer";
 import delivery from "./deliveryReducer";
-import payment from "./paymentReducer"
-import quotation from "./quotationReducer"
-import order from "./orderReducer"
+import payment from "./paymentReducer";
+import quotation from "./quotationReducer";
+import order from "./orderReducer";
+import admin from "./adminReducer";
 
 const reducers = {
   auth,
@@ -14,7 +15,8 @@ const reducers = {
   delivery,
   payment,
   quotation,
-  order
+  order,
+  admin
 };
 
 export default combineReducers(reducers);
