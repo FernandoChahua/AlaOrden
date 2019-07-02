@@ -77,7 +77,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public void deleteUser(int idUser){ // REGLA DE NEGOCIO NO ELIMINA COMPLETAMENTE SOLO CAMBIA EL ESTADO A BANEADO O DESACTIVADO
+    public boolean deleteUser(int idUser){
+        User user = userRepository.findByIdUser(idUser);
+        if (user == null){
+            return false;
+        }
+        userRepository.delete(user);
+        return true;
+    }
+
+    @Transactional
+    public void banUser(int idUser){ // REGLA DE NEGOCIO NO ELIMINA COMPLETAMENTE SOLO CAMBIA EL ESTADO A BANEADO O DESACTIVADO
         User user = userRepository.findByIdUser(idUser);
 
         if(user!=null){

@@ -13,6 +13,7 @@ public interface UserService {
     User userByNickname(String nickname);
     User logIn(String nickname, String password);
     List<User> listAllUsers();
-    void deleteUser(int idUser);
+    boolean deleteUser(int idUser);
+    void banUser(int idUser);
     User findByIdUser(int idUser);
 }

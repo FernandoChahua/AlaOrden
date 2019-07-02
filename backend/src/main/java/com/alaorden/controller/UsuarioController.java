@@ -2,14 +2,11 @@ package com.alaorden.controller;
 
 import com.alaorden.exception.ApiException;
 import com.alaorden.exception.BusinessException;
-import com.alaorden.model.CartItem;
 import com.alaorden.model.User;
 import com.alaorden.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,8 +19,6 @@ public class UsuarioController {
     public UsuarioController(UserService userService){
         this.userService = userService;
     }
-
-
 
 
     @RequestMapping(path="/login/{nickname}/{password}",method = RequestMethod.GET)
@@ -50,10 +45,15 @@ public class UsuarioController {
     public void updateUser(@RequestBody User user){
         userService.updateUser(user);
     }
+    @RequestMapping(path="/ban/{idUser}",method=RequestMethod.PUT)
+    public void banHammer(@PathVariable int idUser){
+        userService.banUser(idUser);
+    }
     @RequestMapping(path="/{idUser}",method=RequestMethod.DELETE)
     public void deleteUser(@PathVariable int idUser){
         userService.deleteUser(idUser);
     }
+
     @RequestMapping(path="/{idUser}",method = RequestMethod.GET)
     public User findByIdUser(@PathVariable int idUser){
         return userService.findByIdUser(idUser);
